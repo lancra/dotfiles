@@ -1,0 +1,64 @@
+[alias]
+	br = "branch"
+	br-current = "branch --show-current"
+	br-local = "!git branch --format '%(refname:short) %(upstream:short)' | awk '{if (!$2) print $1;}'"
+	br-gone = "!git branch --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}'"
+	ca = "commit --amend"
+	ci = "commit"
+	config-sources = "!git config --list --show-scope | sed 's/=/\t/' | awk '{OFS=FS=\"\t\"} {t=$1; $1=$2; $2=$3; $3=t; print $1,$3,$2}' | sort -k1,1 -k2 | column -s $'\t' --table --table-columns KEY,SCOPE,VALUE --table-wrap VALUE"
+	df = "diff"
+	gone = "!git branch-gone | xargs -r git branch -D"
+	log-l = "log --oneline -50"
+	log-s = "log --oneline -20"
+	pushf = "push --force-with-lease"
+	st = "status --short --untracked-files"
+	sw = "switch"
+	swn = "!git switch --no-track -c $1 origin/${2-main} #"
+	swapu = "!git switch main && git pull"
+	tags = "log --tags --decorate --oneline --simplify-by-decoration"
+	tags-latest = "tags -1 --format='%(describe:tags)'"
+	wipe = "!git reset --hard && git clean -fd"
+[clone]
+	defaultRemoteName = origin
+[commit]
+	gpgSign = true
+[core]
+	editor = code --wait
+	pager = delta
+[diff]
+	colorMoved = default
+[delta]
+	hyperlinks = true
+	light = false
+	navigate = true
+	side-by-side = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[fetch]
+	prune = true
+[init]
+	defaultBranch = main
+[interactive]
+	diffFilter = delta --color-only
+[merge]
+	conflictStyle = diff3
+[push]
+	default = current
+[safe]
+	directory = C:/GitHub/dotnet-runtime
+	directory = C:/GitHub/modular-monolith-with-ddd
+	directory = C:/Projects/pwsh
+	directory = C:/Projects/xsdg
+	directory = C:/Projects/computer
+	directory = C:/GitHub/command-line-api
+[tag]
+	gpgSign = true
+[user]
+	email = lancra@outlook.com
+	name = Lance Craig
+	signingKey = lancra@outlook.com
+[winUpdater]
+	recentlySeenVersion = 2.24.1.windows.2
