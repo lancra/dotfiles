@@ -1,0 +1,82 @@
+# Hidden
+/.android/
+/.AndroidStudio3.0/
+/.autorest/
+/.azure/
+/.azuredatastudio/extensions/
+/.azure-devops/
+/.cache/
+/.DbSchema/
+/.dbus-keyrings/
+/.dbvis/
+/.dnx/
+/.docker/
+/.dotnet/
+/.gimp-2.8/
+/.github/token
+/.gnupg/
+/.gradle/
+/.IdeaIC2016/
+/.idlerc/
+/.lancra/
+/.lemminx/
+/.net/
+/.ngrok/
+/.nuget/packages/
+/.openjfx/
+/.oracle_jre_usage/
+/.ssh/
+/.templateengine/
+/.thumbnails/
+/.vs/Extensions/
+/.vscode/extensions/
+/.bash_history
+/.sambox.cache
+/.v8flags.*.json
+
+# Windows
+/3D Objects/
+/AppData/
+/Application Data/
+/Contacts/
+/Cookies/
+/Desktop/
+/Documents/
+/Downloads/
+/Favorites/
+/Games/
+/Links/
+/Local Settings/
+/Music/
+/My Documents/
+/NetHood/
+/OneDrive/
+/Pictures/
+/PrintHood/
+/Recent/
+/Saved Games/
+/School/
+/Searches/
+/SendTo/
+/Shortcuts/
+/Start Menu/
+/Templates/
+/Videos/
+/NTUSER.DAT*
+/ntuser.ini
+
+# Miscellaneous
+/ansel/
+/IntelGraphicsProfiles/
+/MicrosoftEdgeBackups/
+/node_modules/
+/NucleusCoop/
+/T-Engine/
+/npm-debug.log*
+
+# RuneScape
+/.runelite/
+/jagexcache/
+/jagex_cl_*.dat
+/jagexappletviewer.preferences
+/random.dat
