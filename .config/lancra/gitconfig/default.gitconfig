@@ -25,6 +25,7 @@
 [core]
 	editor = code --wait
 	pager = delta
+	symlinks = true
 [diff]
 	colorMoved = default
 [delta]
@@ -47,13 +48,6 @@
 	conflictStyle = diff3
 [push]
 	default = current
-[safe]
-	directory = C:/GitHub/dotnet-runtime
-	directory = C:/GitHub/modular-monolith-with-ddd
-	directory = C:/Projects/pwsh
-	directory = C:/Projects/xsdg
-	directory = C:/Projects/computer
-	directory = C:/GitHub/command-line-api
 [tag]
 	gpgSign = true
 [user]
