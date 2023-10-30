@@ -37,7 +37,6 @@
 
 # Windows
 /3D Objects/
-/AppData/
 /Application Data/
 /Contacts/
 /Cookies/
@@ -81,3 +80,9 @@
 /jagex_cl_*.dat
 /jagexappletviewer.preferences
 /random.dat
+
+# Windows user app data
+/AppData/**
+!/AppData/Roaming/
+!/AppData/Roaming/GitHub CLI/
+!/AppData/Roaming/GitHub CLI/config.yml
