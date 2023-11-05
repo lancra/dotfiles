@@ -14,7 +14,6 @@
 /.dotnet/
 /.gimp-2.8/
 /.github/token
-/.gnupg/
 /.gradle/
 /.IdeaIC2016/
 /.idlerc/
@@ -74,13 +73,6 @@
 /T-Engine/
 /npm-debug.log*
 
-# RuneScape
-/.runelite/
-/jagexcache/
-/jagex_cl_*.dat
-/jagexappletviewer.preferences
-/random.dat
-
 # Windows user app data
 /AppData/**
 
@@ -93,3 +85,16 @@
 !/AppData/Roaming/
 !/AppData/Roaming/GitHub CLI/
 !/AppData/Roaming/GitHub CLI/config.yml
+
+# GPG
+/.gnupg/**
+!/.gnupg/gpg-agent.conf
+!/AppData/Roaming/gnupg/
+!/AppData/Roaming/gnupg/gpg-agent.conf
+
+# RuneScape
+/.runelite/
+/jagexcache/
+/jagex_cl_*.dat
+/jagexappletviewer.preferences
+/random.dat
