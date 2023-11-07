@@ -7,7 +7,7 @@
 	ci = "commit"
 	config-sources = "!git config --list --show-scope | sed 's/=/\t/' | awk '{OFS=FS=\"\t\"} {t=$1; $1=$2; $2=$3; $3=t; print $1,$3,$2}' | sort -k1,1 -k2 | column -s $'\t' --table --table-columns KEY,SCOPE,VALUE --table-wrap VALUE"
 	df = "diff"
-	gone = "!git branch-gone | xargs -r git branch -D"
+	gone = "!git br-gone | xargs -r git branch -D"
 	log-l = "log --oneline -50"
 	log-s = "log --oneline -20"
 	pushf = "push --force-with-lease"
