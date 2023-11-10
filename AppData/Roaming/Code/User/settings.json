@@ -1,0 +1,118 @@
+{
+  "[git-commit]": {
+    "editor.rulers": [
+      {
+        "color": "#D14341",
+        "column": 50
+      },
+      {
+        "color": "#C7C7C7",
+        "column": 72
+      }
+    ],
+    "rewrap.autoWrap.enabled": true,
+    "rewrap.wrappingColumn": 72
+  },
+  "[html][javascript][json][jsonc][markdown][scss][typescript][yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.detectIndentation": false,
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  "[powershell]": {
+    "editor.rulers": [
+      {
+        "color": "#6A9955",
+        "column": 80
+      },
+      {
+        "color": "#FF8080",
+        "column": 135
+      }
+    ]
+  },
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "editor.detectIndentation": false,
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml",
+    "editor.detectIndentation": false,
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  "editor.insertSpaces": true,
+  "editor.linkedEditing": true,
+  "editor.rulers": [
+    {
+      "color": "#FF8080",
+      "column": 135
+    }
+  ],
+  "editor.tabSize": 4,
+  "files.autoSave": "off",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "json.validate.enable": true,
+  "markdownlint.config": {
+    "default": true,
+    "MD003": {
+      "style": "atx"
+    },
+    "MD024": {
+      "siblings_only": true
+    }
+  },
+  "notebook.lineNumbers": "on",
+  "omnisharp.organizeImportsOnFormat": true,
+  "powershell.powerShellDefaultVersion": "PowerShell (x64)",
+  "search.useIgnoreFiles": true,
+  "search.useParentIgnoreFiles": true,
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.fontFamily": "CaskaydiaCove NF Mono",
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell"
+    },
+    "Windows PowerShell": {
+      "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+    },
+    "Command Prompt": {
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ],
+      "args": [],
+      "icon": "terminal-cmd"
+    },
+    "Git Bash": {
+      "source": "Git Bash"
+    }
+  },
+  "todohighlight.keywords": [
+    {
+      "text": "TODO:",
+      "color": "white",
+      "backgroundColor": "blue"
+    },
+    {
+      "text": "FIXME:",
+      "color": "white",
+      "backgroundColor": "red"
+    },
+    {
+      "text": "HACK:",
+      "color": "black",
+      "backgroundColor": "yellow"
+    }
+  ],
+  "window.titleBarStyle": "custom",
+  "workbench.colorTheme": "Default Dark Modern",
+  "workbench.editor.pinnedTabsOnSeparateRow": true
+}
