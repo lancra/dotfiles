@@ -104,6 +104,12 @@
 /jagexappletviewer.preferences
 /random.dat
 
+# Rust
+/.cargo/
+/.rustup/**
+!/.rustup/settings.toml
+/projects/
+
 # VS Code
 !/AppData/Roaming/Code/
 !/AppData/Roaming/Code/User/
