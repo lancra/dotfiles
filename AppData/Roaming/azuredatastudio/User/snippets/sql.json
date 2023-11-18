@@ -1,0 +1,178 @@
+{
+  "Beginning of Today": {
+    "prefix": "today",
+    "description": "The beginning of the provided datetime",
+    "body": [
+      "DATEADD(DAY, DATEDIFF(DAY, 0, ${1:GETDATE()}), 0)$0"
+    ]
+  },
+  "Convert UTC to EST": {
+    "prefix": "utctoest",
+    "description": "Convert a UTC datetime to an EST datetime",
+    "body": [
+      "AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time'$0"
+    ]
+  },
+  "Count Field": {
+    "prefix": "cnt",
+    "description": "Count field for select statements",
+    "body": [
+      "COUNT(1) AS [Count]$0"
+    ]
+  },
+  "Create Snippet Header": {
+    "prefix": "sniphead",
+    "description": "Create the header for a SQL snippet file.",
+    "body": [
+      "/*METADATA_BEGIN",
+      "TITLE=${1:Title}",
+      "PREFIX=${2:Prefix}",
+      "METADATA_END*/",
+      "--PARAMETERS_BEGIN",
+      "$0",
+      "--PARAMETERS_END",
+      ""
+    ]
+  },
+  "Database Owner Schema": {
+    "prefix": "d",
+    "body": [
+      "[dbo].[${0:TableName}]"
+    ]
+  },
+  "Drop Temporary Table": {
+    "prefix": "droptemp",
+    "description": "Drops a temporary table if it exists",
+    "body": [
+      "DROP TABLE IF EXISTS #${0:TableName}"
+    ]
+  },
+  "Format String for Decimals": {
+    "prefix": "formatdecimal",
+    "description": "The format string for two digit decimals",
+    "body": [
+      "'#,##0.00;(#,##0.00)'$0"
+    ]
+  },
+  "Group By": {
+    "prefix": "gb",
+    "description": "Group by clause",
+    "body": [
+      "GROUP BY "
+    ]
+  },
+  "Inner Join": {
+    "prefix": "ij",
+    "description": "Perform an inner join",
+    "body": [
+      "INNER JOIN $0"
+    ]
+  },
+  "Left Join": {
+    "prefix": "lj",
+    "description": "Perform a left join",
+    "body": [
+      "LEFT JOIN $0"
+    ]
+  },
+  "Order By": {
+    "prefix": "ob",
+    "description": "Order by column",
+    "body": [
+      "ORDER BY "
+    ]
+  },
+  "Order By 1 Descending": {
+    "prefix": "obo",
+    "description": "Descending order for first column",
+    "body": [
+      "ORDER BY 1 DESC"
+    ]
+  },
+  "Perform Post-Execution Cleanup": {
+    "prefix": "postclean",
+    "description": "Titled separator for post-execution tasks",
+    "body": [
+      "--Perform Post-Execution Cleanup-------------------------------------------------------------------------------------------------------",
+      "DROP TABLE IF EXISTS #${0:TableName}"
+    ]
+  },
+  "Perform Pre-Execution Cleanup": {
+    "prefix": "preclean",
+    "description": "Titled separator for pre-execution tasks",
+    "body": [
+      "--Perform Pre-Execution Cleanup--------------------------------------------------------------------------------------------------------",
+      "DROP TABLE IF EXISTS #${0:TableName}"
+    ]
+  },
+  "Print Message": {
+    "prefix": "pr",
+    "description": "Prints a message",
+    "body": [
+      "RAISERROR('${0:Message}', 0, 1) WITH NOWAIT"
+    ]
+  },
+  "Print Message With Date": {
+    "prefix": "printd",
+    "description": "Prints a message with the current datetime suffixed",
+    "body": [
+      "PRINT(FORMATMESSAGE('%s (%s)', '${0:Message}', FORMAT(GETDATE(), 'HH:mm:ss.fff')))",
+      "GO"
+    ]
+  },
+  "Select Count From": {
+    "prefix": "ssc",
+    "description": "Select record count from a table",
+    "body": [
+      "SELECT COUNT(1) AS [Count] FROM $0"
+    ]
+  },
+  "Select From": {
+    "prefix": "ssf",
+    "description": "Select from a table",
+    "body": [
+      "SELECT * FROM $0"
+    ]
+  },
+  "Select Top From": {
+    "prefix": "sst",
+    "description": "Select top one thousand records from a table",
+    "body": [
+      "SELECT TOP 1000 * FROM $0"
+    ]
+  },
+  "Separator": {
+    "prefix": "sep",
+    "description": "Visual separator for script blocks",
+    "body": [
+      "--$0-------------------------------------------------------------------------------------------------------------------------------------"
+    ]
+  },
+  "Star Expansion": {
+    "prefix": "stex",
+    "description": "Expands wildcard select statements to all columns in the table.",
+    "body": [
+      "DECLARE @SchemaName SYSNAME = '${1:SchemaName}'",
+      "DECLARE @TableOrViewName SYSNAME = '${2:TableOrViewName}'",
+      "",
+      "SELECT",
+      "    FORMATMESSAGE('[%s]%s', C.[name], IIF(C.[column_id] <> CM.[column_id], ',', '')) AS [Column]",
+      "FROM sys.columns C",
+      "    INNER JOIN sys.objects O ON O.[object_id] = C.[object_id]",
+      "    INNER JOIN sys.schemas S ON S.[schema_id] = O.[schema_id]",
+      "    INNER JOIN",
+      "    (",
+      "        SELECT",
+      "            [object_id],",
+      "            MAX([column_id]) AS [column_id]",
+      "        FROM sys.columns",
+      "        GROUP BY [object_id]",
+      "    ) CM ON CM.[object_id] = O.[object_id]",
+      "WHERE",
+      "    S.[name] = @SchemaName AND",
+      "    O.[name] = @TableOrViewName",
+      "ORDER BY",
+      "    C.[column_id]"
+    ]
+  }
+}

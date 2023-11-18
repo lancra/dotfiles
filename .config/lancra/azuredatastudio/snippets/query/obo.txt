@@ -1,0 +1,6 @@
+METADATA_BEGIN
+TITLE=Order By 1 Descending
+PREFIX=obo
+DESCRIPTION=Descending order for first column
+METADATA_END
+ORDER BY 1 DESC

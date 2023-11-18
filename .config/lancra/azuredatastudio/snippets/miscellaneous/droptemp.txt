@@ -1,0 +1,6 @@
+METADATA_BEGIN
+TITLE=Drop Temporary Table
+PREFIX=droptemp
+DESCRIPTION=Drops a temporary table if it exists
+METADATA_END
+DROP TABLE IF EXISTS #${0:TableName}

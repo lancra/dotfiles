@@ -1,0 +1,6 @@
+METADATA_BEGIN
+TITLE=Count Field
+PREFIX=cnt
+DESCRIPTION=Count field for select statements
+METADATA_END
+COUNT(1) AS [Count]$0

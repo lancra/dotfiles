@@ -1,0 +1,6 @@
+METADATA_BEGIN
+TITLE=Print Message
+PREFIX=pr
+DESCRIPTION=Prints a message
+METADATA_END
+RAISERROR('${0:Message}', 0, 1) WITH NOWAIT

@@ -1,0 +1,6 @@
+METADATA_BEGIN
+TITLE=Convert UTC to EST
+PREFIX=utctoest
+DESCRIPTION=Convert a UTC datetime to an EST datetime
+METADATA_END
+AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time'$0

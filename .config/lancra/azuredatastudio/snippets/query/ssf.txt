@@ -1,0 +1,6 @@
+METADATA_BEGIN
+TITLE=Select From
+PREFIX=ssf
+DESCRIPTION=Select from a table
+METADATA_END
+SELECT * FROM $0

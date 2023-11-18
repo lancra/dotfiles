@@ -1,0 +1,7 @@
+METADATA_BEGIN
+TITLE=Perform Post-Execution Cleanup
+PREFIX=postclean
+DESCRIPTION=Titled separator for post-execution tasks
+METADATA_END
+--Perform Post-Execution Cleanup-------------------------------------------------------------------------------------------------------
+DROP TABLE IF EXISTS #${0:TableName}

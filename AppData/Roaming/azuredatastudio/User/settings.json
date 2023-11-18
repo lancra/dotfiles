@@ -1,0 +1,40 @@
+{
+  "editor.minimap.enabled": true,
+  "editor.rulers": [135],
+  "overtype.abbreviatedStatus": true,
+  "queryEditor.tabColorMode": "fill",
+  "window.commandCenter": true,
+  "workbench.colorTheme": "Default Dark Azure Data Studio",
+  "workbench.editor.untitled.labelFormat": "content",
+  "workbench.editorAssociations": {
+    "*.{sqlplan}": "workbench.editor.executionplan"
+  },
+  "workbench.enablePreviewFeatures": true,
+  "datasource.connectionGroups": [
+    {
+      "name": "ROOT",
+      "id": "C777F06B-202E-4480-B475-FA416154D458"
+    }
+  ],
+  "datasource.connections": [
+    {
+      "options": {
+        "connectionName": "LocalDB",
+        "server": "(localdb)\\MSSQLLocalDB",
+        "database": "",
+        "authenticationType": "Integrated",
+        "user": "",
+        "password": "",
+        "applicationName": "azdata",
+        "encrypt": "true",
+        "trustServerCertificate": "false",
+        "groupId": "C777F06B-202E-4480-B475-FA416154D458",
+        "databaseDisplayName": ""
+      },
+      "groupId": "C777F06B-202E-4480-B475-FA416154D458",
+      "providerName": "MSSQL",
+      "savePassword": true,
+      "id": "801dc161-8534-4ca5-84fd-09584183e5fb"
+    }
+  ]
+}

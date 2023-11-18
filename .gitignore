@@ -91,6 +91,14 @@
 !/AppData/Roaming/GitHub CLI/
 !/AppData/Roaming/GitHub CLI/config.yml
 
+# Azure Data Studio
+!/AppData/Roaming/azuredatastudio/
+!/AppData/Roaming/azuredatastudio/User/
+!/AppData/Roaming/azuredatastudio/User/keybindings.json
+!/AppData/Roaming/azuredatastudio/User/settings.json
+!/AppData/Roaming/azuredatastudio/User/snippets
+!/AppData/Roaming/azuredatastudio/User/snippets/*
+
 # GPG
 /.gnupg/**
 !/.gnupg/gpg-agent.conf

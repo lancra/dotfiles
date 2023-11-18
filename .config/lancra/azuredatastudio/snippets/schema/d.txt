@@ -1,0 +1,5 @@
+METADATA_BEGIN
+TITLE=Database Owner Schema
+PREFIX=d
+METADATA_END
+[dbo].[${0:TableName}]
