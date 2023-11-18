@@ -1,6 +1,7 @@
 [alias]
 	br = "branch"
 	br-current = "branch --show-current"
+	br-date = "branch --sort=-committerdate --format='%(committerdate:iso-local) %(refname:short)'"
 	br-local = "!git branch --format '%(refname:short) %(upstream:short)' | awk '{if (!$2) print $1;}'"
 	br-gone = "!git branch --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}'"
 	ca = "commit --amend"
