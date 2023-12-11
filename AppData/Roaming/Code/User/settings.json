@@ -13,6 +13,9 @@
     "rewrap.autoWrap.enabled": true,
     "rewrap.wrappingColumn": 72
   },
+  "[csv][dynamic csv][tsv][csv (semicolon)]": {
+    "editor.stickyScroll.enabled": true
+  },
   "[html][javascript][json][jsonc][markdown][scss][typescript][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.detectIndentation": false,
@@ -37,6 +40,12 @@
     "editor.detectIndentation": false,
     "editor.formatOnSave": true,
     "editor.insertSpaces": true,
+    "editor.rulers": [
+      {
+        "color": "#FF8080",
+        "column": 100
+      }
+    ],
     "editor.tabSize": 4
   },
   "[xml]": {
