@@ -60,7 +60,21 @@
   },
   {
     "key": "ctrl+l",
+    "command": "editor.action.deleteLines",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+shift+k",
+    "command": "-editor.action.deleteLines",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+shift+k",
     "command": "expandLineSelection",
-    "when": "textInputFocus"
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+[ s",
+    "command": "workbench.files.action.showActiveFileInExplorer"
   }
 ]
