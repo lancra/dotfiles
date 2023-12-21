@@ -1,0 +1,8 @@
+blocks:
+  - permission
+  - user
+  - size
+  - date
+  - name
+
+display: all

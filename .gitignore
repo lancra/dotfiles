@@ -105,6 +105,10 @@
 !/AppData/Roaming/gnupg/
 !/AppData/Roaming/gnupg/gpg-agent.conf
 
+# LSDeluxe (lsd)
+!/AppData/Roaming/lsd/
+!/AppData/Roaming/lsd/config.yaml
+
 # RuneScape
 /.runelite/
 /jagexcache/
