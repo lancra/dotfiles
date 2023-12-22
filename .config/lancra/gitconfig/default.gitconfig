@@ -41,8 +41,6 @@
 	required = true
 [fetch]
 	prune = true
-[gpg]
-	program = C:/Users/lancra/.config/lancra/git/.gpg-pinentry-loopback
 [init]
 	defaultBranch = main
 [interactive]
