@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter()]
-    $SourceDirectory = "$env:USERPROFILE/.config/lancra/azuredatastudio/snippets",
+    $SourceDirectory = "$env:USERPROFILE/.config/azuredatastudio/snippets",
 
     [Parameter()]
     $TargetFile = "$env:USERPROFILE/AppData/Roaming/azuredatastudio/User/snippets/sql.json"
