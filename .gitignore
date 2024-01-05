@@ -105,6 +105,9 @@
 !/AppData/Roaming/gnupg/
 !/AppData/Roaming/gnupg/gpg-agent.conf
 
+# KDiff3
+!/AppData/Local/kdiff3rc
+
 # LSDeluxe (lsd)
 !/AppData/Roaming/lsd/
 !/AppData/Roaming/lsd/config.yaml
