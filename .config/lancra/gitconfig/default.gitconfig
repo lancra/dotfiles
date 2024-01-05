@@ -32,7 +32,7 @@
 	symlinks = true
 [diff]
 	colorMoved = default
-	tool = meld
+	tool = kdiff3
 [difftool]
 	prompt = false
 [difftool "meld"]
@@ -55,8 +55,9 @@
 	diffFilter = delta --color-only
 [merge]
 	conflictStyle = diff3
-	tool = meld
+	tool = kdiff3
 [mergetool]
+	keepBackup = false
 	prompt = false
 [mergetool "meld"]
 	cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
