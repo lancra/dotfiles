@@ -17,6 +17,8 @@
 	mg = "merge"
 	mgt = "mergetool"
 	pushf = "push --force-with-lease"
+	rt = "restore"
+	rts = "restore --staged"
 	rb = "rebase"
 	rbi = "rebase -i"
 	rbis = "rebase -i --autosquash"
