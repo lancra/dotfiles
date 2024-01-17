@@ -11,7 +11,7 @@
 	df = "diff"
 	dfs = "diff --staged"
 	dft = "difftool"
-	gone = "!git br-gone | xargs -r git branch -D"
+	gone = "!git brg | xargs -r git branch -D"
 	ll = "log --format='%C(yellow)%h %C(blue bold)%ci%C(auto)%(decorate) %s' -50"
 	ls = "log --format='%C(yellow)%h %C(blue bold)%ci%C(auto)%(decorate) %s' -20"
 	mg = "merge"
