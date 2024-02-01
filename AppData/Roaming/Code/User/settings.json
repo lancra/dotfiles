@@ -70,10 +70,13 @@
   "json.validate.enable": true,
   "markdownlint.config": {
     "default": true,
-    "MD003": {
+    "heading-style": {
       "style": "atx"
     },
-    "MD024": {
+    "line-length": {
+      "line_length": 135
+    },
+    "no-duplicate-heading": {
       "siblings_only": true
     }
   },
