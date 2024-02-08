@@ -30,6 +30,7 @@
 /.vs/Extensions/
 /.vscode/extensions/
 /.bash_history
+/.lesshst
 /.sambox.cache
 /.gitconfig
 /.v8flags.*.json
