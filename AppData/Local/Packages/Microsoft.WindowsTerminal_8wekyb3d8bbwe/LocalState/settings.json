@@ -65,6 +65,7 @@
         "source": "Windows.Terminal.PowershellCore"
       },
       {
+        "colorScheme": "Campbell Admin",
         "commandline": "gsudo pwsh.exe -nologo",
         "guid": "{c9a9469d-185e-46f7-9e85-b11459c235e8}",
         "hidden": false,
@@ -73,17 +74,20 @@
         "startingDirectory": "%USERPROFILE%"
       },
       {
+        "colorScheme": "Campbell Powershell",
         "commandline": "powershell.exe -nologo",
         "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
         "hidden": false,
         "name": "Windows PowerShell"
       },
       {
+        "colorScheme": "Vintage",
         "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
         "hidden": false,
         "name": "Command Prompt"
       },
       {
+        "colorScheme": "One Half Dark",
         "commandline": "%PROGRAMFILES%/Git/usr/bin/bash.exe -i -l",
         "guid": "{79df4c6d-3498-47e5-9998-a583ab55f6b8}",
         "hidden": false,
@@ -129,6 +133,29 @@
       "foreground": "#CCCCCC",
       "green": "#13A10E",
       "name": "Campbell",
+      "purple": "#881798",
+      "red": "#C50F1F",
+      "selectionBackground": "#FFFFFF",
+      "white": "#CCCCCC",
+      "yellow": "#C19C00"
+    },
+    {
+      "background": "#40050A",
+      "black": "#0C0C0C",
+      "blue": "#0037DA",
+      "brightBlack": "#767676",
+      "brightBlue": "#3B78FF",
+      "brightCyan": "#61D6D6",
+      "brightGreen": "#16C60C",
+      "brightPurple": "#B4009E",
+      "brightRed": "#E74856",
+      "brightWhite": "#F2F2F2",
+      "brightYellow": "#F9F1A5",
+      "cursorColor": "#FFFFFF",
+      "cyan": "#3A96DD",
+      "foreground": "#CCCCCC",
+      "green": "#13A10E",
+      "name": "Campbell Admin",
       "purple": "#881798",
       "red": "#C50F1F",
       "selectionBackground": "#FFFFFF",
@@ -200,7 +227,7 @@
       "name": "One Half Light",
       "purple": "#A626A4",
       "red": "#E45649",
-      "selectionBackground": "#FFFFFF",
+      "selectionBackground": "#4F525D",
       "white": "#FAFAFA",
       "yellow": "#C18301"
     },
@@ -246,7 +273,7 @@
       "name": "Solarized Light",
       "purple": "#D33682",
       "red": "#DC322F",
-      "selectionBackground": "#FFFFFF",
+      "selectionBackground": "#073642",
       "white": "#EEE8D5",
       "yellow": "#B58900"
     },
@@ -292,7 +319,7 @@
       "name": "Tango Light",
       "purple": "#75507B",
       "red": "#CC0000",
-      "selectionBackground": "#FFFFFF",
+      "selectionBackground": "#555753",
       "white": "#D3D7CF",
       "yellow": "#C4A000"
     },
