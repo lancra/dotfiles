@@ -26,7 +26,9 @@
       "keys": "alt+shift+d"
     },
     {
-      "command": "closeTab",
+      "command": {
+        "action": "closeTab"
+      },
       "keys": "ctrl+d"
     }
   ],
@@ -101,18 +103,6 @@
         "hidden": false,
         "name": "Azure Cloud Shell",
         "source": "Windows.Terminal.Azure"
-      },
-      {
-        "guid": "{89911449-b13c-53a5-8148-aa23bedeca6b}",
-        "hidden": true,
-        "name": "Developer PowerShell for VS 2022",
-        "source": "Windows.Terminal.VisualStudio"
-      },
-      {
-        "guid": "{06e37632-b84c-5d2d-99c2-d43c872cf66f}",
-        "hidden": true,
-        "name": "Developer Command Prompt for VS 2022",
-        "source": "Windows.Terminal.VisualStudio"
       },
       {
         "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
@@ -355,43 +345,6 @@
     }
   ],
   "startOnUserLogin": true,
-  "themes": [
-    {
-      "name": "legacyDark",
-      "tab": {
-        "background": null,
-        "showCloseButton": "always",
-        "unfocusedBackground": null
-      },
-      "window": {
-        "applicationTheme": "dark",
-        "useMica": false
-      }
-    },
-    {
-      "name": "legacyLight",
-      "tab": {
-        "background": null,
-        "showCloseButton": "always",
-        "unfocusedBackground": null
-      },
-      "window": {
-        "applicationTheme": "light",
-        "useMica": false
-      }
-    },
-    {
-      "name": "legacySystem",
-      "tab": {
-        "background": null,
-        "showCloseButton": "always",
-        "unfocusedBackground": null
-      },
-      "window": {
-        "applicationTheme": "system",
-        "useMica": false
-      }
-    }
-  ],
+  "themes": [],
   "windowingBehavior": "useExisting"
 }
