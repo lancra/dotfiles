@@ -34,6 +34,7 @@
 /.lesshst
 /.sambox.cache
 /.gitconfig
+/.tig_history
 /.v8flags.*.json
 
 # Windows
