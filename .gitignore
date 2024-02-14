@@ -36,6 +36,8 @@
 /.gitconfig
 /.tig_history
 /.v8flags.*.json
+/.viminfo
+/_viminfo
 
 # Windows
 /3D Objects/
