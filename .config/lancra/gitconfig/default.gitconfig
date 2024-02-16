@@ -45,7 +45,7 @@
 [commit]
 	gpgSign = true
 [core]
-	editor = code --wait
+	editor = 'c:/Program Files/Vim/vim91/vim.exe'
 	pager = delta
 	symlinks = true
 [diff]
