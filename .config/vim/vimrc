@@ -1,3 +1,5 @@
+set nocompatible
+
 filetype on
 filetype indent on
 filetype plugin on
@@ -6,8 +8,11 @@ set hlsearch
 set ignorecase
 set incsearch
 set number
+set ruler
 set showmode
 set smartcase
+set visualbell
+set wildmenu
 
 syntax on
 
