@@ -1,0 +1,88 @@
+Id,Source,Name,Tracking,Category
+7zip.7zip,winget,7zip,Full,File System
+9WZDNCRDMDM3,msstore,NuGet Package Explorer,Full,Programming
+AlexanderKojevnikov.Spek,winget,Spek,Full,Music
+Amazon.SendToKindle,winget,Send To Kindle,Full,Reading
+AntibodySoftware.WizTree,winget,WizTree,Full,File System
+Apple.iTunes,winget,iTunes,Full,Music
+Audacity.Audacity,winget,Audacity,Full,Music
+AutoHotkey.AutoHotkey,winget,AutoHotkey,Full,Utility
+Bethesda.Launcher,winget,Bethesda Launcher,Full,Gaming
+Bitwarden.CLI,winget,Bitwarden CLI,Full,Security
+BurntSushi.ripgrep.MSVC,winget,ripgrep,Full,File System
+calibre.calibre,winget,calibre,Full,Reading
+Canonical.Ubuntu.2204,winget,Ubuntu,Full,Operating System
+dandavison.delta,winget,delta,Full,Programming
+direnv.direnv,winget,direnv,Full,Programming
+Discord.Discord,winget,Discord,Full,Social
+dotPDNLLC.paintdotnet,winget,paint.net,Full,Graphics
+ExpressVPN.ExpressVPN,winget,ExpressVPN,Full,Privacy
+gerardog.gsudo,winget,gsudo,Full,Utility
+Git.Git,winget,Git,Full,Programming
+GitHub.cli,winget,GitHub CLI,Full,Programming
+GnuPG.GnuPG,winget,GnuPG,Full,Programming
+GnuPG.Gpg4win,winget,Gpg4win,Full,Programming
+GoLang.Go,winget,Go,Full,Programming
+Google.Chrome,winget,Google Chrome,Full,Web
+Google.PlayGames.Beta,winget,Google Play Games,Full,Gaming
+Graphviz.Graphviz,winget,Graphviz,Full,Programming
+HandBrake.HandBrake,winget,HandBrake,Full,Video
+JanDeDobbeleer.OhMyPosh,winget,OhMyPosh,Full,Programming
+JGraph.Draw,winget,draw.io,Full,Programming
+jqlang.jq,winget,jq,Full,Programming
+JRSoftware.InnoSetup,winget,InnoSetup,Full,Programming
+KDE.KDiff3,winget,KDiff3,Full,Programming
+koalaman.shellcheck,winget,shellcheck,Full,Programming
+kvakulo.switcheroo,winget,switcheroo,Full,Utility
+kymoto.InnoScriptStudio,winget,InnoScriptStudio,Full,Programming
+Logitech.OptionsPlus,winget,Logi Options+,Full,Utility
+lsd-rs.lsd,winget,lsd,Full,File System
+Malwarebytes.Malwarebytes,winget,Malwarebytes,Full,Security
+Meld.Meld,winget,Meld,Full,Programming
+Microsoft.AppInstaller,winget,Microsoft App Installer,Full,Programming
+Microsoft.AzureCLI,winget,Azure CLI,Full,Programming
+Microsoft.CLRTypesSQLServer.2019,winget,SQL Server 2019 CLR Types,None,Programming
+Microsoft.DevHome,winget,Dev Home,Full,Programming
+Microsoft.DotNet.DesktopRuntime.6,winget,.NET 6 Desktop Runtime,None,Programming
+Microsoft.DotNet.SDK.8,winget,.NET 8 SDK,Partial,Programming
+Microsoft.DotNet.UninstallTool,winget,.NET Uninstall Tool,Full,Programming
+Microsoft.Edge,winget,Microsoft Edge,Full,Web
+Microsoft.EdgeWebView2Runtime,winget,Microsoft Edge WebView2,None,Web
+Microsoft.OneDrive,winget,OneDrive,Full,File System
+Microsoft.PowerShell,winget,PowerShell,Full,Programming
+Microsoft.PowerToys,winget,PowerToys,Full,Utility
+Microsoft.Sqlcmd,winget,sqlcmd,Full,Programming
+Microsoft.UI.Xaml.2.7,winget,WinUI 2.7,None,Programming
+Microsoft.UI.Xaml.2.8,winget,WinUI 2.8,None,Programming
+Microsoft.VCLibs.Desktop.14,winget,Microsoft Visual C++ 2015 UWP Desktop Runtime,None,Programming
+Microsoft.VCRedist.2015+.x64,winget,Microsoft Visual C++ 2015-2022 Redistributable (x64),None,Programming
+Microsoft.VisualStudio.2022.Community,winget,Visual Studio 2022,Full,Programming
+Microsoft.VisualStudioCode,winget,Visual Studio Code,Full,Programming
+Microsoft.WebDeploy,winget,Web Deploy,None,Programming
+Microsoft.WindowsSDK.10.0.22621,winget,Windows SDK,None,Programming
+Microsoft.WindowsTerminal,winget,Windows Terminal,Full,Programming
+Mobatek.MobaXterm,winget,MobaXterm,Full,Programming
+Mozilla.Firefox,winget,Mozilla Firefox,Full,Web
+Mp3tag.Mp3tag,winget,Mp3tag,Full,Music
+MusicBee.MusicBee,winget,MusicBee,Full,Music
+MusicBrainz.Picard,winget,MusicBrainz Picard,Full,Music
+NickeManarin.ScreenToGif,winget,ScreenToGif,Full,Video
+Notepad++.Notepad++,winget,Notepad++,Full,Text Editing
+Nvidia.Broadcast,winget,Nvidia Broadcast,None,Gaming
+Nvidia.GeForceExperience,winget,Nvidia GeForceExperience,Full,Gaming
+Nvidia.PhysX,winget,Nvidia PhysX,None,Gaming
+Obsidian.Obsidian,winget,Obsidian,Full,Notes
+OpenJS.NodeJS.LTS,winget,Node.js LTS,Full,Programming
+PuTTY.PuTTY,winget,PuTTY,Full,Programming
+Python.Launcher,winget,Python Launcher,None,Programming
+Python.Python.3.12,winget,Python 3.12,Full,Programming
+qBittorrent.qBittorrent,winget,qBittorrent,Full,Utility
+rhysd.actionlint,winget,actionlint,Full,Programming
+RuneLite.RuneLite,winget,RuneLite,Full,Gaming
+Rustlang.Rustup,winget,rustup,Full,Programming
+sharkdp.bat,winget,bat,Full,File System
+sharkdp.fd,winget,fd,Full,File System
+sqlitestudio.pl.SQLiteStudio,winget,SQLiteStudio,Full,Programming
+Valve.Steam,winget,Steam,Full,Gaming
+VideoLAN.VLC,winget,VLC,Full,Video
+vim.vim,winget,vim,Full,Text Editing
