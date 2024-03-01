@@ -2,7 +2,6 @@
 /.android/
 /.AndroidStudio3.0/
 /.autorest/
-/.azure/
 /.azuredatastudio/extensions/
 /.azure-devops/
 /.cache/
@@ -94,6 +93,10 @@
 !/AppData/Roaming/
 !/AppData/Roaming/GitHub CLI/
 !/AppData/Roaming/GitHub CLI/config.yml
+
+# Azure CLI
+/.azure/**
+!/.azure/config
 
 # Azure Data Studio
 !/AppData/Roaming/azuredatastudio/
