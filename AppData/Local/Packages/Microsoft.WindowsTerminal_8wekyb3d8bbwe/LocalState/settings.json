@@ -74,11 +74,10 @@
         "startingDirectory": "%USERPROFILE%"
       },
       {
-        "colorScheme": "Campbell Powershell",
-        "commandline": "powershell.exe -nologo",
-        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+        "guid": "{aab79973-318f-43b6-a9bc-b4096493753f}",
         "hidden": false,
-        "name": "Windows PowerShell"
+        "name": "Nushell",
+        "source": "nu"
       },
       {
         "colorScheme": "Vintage",
@@ -94,6 +93,13 @@
         "icon": "%PROGRAMFILES%/Git/mingw64/share/git/git-for-windows.ico",
         "name": "Bash",
         "startingDirectory": "%USERPROFILE%"
+      },
+      {
+        "colorScheme": "Campbell Powershell",
+        "commandline": "powershell.exe -nologo",
+        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+        "hidden": false,
+        "name": "Windows PowerShell"
       },
       {
         "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",

@@ -48,6 +48,7 @@ Machine:
   - '%PROGRAMFILES(X86)%\Gpg4win\..\GnuPG\bin'
   - '%PROGRAMFILES%\Meld'
   - '%PROGRAMFILES%\GitHub CLI'
+  - '%PROGRAMFILES%\nu\bin'
   - '%PROGRAMFILES%\Microsoft SDKs\Azure\CLI2\wbin'
   - '%PROGRAMFILES%\dotnet'
   - '%PROGRAMFILES(X86)%\dotnet-core-uninstall'
