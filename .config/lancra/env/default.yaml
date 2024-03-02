@@ -2,7 +2,7 @@ User:
   CARGO_HOME: '%DEV_HOME%/.cargo'
   DEV_HOME: D:/Users/lancra
   DEVUSERPROFILE: D:\Users\lancra
-  GOPATH: '%USERPROFILE%\go'
+  GOPATH: '%DEVUSERPROFILE%\go'
   HOME: C:/Users/lancra
   NPM_CONFIG_CACHE: '%DEVUSERPROFILE%\AppData\Local\npm-cache'
   NUGET_PACKAGES: '%DEVUSERPROFILE%\.nuget\packages'
@@ -19,7 +19,7 @@ User:
   - '%LOCALAPPDATA%\Programs\KDiff3\bin'
   - '%DEVUSERPROFILE%\.cargo\bin'
   - '%USERPROFILE%\.dotnet\tools'
-  - '%USERPROFILE%\go\bin'
+  - '%DEVUSERPROFILE%\go\bin'
   - '%APPDATA%\npm'
   - '%LOCALAPPDATA%\Programs\Python\Python312\Scripts\'
   - '%LOCALAPPDATA%\Programs\Python\Python312\'
