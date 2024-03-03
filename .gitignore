@@ -1,40 +1,18 @@
 # Hidden
-/.android/
-/.AndroidStudio3.0/
-/.autorest/
 /.azuredatastudio/extensions/
-/.azure-devops/
 /.cache/
-/.DbSchema/
 /.dbus-keyrings/
-/.dbvis/
-/.dnx/
-/.docker/
 /.dotnet/
-/.gimp-2.8/
 /.github/token
-/.gradle/
-/.IdeaIC2016/
-/.idlerc/
 /.lancra/
-/.lemminx/
 /.librarymanager/
-/.net/
-/.ngrok/
 /.nuget/packages/
-/.openjfx/
-/.oracle_jre_usage/
-/.ssh/
 /.templateengine/
-/.thumbnails/
-/.vs/Extensions/
 /.vscode/extensions/
 /.bash_history
 /.lesshst
-/.sambox.cache
 /.gitconfig
 /.tig_history
-/.v8flags.*.json
 
 # Windows
 /3D Objects/
