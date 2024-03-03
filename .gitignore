@@ -6,7 +6,6 @@
 /.github/token
 /.lancra/
 /.librarymanager/
-/.nuget/packages/
 /.templateengine/
 /.vscode/extensions/
 /.bash_history
@@ -80,7 +79,6 @@
 /random.dat
 
 # Rust
-/.cargo/
 /.rustup/**
 !/.rustup/settings.toml
 /projects/
