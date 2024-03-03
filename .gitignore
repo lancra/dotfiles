@@ -40,15 +40,6 @@
 /NTUSER.DAT*
 /ntuser.ini
 
-# Miscellaneous
-/ansel/
-/IntelGraphicsProfiles/
-/MicrosoftEdgeBackups/
-/node_modules/
-/NucleusCoop/
-/T-Engine/
-/npm-debug.log*
-
 # Windows user app data
 /AppData/**
 
