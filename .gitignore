@@ -42,21 +42,9 @@
 
 # Windows user app data
 /AppData/**
-
 !/AppData/Local/
 !/AppData/Local/Packages/
-
-!/AppData/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/
-!/AppData/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/
-!/AppData/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json
-
-!/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/
-!/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/
-!/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
-
 !/AppData/Roaming/
-!/AppData/Roaming/GitHub CLI/
-!/AppData/Roaming/GitHub CLI/config.yml
 
 # Azure CLI
 /.azure/**
@@ -69,6 +57,10 @@
 !/AppData/Roaming/azuredatastudio/User/settings.json
 !/AppData/Roaming/azuredatastudio/User/snippets
 !/AppData/Roaming/azuredatastudio/User/snippets/*
+
+# GitHub CLI
+!/AppData/Roaming/GitHub CLI/
+!/AppData/Roaming/GitHub CLI/config.yml
 
 # GPG
 /.gnupg/**
@@ -104,3 +96,13 @@
 !/AppData/Roaming/Code/User/
 !/AppData/Roaming/Code/User/keybindings.json
 !/AppData/Roaming/Code/User/settings.json
+
+# Windows Terminal
+!/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/
+!/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/
+!/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
+
+# Winget
+!/AppData/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/
+!/AppData/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/
+!/AppData/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json
