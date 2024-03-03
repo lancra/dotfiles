@@ -9,7 +9,6 @@ User:
   ONEDRIVE: '%USERPROFILE%\OneDrive'
   ONEDRIVECONSUMER: '%USERPROFILE%\OneDrive'
   PATH:
-  - '%SYSTEMROOT%'
   - '%LOCALAPPDATA%\Microsoft\WindowsApps'
   - '%LOCALAPPDATA%\Microsoft\WinGet\Links'
   - '%USERPROFILE%\bin'
