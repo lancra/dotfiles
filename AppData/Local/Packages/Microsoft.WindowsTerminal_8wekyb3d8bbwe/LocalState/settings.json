@@ -69,7 +69,7 @@
         "commandline": "gsudo pwsh.exe -nologo",
         "guid": "{c9a9469d-185e-46f7-9e85-b11459c235e8}",
         "hidden": false,
-        "icon": "%USERPROFILE%\\.wt\\icons\\powershell_admin.ico",
+        "icon": "%USERPROFILE%\\.config\\wt\\icons\\powershell_admin.ico",
         "name": "PowerShell Admin",
         "startingDirectory": "%USERPROFILE%"
       },
