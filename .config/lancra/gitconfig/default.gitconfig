@@ -81,6 +81,7 @@
 	cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
 	useAutoMerge = true
 [push]
+	autoSetupRemote = true
 	default = current
 [tag]
 	gpgSign = true
