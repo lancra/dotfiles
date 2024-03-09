@@ -54,7 +54,7 @@
 !/AppData/Roaming/azuredatastudio/User/
 !/AppData/Roaming/azuredatastudio/User/keybindings.json
 !/AppData/Roaming/azuredatastudio/User/settings.json
-!/AppData/Roaming/azuredatastudio/User/snippets
+!/AppData/Roaming/azuredatastudio/User/snippets/
 !/AppData/Roaming/azuredatastudio/User/snippets/*
 
 # GitHub CLI
@@ -89,11 +89,13 @@
 /.config/vim/.undo/
 /.config/vim/viminfo
 
-# VS Code
+# Visual Studio Code
 !/AppData/Roaming/Code/
 !/AppData/Roaming/Code/User/
 !/AppData/Roaming/Code/User/keybindings.json
 !/AppData/Roaming/Code/User/settings.json
+!/AppData/Roaming/Code/User/snippets/
+!/AppData/Roaming/Code/User/snippets/*
 
 # Windows Package Manager
 !/AppData/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/
