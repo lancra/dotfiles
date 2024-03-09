@@ -84,6 +84,7 @@ Rustlang.Rustup,winget,rustup,Full,Programming
 sharkdp.bat,winget,bat,Full,File System
 sharkdp.fd,winget,fd,Full,File System
 sqlitestudio.pl.SQLiteStudio,winget,SQLiteStudio,Full,Programming
+SumatraPDF.SumatraPDF,winget,Sumatra PDF,Full,Reading
 Valve.Steam,winget,Steam,Full,Gaming
 VideoLAN.VLC,winget,VLC,Full,Video
 vim.vim,winget,vim,Full,Text Editing
