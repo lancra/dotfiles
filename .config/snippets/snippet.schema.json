@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/snippets/snippet.schema.json",
+  "title": "Code Snippet",
+  "description": "Configuration of a code snippet.",
+  "type": "object",
+  "properties": {
+    "prefix": {
+      "description": "The prefix(es) to use when selecting the snippet using Intellisense.",
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "default": ""
+    },
+    "title": {
+      "description": "The human readable name for the snippet.",
+      "type": "string",
+      "default": ""
+    },
+    "description": {
+      "description": "The description provided more context around the purpose and usage of the snippet.",
+      "type": "string",
+      "default": ""
+    },
+    "scope": {
+      "description": "The language name(s) to which this snippet applies.",
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "default": ""
+    },
+    "body": {
+      "description": "The content of the snippet.\n* Use $1 or ${1:defaultText} to define cursor positions.\n* Use $0 for the final cursor position.\n* Insert variable values with ${varName} and ${varName:defaultText}.\nReference: https://aka.ms/snippets",
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "default": ""
+    }
+  },
+  "required": ["title", "description", "scope", "body"]
+}

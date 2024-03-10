@@ -64,9 +64,18 @@
     }
   ],
   "editor.tabSize": 4,
+  "files.associations": {
+    "*.snippet.json": "snippets"
+  },
   "files.autoSave": "off",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
+  "json.schemas": [
+    {
+      "fileMatch": ["**/*.snippet.json"],
+      "url": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/snippets/snippet.schema.json"
+    }
+  ],
   "json.validate.enable": true,
   "markdownlint.config": {
     "default": true,
