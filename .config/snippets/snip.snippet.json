@@ -1,0 +1,13 @@
+{
+  "title": "Snippet Template",
+  "description": "The JSON template for a new code snippet.",
+  "scope": "snippets",
+  "body": [
+    "{",
+    "  \"title\": \"$1\",",
+    "  \"description\": \"$2\",",
+    "  \"scope\": \"$3\",",
+    "  \"body\": \"$4\",",
+    "}"
+  ]
+}
