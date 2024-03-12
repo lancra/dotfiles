@@ -1,0 +1,16 @@
+{
+  "prefix": "aaa",
+  "title": "Arrange Act Assert",
+  "description": "Comments for the arrange-act-assert test structural pattern.",
+  "scope": ["csharp", "rust"],
+  "body": [
+    "$LINE_COMMENT Arrange",
+    "$0",
+    "",
+    "$LINE_COMMENT Act",
+    "",
+    "",
+    "$LINE_COMMENT Assert",
+    ""
+  ]
+}
