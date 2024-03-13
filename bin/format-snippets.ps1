@@ -27,8 +27,15 @@ function Format-VisualStudioCodeSnippet {
 
         $newCount = $Json | jq 'length'
 
-        $spaces = ' '.PadLeft($Padding - $Scope.Length + 1, ' ')
-        Write-Output "vscode ${Scope}:$spaces$oldCount -> $newCount ($($hasChanges ? 'changed' : 'identical'))"
+        $spaces = ''.PadLeft($Padding - $Scope.Length, ' ')
+
+        $countFormat = '{0:D2}'
+        $oldCountDisplay = $countFormat -f [int]$oldCount
+        $newCountDisplay = $countFormat -f [int]$newCount
+
+        $hasChangesDisplay = $hasChanges ? 'changed' : 'identical'
+
+        Write-Output "vscode ${Scope}:$spaces $oldCountDisplay -> $newCountDisplay ($hasChangesDisplay)"
         Set-Content -Path $filePath -Value $Json
     }
 }
