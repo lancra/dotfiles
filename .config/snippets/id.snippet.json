@@ -1,0 +1,6 @@
+{
+  "title": "Inherit Documentation",
+  "description": "The XML tag to inherit XML documentation from a base.",
+  "scope": "csharp",
+  "body": "/// <inheritdoc/>"
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Seed Data Fixture Disposal",
+  "description": "The disposal methods for a seed data fixture.",
+  "scope": "csharp",
+  "body": [
+    "public void Dispose()",
+    "{",
+    "    Dispose(true);",
+    "    GC.SuppressFinalize(this);",
+    "}",
+    "",
+    "protected virtual void Dispose(bool disposing)",
+    "{",
+    "    if (disposing)",
+    "    {",
+    "        _seedDataFixture.Dispose();",
+    "    }",
+    "}"
+  ]
+}

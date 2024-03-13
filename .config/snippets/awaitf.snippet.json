@@ -1,0 +1,6 @@
+{
+  "title": "Configure Await False",
+  "description": "Creates the method call to configure an await to not continue on captured context.",
+  "scope": "csharp",
+  "body": "await $0.ConfigureAwait(false);"
+}

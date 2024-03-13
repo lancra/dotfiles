@@ -1,0 +1,6 @@
+{
+  "title": "AutoMocker Field",
+  "description": "Creates a new AutoMocker field for usage in tests.",
+  "scope": "csharp",
+  "body": "private readonly AutoMocker_mocker = new();"
+}

@@ -1,0 +1,6 @@
+{
+  "title": "Remove Regions",
+  "description": "The regular expression to find all regions in a file. The replacement text should be left blank to remove them.",
+  "scope": "csharp",
+  "body": ".*#(region|endregion).*\r\n"
+}

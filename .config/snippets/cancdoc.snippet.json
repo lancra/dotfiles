@@ -1,0 +1,10 @@
+{
+  "title": "Cancellation Token Documentation",
+  "description": "The XML documentation for a cancellation token parameter.",
+  "scope": "csharp",
+  "body": [
+    "/// <param name=\"cancellationToken\">",
+    "/// A <see cref=\"CancellationToken\" to observe while waiting for the task to complete.",
+    "/// </param>"
+  ]
+}

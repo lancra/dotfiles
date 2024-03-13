@@ -1,0 +1,6 @@
+{
+  "title": "Seed Data Fixture Field",
+  "description": "The seed data fixture class member.",
+  "scope": "csharp",
+  "body": "private readonly SeedDataFixture _seedDataFixture = new();"
+}

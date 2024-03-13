@@ -1,0 +1,9 @@
+{
+  "title": "Assert Exception",
+  "description": "Creates an xUnit assertion to verify that an exception is not null and is a particular type.",
+  "scope": "csharp",
+  "body": [
+    "Assert.NotNull(exception);",
+    "Assert.IsType<${1:Exception}>(exception);"
+  ]
+}

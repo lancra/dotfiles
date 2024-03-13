@@ -1,0 +1,6 @@
+{
+    "title": "Shortened Returned Task Documentation",
+    "description": "The shortened XML documentation for a returned asynchronous Task with no contents.",
+    "scope": "csharp",
+    "body": "/// <returns>The <see cref=\"Task\"/> that represents the asynchronous operation.</returns>"
+  }
