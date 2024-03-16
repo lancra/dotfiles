@@ -135,5 +135,6 @@
   ],
   "window.titleBarStyle": "custom",
   "workbench.colorTheme": "Default Dark Modern",
-  "workbench.editor.pinnedTabsOnSeparateRow": true
+  "workbench.editor.pinnedTabsOnSeparateRow": true,
+  "xml.server.workDir": "~/.config/lemminx"
 }

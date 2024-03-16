@@ -67,6 +67,9 @@
 !/AppData/Roaming/gnupg/
 !/AppData/Roaming/gnupg/gpg-agent.conf
 
+# Lemminx LSP
+/.config/lemminx/cache/
+
 # LSDeluxe (lsd)
 !/AppData/Roaming/lsd/
 !/AppData/Roaming/lsd/config.yaml
