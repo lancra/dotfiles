@@ -15,7 +15,7 @@ Canonical.Ubuntu.2204,winget,Ubuntu,Full,Operating System
 dandavison.delta,winget,delta,Full,Programming
 direnv.direnv,winget,direnv,Full,Programming
 Discord.Discord,winget,Discord,Full,Social
-dotPDNLLC.paintdotnet,winget,paint.net,Full,Graphics
+dotPDN.PaintDotNet,winget,paint.net,Full,Graphics
 ExpressVPN.ExpressVPN,winget,ExpressVPN,Full,Privacy
 gerardog.gsudo,winget,gsudo,Full,Utility
 Git.Git,winget,Git,Full,Programming
