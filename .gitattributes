@@ -14,6 +14,8 @@
 
 *.sln text=auto eol=crlf
 
+.cargo/* text=auto eol=lf
+
 *.cs text=auto diff=csharp
 *.doc diff=astextplain
 *.DOC diff=astextplain
