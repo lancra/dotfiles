@@ -2,5 +2,15 @@
   "title": "Read-Only Property",
   "description": "An automatically implemented property with a get accessor.",
   "scope": "csharp",
-  "body": "public ${1:int} ${2:MyProperty} { get; }"
+  "body": "public ${1:int} ${2:MyProperty} { get; }",
+  "placeholders": {
+    "1": {
+      "variable": "type",
+      "tooltip": "The property type."
+    },
+    "2": {
+      "variable": "name",
+      "tooltip": "The property name."
+    }
+  }
 }

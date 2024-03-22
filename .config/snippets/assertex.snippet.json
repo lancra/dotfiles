@@ -5,5 +5,11 @@
   "body": [
     "Assert.NotNull(exception);",
     "Assert.IsType<${1:Exception}>(exception);"
-  ]
+  ],
+  "placeholders": {
+    "1": {
+      "variable": "exceptionType",
+      "tooltip": "The expected exception type."
+    }
+  }
 }

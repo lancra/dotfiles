@@ -59,6 +59,27 @@
         }
       ],
       "default": ""
+    },
+    "placeholders": {
+      "description": "The metadata for placeholders defined in the body.",
+      "type": "object",
+      "additionalProperties": {
+        "description": "The metadata for the placeholder with the defined position.",
+        "type": "object",
+        "properties": {
+          "variable": {
+            "description": "The variable name that represents the placeholder.",
+            "type": "string",
+            "default": ""
+          },
+          "tooltip": {
+            "description": "The tooltip shown when entering the value.",
+            "type": "string",
+            "default": ""
+          }
+        },
+        "required": ["variable", "tooltip"]
+      }
     }
   },
   "required": ["title", "description", "scope", "body"]
