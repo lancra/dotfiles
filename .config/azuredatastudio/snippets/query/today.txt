@@ -1,6 +1,0 @@
-METADATA_BEGIN
-TITLE=Beginning of Today
-PREFIX=today
-DESCRIPTION=The beginning of the provided datetime
-METADATA_END
-DATEADD(DAY, DATEDIFF(DAY, 0, ${1:GETDATE()}), 0)$0

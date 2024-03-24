@@ -1,6 +1,0 @@
-METADATA_BEGIN
-TITLE=Separator
-PREFIX=sep
-DESCRIPTION=Visual separator for script blocks
-METADATA_END
---$0-------------------------------------------------------------------------------------------------------------------------------------

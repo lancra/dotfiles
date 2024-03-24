@@ -1,6 +1,0 @@
-METADATA_BEGIN
-TITLE=Print Message With Date
-DESCRIPTION=Prints a message with the current datetime suffixed
-METADATA_END
-PRINT(FORMATMESSAGE('%s (%s)', '${0:Message}', FORMAT(GETDATE(), 'HH:mm:ss.fff')))
-GO

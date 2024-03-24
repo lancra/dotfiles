@@ -1,6 +1,0 @@
-METADATA_BEGIN
-TITLE=Format String for Decimals
-PREFIX=formatdecimal
-DESCRIPTION=The format string for two digit decimals
-METADATA_END
-'#,##0.00;(#,##0.00)'$0

@@ -1,6 +1,0 @@
-METADATA_BEGIN
-TITLE=Select Top From
-PREFIX=sst
-DESCRIPTION=Select top one thousand records from a table
-METADATA_END
-SELECT TOP 1000 * FROM $0

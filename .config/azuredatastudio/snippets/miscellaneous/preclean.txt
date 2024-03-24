@@ -1,7 +1,0 @@
-METADATA_BEGIN
-TITLE=Perform Pre-Execution Cleanup
-PREFIX=preclean
-DESCRIPTION=Titled separator for pre-execution tasks
-METADATA_END
---Perform Pre-Execution Cleanup--------------------------------------------------------------------------------------------------------
-DROP TABLE IF EXISTS #${0:TableName}

@@ -1,6 +1,0 @@
-METADATA_BEGIN
-TITLE=Select Count From
-PREFIX=ssc
-DESCRIPTION=Select record count from a table
-METADATA_END
-SELECT COUNT(1) AS [Count] FROM $0
