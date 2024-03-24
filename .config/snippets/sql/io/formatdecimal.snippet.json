@@ -1,0 +1,6 @@
+{
+  "title": "Format String for Decimals",
+  "description": "The format string for two digit decimals.",
+  "scope": "sql",
+  "body": "'#,##0.00;(#,##0.00)'$0"
+}

@@ -1,3 +1,5 @@
+#Requires -Modules powershell-yaml
+
 [CmdletBinding(SupportsShouldProcess)]
 param (
     [Parameter()]
@@ -5,6 +7,7 @@ param (
 )
 
 $visualStudioCodeTarget = "$env:APPDATA/Code/User/snippets"
+$azureDataStudioTarget = "$env:APPDATA/azuredatastudio/User/snippets"
 $visualStudioTarget = "$env:HOME/Documents/Visual Studio 2022/Code Snippets/Visual C#/My Code Snippets"
 $visualStudioNamespace = 'http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet'
 
@@ -16,8 +19,6 @@ class Snippet {
     [string[]]$Body
     [SnippetPlaceholder[]]$Placeholders
 }
-
-
 
 class SnippetPlaceholder {
     [string]$Key
@@ -60,6 +61,38 @@ function Format-VisualStudioCodeSnippet {
         $hasChangesDisplay = $hasChanges ? 'changed' : 'identical'
 
         Write-Output "vscode ${Scope}:$spaces $oldCountDisplay -> $newCountDisplay ($hasChangesDisplay)"
+        Set-Content -Path $filePath -Value $Json
+    }
+}
+
+function Format-AzureDataStudioSnippet {
+    [CmdletBinding(SupportsShouldProcess)]
+    param (
+        [Parameter(Mandatory)]
+        [string]$Json,
+        [Parameter(Mandatory)]
+        [int]$Padding
+    )
+    process {
+        $filePath = "$azureDataStudioTarget/sql.json"
+        $oldCount = 0
+        $hasChanges = $true
+        if (Test-Path -Path $filePath) {
+            $oldCount = jq 'length' $filePath
+            $hasChanges = $null -ne ($Json | jd -set $filePath)
+        }
+
+        $newCount = $Json | jq 'length'
+
+        $spaces = ''.PadLeft($Padding, ' ')
+
+        $countFormat = '{0:D2}'
+        $oldCountDisplay = $countFormat -f [int]$oldCount
+        $newCountDisplay = $countFormat -f [int]$newCount
+
+        $hasChangesDisplay = $hasChanges ? 'changed' : 'identical'
+
+        Write-Output "ads:$spaces $oldCountDisplay -> $newCountDisplay ($hasChangesDisplay)"
         Set-Content -Path $filePath -Value $Json
     }
 }
@@ -134,7 +167,9 @@ function Format-VisualStudioSnippet {
     [CmdletBinding(SupportsShouldProcess)]
     param (
         [Parameter(Mandatory)]
-        [Snippet[]]$Snippets
+        [Snippet[]]$Snippets,
+        [Parameter(Mandatory)]
+        [int]$Padding
     )
     begin {
         $bodySeparator = [System.Environment]::NewLine + '      '
@@ -243,8 +278,123 @@ function Format-VisualStudioSnippet {
                 Move-Item -Path $_ -Destination $newPath
             }
 
+        $spaces = ''.PadLeft($Padding, ' ')
         $hasChangesDisplay = $hasChanges ? 'changed' : 'identical'
-        Write-Output "vs: $oldCount -> $newCount ($hasChangesDisplay)"
+        Write-Output "vs:$spaces $oldCount -> $newCount ($hasChangesDisplay)"
+    }
+}
+
+function Format-SqlSnippetParameter {
+    [CmdletBinding(SupportsShouldProcess)]
+    [OutputType([string])]
+    param (
+        [Parameter(Mandatory)]
+        [string]$Line,
+        [Parameter(Mandatory)]
+        [int]$Number
+    )
+    begin {
+        $quotedTypes = @{}
+        @(
+            'char',
+            'date'
+            'datetime'
+            'datetime2'
+            'datetimeoffset'
+            'hierarchyid'
+            'nchar'
+            'ntext'
+            'nvarchar'
+            'smalldatetime'
+            'sysname'
+            'text'
+            'time'
+            'uniqueidentifier'
+            'varchar'
+            'xml'
+        ) | ForEach-Object { $quotedTypes[$_] = $_ }
+    }
+    process {
+        # DECLARE @<VARIABLE> <DATA_TYPE> [= <VALUE>]
+        #        |           |             |
+        #        FirstSpace  SecondSpace   Equals
+        $firstSpaceIndex = $Line.IndexOf(' ')
+        $secondSpaceIndex = $Line.IndexOf(' ', $firstSpaceIndex + 1)
+        $equalsIndex = $Line.IndexOf('=', $secondSpaceIndex + 1)
+
+        $name = $Line.Substring($firstSpaceIndex + 2, $secondSpaceIndex - $firstSpaceIndex - 2)
+        $typeRaw = $Line.Substring(
+            $secondSpaceIndex + 1,
+            ($equalsIndex -ne -1 ? $equalsIndex - 1 : $Line.Length) - $secondSpaceIndex - 1);
+
+        $typeParenthsesIndex = $typeRaw.IndexOf('(')
+        $type = $typeParenthsesIndex -eq -1 ? $typeRaw : $typeRaw.Substring(0, $typeParenthsesIndex)
+        $typeIsQuoted = $quotedTypes.ContainsKey($type)
+
+        $valueRaw = "`${${Number}:$name}"
+        $value = $typeIsQuoted ? "'$valueRaw'" : $valueRaw
+
+        $newLine = "DECLARE @$name $typeRaw = $value"
+        $newLine
+    }
+}
+
+function Read-SqlSnippet {
+    [CmdletBinding()]
+    [OutputType([System.IO.FileSystemInfo[]])]
+    param ()
+    begin {
+        $frontMatterSeparator = '---'
+        $temporaryDirectory = Join-Path -Path $env:TEMP -ChildPath (New-Guid).Guid
+    }
+    process {
+        $files = @(Get-ChildItem -Path $Source -Filter '*.sql' -Recurse)
+        if ($files.Length -gt 0) {
+            New-Item -ItemType Directory -Path $temporaryDirectory | Out-Null
+        }
+
+        $files | ForEach-Object {
+            $prefix = [System.IO.Path]::GetFileNameWithoutExtension($_.FullName)
+
+            $fileLines = Get-Content -Path $_.FullName
+            $frontMatterSeparatorIndexes = @(0..($fileLines.Count - 1) | Where-Object { $fileLines[$_] -eq $frontMatterSeparator })
+
+            $frontMatterSeparatorCount = $frontMatterSeparatorIndexes.Length
+            if ($frontMatterSeparatorCount -in @(0, 1)) {
+                Write-Error "sql.${prefix}: Expected 2 or 3 front matter separators but found $frontMatterSeparatorCount."
+                return
+            }
+
+            $snippet = [ordered]@{}
+
+            $lastFrontMatterSeparatorIndex = $frontMatterSeparatorIndexes[1]
+            $metadata = @($fileLines[($frontMatterSeparatorIndexes[0] + 1)..($lastFrontMatterSeparatorIndex - 1)]) | ConvertFrom-Yaml
+
+            $metadata.GetEnumerator() | ForEach-Object { $snippet[$_.Key.Substring(2)] = $_.Value }
+            $snippet['scope'] = 'sql'
+
+            $body = @()
+            if ($frontMatterSeparatorCount -gt 2) {
+                $lastFrontMatterSeparatorIndex = $frontMatterSeparatorIndexes[2]
+
+                $script:parameterNumber = 1
+                $body = $fileLines[($frontMatterSeparatorIndexes[1] + 1)..($lastFrontMatterSeparatorIndex - 1)] |
+                    ForEach-Object -Begin { $script:parameterNumber = 1 } -Process {
+                        $parameter = Format-SqlSnippetParameter -Line $_ -Number $script:parameterNumber
+                        $script:parameterNumber++
+                        $parameter
+                    }
+            }
+
+            $body += $fileLines[($lastFrontMatterSeparatorIndex + 1)..($fileLines.Length - 1)]
+            $snippet['body'] = $body
+
+            $snippetPath = Join-Path -Path $temporaryDirectory -ChildPath "$prefix.snippet.json"
+            $snippet |
+                ConvertTo-Json |
+                Set-Content -Path $snippetPath
+            [System.IO.FileInfo]::new($snippetPath)
+        }
     }
 }
 
@@ -257,13 +407,21 @@ $snippetPropertySelectors = @(
     'body: .body | to_array',
     'placeholders'
 )
-$snippetFiles = Get-ChildItem -Path $Source -Filter "*.snippet.json" -Recurse
+$snippetFiles = Get-ChildItem -Path $Source -Filter '*.snippet.json' -Recurse
+
+$sqlSnippetFiles = Read-SqlSnippet
+$snippetFiles += $sqlSnippetFiles
 
 $allSnippetsJson = jq --compact-output "{ $($snippetPropertySelectors -join ',') }" $snippetFiles |
     jq --slurp
 
+if ($sqlSnippetFiles.Length -gt 0) {
+    $temporaryDirectory = [System.IO.Path]::GetDirectoryName($sqlSnippetFiles[0].FullName)
+    Remove-Item -Path $temporaryDirectory -Recurse
+}
+
 $scopesJson = $allSnippetsJson | jq --compact-output '[.[].scope[]] | unique'
-$maxScopeLength = $scopesJson | jq 'max | length'
+$maxScopeLength = [int]($scopesJson | jq '[.[] | length] | max')
 
 $script:visualStudioSnippets = @()
 
@@ -283,7 +441,9 @@ $scopesJson |
                 jq --compact-output 'map(if .placeholders != null then . + { "placeholders": (.placeholders | to_entries | map(. + .value | del(.value))) } else . end)' |
                 jq --compact-output 'map(. + { placeholders: .placeholders | to_array })' |
                 ConvertFrom-Json)
+        } elseif ($scope -eq 'sql') {
+            Format-AzureDataStudioSnippet -Json $vsCodeSnippetsJson -Padding ($maxScopeLength + 4)
         }
     }
 
-Format-VisualStudioSnippet -Snippets $script:visualStudioSnippets
+Format-VisualStudioSnippet -Snippets $script:visualStudioSnippets -Padding ($maxScopeLength + 5)

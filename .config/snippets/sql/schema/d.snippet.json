@@ -1,0 +1,6 @@
+{
+  "title": "Database Owner Schema",
+  "description": "The default schema for the database.",
+  "scope": "sql",
+  "body": "[dbo].[${0:ObjectName}]"
+}

@@ -1,0 +1,6 @@
+{
+  "title": "Count Field",
+  "description": "Count field for select statements.",
+  "scope": "sql",
+  "body": "COUNT(1) AS [Count]$0"
+}

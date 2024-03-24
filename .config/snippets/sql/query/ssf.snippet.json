@@ -1,0 +1,6 @@
+{
+  "title": "Select From",
+  "description": "Select from an object.",
+  "scope": "sql",
+  "body": "SELECT * FROM $0"
+}

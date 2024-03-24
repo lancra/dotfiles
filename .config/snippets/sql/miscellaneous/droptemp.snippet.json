@@ -1,0 +1,6 @@
+{
+  "title": "Drop Temporary Table",
+  "description": "Drops a temporary table if it exists.",
+  "scope": "sql",
+  "body": "DROP TABLE IF EXISTS #${0:TableName}"
+}

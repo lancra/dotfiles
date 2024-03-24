@@ -1,0 +1,9 @@
+{
+  "title": "Print Message With Date",
+  "description": "Prints a message with the current date/time suffixed.",
+  "scope": "sql",
+  "body": [
+    "PRINT(FORMATMESSAGE('%s (%s)', '${0:Message}', FORMAT(GETDATE(), 'HH:mm:ss.fff')))",
+    "GO"
+  ]
+}

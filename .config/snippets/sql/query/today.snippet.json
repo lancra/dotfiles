@@ -1,0 +1,6 @@
+{
+  "title": "Beginning of Today",
+  "description": "The beginning of the provided date/time.",
+  "scope": "sql",
+  "body": "DATEADD(DAY, DATEDIFF(DAY, 0, ${1:GETDATE()}), 0)$0"
+}

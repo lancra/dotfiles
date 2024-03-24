@@ -1,0 +1,6 @@
+{
+  "title": "Select Count From",
+  "description": "Select the record count from an object.",
+  "scope": "sql",
+  "body": "SELECT COUNT(1) AS [Count] FROM $0"
+}

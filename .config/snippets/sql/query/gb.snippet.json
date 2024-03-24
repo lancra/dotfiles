@@ -1,0 +1,6 @@
+{
+  "title": "Group By",
+  "description": "A group by clause.",
+  "scope": "sql",
+  "body": "GROUP BY $0"
+}

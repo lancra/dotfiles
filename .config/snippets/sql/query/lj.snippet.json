@@ -1,0 +1,6 @@
+{
+    "title": "Left Join",
+    "description": "A left join clause.",
+    "scope": "sql",
+    "body": "LEFT JOIN $0"
+  }

@@ -1,0 +1,6 @@
+{
+  "title": "Inner Join",
+  "description": "An inner join clause.",
+  "scope": "sql",
+  "body": "INNER JOIN $0"
+}

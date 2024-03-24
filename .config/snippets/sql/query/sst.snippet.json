@@ -1,0 +1,6 @@
+{
+  "title": "Select Top From",
+  "description": "Select top one thousand records from a table.",
+  "scope": "sql",
+  "body": "SELECT TOP 1000 * FROM $0"
+}

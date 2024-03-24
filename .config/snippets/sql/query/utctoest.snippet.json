@@ -1,0 +1,6 @@
+{
+  "title": "Convert UTC to EST",
+  "description": "Converts a UTC date/time to an EST date/time.",
+  "scope": "sql",
+  "body": "AT TIME ZONE 'UTC' AT TIME ZON 'Eastern Standard Time'$0"
+}

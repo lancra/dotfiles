@@ -1,0 +1,6 @@
+{
+  "title": "Print Message",
+  "description": "Prints a message.",
+  "scope": "sql",
+  "body": "RAISERROR('${0:Message}', 0, 1) WITH NOWAIT"
+}
