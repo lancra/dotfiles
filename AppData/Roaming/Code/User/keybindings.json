@@ -64,5 +64,18 @@
   {
     "key": "ctrl+[ s",
     "command": "workbench.files.action.showActiveFileInExplorer"
+  },
+  {
+    "key": "ctrl+alt+s",
+    "command": "-asciidoc.saveHTML",
+    "when": "editorLangId == 'asciidoc'"
+  },
+  {
+    "key": "ctrl+k ctrl+shift+s",
+    "command": "-workbench.action.files.saveWithoutFormatting"
+  },
+  {
+    "key": "ctrl+alt+s",
+    "command": "workbench.action.files.saveWithoutFormatting"
   }
 ]
