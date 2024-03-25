@@ -3,5 +3,5 @@ blocks:
   - size
   - date
   - name
-
+date: +%Y-%m-%d %H:%M:%S %z
 display: all
