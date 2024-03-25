@@ -43,7 +43,6 @@ Microsoft.AppInstaller,winget,Microsoft App Installer,Full,Programming
 Microsoft.AzureCLI,winget,Azure CLI,Full,Programming
 Microsoft.CLRTypesSQLServer.2019,winget,SQL Server 2019 CLR Types,None,Programming
 Microsoft.DevHome,winget,Dev Home,Full,Programming
-Microsoft.DotNet.DesktopRuntime.6,winget,.NET 6 Desktop Runtime,None,Programming
 Microsoft.DotNet.SDK.8,winget,.NET 8 SDK,Partial,Programming
 Microsoft.DotNet.UninstallTool,winget,.NET Uninstall Tool,Full,Programming
 Microsoft.Edge,winget,Microsoft Edge,Full,Web
@@ -59,6 +58,7 @@ Microsoft.VCRedist.2015+.x64,winget,Microsoft Visual C++ 2015-2022 Redistributab
 Microsoft.VisualStudio.2022.Community,winget,Visual Studio 2022,Full,Programming
 Microsoft.VisualStudioCode,winget,Visual Studio Code,Full,Programming
 Microsoft.WebDeploy,winget,Web Deploy,None,Programming
+Microsoft.WindowsAppRuntime.1.5,winget,Windows App SDK Runtime,None,Programming
 Microsoft.WindowsSDK.10.0.22621,winget,Windows SDK,None,Programming
 Microsoft.WindowsTerminal,winget,Windows Terminal,Full,Programming
 Mobatek.MobaXterm,winget,MobaXterm,Full,Programming
