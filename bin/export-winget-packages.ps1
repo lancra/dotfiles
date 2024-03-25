@@ -40,11 +40,7 @@ $packagesCsvPath = Join-Path -Path $configurationDirectory -ChildPath 'packages.
 $configPackages = (Test-Path -Path $packagesCsvPath) ? (Import-Csv -Path $packagesCsvPath) : @()
 
 $packagesJsonPath = Join-Path -Path $configurationDirectory -ChildPath 'packages.json'
-Write-Host 'Exporting packages... ' -NoNewline
-Write-Host "`e]9;4;3`a" -NoNewline
 & winget export --output $packagesJsonPath | Out-Null
-Write-Host "`e]9;4;0`a" -NoNewline
-Write-Host 'Done'
 
 $sources = @()
 $wingetPackages = @()
