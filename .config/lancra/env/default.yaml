@@ -9,7 +9,6 @@ User:
   ONEDRIVE: '%USERPROFILE%\OneDrive'
   ONEDRIVECONSUMER: '%USERPROFILE%\OneDrive'
   PATH:
-  - '%LOCALAPPDATA%\Microsoft\WindowsApps'
   - '%LOCALAPPDATA%\Microsoft\WinGet\Links'
   - '%USERPROFILE%\bin'
   - '%LOCALAPPDATA%\Programs\oh-my-posh\bin'
@@ -23,6 +22,7 @@ User:
   - '%LOCALAPPDATA%\Programs\Python\Python312\Scripts\'
   - '%LOCALAPPDATA%\Programs\Python\Python312\'
   - '%LOCALAPPDATA%\Programs\Python\Launcher\'
+  - '%LOCALAPPDATA%\Microsoft\WindowsApps'
   PIP_CACHE_DIR: '%DEVUSERPROFILE%\AppData\Local\pip\Cache'
   POSH_INSTALLER: winget
   POSH_THEMES_PATH: '%LOCALAPPDATA%\Programs\oh-my-posh\themes'
