@@ -51,6 +51,7 @@ Microsoft.OneDrive,winget,OneDrive,Full,File System
 Microsoft.PowerShell,winget,PowerShell,Full,Programming
 Microsoft.PowerToys,winget,PowerToys,Full,Utility
 Microsoft.Sqlcmd,winget,sqlcmd,Full,Programming
+Microsoft.Teams,winget,Microsoft Teams,None,Social
 Microsoft.UI.Xaml.2.7,winget,WinUI 2.7,None,Programming
 Microsoft.UI.Xaml.2.8,winget,WinUI 2.8,None,Programming
 Microsoft.VCLibs.Desktop.14,winget,Microsoft Visual C++ 2015 UWP Desktop Runtime,None,Programming
