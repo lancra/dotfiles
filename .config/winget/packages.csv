@@ -25,6 +25,7 @@ GnuPG.Gpg4win,winget,Gpg4win,Full,Programming
 GoLang.Go,winget,Go,Full,Programming
 Google.Chrome,winget,Google Chrome,Full,Web
 Google.PlayGames.Beta,winget,Google Play Games,Full,Gaming
+Google.QuickShare,winget,Google Quick Share,Full,Utility
 Graphviz.Graphviz,winget,Graphviz,Full,Programming
 HandBrake.HandBrake,winget,HandBrake,Full,Video
 JanDeDobbeleer.OhMyPosh,winget,OhMyPosh,Full,Programming
