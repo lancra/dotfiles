@@ -45,6 +45,10 @@
 !/AppData/Local/Packages/
 !/AppData/Roaming/
 
+# Android Studio
+/.android/
+/.config/.android/
+
 # Azure CLI
 /.azure/**
 !/.azure/config
