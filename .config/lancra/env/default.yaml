@@ -45,7 +45,7 @@ Machine:
   - '%PROGRAMFILES%\Git\usr\bin'
   - '%PROGRAMFILES(X86)%\gnupg\bin'
   - '%PROGRAMFILES(X86)%\Gpg4win\..\GnuPG\bin'
-  - '%PROGRAMFILES%\Meld'
+  - '%PROGRAMFILES%\Meld\'
   - '%PROGRAMFILES%\GitHub CLI\'
   - '%PROGRAMFILES%\nu\bin\'
   - '%PROGRAMFILES%\Microsoft SDKs\Azure\CLI2\wbin'
