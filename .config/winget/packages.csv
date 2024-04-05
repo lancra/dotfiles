@@ -78,6 +78,7 @@ Nvidia.GeForceExperience,winget,Nvidia GeForceExperience,Full,Gaming
 Nvidia.PhysX,winget,Nvidia PhysX,None,Gaming
 Obsidian.Obsidian,winget,Obsidian,Full,Notes
 OpenJS.NodeJS.LTS,winget,Node.js LTS,Full,Programming
+PostgreSQL.PostgreSQL,winget,PostgreSQL,Full,Programming
 PuTTY.PuTTY,winget,PuTTY,Full,Programming
 Python.Launcher,winget,Python Launcher,None,Programming
 Python.Python.3.12,winget,Python 3.12,Full,Programming
