@@ -6,6 +6,8 @@
 /.github/token
 /.lancra/
 /.librarymanager/
+/.local/
+/.ssh/
 /.templateengine/
 /.vscode/extensions/
 /.bash_history
@@ -75,6 +77,9 @@
 # LSDeluxe (lsd)
 !/AppData/Roaming/lsd/
 !/AppData/Roaming/lsd/config.yaml
+
+# Podman
+/.config/containers/
 
 # RuneScape
 /.runelite/
