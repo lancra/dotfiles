@@ -15,6 +15,7 @@ User:
   - '%LOCALAPPDATA%\Programs\Microsoft VS Code\bin'
   - '%LOCALAPPDATA%\Programs\Azure Data Studio\bin'
   - '%LOCALAPPDATA%\Programs\KDiff3\bin'
+  - '%LOCALAPPDATA%\Programs\WinMerge\'
   - '%DEVUSERPROFILE%\.cargo\bin'
   - '%USERPROFILE%\.dotnet\tools'
   - '%DEVUSERPROFILE%\go\bin'
