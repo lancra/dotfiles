@@ -7,5 +7,9 @@
 ]
 "cargo-watch 8.5.2 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-watch.exe"]
 "rustlings 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["rustlings.exe"]
+"sqlx-cli 0.7.4 (registry+https://github.com/rust-lang/crates.io-index)" = [
+    "cargo-sqlx.exe",
+    "sqlx.exe",
+]
 "taplo-cli 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["taplo.exe"]
 "typos-cli 1.19.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["typos.exe"]
