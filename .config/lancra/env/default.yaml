@@ -56,7 +56,7 @@ Machine:
   - '%PROGRAMFILES%\Microsoft SQL Server\150\Tools\Binn'
   - '%PROGRAMFILES%\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn'
   - '%PROGRAMFILES%\Go\bin'
-  - '%PROGRAMFILES%\nodejs'
+  - '%PROGRAMFILES%\nodejs\'
   - '%PROGRAMFILES%\PuTTY'
   - '%PROGRAMFILES%\Calibre2\'
 
