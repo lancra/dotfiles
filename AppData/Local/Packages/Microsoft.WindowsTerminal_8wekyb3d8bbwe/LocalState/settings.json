@@ -101,6 +101,13 @@
         "hidden": true,
         "name": "Ubuntu",
         "source": "Windows.Terminal.Wsl"
+      },
+      {
+        "guid": "{8ab8e6f6-35c6-5b46-8419-3e1568105476}",
+        "hidden": false,
+        "icon": "%USERPROFILE%\\.config\\wt\\icons\\podman.ico",
+        "name": "Podman",
+        "source": "Windows.Terminal.Wsl"
       }
     ]
   },
