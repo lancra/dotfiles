@@ -1,6 +1,7 @@
 [v1]
 "cargo-audit 0.20.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-audit.exe"]
 "cargo-expand 1.0.79 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-expand.exe"]
+"cargo-udeps 0.1.47 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-udeps.exe"]
 "cargo-update 13.3.0 (registry+https://github.com/rust-lang/crates.io-index)" = [
     "cargo-install-update-config.exe",
     "cargo-install-update.exe",
