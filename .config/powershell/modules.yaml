@@ -1,0 +1,495 @@
+modules:
+- name: AppBackgroundTask
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\AppBackgroundTask\AppBackgroundTask.psd1
+- name: Appx
+  shell: Windows
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\Appx\Appx.psd1
+- name: BitLocker
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\BitLocker\BitLocker.psd1
+- name: BitsTransfer
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\BitsTransfer\BitsTransfer.psd1
+- name: BuildHelpers
+  shell: Core
+  locations:
+  - name: User.Core
+    path: $env:USERPROFILE\Documents\PowerShell\Modules\BuildHelpers\2.0.16\BuildHelpers.psd1
+- name: CimCmdlets
+  shell: Both
+  locations:
+  - name: Application.Core
+    path: $env:PROGRAMFILES\PowerShell\7\Modules\CimCmdlets\CimCmdlets.psd1
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\CimCmdlets\CimCmdlets.psd1
+- name: ConfigDefender
+  shell: Windows
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\ConfigDefender\ConfigDefender.psd1
+- name: ConfigDefenderPerformance
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\ConfigDefenderPerformance\ConfigDefenderPerformance.psd1
+- name: Defender
+  shell: Windows
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\Defender\Defender.psd1
+- name: DefenderPerformance
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\DefenderPerformance\DefenderPerformance.psd1
+- name: DeliveryOptimization
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\DeliveryOptimization\DeliveryOptimization.psd1
+- name: DirectAccessClientComponents
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\DirectAccessClientComponents\DirectAccessClientComponents.psd1
+- name: Dism
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\Dism\Dism.psd1
+- name: DnsClient
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\DnsClient\DnsClient.psd1
+- name: EventTracingManagement
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\EventTracingManagement\EventTracingManagement.psd1
+- name: Get-NetView
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\Get-NetView\Get-NetView.psd1
+- name: gsudoModule
+  shell: Both
+  locations:
+  - name: Application.Windows
+    path: $env:PROGRAMFILES\WindowsPowerShell\Modules\gsudoModule\gsudoModule.psd1
+- name: HostNetworkingService
+  shell: Windows
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\HostNetworkingService\HostNetworkingService.psd1
+- name: International
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\International\International.psd1
+- name: iSCSI
+  shell: Windows
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\iSCSI\iSCSI.psd1
+- name: ISE
+  shell: Windows
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\ISE\ISE.psd1
+- name: Kds
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\Kds\Kds.psd1
+- name: Lance
+  shell: Core
+  locations:
+  - name: User.Core
+    path: $env:USERPROFILE\Documents\PowerShell\Modules\Lance\0.1.0\Lance.psd1
+- name: LanguagePackManagement
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\LanguagePackManagement\LanguagePackManagement.psd1
+- name: LAPS
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\LAPS\LAPS.psd1
+- name: Microsoft.PowerShell.Archive
+  shell: Both
+  locations:
+  - name: Application.Core
+    path: $env:PROGRAMFILES\PowerShell\7\Modules\Microsoft.PowerShell.Archive\Microsoft.PowerShell.Archive.psd1
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\Microsoft.PowerShell.Archive\Microsoft.PowerShell.Archive.psd1
+- name: Microsoft.PowerShell.Diagnostics
+  shell: Both
+  locations:
+  - name: Application.Core
+    path: $env:PROGRAMFILES\PowerShell\7\Modules\Microsoft.PowerShell.Diagnostics\Microsoft.PowerShell.Diagnostics.psd1
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\Microsoft.PowerShell.Diagnostics\Microsoft.PowerShell.Diagnostics.psd1
+- name: Microsoft.PowerShell.Host
+  shell: Both
+  locations:
+  - name: Application.Core
+    path: $env:PROGRAMFILES\PowerShell\7\Modules\Microsoft.PowerShell.Host\Microsoft.PowerShell.Host.psd1
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\Microsoft.PowerShell.Host\Microsoft.PowerShell.Host.psd1
+- name: Microsoft.PowerShell.LocalAccounts
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\Microsoft.PowerShell.LocalAccounts\1.0.0.0\Microsoft.PowerShell.LocalAccounts.psd1
+- name: Microsoft.PowerShell.Management
+  shell: Both
+  locations:
+  - name: Application.Core
+    path: $env:PROGRAMFILES\PowerShell\7\Modules\Microsoft.PowerShell.Management\Microsoft.PowerShell.Management.psd1
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\Microsoft.PowerShell.Management\Microsoft.PowerShell.Management.psd1
+- name: Microsoft.PowerShell.ODataUtils
+  shell: Windows
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\Microsoft.PowerShell.ODataUtils\Microsoft.PowerShell.ODataUtils.psd1
+- name: Microsoft.PowerShell.Operation.Validation
+  shell: Both
+  locations:
+  - name: Application.Windows
+    path: $env:PROGRAMFILES\WindowsPowerShell\Modules\Microsoft.PowerShell.Operation.Validation\1.0.1\Microsoft.PowerShell.Operation.Validation.psd1
+- name: Microsoft.PowerShell.PSResourceGet
+  shell: Core
+  locations:
+  - name: Application.Core
+    path: $env:PROGRAMFILES\PowerShell\7\Modules\Microsoft.PowerShell.PSResourceGet\Microsoft.PowerShell.PSResourceGet.psd1
+- name: Microsoft.PowerShell.Security
+  shell: Both
+  locations:
+  - name: Application.Core
+    path: $env:PROGRAMFILES\PowerShell\7\Modules\Microsoft.PowerShell.Security\Microsoft.PowerShell.Security.psd1
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\Microsoft.PowerShell.Security\Microsoft.PowerShell.Security.psd1
+- name: Microsoft.PowerShell.Utility
+  shell: Both
+  locations:
+  - name: Application.Core
+    path: $env:PROGRAMFILES\PowerShell\7\Modules\Microsoft.PowerShell.Utility\Microsoft.PowerShell.Utility.psd1
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\Microsoft.PowerShell.Utility\Microsoft.PowerShell.Utility.psd1
+- name: Microsoft.PowerToys.Configure
+  shell: Core
+  locations:
+  - name: User.Core
+    path: $env:USERPROFILE\Documents\PowerShell\Modules\Microsoft.PowerToys.Configure\0.80.0\Microsoft.PowerToys.Configure.psd1
+- name: Microsoft.Windows.Bcd.Cmdlets
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\Microsoft.Windows.Bcd.Cmdlets\Microsoft.Windows.Bcd.Cmdlets.psd1
+- name: Microsoft.WSMan.Management
+  shell: Both
+  locations:
+  - name: Application.Core
+    path: $env:PROGRAMFILES\PowerShell\7\Modules\Microsoft.WSMan.Management\Microsoft.WSMan.Management.psd1
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\Microsoft.WSMan.Management\Microsoft.WSMan.Management.psd1
+- name: MMAgent
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\MMAgent\MMAgent.psd1
+- name: MsDtc
+  shell: Windows
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\MsDtc\MsDtc.psd1
+- name: NetAdapter
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\NetAdapter\NetAdapter.psd1
+- name: NetConnection
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\NetConnection\NetConnection.psd1
+- name: NetEventPacketCapture
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\NetEventPacketCapture\NetEventPacketCapture.psd1
+- name: NetLbfo
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\NetLbfo\NetLbfo.psd1
+- name: NetNat
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\NetNat\NetNat.psd1
+- name: NetQos
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\NetQos\NetQos.psd1
+- name: NetSecurity
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\NetSecurity\NetSecurity.psd1
+- name: NetSwitchTeam
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\NetSwitchTeam\NetSwitchTeam.psd1
+- name: NetTCPIP
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\NetTCPIP\NetTCPIP.psd1
+- name: NetworkConnectivityStatus
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\NetworkConnectivityStatus\NetworkConnectivityStatus.psd1
+- name: NetworkSwitchManager
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\NetworkSwitchManager\NetworkSwitchManager.psd1
+- name: NetworkTransition
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\NetworkTransition\NetworkTransition.psd1
+- name: PackageManagement
+  shell: Both
+  locations:
+  - name: Application.Core
+    path: $env:PROGRAMFILES\PowerShell\7\Modules\PackageManagement\PackageManagement.psd1
+  - name: Application.Windows
+    path: $env:PROGRAMFILES\WindowsPowerShell\Modules\PackageManagement\1.0.0.1\PackageManagement.psd1
+- name: PcsvDevice
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\PcsvDevice\PcsvDevice.psd1
+- name: PersistentMemory
+  shell: Windows
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\PersistentMemory\PersistentMemory.psd1
+- name: Pester
+  shell: Both
+  locations:
+  - name: Application.Windows
+    path: $env:PROGRAMFILES\WindowsPowerShell\Modules\Pester\3.4.0\Pester.psd1
+  - name: User.Core
+    path: $env:USERPROFILE\Documents\PowerShell\Modules\Pester\5.5.0\Pester.psd1
+- name: PKI
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\PKI\PKI.psd1
+- name: PnpDevice
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\PnpDevice\PnpDevice.psd1
+- name: posh-git
+  shell: Both
+  locations:
+  - name: User.Core
+    path: $env:USERPROFILE\Documents\PowerShell\Modules\posh-git\1.1.0\posh-git.psd1
+  - name: User.Windows
+    path: $env:USERPROFILE\Documents\WindowsPowerShell\Modules\posh-git\1.1.0\posh-git.psd1
+- name: powershell-yaml
+  shell: Core
+  locations:
+  - name: User.Core
+    path: $env:USERPROFILE\Documents\PowerShell\Modules\powershell-yaml\0.4.7\powershell-yaml.psd1
+- name: PowerShellGet
+  shell: Both
+  locations:
+  - name: Application.Core
+    path: $env:PROGRAMFILES\PowerShell\7\Modules\PowerShellGet\PowerShellGet.psd1
+  - name: Application.Windows
+    path: $env:PROGRAMFILES\WindowsPowerShell\Modules\PowerShellGet\1.0.0.1\PowerShellGet.psd1
+- name: PrintManagement
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\PrintManagement\PrintManagement.psd1
+- name: ProcessMitigations
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\ProcessMitigations\ProcessMitigations.psd1
+- name: Provisioning
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\Provisioning\Provisioning.psd1
+- name: PSDepend
+  shell: Core
+  locations:
+  - name: User.Core
+    path: $env:USERPROFILE\Documents\PowerShell\Modules\PSDepend\0.3.8\PSDepend.psd1
+- name: PSDesiredStateConfiguration
+  shell: Windows
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\PSDesiredStateConfiguration\PSDesiredStateConfiguration.psd1
+- name: PSDiagnostics
+  shell: Both
+  locations:
+  - name: Application.Core
+    path: $env:PROGRAMFILES\PowerShell\7\Modules\PSDiagnostics\PSDiagnostics.psd1
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\PSDiagnostics\PSDiagnostics.psd1
+- name: PSReadLine
+  shell: Both
+  locations:
+  - name: Application.Core
+    path: $env:PROGRAMFILES\PowerShell\7\Modules\PSReadLine\PSReadLine.psd1
+  - name: Application.Windows
+    path: $env:PROGRAMFILES\WindowsPowerShell\Modules\PSReadLine\2.0.0\PSReadLine.psd1
+- name: PSScheduledJob
+  shell: Windows
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\PSScheduledJob\PSScheduledJob.psd1
+- name: PSScriptAnalyzer
+  shell: Core
+  locations:
+  - name: User.Core
+    path: $env:USERPROFILE\Documents\PowerShell\Modules\PSScriptAnalyzer\1.21.0\PSScriptAnalyzer.psd1
+- name: PSToml
+  shell: Core
+  locations:
+  - name: User.Core
+    path: $env:USERPROFILE\Documents\PowerShell\Modules\PSToml\0.3.1\PSToml.psd1
+- name: PSWorkflow
+  shell: Windows
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\PSWorkflow\PSWorkflow.psd1
+- name: PSWorkflowUtility
+  shell: Windows
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\PSWorkflowUtility\PSWorkflowUtility.psd1
+- name: ScheduledTasks
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\ScheduledTasks\ScheduledTasks.psd1
+- name: SecureBoot
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\SecureBoot\SecureBoot.psd1
+- name: SmbShare
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\SmbShare\SmbShare.psd1
+- name: SmbWitness
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\SmbWitness\SmbWitness.psd1
+- name: StartLayout
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\StartLayout\StartLayout.psd1
+- name: Storage
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\Storage\Storage.psd1
+- name: StorageBusCache
+  shell: Windows
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\StorageBusCache\StorageBusCache.psd1
+- name: ThreadJob
+  shell: Core
+  locations:
+  - name: Application.Core
+    path: $env:PROGRAMFILES\PowerShell\7\Modules\ThreadJob\ThreadJob.psd1
+- name: TLS
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\TLS\TLS.psd1
+- name: TroubleshootingPack
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\TroubleshootingPack\TroubleshootingPack.psd1
+- name: TrustedPlatformModule
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\TrustedPlatformModule\TrustedPlatformModule.psd1
+- name: VMDirectStorage
+  shell: Windows
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\VMDirectStorage\VMDirectStorage.psd1
+- name: VpnClient
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\VpnClient\VpnClient.psd1
+- name: Wdac
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\Wdac\Wdac.psd1
+- name: Whea
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\Whea\Whea.psd1
+- name: WindowsDeveloperLicense
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\WindowsDeveloperLicense\WindowsDeveloperLicense.psd1
+- name: WindowsErrorReporting
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\WindowsErrorReporting\WindowsErrorReporting.psd1
+- name: WindowsSearch
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\WindowsSearch\WindowsSearch.psd1
+- name: WindowsUpdate
+  shell: Both
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\WindowsUpdate\WindowsUpdate.psd1
+- name: WinHttpProxy
+  shell: Windows
+  locations:
+  - name: System.Windows
+    path: $env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules\WinHttpProxy\WinHttpProxy.psd1
+
