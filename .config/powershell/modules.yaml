@@ -86,6 +86,11 @@ modules:
   locations:
   - name: Application.Windows
     path: $env:PROGRAMFILES\WindowsPowerShell\Modules\gsudoModule\gsudoModule.psd1
+- name: HackF5.ProfileAlias
+  shell: Core
+  locations:
+  - name: User.Core
+    path: $env:USERPROFILE\Documents\PowerShell\Modules\HackF5.ProfileAlias\0.5.0.0\HackF5.ProfileAlias.psd1
 - name: HostNetworkingService
   shell: Windows
   locations:

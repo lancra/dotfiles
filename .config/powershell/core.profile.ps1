@@ -4,16 +4,8 @@ Import-Module 'Lance'
 Set-PSReadLineKeyHandler -Chord Ctrl+u -Function BackwardKillLine
 Set-PSReadLineKeyHandler -Chord Ctrl+k -Function ForwardDeleteLine
 
-# Aliases
-function l {
-    param(
-        [Parameter(ValueFromRemainingArguments)]
-        [string[]]$Arguments
-    )
-    process {
-        lsd -l $Arguments
-    }
-}
+Import-Module HackF5.ProfileAlias
+Set-ProfileAlias l 'lsd -l #{:*}' -Bash -Force | Out-Null
 
 Import-Module 'posh-git'
 oh-my-posh init pwsh --config "$env:XDG_CONFIG_HOME/powershell/lancra.omp.json" | Invoke-Expression
