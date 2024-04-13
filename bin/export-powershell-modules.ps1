@@ -3,17 +3,14 @@
 [CmdletBinding()]
 param ()
 
+$unknownModuleLocation = [ordered]@{ Name = 'Unknown'; Path = 'C:\'; Order = 0 }
 $moduleLocations = @(
-    @{ Name = 'User.Core'; VerbatimPath = '$env:USERPROFILE\Documents\PowerShell\Modules' },
-    @{ Name = 'User.Windows'; VerbatimPath = '$env:USERPROFILE\Documents\WindowsPowerShell\Modules' },
-    @{ Name = 'Application.Core'; VerbatimPath = '$env:PROGRAMFILES\PowerShell\7\Modules' },
-    @{ Name = 'Application.Windows'; VerbatimPath = '$env:PROGRAMFILES\WindowsPowerShell\Modules' },
-    @{ Name = 'System.Windows'; VerbatimPath = '$env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules' }
-) |
-ForEach-Object {
-    $_.Path = $ExecutionContext.InvokeCommand.ExpandString($_.VerbatimPath)
-    $_
-}
+    [ordered]@{ Name = 'User.Core'; Path = "$env:USERPROFILE\Documents\PowerShell\Modules"; Order = 1 },
+    [ordered]@{ Name = 'User.Windows'; Path = "$env:USERPROFILE\Documents\WindowsPowerShell\Modules"; Order = 1 },
+    [ordered]@{ Name = 'Application.Core'; Path = "$env:PROGRAMFILES\PowerShell\7\Modules"; Order = 2 },
+    [ordered]@{ Name = 'Application.Windows'; Path = "$env:PROGRAMFILES\WindowsPowerShell\Modules"; Order = 2 },
+    [ordered]@{ Name = 'System.Windows'; Path = "$env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules"; Order = 3 }
+)
 
 function Get-InstalledModule {
     [CmdletBinding()]
@@ -42,16 +39,10 @@ function Get-ModuleLocation {
         [string]$Path
     )
     process {
-        $location = [ordered]@{ name = 'Unknown' }
+        $location = $unknownModuleLocation
         foreach ($moduleLocation in $moduleLocations) {
             if ($Path.StartsWith($moduleLocation.Path, [System.StringComparison]::OrdinalIgnoreCase)) {
-                $location = [ordered]@{
-                    name = $moduleLocation.Name
-                    path = $Path.Replace(
-                        $moduleLocation.Path,
-                        $moduleLocation.VerbatimPath,
-                        [System.StringComparison]::OrdinalIgnoreCase)
-                }
+                $location = $moduleLocation
                 break
             }
         }
@@ -77,7 +68,8 @@ $output.modules = $modules |
         $locations = @($matchingModules |
             Select-Object -ExpandProperty Path -Unique |
             ForEach-Object { Get-ModuleLocation -Path $_ } |
-            Sort-Object -Property @{ Expression = { $_['name'] } })
+            Sort-Object -Property @{ Expression = { $_['Order'] }}, @{ Expression = { $_['Name'] }} |
+            ForEach-Object { $_['Name'] })
 
         [ordered]@{
             name = $_
