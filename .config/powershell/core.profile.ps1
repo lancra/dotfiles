@@ -1,8 +1,13 @@
 Import-Module 'Lance'
 
-# Bash shortcuts
-Set-PSReadLineKeyHandler -Chord Ctrl+u -Function BackwardKillLine
-Set-PSReadLineKeyHandler -Chord Ctrl+k -Function ForwardDeleteLine
+Set-PSReadLineOption -EditMode Vi -ViModeIndicator Cursor
+Set-PSReadLineKeyHandler -Key '*,y' -BriefDescription 'global yank' -ViMode Command -Scriptblock {
+    param($key, $arg)
+    $line = $null
+    $cursor = $null
+    [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
+    Set-Clipboard $line
+}
 
 Import-Module HackF5.ProfileAlias
 Set-ProfileAlias l 'lsd -l #{:*}' -Bash -Force | Out-Null
