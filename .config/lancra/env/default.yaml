@@ -36,7 +36,7 @@ Machine:
   - '%SYSTEMROOT%\System32\OpenSSH'
   - '%SYSTEMROOT%\System32\Wbem'
   - '%SYSTEMROOT%\System32\WindowsPowerShell\v1.0'
-  - '%PROGRAMFILES%\PowerShell\7'
+  - '%PROGRAMFILES%\PowerShell\7\'
   - '%PROGRAMFILES(X86)%\Windows Kits\10\Windows Performance Toolkit'
   - '%PROGRAMFILES(X86)%\NVIDIA Corporation\PhysX\Common'
   - '%PROGRAMFILES%\NVIDIA Corporation\NVIDIA NvDLISR'
@@ -61,6 +61,6 @@ Machine:
   - '%PROGRAMFILES%\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn'
   - '%PROGRAMFILES%\Go\bin'
   - '%PROGRAMFILES%\nodejs\'
-  - '%PROGRAMFILES%\PuTTY'
+  - '%PROGRAMFILES%\PuTTY\'
   - '%PROGRAMFILES%\Calibre2\'
 
