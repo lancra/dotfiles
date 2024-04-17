@@ -4,10 +4,18 @@ param (
     [string]$Name
 )
 
-
-
 $sourceDirectory = "$env:HOME/.config/snippets"
-$sourcePath = "$sourceDirectory/$Name.snippet.json"
+$sourceFileName = "$Name.snippet.json"
+
+$sourcePaths = @(Get-ChildItem -Path $sourceDirectory -Filter $sourceFileName -Recurse)
+if ($sourcePaths.Length -gt 1) {
+    $duplicatePaths = $sourcePaths | Select-Object -ExpandProperty FullName
+    $duplicatePathsText = $duplicatePaths -join [System.Environment]::NewLine
+    Write-Error "Multiple $Name snippets were found:$([System.Environment]::NewLine)$duplicatePathsText"
+    exit 1
+}
+
+$sourcePath = $sourcePaths[0].FullName
 if (-not (Test-Path -Path $sourcePath)) {
     Write-Error "The $Name snippet could not be found in the source directory."
     exit 1
