@@ -13,6 +13,7 @@ BurntSushi.ripgrep.MSVC,winget,ripgrep,Full,File System
 calibre.calibre,winget,calibre,Full,Reading
 Canonical.Ubuntu.2204,winget,Ubuntu,Full,Operating System
 dandavison.delta,winget,delta,Full,Programming
+DigitalOcean.Doctl,winget,DigitalOcean CLI,Full,Programming
 direnv.direnv,winget,direnv,Full,Programming
 Discord.Discord,winget,Discord,Full,Social
 dotPDN.PaintDotNet,winget,paint.net,Full,Graphics
