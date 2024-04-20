@@ -3,7 +3,7 @@
 [CmdletBinding()]
 param (
     [Parameter()]
-    [string]$Name = 'default'
+    [string]$Target = "$XDG_CONFIG_HOME/lancra/env/default.yaml"
 )
 
 $prefixVariableNames = @(
@@ -145,9 +145,8 @@ $getMachineVariablesArgs = @{
 }
 $variables['Machine'] = Get-EnvironmentVariable @getMachineVariablesArgs
 
-$envDirectory = "$env:XDG_CONFIG_HOME/lancra/env"
-New-Item -ItemType Directory -Path $envDirectory -Force | Out-Null
+$directory = [System.IO.Path]::GetDirectoryName($Target)
+New-Item -ItemType Directory -Path $directory -Force | Out-Null
 
-$envPath = "$envDirectory/$Name.yaml"
 $variables | ConvertTo-Yaml |
-    Set-Content -Path $envPath
+    Set-Content -Path $Target
