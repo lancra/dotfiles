@@ -1,4 +1,5 @@
 Id,Path
+dyff,github.com/homeport/dyff/cmd/dyff
 jd,github.com/josephburnett/jd
 pup,github.com/ericchiang/pup
 yq,github.com/mikefarah/yq/v4
