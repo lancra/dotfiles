@@ -1,0 +1,19 @@
+contexts:
+    - context:
+        endpoint: mssql
+        user: mssql
+      name: mssql
+currentcontext: mssql
+endpoints:
+    - endpoint:
+        address: 127.0.0.1
+        port: 1433
+      name: mssql
+users:
+    - authentication-type: basic
+      basic-auth:
+        password: QVFBQUFOQ01uZDhCRmRFUmpIb0F3RS9DbCtzQkFBQUE4cCs0cjBBTFpVT3V4U3B5azZSM2V3QUFBQUFDQUFBQUFBQVFaZ0FBQUFFQUFDQUFBQUNBaFpkWi80NzBaQWt6Zno1bW5HSEdsYmpFZ05oMjRXRnpmdUlqc29JMGJ3QUFBQUFPZ0FBQUFBSUFBQ0FBQUFDMWlGUVBYYXZuYmlPaERuVzBmWFkzV1NlUnB1VmdxdGVOclNpQmtPWlNpQkFBQUFDUUtrWVR1Ukg0UlpSZVk4Ty9hVTdEUUFBQUFDQ3hWcHI5ZGl0Wm13djlzcjdaSUdBQ0svcWQweFQ5TkJ6a2hlVTJzeUVYdit1eUFjM1JXck45amhYVWVvZ0o5Uy9MOGxsdFBKdURNdGJsc3hiQTVxVT0=
+        password-encryption: dpapi
+        username: sa
+      name: mssql
+version: v1

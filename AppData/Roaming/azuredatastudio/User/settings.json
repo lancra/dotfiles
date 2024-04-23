@@ -52,6 +52,26 @@
       "providerName": "PGSQL",
       "savePassword": true,
       "id": "7621d5e7-7923-46f2-b95e-303fb48ac243"
+    },
+    {
+      "options": {
+        "connectionName": "MSSQL",
+        "server": "127.0.0.1,1433",
+        "database": "",
+        "authenticationType": "SqlLogin",
+        "user": "sa",
+        "password": "",
+        "applicationName": "azdata",
+        "encrypt": "true",
+        "trustServerCertificate": "true",
+        "azureTenantId": "91c0494c-6204-4da1-b745-393d31d911a2",
+        "groupId": "C777F06B-202E-4480-B475-FA416154D458",
+        "databaseDisplayName": ""
+      },
+      "groupId": "C777F06B-202E-4480-B475-FA416154D458",
+      "providerName": "MSSQL",
+      "savePassword": true,
+      "id": "6e7ccf59-8250-4a2c-952d-ca8adfda121a"
     }
   ]
 }
