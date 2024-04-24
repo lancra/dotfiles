@@ -24,7 +24,10 @@ set incsearch
 set noshowmode
 set number
 set smartcase
-set visualbell
 set wildmenu
+
+" Disable audible and visual bells.
+set visualbell
+set t_vb=
 
 syntax on
