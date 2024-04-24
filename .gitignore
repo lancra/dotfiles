@@ -101,6 +101,7 @@
 /projects/
 
 # Vim
+/.config/vim/.vim/plugged/
 /.config/vim/.backup/
 /.config/vim/.swap/
 /.config/vim/.undo/

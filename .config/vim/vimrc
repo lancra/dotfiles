@@ -1,5 +1,13 @@
 set nocompatible
 
+set directory=$XDG_CONFIG_HOME/vim/.swap,~/AppData/Local/Temp,c:/tmp,c:/temp
+set backupdir=$XDG_CONFIG_HOME/vim/.backup,~/AppData/Local/Temp,c:/tmp,c:/temp
+set undodir=$XDG_CONFIG_HOME/vim/.undo
+set viminfo+=n$XDG_CONFIG_HOME/vim/viminfo
+
+call plug#begin()
+call plug#end()
+
 filetype on
 filetype indent on
 filetype plugin on
@@ -16,8 +24,3 @@ set visualbell
 set wildmenu
 
 syntax on
-
-set directory=$XDG_CONFIG_HOME/vim/.swap,~/AppData/Local/Temp,c:/tmp,c:/temp
-set backupdir=$XDG_CONFIG_HOME/vim/.backup,~/AppData/Local/Temp,c:/tmp,c:/temp
-set undodir=$XDG_CONFIG_HOME/vim/.undo
-set viminfo+=n$XDG_CONFIG_HOME/vim/viminfo
