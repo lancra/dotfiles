@@ -50,6 +50,12 @@
 	editor = 'c:/Program Files/Vim/vim91/vim.exe'
 	pager = delta
 	symlinks = true
+[delta]
+	features = catppuccin-mocha
+	hyperlinks = true
+	light = false
+	navigate = true
+	side-by-side = true
 [diff]
 	colorMoved = default
 	tool = kdiff3
@@ -57,11 +63,6 @@
 	prompt = false
 [difftool "meld"]
 	cmd = meld "$LOCAL" "$REMOTE"
-[delta]
-	hyperlinks = true
-	light = false
-	navigate = true
-	side-by-side = true
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -69,6 +70,8 @@
 	required = true
 [fetch]
 	prune = true
+[include]
+	path = ~/.config/delta/themes/catppuccin.gitconfig
 [init]
 	defaultBranch = main
 [interactive]
