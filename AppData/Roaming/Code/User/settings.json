@@ -134,7 +134,8 @@
     }
   ],
   "window.titleBarStyle": "custom",
-  "workbench.colorTheme": "Default Dark Modern",
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.iconTheme": "catppuccin-mocha",
   "workbench.editor.pinnedTabsOnSeparateRow": true,
   "xml.server.workDir": "~/.config/lemminx"
 }
