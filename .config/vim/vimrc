@@ -1,4 +1,5 @@
 set nocompatible
+set termguicolors
 
 set directory=$XDG_CONFIG_HOME/vim/.swap,~/AppData/Local/Temp,c:/tmp,c:/temp
 set backupdir=$XDG_CONFIG_HOME/vim/.backup,~/AppData/Local/Temp,c:/tmp,c:/temp
@@ -6,7 +7,10 @@ set undodir=$XDG_CONFIG_HOME/vim/.undo
 set viminfo+=n$XDG_CONFIG_HOME/vim/viminfo
 
 call plug#begin()
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 call plug#end()
+
+colorscheme catppuccin_mocha
 
 filetype on
 filetype indent on
