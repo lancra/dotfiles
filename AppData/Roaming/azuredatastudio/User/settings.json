@@ -4,7 +4,7 @@
   "overtype.abbreviatedStatus": true,
   "queryEditor.tabColorMode": "fill",
   "window.commandCenter": true,
-  "workbench.colorTheme": "Default Dark Azure Data Studio",
+  "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.editor.untitled.labelFormat": "content",
   "workbench.editorAssociations": {
     "*.{sqlplan}": "workbench.editor.executionplan"
