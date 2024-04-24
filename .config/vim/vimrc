@@ -8,6 +8,7 @@ set viminfo+=n$XDG_CONFIG_HOME/vim/viminfo
 
 call plug#begin()
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 colorscheme catppuccin_mocha
@@ -20,9 +21,8 @@ set autoindent
 set hlsearch
 set ignorecase
 set incsearch
+set noshowmode
 set number
-set ruler
-set showmode
 set smartcase
 set visualbell
 set wildmenu
