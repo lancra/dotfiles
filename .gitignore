@@ -61,6 +61,9 @@
 !/AppData/Roaming/azuredatastudio/User/keybindings.json
 !/AppData/Roaming/azuredatastudio/User/settings.json
 
+# bat
+!/AppData/Roaming/bat
+
 # GitHub CLI
 !/AppData/Roaming/GitHub CLI/
 !/AppData/Roaming/GitHub CLI/config.yml
