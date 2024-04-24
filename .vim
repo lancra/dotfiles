@@ -1,1 +1,1 @@
-.config/vim/.vim
+.config/vim

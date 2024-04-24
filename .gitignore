@@ -101,10 +101,10 @@
 /projects/
 
 # Vim
-/.config/vim/.vim/plugged/
 /.config/vim/.backup/
 /.config/vim/.swap/
 /.config/vim/.undo/
+/.config/vim/plugged/
 /.config/vim/viminfo
 
 # Visual Studio Code
