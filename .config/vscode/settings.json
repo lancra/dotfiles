@@ -65,7 +65,8 @@
   ],
   "editor.tabSize": 4,
   "files.associations": {
-    "*.snippet.json": "snippets"
+    "*.snippet.json": "snippets",
+    "*.sqlfluff": "ini"
   },
   "files.autoSave": "off",
   "files.insertFinalNewline": true,
