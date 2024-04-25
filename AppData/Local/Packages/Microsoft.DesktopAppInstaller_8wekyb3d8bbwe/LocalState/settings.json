@@ -1,12 +1,1 @@
-{
-  "$help": "https://aka.ms/winget-settings",
-  "$schema": "https://aka.ms/winget-settings.schema.json",
-  "experimentalFeatures": {
-    "configuration": true
-  },
-  "installBehavior": {
-    "preferences": {
-      "scope": "user"
-    }
-  }
-}
+../../../../../.config/winget/settings.json
