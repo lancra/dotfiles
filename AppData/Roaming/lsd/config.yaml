@@ -1,7 +1,1 @@
-blocks:
-  - permission
-  - size
-  - date
-  - name
-date: +%Y-%m-%d %H:%M:%S %z
-display: all
+../../../.config/lsd/config.yaml
