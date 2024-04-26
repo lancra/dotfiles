@@ -105,6 +105,7 @@
 /.config/vim/.swap/
 /.config/vim/.undo/
 /.config/vim/plugged/
+/.config/vim/.netrwhist
 /.config/vim/viminfo
 
 # Visual Studio Code
