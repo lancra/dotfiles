@@ -60,6 +60,7 @@
 [delta "no-line-numbers"]
 	line-numbers = false
 [diff]
+	algorithm = histogram
 	colorMoved = default
 	tool = kdiff3
 [difftool]
