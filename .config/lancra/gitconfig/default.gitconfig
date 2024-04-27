@@ -28,7 +28,6 @@
 	pushf = "push --force-with-lease"
 	rb = "rebase"
 	rbi = "rebase -i"
-	rbis = "rebase -i --autosquash"
 	rt = "restore"
 	rts = "restore --staged"
 	st = "status --short --untracked-files"
@@ -92,6 +91,9 @@
 [push]
 	autoSetupRemote = true
 	default = current
+[rebase]
+	autosquash = true
+	updateRefs = true
 [tag]
 	gpgSign = true
 [user]
