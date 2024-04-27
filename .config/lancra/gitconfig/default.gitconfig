@@ -1,4 +1,6 @@
 [alias]
+	a = "add"
+	ap = "add -p"
 	br = "branch"
 	brc = "branch --show-current"
 	brd = "branch --sort=-committerdate --format='%(committerdate:iso-local) %(refname:short)'"
