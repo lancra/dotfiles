@@ -24,6 +24,7 @@ begin {
 process {
     Publish-Export -Name 'winget packages' -Script 'export-winget-packages.ps1'
     Publish-Export -Name 'powershell modules' -Script 'export-powershell-modules.ps1'
+    Publish-Export -Name 'npm packages' -Script 'export-npm-packages.ps1'
     Publish-Export -Name 'pip packages' -Script 'export-pip-packages.ps1'
     Publish-Export -Name 'go packages' -Script 'export-go-packages.ps1'
     Publish-Export -Name 'environment variables' -Script 'export-environment-variables.ps1'

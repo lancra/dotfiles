@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@angular/cli": "^13.3.1",
-    "@stoplight/spectral-cli": "^6.3.0",
-    "autorest": "^3.6.2"
-  }
-}
