@@ -267,6 +267,10 @@ modules:
   shell: Both
   locations:
   - System.Windows
+- name: Profiler
+  shell: Core
+  locations:
+  - User.Core
 - name: Provisioning
   shell: Both
   locations:
