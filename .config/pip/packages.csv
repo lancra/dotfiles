@@ -1,4 +1,4 @@
-Id
-pip
-sqlfluff
-yamllint
+Id,Homepage
+pip,https://pip.pypa.io/
+sqlfluff,https://www.sqlfluff.com
+yamllint,https://github.com/adrienverge/yamllint
