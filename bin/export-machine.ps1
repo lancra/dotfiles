@@ -1,5 +1,18 @@
 [CmdletBinding()]
-param ()
+param (
+    [Parameter()]
+    [ValidateScript({
+        $_ -in (Get-Content -Path $exportsPath | jq -r '.[] | .id')},
+        ErrorMessage = 'The provided export was not found.')]
+    [ArgumentCompleter({
+        param($cmd, $param, $wordToComplete)
+        if ($param -eq 'Export') {
+            $validExports = @(Get-Content -Path $exportsPath | jq -r '.[] | .id')
+            $validExports -like "$wordToComplete*"
+        }
+    })]
+    [string]$Export
+)
 begin {
     function Publish-Export {
         [CmdletBinding()]
@@ -27,7 +40,13 @@ process {
     $exports = Get-Content -Path $exportsPath |
         ConvertFrom-Json
 
-    $exports |
+    $targetExports = $exports
+    if ($Export) {
+        $targetExports = $exports |
+            Where-Object -Property id -EQ $Export
+    }
+
+    $targetExports |
         ForEach-Object {
             Publish-Export -Name $_.name -Path $_.path
         }
