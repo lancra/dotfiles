@@ -11,7 +11,7 @@ $packagesPath = Join-Path $directoryPath -ChildPath 'packages.csv'
     ForEach-Object {
         $packageMetadata = & npm view --json $_ |
             ConvertFrom-Json
-        @{
+        [ordered]@{
             Id = $_
             Homepage = $packageMetadata.homepage
         }

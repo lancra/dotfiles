@@ -14,7 +14,7 @@ $homepageGroupName = 'Homepage'
         $metadataPath = Join-Path -Path $distInfoDirectory.FullName -ChildPath 'METADATA'
         $homepageMatch = Select-String -Path $metadataPath -Pattern "^Project-URL: Homepage, (?<$homepageGroupName>.*)"
         $homepageMatchGroup = $homepageMatch.Matches.Groups | Where-Object -Property Name -EQ $homepageGroupName
-        @{
+        [ordered]@{
             Id = $_.name
             Homepage = $homepageMatchGroup.Value
         }
