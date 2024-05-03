@@ -67,13 +67,13 @@
 	prompt = false
 [difftool "meld"]
 	cmd = meld "$LOCAL" "$REMOTE"
+[fetch]
+	prune = true
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[fetch]
-	prune = true
 [include]
 	path = ~/.config/delta/themes/catppuccin.gitconfig
 [init]
