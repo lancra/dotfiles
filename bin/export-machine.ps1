@@ -7,14 +7,16 @@ begin {
             [Parameter(Mandatory)]
             [string]$Name,
             [Parameter(Mandatory)]
-            [string]$Script
+            [string]$Path
         )
         process {
             Write-Host "Exporting $Name..." -NoNewline
-            & (Join-Path -Path $PSScriptRoot -ChildPath $Script)
+            & $Path
             Write-Host 'Done'
         }
     }
+
+    $exportsPath = "$env:XDG_CONFIG_HOME/lancra/env/exports.json"
 
     $beginLoading = "`e]9;4;3`a"
     $endLoading = "`e]9;4;0`a"
@@ -22,12 +24,13 @@ begin {
     Write-Host $beginLoading -NoNewline
 }
 process {
-    Publish-Export -Name 'winget packages' -Script 'export-winget-packages.ps1'
-    Publish-Export -Name 'powershell modules' -Script 'export-powershell-modules.ps1'
-    Publish-Export -Name 'npm packages' -Script 'export-npm-packages.ps1'
-    Publish-Export -Name 'pip packages' -Script 'export-pip-packages.ps1'
-    Publish-Export -Name 'go packages' -Script 'export-go-packages.ps1'
-    Publish-Export -Name 'environment variables' -Script 'export-environment-variables.ps1'
+    $exports = Get-Content -Path $exportsPath |
+        ConvertFrom-Json
+
+    $exports |
+        ForEach-Object {
+            Publish-Export -Name $_.name -Path $_.path
+        }
 }
 end {
     Write-Host $endLoading -NoNewline
