@@ -21,7 +21,7 @@ if (-not (Test-Path -Path $sourcePath)) {
     exit 1
 }
 
-bat --paging=never --language=json --file-name=Source $sourcePath
+& bat --paging=never --language=json --file-name=Source $sourcePath
 
 $visualStudioCodeDirectory = "$env:APPDATA/Code/User/snippets"
 $title = Get-Content -Path $sourcePath |
@@ -31,6 +31,7 @@ $scopes = @(Get-Content -Path $sourcePath |
     ConvertFrom-Json)
 
 $script:missingVisualStudioCodeScope = $false
+$visualStudioCodeSnippets = @{}
 $scopes |
     ForEach-Object {
         $visualStudioScopePath = "$visualStudioCodeDirectory/$_.json"
@@ -40,14 +41,27 @@ $scopes |
             return
         }
 
-        $displayName = 'Visual Studio Code'
-        if ($scopes.Length -gt 1) {
-            $displayName += " ($_)"
+        $content = Get-Content -Path $visualStudioScopePath |
+            jq "with_entries(. | select(.key == $title))"
+        $contentStream = [System.IO.MemoryStream]::new([byte[]][char[]]($content -join ''))
+        $contentHashInfo = Get-FileHash -InputStream $contentStream -Algorithm SHA256
+        $contentHash = $contentHashInfo.Hash
+
+        if (-not $visualStudioCodeSnippets.ContainsKey($contentHash)) {
+            $visualStudioCodeSnippets[$contentHash] = @{
+                Scopes = @()
+                Content = $content
+            }
         }
 
-        Get-Content -Path $visualStudioScopePath |
-            jq "with_entries(. | select(.key == $title))" |
-            bat --paging=never --language=json --file-name=$displayName
+        $visualStudioCodeSnippets[$contentHash].Scopes += $_
+    }
+
+$visualStudioCodeSnippets.GetEnumerator() |
+    ForEach-Object {
+        $scopesDisplay = $_.Value.Scopes -join ' / '
+        $displayName = "Visual Studio Code ($scopesDisplay)"
+        $_.Value.Content | & bat --paging=never --language=json --file-name=$displayName
     }
 
 $visualStudioDirectory = "$env:HOME/Documents/Visual Studio 2022/Code Snippets/Visual C#/My Code Snippets"
@@ -60,7 +74,7 @@ if ($scopes.Contains('csharp')) {
         return
     }
 
-    bat --paging=never --language=xml --file-name "Visual Studio" $visualStudioPath
+    & bat --paging=never --language=xml --file-name "Visual Studio" $visualStudioPath
 }
 
 if ($script:missingVisualStudioCodeScope -or $script:missingVisualStudio) {
