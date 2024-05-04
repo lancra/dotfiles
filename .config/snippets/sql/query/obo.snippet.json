@@ -1,6 +1,6 @@
 {
-    "title": "Order By 1 Descending",
-    "description": "An order by clause which sorts by the first column.",
-    "scope": "sql",
-    "body": "ORDER BY 1 DESCENDING"
-  }
+  "title": "Order By 1 Descending",
+  "description": "An order by clause which sorts by the first column.",
+  "scope": "sql",
+  "body": "ORDER BY 1 DESC"
+}

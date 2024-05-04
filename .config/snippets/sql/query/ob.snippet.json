@@ -1,6 +1,6 @@
 {
-    "title": "Order By",
-    "description": "An order by clause.",
-    "scope": "sql",
-    "body": "ORDER BY $0"
-  }
+  "title": "Order By",
+  "description": "An order by clause.",
+  "scope": "sql",
+  "body": "ORDER BY $0"
+}
