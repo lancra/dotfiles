@@ -53,7 +53,7 @@ process {
         ForEach-Object {
             $name = "$($_.id) $($_.resource)"
             $script = [System.Environment]::ExpandEnvironmentVariables($_.export)
-            $target = [System.Environment]::ExpandEnvironmentVariables($_.store)
+            $target = "$env:XDG_CONFIG_HOME/$($_.id)/$($_.store)"
             Publish-Export -Name $name -Script $script -Target $target
         }
 }

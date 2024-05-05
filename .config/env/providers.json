@@ -4,37 +4,37 @@
     {
       "id": "env",
       "resource": "variables",
-      "store": "%XDG_CONFIG_HOME%/env/variables.yaml",
+      "store": "variables.yaml",
       "export": "%HOME%/bin/export-environment-variables.ps1"
     },
     {
       "id": "go",
       "resource": "packages",
-      "store": "%XDG_CONFIG_HOME%/go/packages.csv",
+      "store": "packages.csv",
       "export": "%HOME%/bin/export-go-packages.ps1"
     },
     {
       "id": "npm",
       "resource": "packages",
-      "store": "%XDG_CONFIG_HOME%/npm/packages.csv",
+      "store": "packages.csv",
       "export": "%HOME%/bin/export-npm-packages.ps1"
     },
     {
       "id": "pip",
       "resource": "packages",
-      "store": "%XDG_CONFIG_HOME%/pip/packages.csv",
+      "store": "packages.csv",
       "export": "%HOME%/bin/export-pip-packages.ps1"
     },
     {
       "id": "powershell",
       "resource": "modules",
-      "store": "%XDG_CONFIG_HOME%/powershell/modules.yaml",
+      "store": "modules.yaml",
       "export": "%HOME%/bin/export-powershell-modules.ps1"
     },
     {
       "id": "winget",
       "resource": "packages",
-      "store": "%XDG_CONFIG_HOME%/winget/packages.csv",
+      "store": "packages.csv",
       "export": "%HOME%/bin/export-winget-packages.ps1"
     }
   ]
