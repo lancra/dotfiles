@@ -48,6 +48,7 @@
 [commit]
 	gpgSign = true
 [core]
+	autocrlf = false
 	editor = 'c:/Program Files/Vim/vim91/vim.exe'
 	pager = delta
 	symlinks = true
