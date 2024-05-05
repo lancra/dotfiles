@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param (
     [Parameter()]
-    [string]$Source = "$env:XDG_CONFIG_HOME/env/default.yaml"
+    [string]$Source = "$env:XDG_CONFIG_HOME/env/variables.yaml"
 )
 
 function Compare-EnvironmentVariable {
