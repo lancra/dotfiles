@@ -1,7 +1,10 @@
 #Requires -Modules powershell-yaml
 
 [CmdletBinding()]
-param ()
+param (
+    [Parameter(Mandatory)]
+    [string]$Target
+)
 
 $unknownModuleLocation = [ordered]@{ Name = 'Unknown'; Path = 'C:\'; Order = 0 }
 $moduleLocations = @(
@@ -78,10 +81,9 @@ $output.modules = $modules |
         }
     }
 
-$directoryPath = Join-Path -Path $env:XDG_CONFIG_HOME -ChildPath 'powershell'
+$directoryPath = [System.IO.Path]::GetDirectoryName($Target)
 New-Item -ItemType Directory -Path $directoryPath -Force | Out-Null
-$modulesPath = Join-Path -Path $directoryPath -ChildPath 'modules.yaml'
 
 $output |
     ConvertTo-Yaml |
-    Set-Content -Path $modulesPath
+    Set-Content -Path $Target

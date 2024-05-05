@@ -2,8 +2,8 @@
 
 [CmdletBinding()]
 param (
-    [Parameter()]
-    [string]$Target = "$env:XDG_CONFIG_HOME/env/variables.yaml"
+    [Parameter(Mandatory)]
+    [string]$Target
 )
 
 $prefixVariableNames = @(

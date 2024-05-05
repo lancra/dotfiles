@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/env/providers.schema.json",
+  "title": "Machine Configuration Providers",
+  "description": "Specifies machine configuration providers that are manually tracked.",
+  "definitions": {
+    "provider": {
+      "title": "Configuration Provider",
+      "description": "Provider of machine configuration.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "The unique identifier of the provider.",
+          "type": "string"
+        },
+        "resource": {
+          "description": "The type of resource being tracked.",
+          "type": "string"
+        },
+        "store": {
+          "description": "The path where configuration is stored.",
+          "type": "string"
+        },
+        "export": {
+          "description": "The path of the script used to export the configuration.",
+          "type": "string"
+        }
+      },
+      "required": ["id", "resource", "store", "export"]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "providers": {
+      "description": "Machine configuration providers.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/provider"
+      }
+    }
+  },
+  "required": ["providers"]
+}

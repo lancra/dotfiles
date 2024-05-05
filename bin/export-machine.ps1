@@ -2,16 +2,16 @@
 param (
     [Parameter()]
     [ValidateScript({
-        $_ -in (Get-Content -Path "$env:XDG_CONFIG_HOME/env/exports.json" | jq -r '.[] | .id')},
-        ErrorMessage = 'The provided export was not found.')]
+        $_ -in (Get-Content -Path "$env:XDG_CONFIG_HOME/env/providers.json" | jq -r '.providers.[] | .id')},
+        ErrorMessage = 'Provider not found.')]
     [ArgumentCompleter({
         param($cmd, $param, $wordToComplete)
-        if ($param -eq 'Export') {
-            $validExports = @(Get-Content -Path "$env:XDG_CONFIG_HOME/env/exports.json" | jq -r '.[] | .id')
-            $validExports -like "$wordToComplete*"
+        if ($param -eq 'Provider') {
+            $validProviders = @(Get-Content -Path "$env:XDG_CONFIG_HOME/env/providers.json" | jq -r '.providers.[] | .id')
+            $validProviders -like "$wordToComplete*"
         }
     })]
-    [string]$Export
+    [string]$Provider
 )
 begin {
     function Publish-Export {
@@ -20,16 +20,18 @@ begin {
             [Parameter(Mandatory)]
             [string]$Name,
             [Parameter(Mandatory)]
-            [string]$Path
+            [string]$Script,
+            [Parameter(Mandatory)]
+            [string]$Target
         )
         process {
             Write-Host "Exporting $Name..." -NoNewline
-            & $Path
+            & $Script -Target $Target
             Write-Host 'Done'
         }
     }
 
-    $exportsPath = "$env:XDG_CONFIG_HOME/env/exports.json"
+    $providersPath = "$env:XDG_CONFIG_HOME/env/providers.json"
 
     $beginLoading = "`e]9;4;3`a"
     $endLoading = "`e]9;4;0`a"
@@ -37,18 +39,22 @@ begin {
     Write-Host $beginLoading -NoNewline
 }
 process {
-    $exports = Get-Content -Path $exportsPath |
-        ConvertFrom-Json
+    $providers = Get-Content -Path $providersPath |
+        ConvertFrom-Json |
+        Select-Object -ExpandProperty providers
 
-    $targetExports = $exports
-    if ($Export) {
-        $targetExports = $exports |
-            Where-Object -Property id -EQ $Export
+    $targetProviders = $providers
+    if ($Provider) {
+        $targetProviders = $providers |
+            Where-Object -Property id -EQ $Provider
     }
 
-    $targetExports |
+    $targetProviders |
         ForEach-Object {
-            Publish-Export -Name $_.name -Path $_.path
+            $name = "$($_.id) $($_.resource)"
+            $script = [System.Environment]::ExpandEnvironmentVariables($_.export)
+            $target = [System.Environment]::ExpandEnvironmentVariables($_.store)
+            Publish-Export -Name $name -Script $script -Target $target
         }
 }
 end {

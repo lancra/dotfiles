@@ -1,0 +1,41 @@
+{
+  "$schema": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/env/providers.schema.json",
+  "providers": [
+    {
+      "id": "environment",
+      "resource": "variables",
+      "store": "%XDG_CONFIG_HOME%/env/variables.yaml",
+      "export": "%HOME%/bin/export-environment-variables.ps1"
+    },
+    {
+      "id": "go",
+      "resource": "packages",
+      "store": "%XDG_CONFIG_HOME%/go/packages.csv",
+      "export": "%HOME%/bin/export-go-packages.ps1"
+    },
+    {
+      "id": "npm",
+      "resource": "packages",
+      "store": "%XDG_CONFIG_HOME%/npm/packages.csv",
+      "export": "%HOME%/bin/export-npm-packages.ps1"
+    },
+    {
+      "id": "pip",
+      "resource": "packages",
+      "store": "%XDG_CONFIG_HOME%/pip/packages.csv",
+      "export": "%HOME%/bin/export-pip-packages.ps1"
+    },
+    {
+      "id": "powershell",
+      "resource": "modules",
+      "store": "%XDG_CONFIG_HOME%/powershell/modules.yaml",
+      "export": "%HOME%/bin/export-powershell-modules.ps1"
+    },
+    {
+      "id": "winget",
+      "resource": "packages",
+      "store": "%XDG_CONFIG_HOME%/winget/packages.csv",
+      "export": "%HOME%/bin/export-winget-packages.ps1"
+    }
+  ]
+}

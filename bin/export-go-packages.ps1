@@ -1,5 +1,8 @@
 [CmdletBinding(SupportsShouldProcess)]
-param ()
+param (
+    [Parameter(Mandatory)]
+    [string]$Target
+)
 
 $lines = @()
 $foundFirstPackage = $false
@@ -16,10 +19,9 @@ $foundFirstPackage = $false
         $lines += $_
     }
 
-$directoryPath = Join-Path -Path $env:XDG_CONFIG_HOME -ChildPath 'go'
+$directoryPath = [System.IO.Path]::GetDirectoryName($Target)
 New-Item -ItemType Directory -Path $directoryPath -Force | Out-Null
 
-$packagesPath = Join-Path $directoryPath -ChildPath 'packages.csv'
 @($lines -join '\n' -split '(?:\\n){2,}') |
     ForEach-Object {
         $packageLines = $_ -split '\\n' | Where-Object { $_ -ne '' }
@@ -37,4 +39,4 @@ $packagesPath = Join-Path $directoryPath -ChildPath 'packages.csv'
     } |
     Sort-Object -Property Id |
     ConvertTo-Csv -UseQuotes AsNeeded |
-    Set-Content -Path $packagesPath
+    Set-Content -Path $Target

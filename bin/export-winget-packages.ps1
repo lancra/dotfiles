@@ -1,5 +1,7 @@
 [CmdletBinding()]
 param (
+    [Parameter(Mandatory)]
+    [string]$Target,
     [switch]$IncludeSources,
     [switch]$IncludeProperties
 )
@@ -35,9 +37,8 @@ function New-ConfigPackage {
     }
 }
 
-$configurationDirectory = Join-Path -Path $PSScriptRoot -ChildPath '..' -AdditionalChildPath '.config','winget'
-$packagesCsvPath = Join-Path -Path $configurationDirectory -ChildPath 'packages.csv'
-$configPackages = (Test-Path -Path $packagesCsvPath) ? (Import-Csv -Path $packagesCsvPath) : @()
+$configurationDirectory = [System.IO.Path]::GetDirectoryName($Target)
+$configPackages = (Test-Path -Path $Target) ? (Import-Csv -Path $Target) : @()
 
 $packagesJsonPath = Join-Path -Path $configurationDirectory -ChildPath 'packages.json'
 & winget export --output $packagesJsonPath | Out-Null
@@ -89,7 +90,7 @@ $ids | Select-Object -Unique |
             $wingetPackage
         }
     } |
-    Export-Csv -Path $packagesCsvPath -UseQuotes AsNeeded
+    Export-Csv -Path $Target -UseQuotes AsNeeded
 
 if ($IncludeProperties) {
     $propertiesJsonPath = Join-Path -Path $configurationDirectory -ChildPath 'properties.json'
