@@ -3,7 +3,7 @@
 [CmdletBinding()]
 param (
     [Parameter()]
-    [string]$Target = "$XDG_CONFIG_HOME/lancra/env/default.yaml"
+    [string]$Target = "$env:XDG_CONFIG_HOME/env/default.yaml"
 )
 
 $prefixVariableNames = @(

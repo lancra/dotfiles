@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param (
     [Parameter()]
-    [string]$Source = "$env:XDG_CONFIG_HOME/lancra/env/default.yaml"
+    [string]$Source = "$env:XDG_CONFIG_HOME/env/default.yaml"
 )
 
 function Compare-EnvironmentVariable {

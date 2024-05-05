@@ -2,12 +2,12 @@
 param (
     [Parameter()]
     [ValidateScript({
-        $_ -in (Get-Content -Path $exportsPath | jq -r '.[] | .id')},
+        $_ -in (Get-Content -Path "$env:XDG_CONFIG_HOME/env/exports.json" | jq -r '.[] | .id')},
         ErrorMessage = 'The provided export was not found.')]
     [ArgumentCompleter({
         param($cmd, $param, $wordToComplete)
         if ($param -eq 'Export') {
-            $validExports = @(Get-Content -Path $exportsPath | jq -r '.[] | .id')
+            $validExports = @(Get-Content -Path "$env:XDG_CONFIG_HOME/env/exports.json" | jq -r '.[] | .id')
             $validExports -like "$wordToComplete*"
         }
     })]
@@ -29,7 +29,7 @@ begin {
         }
     }
 
-    $exportsPath = "$env:XDG_CONFIG_HOME/lancra/env/exports.json"
+    $exportsPath = "$env:XDG_CONFIG_HOME/env/exports.json"
 
     $beginLoading = "`e]9;4;3`a"
     $endLoading = "`e]9;4;0`a"
