@@ -2,6 +2,12 @@
   "$schema": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/env/providers.schema.json",
   "providers": [
     {
+      "id": "dotnet",
+      "resource": "tools",
+      "store": "csv",
+      "export": "export-tools.ps1"
+    },
+    {
       "id": "env",
       "resource": "variables",
       "store": "yaml",
