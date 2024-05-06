@@ -22,7 +22,7 @@
           "type": "string"
         },
         "export": {
-          "description": "The path of the script used to export the configuration.",
+          "description": "The file name of the script used to export the configuration.",
           "type": "string"
         }
       },
