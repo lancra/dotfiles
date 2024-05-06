@@ -4,37 +4,37 @@
     {
       "id": "env",
       "resource": "variables",
-      "store": "variables.yaml",
+      "store": "yaml",
       "export": "%HOME%/bin/export-environment-variables.ps1"
     },
     {
       "id": "go",
       "resource": "packages",
-      "store": "packages.csv",
+      "store": "csv",
       "export": "%HOME%/bin/export-go-packages.ps1"
     },
     {
       "id": "npm",
       "resource": "packages",
-      "store": "packages.csv",
+      "store": "csv",
       "export": "%HOME%/bin/export-npm-packages.ps1"
     },
     {
       "id": "pip",
       "resource": "packages",
-      "store": "packages.csv",
+      "store": "csv",
       "export": "%HOME%/bin/export-pip-packages.ps1"
     },
     {
       "id": "powershell",
       "resource": "modules",
-      "store": "modules.yaml",
+      "store": "yaml",
       "export": "%HOME%/bin/export-powershell-modules.ps1"
     },
     {
       "id": "winget",
       "resource": "packages",
-      "store": "packages.csv",
+      "store": "csv",
       "export": "%HOME%/bin/export-winget-packages.ps1"
     }
   ]

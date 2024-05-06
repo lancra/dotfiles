@@ -18,7 +18,7 @@
           "type": "string"
         },
         "store": {
-          "description": "The name of the file where configuration is stored.",
+          "description": "The type of the file where configuration is stored.",
           "type": "string"
         },
         "export": {
