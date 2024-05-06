@@ -19,9 +19,6 @@ $foundFirstPackage = $false
         $lines += $_
     }
 
-$directoryPath = [System.IO.Path]::GetDirectoryName($Target)
-New-Item -ItemType Directory -Path $directoryPath -Force | Out-Null
-
 @($lines -join '\n' -split '(?:\\n){2,}') |
     ForEach-Object {
         $packageLines = $_ -split '\\n' | Where-Object { $_ -ne '' }

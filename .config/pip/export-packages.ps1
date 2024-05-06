@@ -4,9 +4,6 @@ param (
     [string]$Target
 )
 
-$directoryPath = [System.IO.Path]::GetDirectoryName($Target)
-New-Item -ItemType Directory -Path $directoryPath -Force | Out-Null
-
 $homepageGroupName = 'Homepage'
 & pip list --not-required --format json --verbose |
     ConvertFrom-Json |

@@ -81,9 +81,6 @@ $output.modules = $modules |
         }
     }
 
-$directoryPath = [System.IO.Path]::GetDirectoryName($Target)
-New-Item -ItemType Directory -Path $directoryPath -Force | Out-Null
-
 $output |
     ConvertTo-Yaml |
     Set-Content -Path $Target

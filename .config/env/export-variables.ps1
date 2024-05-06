@@ -145,8 +145,5 @@ $getMachineVariablesArgs = @{
 }
 $variables['Machine'] = Get-EnvironmentVariable @getMachineVariablesArgs
 
-$directory = [System.IO.Path]::GetDirectoryName($Target)
-New-Item -ItemType Directory -Path $directory -Force | Out-Null
-
 $variables | ConvertTo-Yaml |
     Set-Content -Path $Target
