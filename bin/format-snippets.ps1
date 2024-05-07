@@ -344,7 +344,6 @@ function Read-SqlSnippet {
     [OutputType([System.IO.FileSystemInfo[]])]
     param ()
     begin {
-        $frontMatterSeparator = '---'
         $temporaryDirectory = Join-Path -Path $env:TEMP -ChildPath (New-Guid).Guid
     }
     process {
@@ -354,31 +353,28 @@ function Read-SqlSnippet {
         }
 
         $files | ForEach-Object {
-            $prefix = [System.IO.Path]::GetFileNameWithoutExtension($_.FullName)
-
-            $fileLines = Get-Content -Path $_.FullName
-            $frontMatterSeparatorIndexes = @(0..($fileLines.Count - 1) | Where-Object { $fileLines[$_] -eq $frontMatterSeparator })
-
-            $frontMatterSeparatorCount = $frontMatterSeparatorIndexes.Length
-            if ($frontMatterSeparatorCount -in @(0, 1)) {
-                Write-Error "sql.${prefix}: Expected 2 or 3 front matter separators but found $frontMatterSeparatorCount."
+            $sections = & split-sql-snippet-sections.ps1 -Path $_.FullName |
+                ConvertFrom-Json
+            if ($null -eq $sections) {
                 return
             }
 
-            $snippet = [ordered]@{}
+            $prefix = [System.IO.Path]::GetFileNameWithoutExtension($_.FullName)
+            $snippet = [ordered]@{
+                scope = 'sql'
+            }
 
-            $lastFrontMatterSeparatorIndex = $frontMatterSeparatorIndexes[1]
-            $metadata = @($fileLines[($frontMatterSeparatorIndexes[0] + 1)..($lastFrontMatterSeparatorIndex - 1)]) | ConvertFrom-Yaml
-
-            $metadata.GetEnumerator() | ForEach-Object { $snippet[$_.Key.Substring(2)] = $_.Value }
-            $snippet['scope'] = 'sql'
+            $metadata = $sections |
+                Select-Object -ExpandProperty metadata |
+                ConvertFrom-Yaml
+            $metadata.GetEnumerator() |
+                ForEach-Object { $snippet[$_.Key] = $_.Value }
 
             $body = @()
-            if ($frontMatterSeparatorCount -gt 2) {
-                $lastFrontMatterSeparatorIndex = $frontMatterSeparatorIndexes[2]
-
+            if ($sections.parameters.Length -gt 0) {
                 $script:parameterNumber = 1
-                $body = $fileLines[($frontMatterSeparatorIndexes[1] + 1)..($lastFrontMatterSeparatorIndex - 1)] |
+                $body = $sections |
+                    Select-Object -ExpandProperty parameters |
                     ForEach-Object -Begin { $script:parameterNumber = 1 } -Process {
                         $parameter = Format-SqlSnippetParameter -Line $_ -Number $script:parameterNumber
                         $script:parameterNumber++
@@ -386,7 +382,7 @@ function Read-SqlSnippet {
                     }
             }
 
-            $body += $fileLines[($lastFrontMatterSeparatorIndex + 1)..($fileLines.Length - 1)]
+            $body += $sections | Select-Object -ExpandProperty body
             $snippet['body'] = $body
 
             $snippetPath = Join-Path -Path $temporaryDirectory -ChildPath "$prefix.snippet.json"

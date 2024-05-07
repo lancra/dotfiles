@@ -5,9 +5,12 @@ param (
 )
 
 $sourceDirectory = "$env:HOME/.config/snippets"
-$sourceFileName = "$Name.snippet.json"
+$sourceFileNames = @(
+    "$Name.snippet.json",
+    "$Name.sql"
+)
 
-$sourcePaths = @(Get-ChildItem -Path $sourceDirectory -Filter $sourceFileName -Recurse)
+$sourcePaths = @(Get-ChildItem -Path $sourceDirectory -Recurse -Include $sourceFileNames)
 if ($sourcePaths.Length -gt 1) {
     $duplicatePaths = $sourcePaths | Select-Object -ExpandProperty FullName
     $duplicatePathsText = $duplicatePaths -join [System.Environment]::NewLine
@@ -21,14 +24,26 @@ if (-not (Test-Path -Path $sourcePath)) {
     exit 1
 }
 
-& bat --paging=never --language=json --file-name=Source $sourcePath
+$sourceLanguage = [System.IO.Path]::GetExtension($sourcePath).Substring(1)
+& bat --paging=never --language=$sourceLanguage --file-name=Source $sourcePath
 
 $visualStudioCodeDirectory = "$env:APPDATA/Code/User/snippets"
-$title = Get-Content -Path $sourcePath |
-    jq --compact-output '.title'
-$scopes = @(Get-Content -Path $sourcePath |
-    jq --compact-output '.scope | to_array' |
-    ConvertFrom-Json)
+$title = ''
+$scopes = @()
+
+if ($sourceLanguage -eq 'json') {
+    $title = Get-Content -Path $sourcePath |
+        jq --compact-output --raw-output '.title'
+    $scopes = @(Get-Content -Path $sourcePath |
+        jq --compact-output '.scope | to_array' |
+        ConvertFrom-Json)
+} elseif ($sourceLanguage -eq 'sql') {
+    $title = (& split-sql-snippet-sections.ps1 -Path $sourcePath |
+        ConvertFrom-Json |
+        Select-Object -ExpandProperty metadata |
+        ConvertFrom-Yaml)['title']
+    $scopes = @('sql')
+}
 
 $script:missingVisualStudioCodeScope = $false
 $visualStudioCodeSnippets = @{}
@@ -42,7 +57,7 @@ $scopes |
         }
 
         $content = Get-Content -Path $visualStudioScopePath |
-            jq "with_entries(. | select(.key == $title))"
+            jq "with_entries(. | select(.key == `"$title`"))"
         $contentStream = [System.IO.MemoryStream]::new([byte[]][char[]]($content -join ''))
         $contentHashInfo = Get-FileHash -InputStream $contentStream -Algorithm SHA256
         $contentHash = $contentHashInfo.Hash
