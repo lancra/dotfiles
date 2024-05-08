@@ -18,7 +18,7 @@ function Compare-EnvironmentVariable {
         New-Item -ItemType Directory -Path $targetDirectory -Force | Out-Null
 
         $targetPath = "$targetDirectory/environment-variables.yaml"
-        export-environment-variables.ps1 -Target $targetPath
+        & "$env:XDG_CONFIG_HOME/env/export-variables.ps1" -Target $targetPath
 
         # Use UTF-8 so that Tee-Object doesn't garble Unicode symbols.
         $originalEncoding = [System.Console]::OutputEncoding
