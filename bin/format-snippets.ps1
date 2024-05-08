@@ -26,11 +26,6 @@ class SnippetPlaceholder {
     [string]$Tooltip
 }
 
-class SnippetLineResult {
-    [string]$Line
-    [System.Xml.XmlElement[]]$Literals
-}
-
 function Format-VisualStudioCodeSnippet {
     [CmdletBinding(SupportsShouldProcess)]
     param (
