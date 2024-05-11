@@ -9,6 +9,7 @@
 	brmn = "!git branch --no-merged ${1-main} #"
 	brmy = "!git branch --merged ${1-main} #"
 	ca = "commit --amend"
+	can = "commit --amend --no-edit"
 	cge = "config --global --edit"
 	ci = "commit"
 	civ = "-c commit.verbose=true commit"
