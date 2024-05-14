@@ -4,7 +4,7 @@ param (
     [string]$Target
 )
 
-& npm list --location=global --json |
+(& npm list --location=global --json |
     & jq -r '.dependencies | keys[]' |
     ForEach-Object {
         $packageMetadata = & npm view --json $_ |
@@ -16,4 +16,4 @@ param (
     } |
     Sort-Object -Property Id |
     ConvertTo-Csv -UseQuotes AsNeeded |
-    Set-Content -Path $Target
+    Set-Content -Path $Target) 2> $null
