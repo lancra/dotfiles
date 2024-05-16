@@ -15,6 +15,6 @@
     "    {",
     "        _seedDataFixture.Dispose();",
     "    }",
-    "}"
+    "}$0"
   ]
 }

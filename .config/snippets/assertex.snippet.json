@@ -4,7 +4,7 @@
   "scope": "csharp",
   "body": [
     "Assert.NotNull(exception);",
-    "Assert.IsType<${1:Exception}>(exception);"
+    "Assert.IsType<${1:Exception}>(exception);$0"
   ],
   "placeholders": {
     "1": {

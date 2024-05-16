@@ -2,5 +2,5 @@
   "title": "Create System Under Test",
   "description": "The method call to create a system-under-test.",
   "scope": "csharp",
-  "body": "var sut = CreateSystemUnderTest();"
+  "body": "var sut = CreateSystemUnderTest();$0"
 }

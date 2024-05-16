@@ -2,5 +2,5 @@
   "title": "Exclude from Code Coverage",
   "description": "The attribute for excluding a target from code coverage analysis.",
   "scope": "csharp",
-  "body": "[ExcludeFromCodeCoverage]"
+  "body": "[ExcludeFromCodeCoverage]$0"
 }

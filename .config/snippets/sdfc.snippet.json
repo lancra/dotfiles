@@ -2,5 +2,5 @@
   "title": "Seed Data Fixture Construction",
   "description": "Registers a seed data fixture for dependency injection within an AutoMocker instance.",
   "scope": "csharp",
-  "body": "_mocker.Use(_seedDataFixture.NewContext);"
+  "body": "_mocker.Use(_seedDataFixture.NewContext);$0"
 }
