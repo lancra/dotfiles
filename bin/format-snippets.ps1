@@ -26,15 +26,43 @@ class SnippetPlaceholder {
     [string]$Tooltip
 }
 
+class SnippetFormatResult {
+    [string]$Title
+    [int]$OldCount
+    [int]$NewCount
+    [bool]$HasChanges
+}
+
+function Write-SnippetFormatResult {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory, ValueFromPipeline)]
+        [SnippetFormatResult]$Result
+    )
+    begin {
+        $titleWidth = 20
+        $countFormat = '{0:D3}'
+    }
+    process {
+        $title = "$($Result.Title):".PadRight($titleWidth, ' ')
+
+        $oldCount = $countFormat -f $Result.OldCount
+        $newCount = $countFormat -f $Result.NewCount
+
+        $hasChanges = $Result.HasChanges ? 'changed' : 'identical'
+
+        Write-Output "$title $oldCount -> $newCount ($hasChanges)"
+    }
+}
+
 function Format-VisualStudioCodeSnippet {
     [CmdletBinding(SupportsShouldProcess)]
+    [OutputType([SnippetFormatResult])]
     param (
         [Parameter(Mandatory)]
         [string]$Json,
         [Parameter(Mandatory)]
-        [string]$Scope,
-        [Parameter(Mandatory)]
-        [int]$Padding
+        [string]$Scope
     )
     process {
         $filePath = "$visualStudioCodeTarget/$Scope.json"
@@ -46,27 +74,23 @@ function Format-VisualStudioCodeSnippet {
         }
 
         $newCount = $Json | jq 'length'
-
-        $spaces = ''.PadLeft($Padding - $Scope.Length, ' ')
-
-        $countFormat = '{0:D2}'
-        $oldCountDisplay = $countFormat -f [int]$oldCount
-        $newCountDisplay = $countFormat -f [int]$newCount
-
-        $hasChangesDisplay = $hasChanges ? 'changed' : 'identical'
-
-        Write-Output "vscode ${Scope}:$spaces $oldCountDisplay -> $newCountDisplay ($hasChangesDisplay)"
         Set-Content -Path $filePath -Value $Json
+
+        [ordered]@{
+            Title = "vscode $Scope"
+            OldCount = $oldCount
+            NewCount = $newCount
+            HasChanges = $hasChanges
+        }
     }
 }
 
 function Format-AzureDataStudioSnippet {
     [CmdletBinding(SupportsShouldProcess)]
+    [OutputType([SnippetFormatResult])]
     param (
         [Parameter(Mandatory)]
-        [string]$Json,
-        [Parameter(Mandatory)]
-        [int]$Padding
+        [string]$Json
     )
     process {
         $filePath = "$azureDataStudioTarget/sql.json"
@@ -78,17 +102,14 @@ function Format-AzureDataStudioSnippet {
         }
 
         $newCount = $Json | jq 'length'
-
-        $spaces = ''.PadLeft($Padding, ' ')
-
-        $countFormat = '{0:D2}'
-        $oldCountDisplay = $countFormat -f [int]$oldCount
-        $newCountDisplay = $countFormat -f [int]$newCount
-
-        $hasChangesDisplay = $hasChanges ? 'changed' : 'identical'
-
-        Write-Output "ads:$spaces $oldCountDisplay -> $newCountDisplay ($hasChangesDisplay)"
         Set-Content -Path $filePath -Value $Json
+
+        [ordered]@{
+            Title = 'ads'
+            OldCount = $oldCount
+            NewCount = $newCount
+            HasChanges = $hasChanges
+        }
     }
 }
 
@@ -162,9 +183,7 @@ function Format-VisualStudioSnippet {
     [CmdletBinding(SupportsShouldProcess)]
     param (
         [Parameter(Mandatory)]
-        [Snippet[]]$Snippets,
-        [Parameter(Mandatory)]
-        [int]$Padding
+        [Snippet[]]$Snippets
     )
     begin {
         $bodySeparator = [System.Environment]::NewLine + '      '
@@ -273,9 +292,12 @@ function Format-VisualStudioSnippet {
                 Move-Item -Path $_ -Destination $newPath
             }
 
-        $spaces = ''.PadLeft($Padding, ' ')
-        $hasChangesDisplay = $hasChanges ? 'changed' : 'identical'
-        Write-Output "vs:$spaces $oldCount -> $newCount ($hasChangesDisplay)"
+        [ordered]@{
+            Title = 'vs'
+            OldCount = $oldCount
+            NewCount = $newCount
+            HasChanges = $hasChanges
+        }
     }
 }
 
@@ -412,7 +434,6 @@ if ($sqlSnippetFiles.Length -gt 0) {
 }
 
 $scopesJson = $allSnippetsJson | jq --compact-output '[.[].scope[]] | unique'
-$maxScopeLength = [int]($scopesJson | jq '[.[] | length] | max')
 
 $script:visualStudioSnippets = @()
 
@@ -424,7 +445,7 @@ $scopesJson |
 
         # Convert snippets within the scope into key-value objects by the title.
         $vsCodeSnippetsJson = $matchingSnippetsJson | jq 'map({ (.title): del(.title, .scope, .placeholders) }) | add' | Out-String
-        Format-VisualStudioCodeSnippet -Json $vsCodeSnippetsJson -Scope $scope -Padding $maxScopeLength
+        Format-VisualStudioCodeSnippet -Json $vsCodeSnippetsJson -Scope $scope | Write-SnippetFormatResult
 
         if ($scope -eq 'csharp') {
             $script:visualStudioSnippets = [Snippet[]]($matchingSnippetsJson |
@@ -433,8 +454,8 @@ $scopesJson |
                 jq --compact-output 'map(. + { placeholders: .placeholders | to_array })' |
                 ConvertFrom-Json)
         } elseif ($scope -eq 'sql') {
-            Format-AzureDataStudioSnippet -Json $vsCodeSnippetsJson -Padding ($maxScopeLength + 4)
+            Format-AzureDataStudioSnippet -Json $vsCodeSnippetsJson | Write-SnippetFormatResult
         }
     }
 
-Format-VisualStudioSnippet -Snippets $script:visualStudioSnippets -Padding ($maxScopeLength + 5)
+Format-VisualStudioSnippet -Snippets $script:visualStudioSnippets | Write-SnippetFormatResult
