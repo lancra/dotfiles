@@ -26,7 +26,7 @@ $foundFirstPackage = $false
         $metadataSegments = $packageLines[0] -split ': '
         $id = [System.IO.Path]::GetFileNameWithoutExtension($metadataSegments[0])
 
-        $pathSegments = $packageLines[1] -split "`t" | Where-Object { $_ -ne '' }
+        $pathSegments = $packageLines[2] -split "`t" | Where-Object { $_ -ne '' }
         $path = $pathSegments[1]
 
         [ordered]@{
