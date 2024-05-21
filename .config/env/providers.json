@@ -5,43 +5,43 @@
       "id": "dotnet",
       "resource": "tools",
       "store": "csv",
-      "export": "export-tools.ps1"
+      "export": true
     },
     {
       "id": "env",
       "resource": "variables",
       "store": "yaml",
-      "export": "export-variables.ps1"
+      "export": true
     },
     {
       "id": "go",
       "resource": "packages",
       "store": "csv",
-      "export": "export-packages.ps1"
+      "export": true
     },
     {
       "id": "npm",
       "resource": "packages",
       "store": "csv",
-      "export": "export-packages.ps1"
+      "export": true
     },
     {
       "id": "pip",
       "resource": "packages",
       "store": "csv",
-      "export": "export-packages.ps1"
+      "export": true
     },
     {
       "id": "powershell",
       "resource": "modules",
       "store": "yaml",
-      "export": "export-modules.ps1"
+      "export": true
     },
     {
       "id": "winget",
       "resource": "packages",
       "store": "csv",
-      "export": "export-packages.ps1"
+      "export": true
     }
   ]
 }

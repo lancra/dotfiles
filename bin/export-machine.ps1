@@ -51,11 +51,13 @@ process {
 
     $targetProviders |
         ForEach-Object {
-            $name = "$($_.id) $($_.resource)"
-            $directory = "$env:XDG_CONFIG_HOME/$($_.id)"
-            $script = "$directory/$($_.export)"
-            $target = "$directory/$($_.resource).$($_.store)"
-            Publish-Export -Name $name -Script $script -Target $target
+            if ($_.export) {
+                $name = "$($_.id) $($_.resource)"
+                $directory = "$env:XDG_CONFIG_HOME/$($_.id)"
+                $script = "$directory/export-$($_.resource).ps1"
+                $target = "$directory/$($_.resource).$($_.store)"
+                Publish-Export -Name $name -Script $script -Target $target
+            }
         }
 }
 end {

@@ -22,8 +22,8 @@
           "type": "string"
         },
         "export": {
-          "description": "The file name of the script used to export the configuration.",
-          "type": "string"
+          "description": "The value that determines whether a resource configuration export is available.",
+          "type": "boolean"
         }
       },
       "required": ["id", "resource", "store", "export"]
