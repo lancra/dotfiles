@@ -15,7 +15,7 @@ $moduleLocations = @(
     [ordered]@{ Name = 'System.Windows'; Path = "$env:SYSTEMROOT\system32\WindowsPowerShell\v1.0\Modules"; Order = 3 }
 )
 
-function Get-InstalledModule {
+function Get-MachineModule {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
@@ -54,16 +54,15 @@ function Get-ModuleLocation {
     }
 }
 
-$modules = @()
-$modules += @(Get-InstalledModule -Executable 'powershell' -Source 'Windows')
-$modules += @(Get-InstalledModule -Executable 'pwsh' -Source 'Core')
+$installedModules = @()
+$installedModules += @(Get-MachineModule -Executable 'powershell' -Source 'Windows')
+$installedModules += @(Get-MachineModule -Executable 'pwsh' -Source 'Core')
 
-$output = @{}
-$output.modules = $modules |
+$modules = $installedModules |
     Select-Object -ExpandProperty Name -Unique |
     Sort-Object |
     ForEach-Object {
-        $matchingModules = @($modules |
+        $matchingModules = @($installedModules |
             Where-Object -Property Name -EQ $_)
 
         $shell = $matchingModules.Count -gt 1 ? 'Both' : $matchingModules[0].Source
@@ -81,6 +80,6 @@ $output.modules = $modules |
         }
     }
 
-$output |
+$modules |
     ConvertTo-Yaml |
     Set-Content -Path $Target
