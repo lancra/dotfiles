@@ -2,12 +2,12 @@
 param (
     [Parameter()]
     [ValidateScript({
-        $_ -in (Get-Content -Path "$env:XDG_CONFIG_HOME/env/providers.json" | jq -r '.providers.[] | .id')},
+        $_ -in (& "$env:XDG_CONFIG_HOME/env/get-provider-ids.ps1")},
         ErrorMessage = 'Provider not found.')]
     [ArgumentCompleter({
         param($cmd, $param, $wordToComplete)
         if ($param -eq 'Provider') {
-            $validProviders = @(Get-Content -Path "$env:XDG_CONFIG_HOME/env/providers.json" | jq -r '.providers.[] | .id')
+            $validProviders = (& "$env:XDG_CONFIG_HOME/env/get-provider-ids.ps1")
             $validProviders -like "$wordToComplete*"
         }
     })]
@@ -31,25 +31,13 @@ begin {
         }
     }
 
-    $providersPath = "$env:XDG_CONFIG_HOME/env/providers.json"
-
     $beginLoading = "`e]9;4;3`a"
     $endLoading = "`e]9;4;0`a"
 
     Write-Host $beginLoading -NoNewline
 }
 process {
-    $providers = Get-Content -Path $providersPath |
-        ConvertFrom-Json |
-        Select-Object -ExpandProperty providers
-
-    $targetProviders = $providers
-    if ($Provider) {
-        $targetProviders = $providers |
-            Where-Object -Property id -EQ $Provider
-    }
-
-    $targetProviders |
+    & "$env:XDG_CONFIG_HOME/env/get-providers.ps1" -Id $Provider |
         ForEach-Object {
             if ($_.export) {
                 $name = "$($_.id) $($_.resource)"
