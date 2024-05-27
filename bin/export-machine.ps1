@@ -14,10 +14,7 @@ param (
     [string]$Provider
 )
 begin {
-    $beginLoading = "`e]9;4;3`a"
-    $endLoading = "`e]9;4;0`a"
-
-    Write-Host $beginLoading -NoNewline
+    & "$env:XDG_CONFIG_HOME/env/begin-loading.ps1"
 }
 process {
     & "$env:XDG_CONFIG_HOME/env/get-providers.ps1" -Id $Provider |
@@ -31,5 +28,5 @@ process {
         }
 }
 end {
-    Write-Host $endLoading -NoNewline
+    & "$env:XDG_CONFIG_HOME/env/end-loading.ps1"
 }
