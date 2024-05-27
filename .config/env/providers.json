@@ -5,42 +5,49 @@
       "id": "dotnet",
       "resource": "tools",
       "store": "csv",
+      "check": true,
       "export": true
     },
     {
       "id": "env",
       "resource": "variables",
       "store": "yaml",
+      "check": false,
       "export": true
     },
     {
       "id": "go",
       "resource": "packages",
       "store": "csv",
+      "check": true,
       "export": true
     },
     {
       "id": "npm",
       "resource": "packages",
       "store": "csv",
+      "check": true,
       "export": true
     },
     {
       "id": "pip",
       "resource": "packages",
       "store": "csv",
+      "check": true,
       "export": true
     },
     {
       "id": "powershell",
       "resource": "modules",
       "store": "yaml",
+      "check": true,
       "export": true
     },
     {
       "id": "winget",
       "resource": "packages",
       "store": "csv",
+      "check": true,
       "export": true
     }
   ]

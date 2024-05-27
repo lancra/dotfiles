@@ -10,6 +10,7 @@ Set-PSReadLineKeyHandler -Key '*,y' -BriefDescription 'global yank' -ViMode Comm
 }
 
 Import-Module HackF5.ProfileAlias
+Set-ProfileAlias cm 'check-machine.ps1' -Force | Out-Null
 Set-ProfileAlias em 'export-machine.ps1' -Force | Out-Null
 Set-ProfileAlias g 'git #{:*}' -Bash -Force | Out-Null
 Set-ProfileAlias l 'lsd -l #{:*}' -Bash -Force | Out-Null

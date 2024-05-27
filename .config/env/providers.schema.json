@@ -21,6 +21,10 @@
           "description": "The type of the file where configuration is stored.",
           "type": "string"
         },
+        "check": {
+          "description": "The value that determines whether an outdated resource check is available.",
+          "type": "boolean"
+        },
         "export": {
           "description": "The value that determines whether a resource configuration export is available.",
           "type": "boolean"
