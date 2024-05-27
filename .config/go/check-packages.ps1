@@ -11,6 +11,7 @@ param ()
                 id = $_.Id
                 current = $_.Version.TrimStart('v')
                 available = $newVersion.TrimStart('v')
+                path = $_.Path
             }
         }
     } |
