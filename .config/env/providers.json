@@ -2,6 +2,13 @@
   "$schema": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/env/providers.schema.json",
   "providers": [
     {
+      "id": "cargo",
+      "resource": "crates",
+      "store": "csv",
+      "check": true,
+      "export": true
+    },
+    {
       "id": "dotnet",
       "resource": "tools",
       "store": "csv",

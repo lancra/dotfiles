@@ -1,0 +1,11 @@
+Id,Description
+bunyan,A CLI to pretty print structured logs. A Rust port of the original JavaScript bunyan CLI.
+cargo-audit,Audit Cargo.lock for crates with security vulnerabilities
+cargo-expand,Wrapper around rustc -Zunpretty=expanded. Shows the result of macro expansion and #[derive] expansion.
+cargo-udeps,Find unused dependencies in Cargo.toml
+cargo-update,A cargo subcommand for checking and applying updates to installed executables
+cargo-watch,Watches over your Cargo projectΓÇÖs source
+rustlings,Small exercises to get you used to reading and writing Rust code!
+sqlx-cli,"Command-line utility for SQLx, the Rust SQL toolkit."
+taplo-cli,A CLI for Taplo TOML toolkit
+typos-cli,Source Code Spelling Correction
