@@ -1,0 +1,10 @@
+{
+  "title": "PowerShell Header",
+  "description": "The header for a PowerShell script.",
+  "scope": "powershell",
+  "body": [
+    "[CmdletBinding()]",
+    "param()",
+    "$0"
+  ]
+}
