@@ -58,10 +58,12 @@
         "startingDirectory": "%USERPROFILE%"
       },
       {
-        "guid": "{aab79973-318f-43b6-a9bc-b4096493753f}",
+        "commandline": "%LOCALAPPDATA%\\Programs\\nu\\bin\\nu.exe",
+        "guid": "{2a9a9a9f-bb06-46df-a61a-2204669c4753}",
         "hidden": false,
+        "icon": "%LOCALAPPDATA%\\Programs\\nu\\nu.ico",
         "name": "Nushell",
-        "source": "nu"
+        "startingDirectory": "%USERPROFILE%"
       },
       {
         "colorScheme": "Vintage",
