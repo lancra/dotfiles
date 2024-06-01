@@ -41,6 +41,7 @@ Machine:
   - '%PROGRAMFILES(X86)%\Windows Kits\10\Windows Performance Toolkit'
   - '%PROGRAMFILES(X86)%\NVIDIA Corporation\PhysX\Common'
   - '%PROGRAMFILES%\NVIDIA Corporation\NVIDIA NvDLISR'
+  - '%PROGRAMFILES(X86)%\Common Files\Oracle\Java\java8path'
   - '%PROGRAMFILES(X86)%\Common Files\Oracle\Java\javapath'
   - '%PROGRAMFILES%\gsudo\Current'
   - '%PROGRAMFILES%\Vim\vim91'
