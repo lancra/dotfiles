@@ -408,6 +408,9 @@
       },
       "window": {
         "applicationTheme": "dark",
+        "experimental.rainbowFrame": false,
+        "frame": null,
+        "unfocusedFrame": null,
         "useMica": false
       }
     }
