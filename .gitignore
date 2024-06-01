@@ -65,6 +65,11 @@
 # bat
 !/AppData/Roaming/bat
 
+# Docker
+/.docker/**
+!/.docker/config.json
+!/.docker/daemon.json
+
 # GitHub CLI
 !/AppData/Roaming/GitHub CLI/
 !/AppData/Roaming/GitHub CLI/config.yml

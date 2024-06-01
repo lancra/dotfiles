@@ -51,6 +51,7 @@ Machine:
   - '%PROGRAMFILES%\Meld\'
   - '%PROGRAMFILES%\GitHub CLI\'
   - '%PROGRAMFILES%\RedHat\Podman\'
+  - '%PROGRAMFILES%\Docker\Docker\resources\bin'
   - '%PROGRAMFILES%\PostgreSQL\16\bin\'
   - '%PROGRAMFILES%\Microsoft SDKs\Azure\CLI2\wbin'
   - '%PROGRAMFILES%\dotnet\'

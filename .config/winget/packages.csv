@@ -16,6 +16,7 @@ dandavison.delta,winget,delta,Full,Programming
 DigitalOcean.Doctl,winget,DigitalOcean CLI,Full,Programming
 direnv.direnv,winget,direnv,Full,Programming
 Discord.Discord,winget,Discord,Full,Social
+Docker.DockerDesktop,winget,Docker Desktop,Full,Programming
 dotPDN.PaintDotNet,winget,paint.net,Full,Graphics
 ExpressVPN.ExpressVPN,winget,ExpressVPN,Full,Privacy
 gerardog.gsudo,winget,gsudo,Full,Utility
