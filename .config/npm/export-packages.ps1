@@ -7,11 +7,11 @@ param (
 (& npm list --location=global --json |
     & jq -r '.dependencies | keys[]' |
     ForEach-Object {
-        $packageMetadata = & npm view --json $_ |
-            ConvertFrom-Json
+        $homepage = & npm view --json $_ |
+            & jq -r '.homepage'
         [ordered]@{
             Id = $_
-            Homepage = $packageMetadata.homepage
+            Homepage = $homepage
         }
     } |
     Sort-Object -Property Id |
