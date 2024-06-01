@@ -19,6 +19,8 @@
 	dfs = "diff --staged"
 	dft = "difftool"
 	dftd = "difftool --dir-diff --no-symlinks"
+	fe = "fetch"
+	fed = "!git fetch origin ${1-main}:${1-main} #"
 	gone = "!git brg | xargs -r git branch -D"
 	l = "log --format='%C(yellow)%h %C(blue bold)%ci%C(auto)%(decorate) %s'"
 	ll = "l -50"
