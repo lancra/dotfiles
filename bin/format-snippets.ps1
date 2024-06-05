@@ -390,13 +390,13 @@ function Read-SqlSnippet {
             $body = @()
             if ($sections.parameters.Length -gt 0) {
                 $script:parameterNumber = 1
-                $body = $sections |
+                $body = @($sections |
                     Select-Object -ExpandProperty parameters |
                     ForEach-Object -Begin { $script:parameterNumber = 1 } -Process {
                         $parameter = Format-SqlSnippetParameter -Line $_ -Number $script:parameterNumber
                         $script:parameterNumber++
                         $parameter
-                    }
+                    })
             }
 
             $body += $sections | Select-Object -ExpandProperty body
