@@ -39,7 +39,7 @@ $availableDescriptor = $null
         } elseif ($foundHeader -and (-not $foundSeparator)) {
             $foundSeparator = $true
         } elseif ($foundHeader -and (-not $foundFooter)) {
-            if ($_.Contains('upgrades available.')) {
+            if ($_.Contains('upgrades available.') -or $_ -match '. package\(s\)') {
                 $foundFooter = $true
             } else {
                 [ordered]@{
