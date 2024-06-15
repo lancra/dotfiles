@@ -3,7 +3,7 @@ param ()
 
 & $PSScriptRoot/get-packages.ps1 |
     ForEach-Object {
-        $module = "$($_.Path)@latest"
+        $module = "$($_.Module)@latest"
         $newVersion = & go list -m -f "{{.Version}}" $module
         if ($_.Version -ne $newVersion) {
             [ordered]@{

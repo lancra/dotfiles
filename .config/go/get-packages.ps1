@@ -25,11 +25,15 @@ $foundFirstPackage = $false
 
         $pathSegments = $packageLines[1] -split "`t" | Where-Object { $_ -ne '' }
         $path = $pathSegments[1]
-        $version = $pathSegments[2]
+
+        $moduleSegments = $packageLines[2] -split "`t" | Where-Object { $_ -ne '' }
+        $module = $moduleSegments[1]
+        $version = $moduleSegments[2]
 
         @{
             Id = $id
             Path = $path
+            Module = $module
             Version = $version
         }
     } |
