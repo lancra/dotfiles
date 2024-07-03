@@ -19,6 +19,7 @@ Discord.Discord,winget,Discord,Full,Social
 Docker.DockerDesktop,winget,Docker Desktop,Full,Programming
 dotPDN.PaintDotNet,winget,paint.net,Full,Graphics
 ExpressVPN.ExpressVPN,winget,ExpressVPN,Full,Privacy
+FlorianHeidenreich.Mp3tag,winget,Mp3tag,Full,Music
 gerardog.gsudo,winget,gsudo,Full,Utility
 Git.Git,winget,Git,Full,Programming
 GitHub.cli,winget,GitHub CLI,Full,Programming
@@ -70,7 +71,6 @@ Microsoft.WebDeploy,winget,Web Deploy,None,Programming
 Microsoft.WindowsTerminal,winget,Windows Terminal,Full,Programming
 Mobatek.MobaXterm,winget,MobaXterm,Full,Programming
 Mozilla.Firefox,winget,Mozilla Firefox,Full,Web
-Mp3tag.Mp3tag,winget,Mp3tag,Full,Music
 MusicBee.MusicBee,winget,MusicBee,Full,Music
 MusicBrainz.Picard,winget,MusicBrainz Picard,Full,Music
 NickeManarin.ScreenToGif,winget,ScreenToGif,Full,Video
