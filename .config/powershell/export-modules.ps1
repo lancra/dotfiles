@@ -62,8 +62,22 @@ $modules = $installedModules |
     Select-Object -ExpandProperty Name -Unique |
     Sort-Object |
     ForEach-Object {
-        $matchingModules = @($installedModules |
-            Where-Object -Property Name -EQ $_)
+        $name = $_
+
+        $matchingModules = @()
+        $coreModule = $installedModules |
+            Where-Object { $_.Name -eq $name -and $_.Source -eq 'Core' } |
+            Select-Object -First 1
+        if ($null -ne $coreModule) {
+            $matchingModules += $coreModule
+        }
+
+        $windowsModule = $installedModules |
+            Where-Object { $_.Name -eq $name -and $_.Source -eq 'Windows' } |
+            Select-Object -First 1
+        if ($null -ne $windowsModule) {
+            $matchingModules += $windowsModule
+        }
 
         $shell = $matchingModules.Count -gt 1 ? 'Both' : $matchingModules[0].Source
 
