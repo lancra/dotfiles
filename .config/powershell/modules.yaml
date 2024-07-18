@@ -149,6 +149,10 @@
   locations:
   - Application.Core
   - System.Windows
+- name: Microsoft.PowerToys.Configure
+  shell: Core
+  locations:
+  - User.Core
 - name: Microsoft.Windows.Bcd.Cmdlets
   shell: Both
   locations:
