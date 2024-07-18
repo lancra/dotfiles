@@ -340,6 +340,10 @@
   shell: Windows
   locations:
   - System.Windows
+- name: Templating
+  shell: Core
+  locations:
+  - User.Core
 - name: ThreadJob
   shell: Core
   locations:
