@@ -4,7 +4,7 @@
   "scope": "csharp",
   "body": [
     "/// <param name=\"cancellationToken\">",
-    "/// A <see cref=\"CancellationToken\" to observe while waiting for the task to complete.",
+    "/// A <see cref=\"CancellationToken\"/> to observe while waiting for the task to complete.",
     "/// </param>$0"
   ]
 }
