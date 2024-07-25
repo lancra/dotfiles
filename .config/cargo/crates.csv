@@ -9,3 +9,4 @@ rustlings,Small exercises to get you used to reading and writing Rust code!
 sqlx-cli,"Command-line utility for SQLx, the Rust SQL toolkit."
 taplo-cli,A CLI for Taplo TOML toolkit
 typos-cli,Source Code Spelling Correction
+xsv,A high performance CSV command line toolkit.
