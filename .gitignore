@@ -91,6 +91,10 @@
 /.config/nushell/history.txt
 !/AppData/Roaming/nushell
 
+# PDFsam
+/.openjfx/cache
+/.sambox.cache
+
 # Podman
 /.config/containers/
 
