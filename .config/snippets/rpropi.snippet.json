@@ -1,0 +1,16 @@
+{
+  "title": "Required Init-Only Property",
+  "description": "An automatically implemented, required property with a get accessor and init-only set accessor.",
+  "scope": "csharp",
+  "body": "public required ${1:int} ${2:MyProperty} { get; init; }$0",
+  "placeholders": {
+    "1": {
+      "variable": "type",
+      "tooltip": "The property type."
+    },
+    "2": {
+      "variable": "name",
+      "tooltip": "The property name."
+    }
+  }
+}
