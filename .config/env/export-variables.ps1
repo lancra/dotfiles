@@ -115,9 +115,17 @@ $builtInUserVariables = @(
     'TEMP',
     'TMP'
 )
+
+$ignoredUserVariables = $builtInUserVariables
+$ignoredUserVariablesPath = Join-Path -Path $PSScriptRoot -ChildPath '.ignored-user-variables.json'
+if (Test-Path -Path $ignoredUserVariablesPath) {
+    @(Get-Content -Path $ignoredUserVariablesPath | ConvertFrom-Json) |
+        ForEach-Object { $ignoredUserVariables += $_ }
+}
+
 $getUserVariablesArgs = @{
     Key = 'HKCU:\Environment'
-    IgnoredSubkeys = $builtInUserVariables
+    IgnoredSubkeys = $ignoredUserVariables
 }
 $variables['User'] = Get-EnvironmentVariable @getUserVariablesArgs
 
