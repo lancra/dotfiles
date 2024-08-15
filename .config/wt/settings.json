@@ -13,6 +13,48 @@
         "splitMode": "duplicate"
       },
       "keys": "alt+shift+d"
+    },
+    {
+      "command": {
+        "action": "scrollToMark",
+        "direction": "previous"
+      },
+      "keys": "ctrl+up"
+    },
+    {
+      "command": {
+        "action": "scrollToMark",
+        "direction": "next"
+      },
+      "keys": "ctrl+down"
+    },
+    {
+      "command": {
+        "action": "selectCommand",
+        "direction": "prev"
+      },
+      "keys": "ctrl+alt+h"
+    },
+    {
+      "command": {
+        "action": "selectCommand",
+        "direction": "next"
+      },
+      "keys": "ctrl+alt+l"
+    },
+    {
+      "command": {
+        "action": "selectOutput",
+        "direction": "prev"
+      },
+      "keys": "ctrl+alt+k"
+    },
+    {
+      "command": {
+        "action": "selectOutput",
+        "direction": "next"
+      },
+      "keys": "ctrl+alt+j"
     }
   ],
   "copyFormatting": "none",
@@ -26,6 +68,7 @@
   ],
   "profiles": {
     "defaults": {
+      "autoMarkPrompts": true,
       "font": {
         "face": "CaskaydiaCove NF Mono",
         "features": {
@@ -37,7 +80,8 @@
         },
         "size": 10.0
       },
-      "opacity": 100
+      "opacity": 100,
+      "showMarksOnScrollbar": true
     },
     "list": [
       {
