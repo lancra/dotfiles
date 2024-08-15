@@ -125,5 +125,6 @@
     "foreground": "#b9fbc0",
     "template": "\u276f\u276f "
   },
+  "shell_integration": true,
   "version": 2
 }
