@@ -69,6 +69,7 @@ Microsoft.VisualStudio.2022.Community,winget,Visual Studio 2022,Full,Programming
 Microsoft.VisualStudioCode,winget,Visual Studio Code,Full,Programming
 Microsoft.WebDeploy,winget,Web Deploy,None,Programming
 Microsoft.WindowsTerminal,winget,Windows Terminal,Full,Programming
+Microsoft.WindowsTerminal.Preview,winget,Windows Terminal Preview,Full,Programming
 Mobatek.MobaXterm,winget,MobaXterm,Full,Programming
 Mozilla.Firefox,winget,Mozilla Firefox,Full,Web
 MusicBee.MusicBee,winget,MusicBee,Full,Music
