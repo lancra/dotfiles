@@ -37,6 +37,7 @@ JGraph.Draw,winget,draw.io,Full,Programming
 jqlang.jq,winget,jq,Full,Programming
 JRSoftware.InnoSetup,winget,InnoSetup,Full,Programming
 KDE.KDiff3,winget,KDiff3,Full,Programming
+KirillOsenkov.MSBuildStructuredLogViewer,winget,MSBuild Structured Log Viewer,Full,Programming
 koalaman.shellcheck,winget,shellcheck,Full,Programming
 kvakulo.switcheroo,winget,switcheroo,Full,Utility
 kymoto.InnoScriptStudio,winget,InnoScriptStudio,Full,Programming
