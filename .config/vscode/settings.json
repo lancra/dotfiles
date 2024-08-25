@@ -62,6 +62,20 @@
     "editor.insertSpaces": true,
     "editor.tabSize": 2
   },
+  "colorize.enable_search_variables": false,
+  "colorize.languages": [
+    "css",
+    "json",
+    "jsonc",
+    "less",
+    "postcss",
+    "sass",
+    "scss",
+    "sss",
+    "stylus",
+    "svg",
+    "xml"
+  ],
   "editor.insertSpaces": true,
   "editor.linkedEditing": true,
   "editor.rulers": [
