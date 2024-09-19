@@ -83,6 +83,7 @@ Nvidia.GeForceExperience,winget,Nvidia GeForceExperience,Full,Gaming
 Nvidia.PhysX,winget,Nvidia PhysX,None,Gaming
 Obsidian.Obsidian,winget,Obsidian,Full,Notes
 OpenJS.NodeJS.LTS,winget,Node.js LTS,Full,Programming
+Oracle.JavaRuntimeEnvironment,winget,Java Runtime Environment,Full,Utility
 PDFsam.PDFsam,winget,PDFsam,Full,Utility
 PostgreSQL.PostgreSQL.16,winget,PostgreSQL,Full,Programming
 PuTTY.PuTTY,winget,PuTTY,Full,Programming
