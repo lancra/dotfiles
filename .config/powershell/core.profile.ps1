@@ -1,3 +1,5 @@
+[console]::InputEncoding = [console]::OutputEncoding = [System.Text.UTF8Encoding]::new()
+
 Import-Module 'Lance'
 
 Set-PSReadLineOption -EditMode Vi -ViModeIndicator Cursor
