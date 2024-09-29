@@ -44,6 +44,8 @@
 	rtsp = "restore --staged --patch"
 	st = "status --short --untracked-files"
 	sta = "stash"
+	staa = "stash apply"
+	stad = "stash drop"
 	stal = "stash list"
 	stao = "stash pop"
 	stap = "stash push"
