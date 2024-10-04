@@ -5,6 +5,7 @@ cargo-expand,Wrapper around rustc -Zunpretty=expanded. Shows the result of macro
 cargo-udeps,Find unused dependencies in Cargo.toml,https://crates.io/crates/cargo-udeps
 cargo-update,A cargo subcommand for checking and applying updates to installed executables,https://crates.io/crates/cargo-update
 cargo-watch,Watches over your Cargo project’s source,https://crates.io/crates/cargo-watch
+hl,A fast and powerful log viewer and processor that translates JSON or logfmt logs into a pretty human-readable format.,https://github.com/pamburus/hl.git
 rustlings,Small exercises to get you used to reading and writing Rust code!,https://crates.io/crates/rustlings
 sqlx-cli,"Command-line utility for SQLx, the Rust SQL toolkit.",https://crates.io/crates/sqlx-cli
 taplo-cli,A CLI for Taplo TOML toolkit,https://crates.io/crates/taplo-cli
