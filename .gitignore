@@ -84,6 +84,9 @@
 !/AppData/Roaming/gnupg/
 !/AppData/Roaming/gnupg/gpg-agent.conf
 
+# hl
+!/AppData/Roaming/hl
+
 # Lemminx LSP
 /.config/lemminx/cache/
 
