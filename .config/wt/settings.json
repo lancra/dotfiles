@@ -127,10 +127,17 @@
         "colorScheme": "One Half Dark",
         "commandline": "%PROGRAMFILES%/Git/usr/bin/bash.exe -i -l",
         "guid": "{79df4c6d-3498-47e5-9998-a583ab55f6b8}",
-        "hidden": false,
+        "hidden": true,
         "icon": "%PROGRAMFILES%/Git/mingw64/share/git/git-for-windows.ico",
         "name": "Bash",
         "startingDirectory": "%USERPROFILE%"
+      },
+      {
+        "colorScheme": "One Half Dark",
+        "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
+        "hidden": false,
+        "name": "Git Bash",
+        "source": "Git"
       },
       {
         "colorScheme": "Campbell Powershell",
