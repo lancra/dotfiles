@@ -5,6 +5,6 @@ param(
 )
 
 & $PSScriptRoot/get-crates.ps1 |
-    Select-Object -Property Id,Description |
+    Select-Object -Property Id,Description,Source |
     ConvertTo-Csv -UseQuotes AsNeeded |
     Set-Content -Path $Target

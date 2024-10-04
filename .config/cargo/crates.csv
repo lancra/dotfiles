@@ -1,12 +1,12 @@
-Id,Description
-bunyan,A CLI to pretty print structured logs. A Rust port of the original JavaScript bunyan CLI.
-cargo-audit,Audit Cargo.lock for crates with security vulnerabilities
-cargo-expand,Wrapper around rustc -Zunpretty=expanded. Shows the result of macro expansion and #[derive] expansion.
-cargo-udeps,Find unused dependencies in Cargo.toml
-cargo-update,A cargo subcommand for checking and applying updates to installed executables
-cargo-watch,Watches over your Cargo project’s source
-rustlings,Small exercises to get you used to reading and writing Rust code!
-sqlx-cli,"Command-line utility for SQLx, the Rust SQL toolkit."
-taplo-cli,A CLI for Taplo TOML toolkit
-typos-cli,Source Code Spelling Correction
-xsv,A high performance CSV command line toolkit.
+Id,Description,Source
+bunyan,A CLI to pretty print structured logs. A Rust port of the original JavaScript bunyan CLI.,https://crates.io/crates/bunyan
+cargo-audit,Audit Cargo.lock for crates with security vulnerabilities,https://crates.io/crates/cargo-audit
+cargo-expand,Wrapper around rustc -Zunpretty=expanded. Shows the result of macro expansion and #[derive] expansion.,https://crates.io/crates/cargo-expand
+cargo-udeps,Find unused dependencies in Cargo.toml,https://crates.io/crates/cargo-udeps
+cargo-update,A cargo subcommand for checking and applying updates to installed executables,https://crates.io/crates/cargo-update
+cargo-watch,Watches over your Cargo project’s source,https://crates.io/crates/cargo-watch
+rustlings,Small exercises to get you used to reading and writing Rust code!,https://crates.io/crates/rustlings
+sqlx-cli,"Command-line utility for SQLx, the Rust SQL toolkit.",https://crates.io/crates/sqlx-cli
+taplo-cli,A CLI for Taplo TOML toolkit,https://crates.io/crates/taplo-cli
+typos-cli,Source Code Spelling Correction,https://crates.io/crates/typos-cli
+xsv,A high performance CSV command line toolkit.,https://crates.io/crates/xsv
