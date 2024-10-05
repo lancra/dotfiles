@@ -23,8 +23,9 @@ FlorianHeidenreich.Mp3tag,winget,Mp3tag,Full,Music
 gerardog.gsudo,winget,gsudo,Full,Utility
 Git.Git,winget,Git,Full,Programming
 GitHub.cli,winget,GitHub CLI,Full,Programming
-GnuPG.GnuPG,winget,GnuPG,Full,Programming
-GnuPG.Gpg4win,winget,Gpg4win,Full,Programming
+GnuPG.GnuPG,winget,GNU Privacy Guard,Full,Programming
+GnuPG.Gpg4win,winget,GNU Privacy Guard for Windows,Full,Programming
+GnuWin32.Make,winget,GNU make,Full,Programming
 GoLang.Go,winget,Go,Full,Programming
 Google.AndroidStudio,winget,Google Android Studio,Full,Programming
 Google.Chrome,winget,Google Chrome,Full,Web
