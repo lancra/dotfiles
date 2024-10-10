@@ -3,7 +3,8 @@
 [CmdletBinding(SupportsShouldProcess)]
 param (
     [Parameter()]
-    [string]$Source = "$env:XDG_CONFIG_HOME/snippets"
+    [string]$Source = "$env:XDG_CONFIG_HOME/snippets",
+    [switch]$SkipVisualStudio
 )
 
 $visualStudioCodeTarget = "$env:APPDATA/Code/User/snippets"
@@ -458,4 +459,6 @@ $scopesJson |
         }
     }
 
-Format-VisualStudioSnippet -Snippets $script:visualStudioSnippets | Write-SnippetFormatResult
+if (-not $SkipVisualStudio) {
+    Format-VisualStudioSnippet -Snippets $script:visualStudioSnippets | Write-SnippetFormatResult
+}
