@@ -1,5 +1,6 @@
 class SnippetFormatResult {
-    [string]$Title
+    [string]$Scope
+    [string]$Editor
     [int]$OldCount
     [int]$NewCount
     [bool]$HasChanges

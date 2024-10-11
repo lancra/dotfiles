@@ -10,6 +10,8 @@ param (
 )
 
 $snippetsPath = "$PSScriptRoot/../.config/snippets"
+$scopeResultWidth = 15
+$editorResultWidth = 10
 
 function Write-SnippetFormatResult {
     [CmdletBinding()]
@@ -18,18 +20,18 @@ function Write-SnippetFormatResult {
         [SnippetFormatResult]$Result
     )
     begin {
-        $titleWidth = 20
         $countFormat = '{0:D3}'
     }
     process {
-        $title = "$($Result.Title):".PadRight($titleWidth, ' ')
+        $scope = $Result.Scope.PadRight($scopeResultWidth, ' ')
+        $editor = $Result.Editor.PadRight($editorResultWidth, ' ')
 
         $oldCount = $countFormat -f $Result.OldCount
         $newCount = $countFormat -f $Result.NewCount
 
-        $hasChanges = $Result.HasChanges ? 'changed' : 'identical'
+        $hasChanges = $Result.HasChanges ? 'true' : 'false'
 
-        Write-Output "$title $oldCount -> $newCount ($hasChanges)"
+        Write-Output "$scope$editor$oldCount -> $newCount $hasChanges"
     }
 }
 
@@ -165,9 +167,11 @@ if ($sqlSnippetFiles.Length -gt 0) {
     Remove-Item -Path $temporaryDirectory -Recurse
 }
 
-$scopesJson = $allSnippetsJson | jq --compact-output '[.[].scope[]] | unique'
+$header = "$('Scope'.PadRight($scopeResultWidth))$('Editor'.PadRight($editorResultWidth))Old    New Changes"
+Write-Output $header
+Write-Output ([string]::new('-', $header.Length))
 
-$scopesJson |
+$allSnippetsJson | jq --compact-output '[.[].scope[]] | unique' |
     ConvertFrom-Json |
     ForEach-Object {
         $scope = $_
@@ -189,4 +193,3 @@ $scopesJson |
 
         & $snippetsPath/format-vscode-snippets.ps1 -Json $vsCodeSnippetsJson -Scope $scope | Write-SnippetFormatResult
     }
-

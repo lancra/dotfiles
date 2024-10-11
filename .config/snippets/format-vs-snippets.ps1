@@ -183,7 +183,8 @@ $newSnippetFiles |
     }
 
 [ordered]@{
-    Title = 'csharp (vs)'
+    Scope = 'csharp'
+    Editor = 'vs'
     OldCount = $oldCount
     NewCount = $newCount
     HasChanges = $hasChanges
