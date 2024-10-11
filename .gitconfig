@@ -94,6 +94,8 @@
 	path = ~/.config/delta/themes/catppuccin.gitconfig
 [init]
 	defaultBranch = main
+	defaultObjectFormat = sha1
+	defaultRefFormat = files
 [interactive]
 	diffFilter = delta --color-only --features=no-line-numbers
 [merge]
