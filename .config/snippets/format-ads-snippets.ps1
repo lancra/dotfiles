@@ -21,7 +21,7 @@ $newCount = $Json | jq 'length'
 Set-Content -Path $filePath -Value $Json
 
 [ordered]@{
-    Title = "ads $Scope"
+    Title = "$Scope (ads)"
     OldCount = $oldCount
     NewCount = $newCount
     HasChanges = $hasChanges

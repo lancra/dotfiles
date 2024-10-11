@@ -21,7 +21,7 @@ $newCount = $Json | jq 'length'
 Set-Content -Path $filePath -Value $Json
 
 [ordered]@{
-    Title = "vscode $Scope"
+    Title = "$Scope (vscode)"
     OldCount = $oldCount
     NewCount = $newCount
     HasChanges = $hasChanges
