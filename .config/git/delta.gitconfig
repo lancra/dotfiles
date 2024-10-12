@@ -1,0 +1,14 @@
+[core]
+    pager = delta
+[delta]
+	features = catppuccin-mocha
+	hyperlinks = true
+	light = false
+	navigate = true
+	side-by-side = true
+[delta "no-line-numbers"]
+	line-numbers = false
+[include]
+	path = ~/.config/delta/themes/catppuccin.gitconfig
+[interactive]
+    diffFilter = delta --color-only --features=no-line-numbers

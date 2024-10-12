@@ -5,16 +5,7 @@
 [core]
 	autocrlf = false
 	editor = 'c:/Program Files/Vim/vim91/vim.exe'
-	pager = delta
 	symlinks = true
-[delta]
-	features = catppuccin-mocha
-	hyperlinks = true
-	light = false
-	navigate = true
-	side-by-side = true
-[delta "no-line-numbers"]
-	line-numbers = false
 [diff]
 	algorithm = histogram
 	colorMoved = default
@@ -32,13 +23,11 @@
 	required = true
 [include]
 	path = ~/.config/git/alias.gitconfig
-	path = ~/.config/delta/themes/catppuccin.gitconfig
+	path = ~/.config/git/delta.gitconfig
 [init]
 	defaultBranch = main
 	defaultObjectFormat = sha1
 	defaultRefFormat = files
-[interactive]
-	diffFilter = delta --color-only --features=no-line-numbers
 [merge]
 	conflictStyle = zdiff3
 	tool = kdiff3
