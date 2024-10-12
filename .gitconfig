@@ -9,7 +9,7 @@
 [diff]
 	algorithm = histogram
 	colorMoved = default
-	tool = kdiff3
+	tool = vscode
 [difftool]
 	prompt = false
 [difftool "meld"]
@@ -30,7 +30,7 @@
 	defaultRefFormat = files
 [merge]
 	conflictStyle = zdiff3
-	tool = kdiff3
+	tool = vscode
 [mergetool]
 	keepBackup = false
 	prompt = false
