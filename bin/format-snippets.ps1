@@ -178,21 +178,20 @@ $allSnippetsJson | jq --compact-output '[.[].scope[]] | unique' |
     ConvertFrom-Json |
     ForEach-Object {
         $scope = $_
-        $matchingSnippetsJson = $allSnippetsJson | jq --compact-output "[.[] | select(.scope[] | contains(`"$scope`"))]"
+        $matchingSnippetsJson = $allSnippetsJson |
+            jq --compact-output "[.[] | select(.scope[] | contains(`"$scope`"))]"
 
-        # Convert snippets within the scope into key-value objects by the title.
-        $vsCodeSnippetsJson = $matchingSnippetsJson | jq 'map({ (.title): del(.title, .scope, .placeholders) }) | add' | Out-String
+        $snippets = [Snippet]::FromJsonArray($matchingSnippetsJson)
+        $snippetsTextMateJson = [Snippet]::ToTextMateJson($snippets)
 
         if ($visualStudioScopes -contains $scope -and -not $SkipVisualStudio) {
-            $visualStudioSnippets = [Snippet[]]($matchingSnippetsJson |
-                # Convert placeholders from key-value objects into an array of objects with the key as a property.
-                jq --compact-output 'map(if .placeholders != null then . + { "placeholders": (.placeholders | to_entries | map(. + .value | del(.value))) } else . end)' |
-                jq --compact-output 'map(. + { placeholders: .placeholders | to_array })' |
-                ConvertFrom-Json)
-            & $snippetsPath/format-vs-snippets.ps1 -Snippets $script:visualStudioSnippets | Write-SnippetFormatResult
+            & $snippetsPath/format-vs-snippets.ps1 -Snippets $snippets |
+                Write-SnippetFormatResult
         } elseif ($azureDataStudioScopes -contains $scope) {
-            & $snippetsPath/format-ads-snippets.ps1 -Json $vsCodeSnippetsJson -Scope $scope | Write-SnippetFormatResult
+            & $snippetsPath/format-ads-snippets.ps1 -Json $snippetsTextMateJson -Scope $scope |
+                Write-SnippetFormatResult
         }
 
-        & $snippetsPath/format-vscode-snippets.ps1 -Json $vsCodeSnippetsJson -Scope $scope | Write-SnippetFormatResult
+        & $snippetsPath/format-vscode-snippets.ps1 -Json $snippetsTextMateJson -Scope $scope |
+            Write-SnippetFormatResult
     }
