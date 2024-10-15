@@ -9,6 +9,7 @@ set viminfo+=n$XDG_CONFIG_HOME/vim/viminfo
 call plug#begin()
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 Plug 'vim-airline/vim-airline'
+Plug 'SirVer/ultisnips'
 call plug#end()
 
 colorscheme catppuccin_mocha
@@ -32,3 +33,8 @@ set visualbell
 set t_vb=
 
 syntax on
+
+let g:UltiSnipsSnippetsDir=expand('~/.config/vim/UltiSnips')
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"

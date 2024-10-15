@@ -184,11 +184,16 @@ $allSnippetsJson | jq --compact-output '[.[].scope[]] | unique' |
         $snippets = [Snippet]::FromJsonArray($matchingSnippetsJson)
         $snippetsTextMateJson = [Snippet]::ToTextMateJson($snippets)
 
+        if ($azureDataStudioScopes -contains $scope) {
+            & $snippetsPath/format-ads-snippets.ps1 -Json $snippetsTextMateJson -Scope $scope |
+                Write-SnippetFormatResult
+        }
+
+        & $snippetsPath/format-vim-snippets.ps1 -Snippets $snippets -Scope $scope |
+            Write-SnippetFormatResult
+
         if ($visualStudioScopes -contains $scope -and -not $SkipVisualStudio) {
             & $snippetsPath/format-vs-snippets.ps1 -Snippets $snippets |
-                Write-SnippetFormatResult
-        } elseif ($azureDataStudioScopes -contains $scope) {
-            & $snippetsPath/format-ads-snippets.ps1 -Json $snippetsTextMateJson -Scope $scope |
                 Write-SnippetFormatResult
         }
 

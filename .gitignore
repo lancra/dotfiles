@@ -122,6 +122,7 @@
 /.config/vim/.swap/
 /.config/vim/.undo/
 /.config/vim/plugged/
+/.config/vim/UltiSnips/
 /.config/vim/.netrwhist
 /.config/vim/viminfo
 

@@ -1,0 +1,9 @@
+{
+  "scopes": {
+    "vim": {
+      "csharp": "cs",
+      "git-commit": "gitcommit",
+      "powershell": "ps1"
+    }
+  }
+}
