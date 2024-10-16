@@ -39,6 +39,7 @@
 	rba = "rebase --abort"
 	rbc = "rebase --continue"
 	rbi = "rebase --interactive"
+	rebr = "!git for-each-ref --format='  %(refname:strip=3)' refs/remotes/${1:-origin}"
 	rt = "restore"
 	rtp = "restore --patch"
 	rts = "restore --staged"
