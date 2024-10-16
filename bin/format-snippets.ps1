@@ -1,6 +1,5 @@
 #Requires -Modules powershell-yaml
-using module ../.config/snippets/snippet.psm1
-using module ../.config/snippets/snippet-format-result.psm1
+using module ../.config/snippets/snippets.psm1
 
 [CmdletBinding(SupportsShouldProcess)]
 param (
@@ -10,8 +9,6 @@ param (
 )
 
 $snippetsPath = "$PSScriptRoot/../.config/snippets"
-$azureDataStudioScopes = @('sql')
-$visualStudioScopes = @('csharp')
 
 $scopeResultWidth = 15
 $editorResultWidth = 10
@@ -170,6 +167,26 @@ if ($sqlSnippetFiles.Length -gt 0) {
     Remove-Item -Path $temporaryDirectory -Recurse
 }
 
+$editorProperties = @(
+    @{Name = 'Key'; Expression = {$_.Key}},
+    @{Name = 'Name'; Expression = {$_.Name}},
+    @{Name = 'Scopes'; Expression = {$_.Scopes}},
+    @{
+        Name = 'ScopeOverrides'
+        Expression = {
+            $scopeOverrides = @{}
+            $_.ScopeOverrides.PSObject.Properties |
+                ForEach-Object {
+                    $scopeOverrides[$_.Name] = $_.Value
+                }
+            return $scopeOverrides
+        }}
+)
+$editors = [SnippetEditor[]](Get-Content -Path "$snippetsPath/config.json" |
+    ConvertFrom-Json |
+    Select-Object -ExpandProperty editors |
+    Select-Object -Property $editorProperties)
+
 $header = "$('Scope'.PadRight($scopeResultWidth))$('Editor'.PadRight($editorResultWidth))Old    New Changes"
 Write-Output $header
 Write-Output ([string]::new('-', $header.Length))
@@ -181,22 +198,19 @@ $allSnippetsJson | jq --compact-output '[.[].scope[]] | unique' |
         $matchingSnippetsJson = $allSnippetsJson |
             jq --compact-output "[.[] | select(.scope[] | contains(`"$scope`"))]"
 
-        $snippets = [Snippet]::FromJsonArray($matchingSnippetsJson)
-        $snippetsTextMateJson = [Snippet]::ToTextMateJson($snippets)
+        $snippets = [SnippetCollection]::new($scope, $matchingSnippetsJson)
 
-        if ($azureDataStudioScopes -contains $scope) {
-            & $snippetsPath/format-ads-snippets.ps1 -Json $snippetsTextMateJson -Scope $scope |
+        foreach ($editor in $editors) {
+            if ($editor.Key -eq 'vs' -and $SkipVisualStudio) {
+                continue
+            }
+
+            if ($null -ne $editor.Scopes -and -not ($editor.Scopes -contains $scope)) {
+                continue
+            }
+
+            $scriptPath = "$snippetsPath/format-$($editor.Key)-snippets.ps1"
+            & $scriptPath -Snippets $snippets -Configuration $editor |
                 Write-SnippetFormatResult
         }
-
-        & $snippetsPath/format-vim-snippets.ps1 -Snippets $snippets -Scope $scope |
-            Write-SnippetFormatResult
-
-        if ($visualStudioScopes -contains $scope -and -not $SkipVisualStudio) {
-            & $snippetsPath/format-vs-snippets.ps1 -Snippets $snippets |
-                Write-SnippetFormatResult
-        }
-
-        & $snippetsPath/format-vscode-snippets.ps1 -Json $snippetsTextMateJson -Scope $scope |
-            Write-SnippetFormatResult
     }

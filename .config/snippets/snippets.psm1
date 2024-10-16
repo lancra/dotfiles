@@ -1,12 +1,15 @@
-class Snippet {
-    [string[]]$Prefix
-    [string]$Title
-    [string]$Description
-    [string[]]$Scope
-    [string[]]$Body
-    [SnippetPlaceholder[]]$Placeholders
+class SnippetCollection {
+    [string]$Scope
+    [Snippet[]]$Values
+    [string]$Json
 
-    static [Snippet[]] FromJsonArray([string]$json) {
+    SnippetCollection([string]$scope, [string]$json) {
+        $this.Scope = $scope
+        $this.Values = $this.FromJsonArray($json)
+        $this.Json = $this.ToJson($this.Values)
+    }
+
+    hidden [Snippet[]] FromJsonArray([string]$json) {
         $convertPlaceholdersToArrayQuery = 'map(if .placeholders != null ' +
             'then . + { "placeholders": (.placeholders | to_entries | map(. + .value | del(.value))) } ' +
             'else . end) | ' +
@@ -16,7 +19,7 @@ class Snippet {
             ConvertFrom-Json)
     }
 
-    static [string] ToTextMateJson([Snippet[]]$snippets) {
+    hidden [string] ToJson([Snippet[]]$snippets) {
         $properties = @(
             @{Name = 'prefix'; Expression = {$_.Prefix}},
             @{Name = 'description'; Expression = {$_.Description}},
@@ -33,8 +36,32 @@ class Snippet {
     }
 }
 
+class Snippet {
+    [string[]]$Prefix
+    [string]$Title
+    [string]$Description
+    [string[]]$Scope
+    [string[]]$Body
+    [SnippetPlaceholder[]]$Placeholders
+}
+
 class SnippetPlaceholder {
     [string]$Key
     [string]$Variable
     [string]$Tooltip
+}
+
+class SnippetFormatResult {
+    [string]$Scope
+    [string]$Editor
+    [int]$OldCount
+    [int]$NewCount
+    [bool]$HasChanges
+}
+
+class SnippetEditor {
+    [string]$Key
+    [string]$Name
+    [string[]]$Scopes
+    [hashtable]$ScopeOverrides
 }

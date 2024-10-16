@@ -1,11 +1,12 @@
-using module ./snippet.psm1
-using module ./snippet-format-result.psm1
+using module ./snippets.psm1
 
 [CmdletBinding(SupportsShouldProcess)]
 [OutputType([SnippetFormatResult])]
 param (
     [Parameter(Mandatory)]
-    [Snippet[]]$Snippets
+    [SnippetCollection]$Snippets,
+    [Parameter(Mandatory)]
+    [SnippetEditor]$Configuration
 )
 
 $visualStudioTarget = "$env:HOME/Documents/Visual Studio 2022/Code Snippets/Visual C#/My Code Snippets"
@@ -88,7 +89,7 @@ $oldCount = $oldSnippetFiles |
 
 $hasChanges = $false
 
-foreach ($snippet in $Snippets) {
+foreach ($snippet in $Snippets.Values) {
     $fileName = $snippet.Prefix[0]
     $tempPath = "$visualStudioTarget/$fileName.temp.snippet"
     $document = [System.Xml.XmlDocument]::new()
@@ -183,7 +184,7 @@ $newSnippetFiles |
     }
 
 [ordered]@{
-    Scope = 'csharp'
+    Scope = $Snippets.Scope
     Editor = 'vs'
     OldCount = $oldCount
     NewCount = $newCount

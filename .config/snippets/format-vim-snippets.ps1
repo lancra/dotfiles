@@ -1,20 +1,15 @@
-using module ./snippet.psm1
-using module ./snippet-format-result.psm1
+using module ./snippets.psm1
 
 [CmdletBinding(SupportsShouldProcess)]
 [OutputType([SnippetFormatResult])]
 param (
     [Parameter(Mandatory)]
-    [Snippet[]]$Snippets,
+    [SnippetCollection]$Snippets,
     [Parameter(Mandatory)]
-    [string]$Scope
+    [SnippetEditor]$Configuration
 )
 
-$scopeOverrides = Get-Content -Path "$env:XDG_CONFIG_HOME/snippets/config.json" |
-ConvertFrom-Json |
-Select-Object -ExpandProperty scopes |
-Select-Object -ExpandProperty vim
-$vimScope = $scopeOverrides.$Scope ?? $Scope
+$vimScope = $Configuration.ScopeOverrides.$Scope ?? $Scope
 
 $targetDirectory = "$env:XDG_CONFIG_HOME/vim/UltiSnips/$vimScope"
 New-Item -ItemType Directory -Path $targetDirectory -Force | Out-Null
@@ -25,7 +20,7 @@ $oldCount = $oldSnippetFiles |
     Select-Object -ExpandProperty Count
 
 $hasChanges = $false
-foreach ($snippet in $Snippets) {
+foreach ($snippet in $Snippets.Values) {
     $fileName = $snippet.Prefix[0]
     $tempPath = "$targetDirectory/$fileName.snippets.temp"
 
@@ -69,7 +64,7 @@ $newSnippetFiles |
     }
 
 [ordered]@{
-    Scope = $Scope
+    Scope = $Snippets.Scope
     Editor = 'vim'
     OldCount = $oldCount
     NewCount = $newCount

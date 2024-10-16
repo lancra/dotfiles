@@ -1,9 +1,31 @@
 {
-  "scopes": {
-    "vim": {
-      "csharp": "cs",
-      "git-commit": "gitcommit",
-      "powershell": "ps1"
+  "editors": [
+    {
+      "key": "ads",
+      "name": "Azure Data Studio",
+      "scopes": [
+        "sql"
+      ]
+    },
+    {
+      "key": "vim",
+      "name": "VIM",
+      "scopeOverrides": {
+        "csharp": "cs",
+        "git-commit": "gitcommit",
+        "powershell": "ps1"
+      }
+    },
+    {
+      "key": "vs",
+      "name": "Visual Studio",
+      "scopes": [
+        "csharp"
+      ]
+    },
+    {
+      "key": "vscode",
+      "name": "Visual Studio Code"
     }
-  }
+  ]
 }
