@@ -11,7 +11,7 @@ Bethesda.Launcher,winget,Bethesda Launcher,Full,Gaming
 Bitwarden.CLI,winget,Bitwarden CLI,Full,Security
 BurntSushi.ripgrep.MSVC,winget,ripgrep,Full,File System
 calibre.calibre,winget,calibre,Full,Reading
-Canonical.Ubuntu.2204,winget,Ubuntu,Full,Operating System
+Canonical.Ubuntu,winget,Ubuntu,Full,Operating System
 dandavison.delta,winget,delta,Full,Programming
 DigitalOcean.Doctl,winget,DigitalOcean CLI,Full,Programming
 direnv.direnv,winget,direnv,Full,Programming
