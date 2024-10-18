@@ -56,6 +56,7 @@ Microsoft.DotNet.SDK.8,winget,.NET 8 SDK,Partial,Programming
 Microsoft.DotNet.UninstallTool,winget,.NET Uninstall Tool,Full,Programming
 Microsoft.Edge,winget,Microsoft Edge,Full,Web
 Microsoft.EdgeWebView2Runtime,winget,Microsoft Edge WebView2,None,Web
+Microsoft.msodbcsql.17,winget,Microsoft ODBC Driver 17 for SQL Server,Full,Programming
 Microsoft.NuGet,winget,NuGet,Full,Programming
 Microsoft.OneDrive,winget,OneDrive,Full,File System
 Microsoft.PowerShell,winget,PowerShell,Full,Programming
