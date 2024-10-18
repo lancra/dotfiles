@@ -21,6 +21,7 @@ User:
   - '%USERPROFILE%\.dotnet\tools'
   - '%DEVUSERPROFILE%\go\bin'
   - '%APPDATA%\npm'
+  - '%LOCALAPPDATA%\Pandoc\'
   - '%LOCALAPPDATA%\Programs\Python\Python312\Scripts\'
   - '%LOCALAPPDATA%\Programs\Python\Python312\'
   - '%LOCALAPPDATA%\Programs\Python\Launcher\'

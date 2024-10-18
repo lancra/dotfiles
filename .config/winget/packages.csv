@@ -35,6 +35,7 @@ Graphviz.Graphviz,winget,Graphviz,Full,Programming
 HandBrake.HandBrake,winget,HandBrake,Full,Video
 JanDeDobbeleer.OhMyPosh,winget,OhMyPosh,Full,Programming
 JGraph.Draw,winget,draw.io,Full,Programming
+JohnMacFarlane.Pandoc,winget,Pandoc,Full,Utility
 jqlang.jq,winget,jq,Full,Programming
 JRSoftware.InnoSetup,winget,InnoSetup,Full,Programming
 KDE.KDiff3,winget,KDiff3,Full,Programming
