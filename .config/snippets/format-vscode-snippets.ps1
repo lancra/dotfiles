@@ -9,7 +9,9 @@ param (
     [SnippetEditor]$Configuration
 )
 
-$filePath = "$env:APPDATA/Code/User/snippets/$($Snippets.Scope).json"
+$targetDirectory = Resolve-Path -Path $Configuration.TargetDirectory
+$filePath = Join-Path -Path $targetDirectory -ChildPath "$($Snippets.Scope).json"
+
 $oldCount = 0
 $hasChanges = $true
 if (Test-Path -Path $filePath) {

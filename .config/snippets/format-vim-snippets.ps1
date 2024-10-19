@@ -11,10 +11,11 @@ param (
 
 $vimScope = $Configuration.ScopeOverrides.$Scope ?? $Scope
 
-$targetDirectory = "$env:XDG_CONFIG_HOME/vim/UltiSnips/$vimScope"
-New-Item -ItemType Directory -Path $targetDirectory -Force | Out-Null
+$targetDirectory = Resolve-Path -Path $Configuration.TargetDirectory
+$targetScopeDirectory = Join-Path -Path $targetDirectory -ChildPath $vimScope
+New-Item -ItemType Directory -Path $targetScopeDirectory -Force | Out-Null
 
-$oldSnippetFiles = Get-ChildItem -Path "$targetDirectory/*.snippets"
+$oldSnippetFiles = Get-ChildItem -Path "$targetScopeDirectory/*.snippets"
 $oldCount = $oldSnippetFiles |
     Measure-Object |
     Select-Object -ExpandProperty Count
@@ -22,7 +23,7 @@ $oldCount = $oldSnippetFiles |
 $hasChanges = $false
 foreach ($snippet in $Snippets.Values) {
     $fileName = $snippet.Prefix[0]
-    $tempPath = "$targetDirectory/$fileName.snippets.temp"
+    $tempPath = "$targetScopeDirectory/$fileName.snippets.temp"
 
     $builder = [System.Text.StringBuilder]::new()
     [void]$builder.AppendLine("snippet $fileName `"$($snippet.Title)`"")
@@ -37,7 +38,7 @@ foreach ($snippet in $Snippets.Values) {
 
     Set-Content -Path $tempPath -Value ($builder.ToString())
 
-    $path = "$targetDirectory/$fileName.snippets"
+    $path = "$targetScopeDirectory/$fileName.snippets"
     $originalHash = $null
     $newHash = Get-FileHash -Path $tempPath -Algorithm SHA256 |
         Select-Object -ExpandProperty Hash
@@ -51,7 +52,7 @@ foreach ($snippet in $Snippets.Values) {
     }
 }
 
-$newSnippetFiles = Get-ChildItem -Path "$targetDirectory/*.snippets.temp"
+$newSnippetFiles = Get-ChildItem -Path "$targetScopeDirectory/*.snippets.temp"
 $newCount = $newSnippetFiles |
     Measure-Object |
     Select-Object -ExpandProperty Count

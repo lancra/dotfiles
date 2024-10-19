@@ -62,6 +62,7 @@ class SnippetFormatResult {
 class SnippetEditor {
     [string]$Key
     [string]$Name
+    [string]$TargetDirectory
     [string[]]$Scopes
     [hashtable]$ScopeOverrides
 }

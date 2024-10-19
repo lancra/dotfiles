@@ -9,7 +9,7 @@ param (
     [SnippetEditor]$Configuration
 )
 
-$visualStudioTarget = "$env:HOME/Documents/Visual Studio 2022/Code Snippets/Visual C#/My Code Snippets"
+$visualStudioTarget = Resolve-Path -Path $Configuration.TargetDirectory
 
 function Set-VisualStudioSnippetToken {
     [CmdletBinding(SupportsShouldProcess)]

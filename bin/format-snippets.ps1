@@ -168,14 +168,15 @@ if ($sqlSnippetFiles.Length -gt 0) {
 }
 
 $editorProperties = @(
-    @{Name = 'Key'; Expression = {$_.Key}},
-    @{Name = 'Name'; Expression = {$_.Name}},
-    @{Name = 'Scopes'; Expression = {$_.Scopes}},
+    @{Name = 'Key'; Expression = {$_.key}},
+    @{Name = 'Name'; Expression = {$_.name}},
+    @{Name = 'TargetDirectory'; Expression = {$_.targetDirectory}}
+    @{Name = 'Scopes'; Expression = {$_.scopes}},
     @{
         Name = 'ScopeOverrides'
         Expression = {
             $scopeOverrides = @{}
-            $_.ScopeOverrides.PSObject.Properties |
+            $_.scopeOverrides.PSObject.Properties |
                 ForEach-Object {
                     $scopeOverrides[$_.Name] = $_.Value
                 }
