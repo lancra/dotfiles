@@ -64,6 +64,7 @@ class SnippetScopeCollection {
 }
 
 class Snippet {
+    [string]$Path
     [string[]]$Prefix
     [string]$Title
     [string]$Description
@@ -72,12 +73,14 @@ class Snippet {
     [SnippetPlaceholder[]]$Placeholders
 
     Snippet(
+        [string]$path,
         [string[]]$prefix,
         [string]$title,
         [string]$description,
         [string[]]$scope,
         [string[]]$body,
         [SnippetPlaceholder[]]$placeholders) {
+        $this.Path = $path
         $this.Prefix = $prefix
         $this.Title = $title
         $this.Description = $description
@@ -108,6 +111,7 @@ class Snippet {
         }
 
         $snippet = [Snippet]::new(
+            $path,
             $prefixes,
             $rawSnippet.title,
             $rawSnippet.description,

@@ -90,6 +90,7 @@ if ($sections.parameters.Length -gt 0) {
 $body += $sections | Select-Object -ExpandProperty body
 
 return [Snippet]::new(
+    $Path,
     $prefix,
     $metadata['title'],
     $metadata['description'],
