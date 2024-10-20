@@ -1,22 +1,49 @@
 class SnippetCollection {
+    [Snippet[]]$Values
+    [string[]]$Scopes
+
+    SnippetCollection([Snippet[]]$values, [string[]]$scopes) {
+        $this.Values = $values
+        $this.Scopes = $scopes
+    }
+
+    static [SnippetCollection] FromDirectory([string]$path) {
+        $snippets = @()
+
+        $files = Get-ChildItem -Path $path -Recurse -Include '*.snippet.json', '*.snippet.sql'
+        foreach ($file in $files) {
+            $path = $file.FullName
+            $extension = [System.IO.Path]::GetExtension($path).Substring(1)
+            if ($extension -eq 'json') {
+                $snippets += [Snippet]::FromJson($path)
+            } elseif ($extension -eq 'sql') {
+                $snippets += & "$env:XDG_CONFIG_HOME/snippets/read-sql-snippet.ps1" -Path $path
+            }
+        }
+
+        $snippetScopes = $snippets |
+            Select-Object -ExpandProperty Scope -Unique |
+            Sort-Object
+
+        return [SnippetCollection]::new($snippets, $snippetScopes)
+    }
+
+    [SnippetScopeCollection] ForScope([string]$scope) {
+        $scopeSnippets = $this.Values |
+            Where-Object -Property Scope -Contains $scope
+        return [SnippetScopeCollection]::new($scope, $scopeSnippets)
+    }
+}
+
+class SnippetScopeCollection {
     [string]$Scope
     [Snippet[]]$Values
     [string]$Json
 
-    SnippetCollection([string]$scope, [string]$json) {
+    SnippetScopeCollection([string]$scope, [Snippet[]]$snippets) {
         $this.Scope = $scope
-        $this.Values = $this.FromJsonArray($json)
-        $this.Json = $this.ToJson($this.Values)
-    }
-
-    hidden [Snippet[]] FromJsonArray([string]$json) {
-        $convertPlaceholdersToArrayQuery = 'map(if .placeholders != null ' +
-            'then . + { "placeholders": (.placeholders | to_entries | map(. + .value | del(.value))) } ' +
-            'else . end) | ' +
-            'map(. + { placeholders: .placeholders | to_array })'
-        return [Snippet[]]($json |
-            jq --compact-output $convertPlaceholdersToArrayQuery |
-            ConvertFrom-Json)
+        $this.Values = $snippets
+        $this.Json = $this.ToJson($snippets)
     }
 
     hidden [string] ToJson([Snippet[]]$snippets) {
@@ -43,12 +70,72 @@ class Snippet {
     [string[]]$Scope
     [string[]]$Body
     [SnippetPlaceholder[]]$Placeholders
+
+    Snippet(
+        [string[]]$prefix,
+        [string]$title,
+        [string]$description,
+        [string[]]$scope,
+        [string[]]$body,
+        [SnippetPlaceholder[]]$placeholders) {
+        $this.Prefix = $prefix
+        $this.Title = $title
+        $this.Description = $description
+        $this.Scope = $scope
+        $this.Body = $body
+        $this.Placeholders = $placeholders
+    }
+
+    static [Snippet] FromJson([string]$path) {
+        $fileName = [System.IO.Path]::GetFileName($path)
+        $filePrefix = $fileName -replace '.snippet.json', ''
+
+        $rawSnippet = Get-Content -Path $path |
+            ConvertFrom-Json
+
+        $prefixes = @($rawSnippet.prefix) + $filePrefix |
+            Select-Object -Unique
+
+        $snippetPlaceholders = @()
+        $snippetPlaceholderHashtable = $rawSnippet.placeholders |
+            ConvertTo-Json |
+            ConvertFrom-Json -AsHashtable
+        if ($null -ne $snippetPlaceholderHashtable) {
+            $snippetPlaceholders = $snippetPlaceholderHashtable.GetEnumerator() |
+                ForEach-Object {
+                    [SnippetPlaceholder]::FromDictionaryEntry($_)
+                }
+        }
+
+        $snippet = [Snippet]::new(
+            $prefixes,
+            $rawSnippet.title,
+            $rawSnippet.description,
+            $rawSnippet.scope,
+            $rawSnippet.body,
+            $snippetPlaceholders)
+        return $snippet
+    }
 }
 
 class SnippetPlaceholder {
     [string]$Key
     [string]$Variable
     [string]$Tooltip
+
+    SnippetPlaceholder([string]$key, [string]$variable, [string]$tooltip) {
+        $this.Key = $key
+        $this.Variable = $variable
+        $this.Tooltip = $tooltip
+    }
+
+    static [SnippetPlaceholder] FromDictionaryEntry([System.Collections.DictionaryEntry]$dictionaryEntry) {
+        $placeholder = [SnippetPlaceholder]::new(
+            $dictionaryEntry.Key,
+            $dictionaryEntry.Value.variable,
+            $dictionaryEntry.Value.tooltip)
+        return $placeholder
+    }
 }
 
 class SnippetFormatResult {
@@ -57,6 +144,20 @@ class SnippetFormatResult {
     [int]$OldCount
     [int]$NewCount
     [bool]$HasChanges
+
+    [string] GetOutput([int]$scopeWidth, [int]$editorWidth) {
+        $countFormat = '{0:D3}'
+
+        $scopeOutput = $this.Scope.PadRight($scopeWidth, ' ')
+        $editorOutput = $this.Editor.PadRight($editorWidth, ' ')
+
+        $oldCountOutput = $countFormat -f $this.OldCount
+        $newCountOutput = $countFormat -f $this.NewCount
+
+        $hasChangesOutput = $this.HasChanges ? 'true' : 'false'
+
+        return "$scopeOutput$editorOutput$oldCountOutput -> $newCountOutput $hasChangesOutput"
+    }
 }
 
 class SnippetEditor {
@@ -65,4 +166,31 @@ class SnippetEditor {
     [string]$TargetDirectory
     [string[]]$Scopes
     [hashtable]$ScopeOverrides
+
+    static [SnippetEditor[]] FromConfiguration() {
+        $path = "$env:XDG_CONFIG_HOME/snippets/config.json"
+
+        $editorProperties = @(
+            @{Name = 'Key'; Expression = {$_.key}},
+            @{Name = 'Name'; Expression = {$_.name}},
+            @{Name = 'TargetDirectory'; Expression = {$_.targetDirectory}}
+            @{Name = 'Scopes'; Expression = {$_.scopes}},
+            @{
+                Name = 'ScopeOverrides'
+                Expression = {
+                    $scopeOverrides = @{}
+                    $_.scopeOverrides.PSObject.Properties |
+                        ForEach-Object {
+                            $scopeOverrides[$_.Name] = $_.Value
+                        }
+                    return $scopeOverrides
+                }}
+        )
+
+        $editors = [SnippetEditor[]](Get-Content -Path $path |
+            ConvertFrom-Json |
+            Select-Object -ExpandProperty editors |
+            Select-Object -Property $editorProperties)
+        return $editors
+    }
 }

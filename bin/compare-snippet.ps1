@@ -38,7 +38,7 @@ if ($sourceLanguage -eq 'json') {
         jq --compact-output '.scope | to_array' |
         ConvertFrom-Json)
 } elseif ($sourceLanguage -eq 'sql') {
-    $title = (& split-sql-snippet-sections.ps1 -Path $sourcePath |
+    $title = (& $sourceDirectory/split-sql-snippet-sections.ps1 -Path $sourcePath |
         ConvertFrom-Json |
         Select-Object -ExpandProperty metadata |
         ConvertFrom-Yaml)['title']

@@ -4,7 +4,7 @@ using module ./snippets.psm1
 [OutputType([SnippetFormatResult])]
 param (
     [Parameter(Mandatory)]
-    [SnippetCollection]$Snippets,
+    [SnippetScopeCollection]$Snippets,
     [Parameter(Mandatory)]
     [SnippetEditor]$Configuration
 )
