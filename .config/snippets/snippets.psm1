@@ -33,6 +33,13 @@ class SnippetCollection {
             Where-Object -Property Scope -Contains $scope
         return [SnippetScopeCollection]::new($scope, $scopeSnippets)
     }
+
+    [Snippet] ForPrefix([string]$prefix) {
+        $snippet = $this.Values |
+            Where-Object -Property Prefix -Contains $prefix |
+            Select-Object -First 1
+        return $snippet
+    }
 }
 
 class SnippetScopeCollection {
