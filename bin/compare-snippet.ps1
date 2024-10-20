@@ -3,7 +3,9 @@ using module ../.config/snippets/snippets.psm1
 [CmdletBinding()]
 param (
     [Parameter(Mandatory)]
-    [string]$Name
+    [string]$Name,
+    [Parameter()]
+    [string[]]$Editor = @()
 )
 
 $snippets = [SnippetCollection]::FromDirectory("$env:XDG_CONFIG_HOME/snippets")
@@ -19,20 +21,25 @@ $sourceLanguage = [System.IO.Path]::GetExtension($snippet.Path).Substring(1)
 
 $allSnippetsFound = $true
 $editors = [SnippetEditor]::FromConfiguration()
-foreach ($editor in $editors) {
-    if (-not $editor.Comparable) {
+
+foreach ($configuredEditor in $editors) {
+    if ($Editor.Count -ne 0 -and -not ($Editor -contains $configuredEditor.Key)) {
         continue
     }
 
-    if ($null -ne $editor.Scopes) {
-        $sharedScopes = $editor.Scopes | Where-Object {$snippet.Scope -Contains $_}
+    if (-not $configuredEditor.Comparable) {
+        continue
+    }
+
+    if ($null -ne $configuredEditor.Scopes) {
+        $sharedScopes = $configuredEditor.Scopes | Where-Object {$snippet.Scope -Contains $_}
         if ($sharedScopes.Count -eq 0) {
             continue
         }
     }
 
-    $scriptPath = "$env:XDG_CONFIG_HOME/snippets/compare-$($editor.Key)-snippet.ps1"
-    & $scriptPath -Snippet $snippet -Configuration $editor
+    $scriptPath = "$env:XDG_CONFIG_HOME/snippets/compare-$($configuredEditor.Key)-snippet.ps1"
+    & $scriptPath -Snippet $snippet -Configuration $configuredEditor
 
     if ($LASTEXITCODE -ne 0) {
         $allSnippetsFound = $false
