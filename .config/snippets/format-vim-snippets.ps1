@@ -34,7 +34,7 @@ foreach ($snippet in $Snippets.Values) {
             $newLine = $newLine.Replace('$LINE_COMMENT', '//')
             [void]$builder.AppendLine($newLine)
         }
-    [void]$builder.AppendLine('endsnippet')
+    [void]$builder.Append('endsnippet')
 
     Set-Content -Path $tempPath -Value ($builder.ToString())
 
