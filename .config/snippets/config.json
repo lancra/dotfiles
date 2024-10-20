@@ -13,7 +13,7 @@
       "key": "vim",
       "name": "VIM",
       "targetDirectory": "~/.config/vim/UltiSnips",
-      "comparable": false,
+      "comparable": true,
       "scopeOverrides": {
         "csharp": "cs",
         "git-commit": "gitcommit",
