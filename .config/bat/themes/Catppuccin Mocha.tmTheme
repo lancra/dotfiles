@@ -287,7 +287,7 @@
         <key>name</key>
         <string>Property names (left hand assignments in json/yaml/css)</string>
         <key>scope</key>
-        <string>support.type.property-name.css</string>
+        <string>support.type.property-name.css, meta.mapping.key.json string.quoted.double.json</string>
         <key>settings</key>
         <dict>
           <key>foreground</key>
