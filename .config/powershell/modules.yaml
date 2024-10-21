@@ -3,7 +3,7 @@
   locations:
   - System.Windows
 - name: Appx
-  shell: Windows
+  shell: Both
   locations:
   - System.Windows
 - name: BitLocker
@@ -153,6 +153,10 @@
   shell: Core
   locations:
   - User.Core
+- name: Microsoft.ReFsDedup.Commands
+  shell: Windows
+  locations:
+  - System.Windows
 - name: Microsoft.Windows.Bcd.Cmdlets
   shell: Both
   locations:
@@ -215,6 +219,10 @@
   locations:
   - System.Windows
 - name: NetworkTransition
+  shell: Both
+  locations:
+  - System.Windows
+- name: OsConfiguration
   shell: Both
   locations:
   - System.Windows
