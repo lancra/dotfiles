@@ -18,7 +18,6 @@ direnv.direnv,winget,direnv,Full,Programming
 Discord.Discord,winget,Discord,Full,Social
 Docker.DockerDesktop,winget,Docker Desktop,Full,Programming
 dotPDN.PaintDotNet,winget,paint.net,Full,Graphics
-ExpressVPN.ExpressVPN,winget,ExpressVPN,Full,Privacy
 FlorianHeidenreich.Mp3tag,winget,Mp3tag,Full,Music
 gerardog.gsudo,winget,gsudo,Full,Utility
 Git.Git,winget,Git,Full,Programming
@@ -91,6 +90,7 @@ OpenJS.NodeJS.LTS,winget,Node.js LTS,Full,Programming
 Oracle.JavaRuntimeEnvironment,winget,Java Runtime Environment,Full,Utility
 PDFsam.PDFsam,winget,PDFsam,Full,Utility
 PostgreSQL.PostgreSQL.16,winget,PostgreSQL,Full,Programming
+PrivateInternetAccess.PrivateInternetAccess,winget,Private Internet Access,Full,Privacy
 PuTTY.PuTTY,winget,PuTTY,Full,Programming
 Python.Launcher,winget,Python Launcher,None,Programming
 Python.Python.3.12,winget,Python 3.12,Full,Programming
