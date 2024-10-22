@@ -1,0 +1,17 @@
+{
+  "title": "Fact Property Class",
+  "description": "The shell class for unit testing a property.",
+  "scope": "csharp",
+  "body": [
+    "public class The${1:Property}Property : $TM_FILENAME_BASE",
+    "{",
+    "    $0",
+    "}"
+  ],
+  "placeholders": {
+    "1": {
+      "variable": "property",
+      "tooltip": "The property being tested by the fact(s)."
+    }
+  }
+}

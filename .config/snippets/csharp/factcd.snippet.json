@@ -1,0 +1,47 @@
+{
+  "title": "Fact Class with Data",
+  "description": "The shell class for unit testing with seed data.",
+  "scope": "csharp",
+  "body": [
+    "public class $TM_FILENAME_BASE : IDisposable",
+    "{",
+    "    private readonly AutoMocker _mocker = new();",
+    "    private readonly SeedDataFixture _seedDataFixture = new();",
+    "",
+    "    public $TM_FILENAME_BASE()",
+    "        => _mocker.Use(_seedDataFixture.NewDbContext);",
+    "",
+    "    public void Dispose()",
+    "    {",
+    "        Dispose(true);",
+    "        GC.SuppressFinalize(this);",
+    "    }",
+    "",
+    "    protected virtual void Dispose(bool disposing)",
+    "    {",
+    "        if (disposing)",
+    "        {",
+    "            _seedDataFixture.Dispose();",
+    "        }",
+    "    }",
+    "",
+    "    private ${1:SystemUnderTest} CreateSystemUnderTest()",
+    "        => _mocker.CreateInstance<$1>();",
+    "",
+    "    public class The${2:Method}Method : $TM_FILENAME_BASE",
+    "    {",
+    "        $0",
+    "    }",
+    "}"
+  ],
+  "placeholders": {
+    "1": {
+      "variable": "systemUnderTest",
+      "tooltip": "The system being tested by the fact(s)."
+    },
+    "2": {
+      "variable": "method",
+      "tooltip": "The method being tested by the fact(s)."
+    }
+  }
+}

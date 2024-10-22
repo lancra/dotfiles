@@ -1,0 +1,29 @@
+{
+  "title": "Fact Class",
+  "description": "The shell class for unit testing.",
+  "scope": "csharp",
+  "body": [
+    "public class $TM_FILENAME_BASE",
+    "{",
+    "    private readonly AutoMocker _mocker = new();",
+    "",
+    "    private ${1:SystemUnderTest} CreateSystemUnderTest()",
+    "        => _mocker.CreateInstance<$1>();",
+    "",
+    "    public class The${2:Method}Method : $TM_FILENAME_BASE",
+    "    {",
+    "        $0",
+    "    }",
+    "}"
+  ],
+  "placeholders": {
+    "1": {
+      "variable": "systemUnderTest",
+      "tooltip": "The system being tested by the fact(s)."
+    },
+    "2": {
+      "variable": "method",
+      "tooltip": "The method being tested by the fact(s)."
+    }
+  }
+}

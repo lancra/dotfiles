@@ -1,0 +1,17 @@
+{
+  "title": "Fact Method Class",
+  "description": "The shell class for unit testing a method.",
+  "scope": "csharp",
+  "body": [
+    "public class The${1:Method}Method : $TM_FILENAME_BASE",
+    "{",
+    "    $0",
+    "}"
+  ],
+  "placeholders": {
+    "1": {
+      "variable": "method",
+      "tooltip": "The method being tested by the fact(s)."
+    }
+  }
+}
