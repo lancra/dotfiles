@@ -17,7 +17,7 @@ class SnippetCollection {
             if ($extension -eq 'json') {
                 $snippets += [Snippet]::FromJson($path)
             } elseif ($extension -eq 'sql') {
-                $snippets += & "$env:XDG_CONFIG_HOME/snippets/read-sql-snippet.ps1" -Path $path
+                $snippets += & "$env:SNIPPET_HOME/.scripts/read-sql-snippet.ps1" -Path $path
             }
         }
 
@@ -180,7 +180,7 @@ class SnippetEditor {
     [hashtable]$ScopeOverrides
 
     static [SnippetEditor[]] FromConfiguration() {
-        $path = "$env:XDG_CONFIG_HOME/snippets/config.json"
+        $path = "$env:SNIPPET_HOME/config.json"
 
         $editorProperties = @(
             @{Name = 'Key'; Expression = {$_.key}},

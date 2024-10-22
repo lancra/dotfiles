@@ -1,9 +1,9 @@
-using module ../.config/snippets/snippets.psm1
+using module ../.config/snippets/.scripts/snippets.psm1
 
 [CmdletBinding(SupportsShouldProcess)]
 param (
     [Parameter()]
-    [string]$Source = "$env:XDG_CONFIG_HOME/snippets",
+    [string]$Source = "$env:SNIPPET_HOME",
     [switch]$SkipVisualStudio
 )
 
@@ -52,7 +52,7 @@ $snippets.Scopes |
                 continue
             }
 
-            $scriptPath = "$env:XDG_CONFIG_HOME/snippets/format-$($editor.Key)-snippets.ps1"
+            $scriptPath = "$env:SNIPPET_HOME/.scripts/format-$($editor.Key)-snippets.ps1"
             $formatResult = [SnippetFormatResult](& $scriptPath -Snippets $scopeSnippets -Configuration $editor)
             $formatResult.GetOutput($scopeResultWidth, $editorResultWidth) | Write-Output
         }

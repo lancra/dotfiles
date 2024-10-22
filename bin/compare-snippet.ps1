@@ -1,4 +1,4 @@
-using module ../.config/snippets/snippets.psm1
+using module ../.config/snippets/.scripts/snippets.psm1
 
 [CmdletBinding()]
 param (
@@ -8,7 +8,7 @@ param (
     [string[]]$Editor = @()
 )
 
-$snippets = [SnippetCollection]::FromDirectory("$env:XDG_CONFIG_HOME/snippets")
+$snippets = [SnippetCollection]::FromDirectory($env:SNIPPET_HOME)
 $snippet = $snippets.ForPrefix($Name)
 
 if ($null -eq $snippet) {
@@ -38,7 +38,7 @@ foreach ($configuredEditor in $editors) {
         }
     }
 
-    $scriptPath = "$env:XDG_CONFIG_HOME/snippets/compare-$($configuredEditor.Key)-snippet.ps1"
+    $scriptPath = "$env:SNIPPET_HOME/.scripts/compare-$($configuredEditor.Key)-snippet.ps1"
     & $scriptPath -Snippet $snippet -Configuration $configuredEditor
 
     if ($LASTEXITCODE -ne 0) {

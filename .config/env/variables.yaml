@@ -31,6 +31,7 @@ User:
   POSH_INSTALLER: winget
   POSH_THEMES_PATH: '%LOCALAPPDATA%\Programs\oh-my-posh\themes'
   RIPGREP_CONFIG_PATH: '%XDG_CONFIG_HOME%/ripgrep/config'
+  SNIPPET_HOME: '%HOME%/.config/snippets'
   XDG_CONFIG_HOME: '%HOME%/.config'
 Machine:
   PATH:

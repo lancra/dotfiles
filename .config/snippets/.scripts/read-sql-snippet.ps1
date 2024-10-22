@@ -62,7 +62,7 @@ function Format-SqlSnippetParameter {
     }
 }
 
-$sections = & $env:XDG_CONFIG_HOME/snippets/split-sql-snippet-sections.ps1 -Path $Path |
+$sections = & "$env:SNIPPET_HOME/.scripts/split-sql-snippet-sections.ps1" -Path $Path |
     ConvertFrom-Json
 if ($null -eq $sections) {
     return
