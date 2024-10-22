@@ -10,6 +10,47 @@ param (
 )
 
 $visualStudioTarget = Resolve-Path -Path $Configuration.TargetDirectory
+$visualStudioNamespace = 'http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet'
+
+function New-LiteralElement {
+    [CmdletBinding()]
+    [OutputType([System.Xml.XmlElement])]
+    param(
+        [Parameter(Mandatory)]
+        [System.Xml.XmlDocument]$Document,
+        [Parameter(Mandatory)]
+        [string]$Id,
+        [Parameter(Mandatory)]
+        [string]$Tooltip,
+        [Parameter(Mandatory)]
+        [string]$Default,
+        [Parameter()]
+        [string]$Function
+    )
+    process {
+        $literalElement = $Document.CreateElement('Literal', $visualStudioNamespace)
+
+        $idElement = $Document.CreateElement('ID', $visualStudioNamespace)
+        $idElement.InnerText = $Id
+        [void]$literalElement.AppendChild($idElement)
+
+        $toolTipElement = $Document.CreateElement('ToolTip', $visualStudioNamespace)
+        $toolTipElement.InnerText = $Tooltip
+        [void]$literalElement.AppendChild($toolTipElement)
+
+        $defaultElement = $Document.CreateElement('Default', $visualStudioNamespace)
+        $defaultElement.InnerText = $Default
+        [void]$literalElement.AppendChild($defaultElement)
+
+        if (-not [string]::IsNullOrEmpty($Function)) {
+            $functionElement = $Document.CreateElement('Function', $visualStudioNamespace)
+            $functionElement.InnerText = $Function
+            [void]$literalElement.AppendChild($functionElement)
+        }
+
+        return $literalElement
+    }
+}
 
 function Set-VisualStudioSnippetToken {
     [CmdletBinding(SupportsShouldProcess)]
@@ -17,28 +58,49 @@ function Set-VisualStudioSnippetToken {
     param (
         [Parameter(Mandatory)]
         [System.Xml.XmlDocument]$Document,
+        [Parameter(Mandatory)]
+        [hashtable]$Markers,
         [Parameter()]
         [SnippetPlaceholder[]]$Placeholders,
         [Parameter()]
         [string]$Line
     )
     begin {
-        $visualStudioNamespace = 'http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet'
         $keyGroup = 'key'
         $defaultGroup = 'default'
         $placeholderRegex = "\$\{?(?<$keyGroup>[0-9]+):?(?<$defaultGroup>[A-Za-z0-9]*)\}?"
+
+        $classNamePlaceholder = '$TM_FILENAME_BASE'
+        $classNameId = 'classname'
     }
     process {
         $newLine = $Line
         $newLine = $newLine.Replace('$0', '$end$')
-        $newLine = $newLine.Replace('$TM_SELECTED_TEXT', '$selected$')
         $newLine = $newLine.Replace('$LINE_COMMENT', '//')
+        $newLine = $newLine.Replace('$TM_SELECTED_TEXT', '$selected$')
 
         $newLine = $newLine.Replace("`r`n", '\r\n')
         $newLine = $newLine.Replace("`n", '\n')
         $newLine = $newLine.Replace("`t", '\t')
 
         $literalElements = @()
+        if ($newLine.Contains($classNamePlaceholder)) {
+            if ($null -eq $Markers[$classNameId]) {
+                $Markers[$classNameId] = $classNameId
+
+                $newClassNameLiteralElementParameters = @{
+                    Document = $Document
+                    Id = $classNameId
+                    Tooltip = 'The current class.'
+                    Default = 'ClassName'
+                    Function = 'ClassName()'
+                }
+                $literalElements += New-LiteralElement @newClassNameLiteralElementParameters
+            }
+
+            $newLine = $newLine.Replace($classNamePlaceholder, "`$$classNameId`$")
+        }
+
         Select-String -InputObject $newLine -Pattern $placeholderRegex -AllMatches |
             Select-Object -ExpandProperty Matches |
             ForEach-Object {
@@ -51,21 +113,17 @@ function Set-VisualStudioSnippetToken {
 
                 $id = $placeholder.Variable ?? $key
 
-                $literalElement = $Document.CreateElement('Literal', $visualStudioNamespace)
+                if ($null -eq $Markers[$key]) {
+                    $Markers[$key] = $key
 
-                $idElement = $Document.CreateElement('ID', $visualStudioNamespace)
-                $idElement.InnerText = $id
-                [void]$literalElement.AppendChild($idElement)
-
-                $toolTipElement = $Document.CreateElement('ToolTip', $visualStudioNamespace)
-                $toolTipElement.InnerText = $placeholder.Tooltip
-                [void]$literalElement.AppendChild($toolTipElement)
-
-                $defaultElement = $Document.CreateElement('Default', $visualStudioNamespace)
-                $defaultElement.InnerText = $default
-                [void]$literalElement.AppendChild($defaultElement)
-
-                $literalElements += $literalElement
+                    $newLiteralElementParameters = @{
+                        Document = $Document
+                        Id = $id
+                        Tooltip = $placeholder.Tooltip
+                        Default = $default
+                    }
+                    $literalElements += New-LiteralElement @newLiteralElementParameters
+                }
 
                 $matchValue = $_.Value
                 $newLine = $newLine.Replace($matchValue, "`$$id`$")
@@ -94,10 +152,17 @@ foreach ($snippet in $Snippets.Values) {
     $tempPath = "$visualStudioTarget/$fileName.temp.snippet"
     $document = [System.Xml.XmlDocument]::new()
 
+    $placeholderMarkers = @{}
     $literalElements = @()
     $codeValue = ($snippet.Body |
         ForEach-Object {
-            $lineResult = Set-VisualStudioSnippetToken -Document $document -Placeholders $snippet.Placeholders -Line $_
+            $setSnippetTokenParameters = @{
+                Document = $document
+                Markers = $placeholderMarkers
+                Placeholders = $snippet.Placeholders
+                Line = $_
+            }
+            $lineResult = Set-VisualStudioSnippetToken @setSnippetTokenParameters
 
             if ($lineResult.Literals) {
                 $literalElements += $lineResult.Literals

@@ -30,8 +30,9 @@ foreach ($snippet in $Snippets.Values) {
     $snippet.Body |
         ForEach-Object {
             $newLine = $_
-            $newLine = $newLine.Replace('$TM_SELECTED_TEXT', '${VISUAL}')
             $newLine = $newLine.Replace('$LINE_COMMENT', '//')
+            $newLine = $newLine.Replace('$TM_FILENAME_BASE', '`!p snip.rv = snip.basename`')
+            $newLine = $newLine.Replace('$TM_SELECTED_TEXT', '${VISUAL}')
             [void]$builder.AppendLine($newLine)
         }
     [void]$builder.Append('endsnippet')
