@@ -52,7 +52,7 @@ $snippets.Scopes |
                 continue
             }
 
-            $scriptPath = "$env:SNIPPET_HOME/.scripts/format-$($editor.Key)-snippets.ps1"
+            $scriptPath = "$env:SNIPPET_HOME/.scripts/$($editor.Key)/format-snippets.ps1"
             $formatResult = [SnippetFormatResult](& $scriptPath -Snippets $scopeSnippets -Configuration $editor)
             $formatResult.GetOutput($scopeResultWidth, $editorResultWidth) | Write-Output
         }

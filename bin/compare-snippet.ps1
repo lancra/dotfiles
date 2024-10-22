@@ -38,7 +38,7 @@ foreach ($configuredEditor in $editors) {
         }
     }
 
-    $scriptPath = "$env:SNIPPET_HOME/.scripts/compare-$($configuredEditor.Key)-snippet.ps1"
+    $scriptPath = "$env:SNIPPET_HOME/.scripts/$($configuredEditor.Key)/compare-snippet.ps1"
     & $scriptPath -Snippet $snippet -Configuration $configuredEditor
 
     if ($LASTEXITCODE -ne 0) {
