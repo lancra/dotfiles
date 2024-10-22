@@ -4,7 +4,6 @@
       "key": "ads",
       "name": "Azure Data Studio",
       "targetDirectory": "~/AppData/Roaming/azuredatastudio/User/snippets",
-      "comparable": false,
       "scopes": [
         "sql"
       ]
@@ -13,7 +12,6 @@
       "key": "vim",
       "name": "VIM",
       "targetDirectory": "~/.config/vim/UltiSnips",
-      "comparable": true,
       "scopeOverrides": {
         "csharp": "cs",
         "git-commit": "gitcommit",
@@ -24,7 +22,6 @@
       "key": "vs",
       "name": "Visual Studio",
       "targetDirectory": "~/Documents/Visual Studio 2022/Code Snippets/Visual C#/My Code Snippets",
-      "comparable": true,
       "scopes": [
         "csharp"
       ]
@@ -32,8 +29,7 @@
     {
       "key": "vscode",
       "name": "Visual Studio Code",
-      "targetDirectory": "~/AppData/Roaming/Code/User/snippets",
-      "comparable": true
+      "targetDirectory": "~/AppData/Roaming/Code/User/snippets"
     }
   ]
 }

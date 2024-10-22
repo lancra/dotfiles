@@ -175,7 +175,6 @@ class SnippetEditor {
     [string]$Key
     [string]$Name
     [string]$TargetDirectory
-    [bool]$Comparable
     [string[]]$Scopes
     [hashtable]$ScopeOverrides
 
@@ -186,7 +185,6 @@ class SnippetEditor {
             @{Name = 'Key'; Expression = {$_.key}},
             @{Name = 'Name'; Expression = {$_.name}},
             @{Name = 'TargetDirectory'; Expression = {$_.targetDirectory}}
-            @{Name = 'Comparable'; Expression = {$_.comparable}}
             @{Name = 'Scopes'; Expression = {$_.scopes}},
             @{
                 Name = 'ScopeOverrides'

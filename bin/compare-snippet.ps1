@@ -27,10 +27,6 @@ foreach ($configuredEditor in $editors) {
         continue
     }
 
-    if (-not $configuredEditor.Comparable) {
-        continue
-    }
-
     if ($null -ne $configuredEditor.Scopes) {
         $sharedScopes = $configuredEditor.Scopes | Where-Object {$snippet.Scope -Contains $_}
         if ($sharedScopes.Count -eq 0) {
@@ -39,6 +35,10 @@ foreach ($configuredEditor in $editors) {
     }
 
     $scriptPath = "$env:SNIPPET_HOME/.scripts/$($configuredEditor.Key)/compare-snippet.ps1"
+    if (-not (Test-Path -Path $scriptPath)) {
+        continue
+    }
+
     & $scriptPath -Snippet $snippet -Configuration $configuredEditor
 
     if ($LASTEXITCODE -ne 0) {
