@@ -2,14 +2,35 @@ using module ../.config/snippets/.scripts/snippets.psm1
 
 [CmdletBinding()]
 param (
+    [ArgumentCompleter({
+        param($commandName, $parameterName, $wordToComplete)
+        if ($parameterName -eq 'Name') {
+            $validNames = Get-ChildItem -Path $env:SNIPPET_HOME -Recurse -Filter '*.snippet.*' |
+                ForEach-Object {
+                    $fileName = [System.IO.Path]::GetFileName($_)
+                    $dotIndex = $fileName.IndexOf('.snippet')
+                    $fileName.Substring(0, $dotIndex)
+                } |
+                Sort-Object
+            $validNames -like "$wordToComplete*"
+        }
+    })]
     [Parameter(Mandatory)]
     [string]$Name,
 
     [Parameter()]
+    [ValidateScript({
+        $_ -in (& "$env:SNIPPET_HOME/.scripts/get-definition-keys.ps1")},
+        ErrorMessage = 'Definition not found.')]
+    [ArgumentCompleter({
+        param($commandName, $parameterName, $wordToComplete)
+        if ($parameterName -eq 'Definition') {
+            $validDefinitions = (& "$env:SNIPPET_HOME/.scripts/get-definition-keys.ps1")
+            $validDefinitions -like "$wordToComplete*"
+        }
+    })]
     [string[]]$Definition = @()
 )
-
-$sourceDefinitions = @('source', 'src')
 
 $snippets = [SnippetCollection]::FromDirectory($env:SNIPPET_HOME)
 $snippet = $snippets.ForPrefix($Name)
@@ -19,8 +40,7 @@ if ($null -eq $snippet) {
     exit 1
 }
 
-$sharedSourceDefinitions = $Definition | Where-Object {$sourceDefinitions -contains $_}
-if ($Definition.Count -eq 0 -or $sharedSourceDefinitions.Count -ne 0) {
+if ($Definition.Count -eq 0 -or $Definition -contains 'source') {
     $sourceLanguage = [System.IO.Path]::GetExtension($snippet.Path).Substring(1)
     & bat --paging=never --language=$sourceLanguage --file-name=Source $snippet.Path
 }

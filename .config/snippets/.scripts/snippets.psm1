@@ -10,7 +10,7 @@ class SnippetCollection {
     static [SnippetCollection] FromDirectory([string]$path) {
         $snippets = @()
 
-        $files = Get-ChildItem -Path $path -Recurse -Include '*.snippet.json', '*.snippet.sql'
+        $files = Get-ChildItem -Path $path -Recurse -Filter '*.snippet.*'
         foreach ($file in $files) {
             $path = $file.FullName
             $extension = [System.IO.Path]::GetExtension($path).Substring(1)
