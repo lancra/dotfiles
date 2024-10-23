@@ -15,6 +15,8 @@ Import-Module HackF5.ProfileAlias
 Set-ProfileAlias cm 'check-machine.ps1' -Force | Out-Null
 Set-ProfileAlias em 'export-machine.ps1' -Force | Out-Null
 Set-ProfileAlias um 'update-machine.ps1' -Force | Out-Null
+Set-ProfileAlias uem '& update-machine.ps1 && & export-machine.ps1' -Bash -Force | Out-Null
+
 Set-ProfileAlias g 'git #{:*}' -Bash -Force | Out-Null
 Set-ProfileAlias l 'lsd -l #{:*}' -Bash -Force | Out-Null
 Set-ProfileAlias rmr 'Remove-Item -Path #{0} -Recurse' -Bash -Force | Out-Null
