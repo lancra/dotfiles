@@ -13,6 +13,7 @@ Set-PSReadLineKeyHandler -Key '*,y' -BriefDescription 'global yank' -ViMode Comm
 
 Import-Module HackF5.ProfileAlias
 Set-ProfileAlias cm 'check-machine.ps1' -Force | Out-Null
+Set-ProfileAlias cmi '& check-machine.ps1 -Interactive' -Bash -Force | Out-Null
 Set-ProfileAlias em 'export-machine.ps1' -Force | Out-Null
 Set-ProfileAlias um 'update-machine.ps1' -Force | Out-Null
 Set-ProfileAlias uem '& update-machine.ps1 && & export-machine.ps1' -Bash -Force | Out-Null
