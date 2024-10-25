@@ -6,6 +6,12 @@ exclude_rules = CP02
 [sqlfluff:indentation]
 indented_joins = True
 
+[sqlfluff:layout:type:binary_operator]
+line_position = trailing
+
+[sqlfluff:layout:type:comparison_operator]
+line_position = trailing
+
 [sqlfluff:rules:ambiguous.column_references]
 group_by_and_order_by_style = explicit
 
