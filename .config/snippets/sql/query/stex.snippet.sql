@@ -6,21 +6,23 @@ DECLARE @SchemaName SYSNAME
 DECLARE @TableOrViewName SYSNAME
 ---
 
-SELECT
-    FORMATMESSAGE('[%s]%s', C.[name], IIF(C.[column_id] <> CM.[column_id], ',', '')) AS [Column]
-FROM sys.columns C
-    INNER JOIN sys.objects O ON O.[object_id] = C.[object_id]
-    INNER JOIN sys.schemas S ON S.[schema_id] = O.[schema_id]
-    INNER JOIN
-    (
+;
+WITH
+    MaximumColumns AS (
         SELECT
-            [object_id],
-            MAX([column_id]) AS [column_id]
+            object_id,
+            MAX(column_id) AS column_id
         FROM sys.columns
-        GROUP BY [object_id]
-    ) CM ON CM.[object_id] = O.[object_id]
+        GROUP BY object_id
+    )
+
+SELECT C.name + IIF(C.column_id <> MC.column_id, ',', '') AS [Column]
+FROM sys.columns AS C
+    INNER JOIN sys.objects AS O ON C.object_id = O.object_id
+    INNER JOIN sys.schemas AS S ON O.schema_id = S.schema_id
+    INNER JOIN MaximumColumns AS MC ON O.object_id = MC.object_id
 WHERE
-    S.[name] = @SchemaName AND
-    O.[name] = @TableOrViewName
+    S.name = @SchemaName AND
+    O.name = @TableOrViewName
 ORDER BY
-    C.[column_id]
+    C.column_id
