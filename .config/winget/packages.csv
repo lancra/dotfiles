@@ -88,6 +88,7 @@ Nvidia.PhysX,winget,Nvidia PhysX,None,Gaming
 Obsidian.Obsidian,winget,Obsidian,Full,Notes
 OpenJS.NodeJS.LTS,winget,Node.js LTS,Full,Programming
 Oracle.JavaRuntimeEnvironment,winget,Java Runtime Environment,Full,Utility
+PawelSalawa.SQLiteStudio,winget,SQLiteStudio,Full,Programming
 PDFsam.PDFsam,winget,PDFsam,Full,Utility
 PostgreSQL.PostgreSQL.16,winget,PostgreSQL,Full,Programming
 PrivateInternetAccess.PrivateInternetAccess,winget,Private Internet Access,Full,Privacy
@@ -103,7 +104,6 @@ Rustlang.Rustup,winget,rustup,Full,Programming
 sharkdp.bat,winget,bat,Full,File System
 sharkdp.fd,winget,fd,Full,File System
 ShiningLight.OpenSSL.Dev,winget,OpenSSL,Full,Programming
-sqlitestudio.pl.SQLiteStudio,winget,SQLiteStudio,Full,Programming
 SumatraPDF.SumatraPDF,winget,Sumatra PDF,Full,Reading
 Valve.Steam,winget,Steam,Full,Gaming
 VideoLAN.VLC,winget,VLC,Full,Video
