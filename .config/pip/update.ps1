@@ -4,4 +4,4 @@ param(
     [string]$Id
 )
 
-& pip install --upgrade $Id
+& python -m pip install --upgrade $Id
