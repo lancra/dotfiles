@@ -53,6 +53,7 @@ Microsoft.DevHome,winget,Dev Home,Full,Programming
 Microsoft.DotNet.DesktopRuntime.6,winget,.NET 6 Desktop Runtime,None,Programming
 Microsoft.DotNet.DesktopRuntime.8,winget,.NET 8 Desktop Runtime,None,Programming
 Microsoft.DotNet.SDK.8,winget,.NET 8 SDK,Partial,Programming
+Microsoft.DotNet.SDK.9,winget,.NET 9 SDK,Partial,Programming
 Microsoft.DotNet.UninstallTool,winget,.NET Uninstall Tool,Full,Programming
 Microsoft.Edge,winget,Microsoft Edge,Full,Web
 Microsoft.EdgeWebView2Runtime,winget,Microsoft Edge WebView2,None,Web
