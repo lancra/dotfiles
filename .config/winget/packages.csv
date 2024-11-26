@@ -74,6 +74,7 @@ Microsoft.VisualStudioCode,winget,Visual Studio Code,Full,Programming
 Microsoft.WebDeploy,winget,Web Deploy,None,Programming
 Microsoft.WindowsTerminal,winget,Windows Terminal,Full,Programming
 Microsoft.WindowsTerminal.Preview,winget,Windows Terminal Preview,Full,Programming
+Microsoft.WSL,winget,Windows Subsystem for Linux,Full,Programming
 MiKTeX.MiKTeX,winget,MiKTeX,Full,Utility
 Mobatek.MobaXterm,winget,MobaXterm,Full,Programming
 Mozilla.Firefox,winget,Mozilla Firefox,Full,Web
