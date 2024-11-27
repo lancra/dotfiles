@@ -18,6 +18,7 @@ Set-ProfileAlias em 'export-machine.ps1' -Force | Out-Null
 Set-ProfileAlias um 'update-machine.ps1' -Force | Out-Null
 Set-ProfileAlias uem '& update-machine.ps1 && & export-machine.ps1' -Bash -Force | Out-Null
 
+Set-ProfileAlias cwd '$pwd.Path | Set-Clipboard' -Bash -Force | Out-Null
 Set-ProfileAlias g 'git #{:*}' -Bash -Force | Out-Null
 Set-ProfileAlias iev 'import-environment-variables.ps1' -Force | Out-Null
 Set-ProfileAlias jqf 'Set-Content -Path "$(#{0})" -Value (jq ''.'' "$(#{0})")' -Bash -Force | Out-Null
