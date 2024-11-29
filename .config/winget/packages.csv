@@ -52,6 +52,7 @@ Microsoft.CLRTypesSQLServer.2019,winget,SQL Server 2019 CLR Types,None,Programmi
 Microsoft.DevHome,winget,Dev Home,Full,Programming
 Microsoft.DotNet.DesktopRuntime.6,winget,.NET 6 Desktop Runtime,None,Programming
 Microsoft.DotNet.DesktopRuntime.8,winget,.NET 8 Desktop Runtime,None,Programming
+Microsoft.DotNet.Runtime.7,winget,.NET 7 Runtime,None,Programming
 Microsoft.DotNet.SDK.8,winget,.NET 8 SDK,Partial,Programming
 Microsoft.DotNet.SDK.9,winget,.NET 9 SDK,Partial,Programming
 Microsoft.DotNet.UninstallTool,winget,.NET Uninstall Tool,Full,Programming

@@ -2,5 +2,6 @@ Id,Url
 dotnet-ef,https://nuget.org/packages/dotnet-ef
 dotnet-repl,https://nuget.org/packages/dotnet-repl
 dotnet-reportgenerator-globaltool,https://nuget.org/packages/dotnet-reportgenerator-globaltool
+dotnet-suggest,https://nuget.org/packages/dotnet-suggest
 dotnet-tools-outdated,https://nuget.org/packages/dotnet-tools-outdated
 dotnet-xscgen,https://nuget.org/packages/dotnet-xscgen
