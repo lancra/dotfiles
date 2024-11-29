@@ -1,7 +1,5 @@
 [console]::InputEncoding = [console]::OutputEncoding = [System.Text.UTF8Encoding]::new()
 
-Import-Module 'Lance'
-
 Set-PSReadLineOption -EditMode Vi -ViModeIndicator Cursor
 Set-PSReadLineKeyHandler -Key '*,y' -BriefDescription 'global yank' -ViMode Command -Scriptblock {
     param($key, $arg)
@@ -10,6 +8,16 @@ Set-PSReadLineKeyHandler -Key '*,y' -BriefDescription 'global yank' -ViMode Comm
     [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
     Set-Clipboard $line
 }
+
+# PowerShell parameter completion shim for the dotnet CLI
+Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
+    param($wordToComplete, $commandAst, $cursorPosition)
+        dotnet complete --position $cursorPosition "$commandAst" | ForEach-Object {
+            [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+        }
+}
+
+Import-Module 'Lance'
 
 Import-Module HackF5.ProfileAlias
 Set-ProfileAlias cm 'check-machine.ps1' -Force | Out-Null
