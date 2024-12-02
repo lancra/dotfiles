@@ -11,7 +11,6 @@ User:
   PATH:
   - '%LOCALAPPDATA%\Microsoft\WinGet\Links'
   - '%USERPROFILE%\bin'
-  - '%LOCALAPPDATA%\Programs\oh-my-posh\bin'
   - '%LOCALAPPDATA%\Programs\nu\bin\'
   - '%LOCALAPPDATA%\Programs\Microsoft VS Code\bin'
   - '%LOCALAPPDATA%\Programs\Azure Data Studio\bin'
@@ -28,8 +27,6 @@ User:
   - '%LOCALAPPDATA%\Programs\Python\Launcher\'
   - '%LOCALAPPDATA%\Microsoft\WindowsApps'
   PIP_CACHE_DIR: '%DEVUSERPROFILE%\AppData\Local\pip\Cache'
-  POSH_INSTALLER: winget
-  POSH_THEMES_PATH: '%LOCALAPPDATA%\Programs\oh-my-posh\themes'
   RIPGREP_CONFIG_PATH: '%XDG_CONFIG_HOME%/ripgrep/config'
   SNIPPET_HOME: '%HOME%/.config/snippets'
   XDG_CONFIG_HOME: '%HOME%/.config'
@@ -41,6 +38,7 @@ Machine:
   - '%SYSTEMROOT%\System32\Wbem'
   - '%SYSTEMROOT%\System32\WindowsPowerShell\v1.0'
   - '%PROGRAMFILES%\PowerShell\7\'
+  - '%PROGRAMFILES(X86)%\oh-my-posh\bin\'
   - '%PROGRAMFILES(X86)%\Windows Kits\10\Windows Performance Toolkit'
   - '%PROGRAMFILES(X86)%\NVIDIA Corporation\PhysX\Common'
   - '%PROGRAMFILES%\NVIDIA Corporation\NVIDIA NvDLISR'
@@ -68,4 +66,6 @@ Machine:
   - '%PROGRAMFILES%\nodejs\'
   - '%PROGRAMFILES%\PuTTY\'
   - '%PROGRAMFILES%\Calibre2\'
+  POSH_INSTALLER: winget
+  POSH_THEMES_PATH: '%PROGRAMFILES(X86)%\oh-my-posh\themes\'
 
