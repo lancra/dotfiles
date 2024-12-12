@@ -18,6 +18,7 @@ direnv.direnv,winget,direnv,Full,Programming
 Discord.Discord,winget,Discord,Full,Social
 Docker.DockerDesktop,winget,Docker Desktop,Full,Programming
 dotPDN.PaintDotNet,winget,paint.net,Full,Graphics
+EpicGames.EpicGamesLauncher,winget,Epic Games Launcher,Full,Gaming
 FlorianHeidenreich.Mp3tag,winget,Mp3tag,Full,Music
 gerardog.gsudo,winget,gsudo,Full,Utility
 Git.Git,winget,Git,Full,Programming
