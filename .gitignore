@@ -6,7 +6,6 @@
 /.github/token
 /.lancra/
 /.librarymanager/
-/.local/
 /.ssh/
 /.templateengine/
 /.vscode/extensions/
@@ -104,6 +103,7 @@
 
 # Podman
 /.config/containers/
+/.local/share/containers/
 
 # RuneScape
 /.runelite/
