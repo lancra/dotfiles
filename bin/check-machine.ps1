@@ -2,12 +2,12 @@
 param (
     [Parameter()]
     [ValidateScript({
-        $_ -in (& "$env:XDG_CONFIG_HOME/env/get-provider-ids.ps1")},
+        $_ -in (& "$env:HOME/.local/bin/env/get-provider-ids.ps1")},
         ErrorMessage = 'Provider not found.')]
     [ArgumentCompleter({
         param($cmd, $param, $wordToComplete)
         if ($param -eq 'Provider') {
-            $validProviders = (& "$env:XDG_CONFIG_HOME/env/get-provider-ids.ps1")
+            $validProviders = (& "$env:HOME/.local/bin/env/get-provider-ids.ps1")
             $validProviders -like "$wordToComplete*"
         }
     })]
@@ -15,20 +15,20 @@ param (
     [switch]$Interactive
 )
 begin {
-    & "$env:XDG_CONFIG_HOME/env/begin-loading.ps1"
+    & "$env:HOME/.local/bin/env/begin-loading.ps1"
 }
 process {
-    $outdatedItems = & "$env:XDG_CONFIG_HOME/env/get-providers.ps1" -Id $Provider |
+    $outdatedItems = & "$env:HOME/.local/bin/env/get-providers.ps1" -Id $Provider |
         ForEach-Object -Parallel {
             if ($_.check) {
-                & "$env:XDG_CONFIG_HOME/$($_.id)/check-$($_.resource).ps1"
+                & "$env:HOME/.local/bin/$($_.id)/check-$($_.resource).ps1"
             }
         } |
         ConvertFrom-Json |
         Select-Object -Property provider,id,current,available |
         Sort-Object -Property provider,id
 
-    & "$env:XDG_CONFIG_HOME/env/end-loading.ps1"
+    & "$env:HOME/.local/bin/env/end-loading.ps1"
 
     $hasOutdated = $outdatedItems.Count -gt 0
     if ($hasOutdated) {

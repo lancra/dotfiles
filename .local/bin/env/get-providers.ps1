@@ -4,7 +4,7 @@ param(
     [string]$Id
 )
 
-$providers = Get-Content -Path "$PSScriptRoot/providers.json" |
+$providers = Get-Content -Path "$env:XDG_CONFIG_HOME/env/providers.json" |
     ConvertFrom-Json |
     Select-Object -ExpandProperty providers
 

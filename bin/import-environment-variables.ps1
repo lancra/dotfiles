@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param (
     [Parameter()]
-    [string]$Source = "$env:XDG_CONFIG_HOME/env/variables.yaml"
+    [string] $Source = "$env:XDG_DATA_HOME/env/variables.yaml"
 )
 
 function Compare-EnvironmentVariable {
@@ -18,7 +18,7 @@ function Compare-EnvironmentVariable {
         New-Item -ItemType Directory -Path $targetDirectory -Force | Out-Null
 
         $targetPath = "$targetDirectory/environment-variables.yaml"
-        & "$env:XDG_CONFIG_HOME/env/export-variables.ps1" -Target $targetPath
+        & "$env:HOME/.local/bin/env/export-variables.ps1" -Target $targetPath
 
         # Use UTF-8 so that Tee-Object doesn't garble Unicode symbols.
         $originalEncoding = [System.Console]::OutputEncoding
