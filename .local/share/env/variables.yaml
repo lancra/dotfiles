@@ -29,7 +29,6 @@ User:
   - '%LOCALAPPDATA%\Microsoft\WindowsApps'
   PIP_CACHE_DIR: '%DEVUSERPROFILE%\AppData\Local\pip\Cache'
   RIPGREP_CONFIG_PATH: '%XDG_CONFIG_HOME%/ripgrep/config'
-  SNIPPET_HOME: '%HOME%/.config/snippets'
   XDG_CACHE_HOME: '%HOME%/.cache'
   XDG_CONFIG_HOME: '%HOME%/.config'
   XDG_DATA_HOME: '%HOME%/.local/share'

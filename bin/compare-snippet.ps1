@@ -1,11 +1,11 @@
-using module ../.config/snippets/.scripts/snippets.psm1
+using module ../.local/bin/snippets/snippets.psm1
 
 [CmdletBinding()]
 param (
     [ArgumentCompleter({
         param($commandName, $parameterName, $wordToComplete)
         if ($parameterName -eq 'Name') {
-            $validNames = Get-ChildItem -Path $env:SNIPPET_HOME -Recurse -Filter '*.snippet.*' |
+            $validNames = Get-ChildItem -Path "$env:XDG_CONFIG_HOME/snippets" -Recurse -Filter '*.snippet.*' |
                 ForEach-Object {
                     $fileName = [System.IO.Path]::GetFileName($_)
                     $dotIndex = $fileName.IndexOf('.snippet')
@@ -20,19 +20,19 @@ param (
 
     [Parameter()]
     [ValidateScript({
-        $_ -in (& "$env:SNIPPET_HOME/.scripts/get-definition-keys.ps1")},
+        $_ -in (& "$env:HOME/.local/bin/snippets/get-definition-keys.ps1")},
         ErrorMessage = 'Definition not found.')]
     [ArgumentCompleter({
         param($commandName, $parameterName, $wordToComplete)
         if ($parameterName -eq 'Definition') {
-            $validDefinitions = (& "$env:SNIPPET_HOME/.scripts/get-definition-keys.ps1")
+            $validDefinitions = (& "$env:HOME/.local/bin/snippets/get-definition-keys.ps1")
             $validDefinitions -like "$wordToComplete*"
         }
     })]
     [string[]]$Definition = @()
 )
 
-$snippets = [SnippetCollection]::FromDirectory($env:SNIPPET_HOME)
+$snippets = [SnippetCollection]::FromDirectory("$env:XDG_CONFIG_HOME/snippets")
 $snippet = $snippets.ForPrefix($Name)
 
 if ($null -eq $snippet) {
@@ -60,7 +60,7 @@ foreach ($editor in $editors) {
         }
     }
 
-    $scriptPath = "$env:SNIPPET_HOME/.scripts/$($editor.Key)/compare-snippet.ps1"
+    $scriptPath = "$env:HOME/.local/bin/snippets/$($editor.Key)/compare-snippet.ps1"
     if (-not (Test-Path -Path $scriptPath)) {
         continue
     }

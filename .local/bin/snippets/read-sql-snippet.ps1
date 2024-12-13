@@ -62,7 +62,7 @@ function Format-SqlSnippetParameter {
     }
 }
 
-$sections = & "$env:SNIPPET_HOME/.scripts/split-sql-snippet-sections.ps1" -Path $Path |
+$sections = & "$env:HOME/.local/bin/snippets/split-sql-snippet-sections.ps1" -Path $Path |
     ConvertFrom-Json
 if ($null -eq $sections) {
     return
