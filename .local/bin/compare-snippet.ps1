@@ -1,4 +1,4 @@
-using module ../.local/bin/snippets/snippets.psm1
+using module ./snippets/snippets.psm1
 
 [CmdletBinding()]
 param (

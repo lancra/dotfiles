@@ -10,7 +10,6 @@ User:
   ONEDRIVECONSUMER: '%USERPROFILE%\OneDrive'
   PATH:
   - '%LOCALAPPDATA%\Microsoft\WinGet\Links'
-  - '%USERPROFILE%\bin'
   - '%USERPROFILE%\.local\bin'
   - '%LOCALAPPDATA%\Programs\nu\bin\'
   - '%LOCALAPPDATA%\Programs\Microsoft VS Code\bin'
