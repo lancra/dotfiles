@@ -88,8 +88,8 @@ $modules = $installedModules |
             ForEach-Object { $_['Name'] })
 
         [ordered]@{
-            name = $_
-            shell = $shell
+            name = "$name"
+            shell = "$shell"
             locations = $locations
         }
     }
