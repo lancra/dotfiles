@@ -1,0 +1,13 @@
+{
+  "title": "Drop Database",
+  "description": "Drops a database, preventing other connections from blocking the operation.",
+  "scope": "sql",
+  "body": [
+    "USE master",
+    "ALTER DATABASE ${1:database}",
+    "    SET SINGLE_USER WITH ROLLBACK IMMEDIATE",
+    "",
+    "DROP DATABASE $1",
+    "$0"
+  ]
+}
