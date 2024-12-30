@@ -78,6 +78,7 @@
   ],
   "editor.insertSpaces": true,
   "editor.linkedEditing": true,
+  "editor.renderWhitespace": "all",
   "editor.rulers": [
     {
       "color": "#FF8080",
@@ -85,6 +86,7 @@
     }
   ],
   "editor.tabSize": 4,
+  "editor.unicodeHighlight.invisibleCharacters": true,
   "files.associations": {
     "*.snippet.json": "snippets",
     "*.sqlfluff": "ini"
