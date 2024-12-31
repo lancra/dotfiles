@@ -51,6 +51,7 @@
 	rts = "restore --staged"
 	rtsp = "restore --staged --patch"
 	sh = "show"
+	shs = "show --stat"
 	st = "status --short --untracked-files"
 	sta = "stash"
 	staa = "stash apply"
