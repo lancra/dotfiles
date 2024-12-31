@@ -61,6 +61,7 @@
 	stap = "stash push"
 	stas = "stash show"
 	sw = "switch"
+	swd = "!git switch $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
 	swm = "switch main"
 	swn = "!git switch --no-track --create $1 origin/${2-main} #"
 	swapu = "!git switch main && git pull"
