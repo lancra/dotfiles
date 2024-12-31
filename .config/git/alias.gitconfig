@@ -21,6 +21,7 @@
 	cpa = "cherry-pick --abort"
 	cpc = "cherry-pick --continue"
 	ddf = "-c diff.external=difft diff"
+	ddfs = "-c diff.external=difft diff --staged"
 	df = "diff"
 	dfs = "diff --staged"
 	dft = "difftool"
