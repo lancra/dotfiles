@@ -9,7 +9,7 @@ hl,A fast and powerful log viewer and processor that translates JSON logs or log
 mergiraf,A syntax-aware merge driver for Git,https://crates.io/crates/mergiraf
 rustlings,Small exercises to get you used to reading and writing Rust code!,https://crates.io/crates/rustlings
 sqlx-cli,"Command-line utility for SQLx, the Rust SQL toolkit.",https://crates.io/crates/sqlx-cli
-tabiew,"Tabiew is a lightweight, terminal-based application to view and query delimiter separated value formatted documents, such as CSV and TSV files.",https://crates.io/crates/tabiew
+tabiew,"A lightweight TUI application to view and query tabular data files, such as CSV, TSV, and parquet.",https://crates.io/crates/tabiew
 taplo-cli,A CLI for Taplo TOML toolkit,https://crates.io/crates/taplo-cli
 typos-cli,Source Code Spelling Correction,https://crates.io/crates/typos-cli
 xsv,A high performance CSV command line toolkit.,https://crates.io/crates/xsv
