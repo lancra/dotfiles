@@ -69,6 +69,8 @@ Microsoft.Teams.Free,winget,Microsoft Teams Free,None,Social
 Microsoft.UI.Xaml.2.7,winget,WinUI 2.7,None,Programming
 Microsoft.UI.Xaml.2.8,winget,WinUI 2.8,None,Programming
 Microsoft.VCLibs.Desktop.14,winget,Microsoft Visual C++ 2015 UWP Desktop Runtime,None,Programming
+Microsoft.VCRedist.2008.x64,winget,Microsoft Visual C++ 2008 Redistributable (x64),None,Programming
+Microsoft.VCRedist.2008.x86,winget,Microsoft Visual C++ 2008 Redistributable (x86),None,Programming
 Microsoft.VCRedist.2010.x64,winget,Microsoft Visual C++ 2010 Redistributable (x64),None,Programming
 Microsoft.VCRedist.2010.x86,winget,Microsoft Visual C++ 2010 Redistributable (x86),None,Programming
 Microsoft.VCRedist.2012.x64,winget,Microsoft Visual C++ 2012 Redistributable (x64),None,Programming
@@ -83,6 +85,7 @@ Microsoft.WebDeploy,winget,Web Deploy,None,Programming
 Microsoft.WindowsTerminal,winget,Windows Terminal,Full,Programming
 Microsoft.WindowsTerminal.Preview,winget,Windows Terminal Preview,Full,Programming
 Microsoft.WSL,winget,Windows Subsystem for Linux,Full,Programming
+Microsoft.XNARedist,winget,XNA Redistributable,Full,Gaming
 MiKTeX.MiKTeX,winget,MiKTeX,Full,Utility
 Mobatek.MobaXterm,winget,MobaXterm,Full,Programming
 Mozilla.Firefox,winget,Mozilla Firefox,Full,Web
