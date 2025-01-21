@@ -106,6 +106,7 @@ PuTTY.PuTTY,winget,PuTTY,Full,Programming
 Python.Launcher,winget,Python Launcher,None,Programming
 Python.Python.3.12,winget,Python 3.12,Full,Programming
 qBittorrent.qBittorrent,winget,qBittorrent,Full,Utility
+RaspberryPiFoundation.RaspberryPiImager,winget,Raspberry Pi Imager,Full,Utility
 RedHat.Podman,winget,Podman,Full,Programming
 RedHat.Podman-Desktop,winget,Podman Desktop,Full,Programming
 rhysd.actionlint,winget,actionlint,Full,Programming

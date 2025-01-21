@@ -153,12 +153,6 @@
         "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
       },
       {
-        "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-        "hidden": false,
-        "name": "Azure Cloud Shell",
-        "source": "Windows.Terminal.Azure"
-      },
-      {
         "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
         "hidden": true,
         "name": "Ubuntu",
@@ -170,6 +164,19 @@
         "icon": "%USERPROFILE%\\.config\\wt\\icons\\podman.ico",
         "name": "Podman",
         "source": "Windows.Terminal.Wsl"
+      },
+      {
+        "guid": "{dfeda2b5-357e-4253-957f-5b23f16a69af}",
+        "hidden": false,
+        "icon": "%USERPROFILE%\\.config\\wt\\icons\\raspberry_pi.ico",
+        "name": "Raspberry Pi",
+        "commandline": "ssh lancra@pi"
+      },
+      {
+        "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+        "hidden": false,
+        "name": "Azure Cloud Shell",
+        "source": "Windows.Terminal.Azure"
       }
     ]
   },
