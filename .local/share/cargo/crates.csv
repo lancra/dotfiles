@@ -11,5 +11,6 @@ rustlings,Small exercises to get you used to reading and writing Rust code!,http
 sqlx-cli,"Command-line utility for SQLx, the Rust SQL toolkit.",https://crates.io/crates/sqlx-cli
 tabiew,"A lightweight TUI application to view and query tabular data files, such as CSV, TSV, and parquet.",https://crates.io/crates/tabiew
 taplo-cli,A CLI for Taplo TOML toolkit,https://crates.io/crates/taplo-cli
+tealdeer,Fetch and show tldr help pages for many CLI commands. Full featured offline client with caching support.,https://crates.io/crates/tealdeer
 typos-cli,Source Code Spelling Correction,https://crates.io/crates/typos-cli
 xsv,A high performance CSV command line toolkit.,https://crates.io/crates/xsv
