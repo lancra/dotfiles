@@ -1,16 +1,20 @@
 [CmdletBinding()]
 param (
     [Parameter()]
-    [string]$Name = 'mssql',
-    [switch]$PullImage,
-    [switch]$Force
+    [string] $Name = 'mssql',
+    [Parameter()]
+    [string] $Image = 'mcr.microsoft.com/mssql/server:2022-latest',
+    [Parameter()]
+    [int] $Port,
+    [Parameter()]
+    [string] $ContextName = $Name,
+    [switch]$Force,
+    [switch]$SkipContext
 )
 
-$image = 'mcr.microsoft.com/mssql/server:2022-latest'
-$port = 1433
-
-if ($PullImage) {
-    & podman pull $image
+$containerPort = 1433
+if (-not $Port) {
+    $Port = $containerPort
 }
 
 & podman container exists $Name
@@ -20,39 +24,45 @@ if ($containerExists) {
         Write-Verbose 'Removing existing container.'
         & podman container rm --force $Name | Out-Null
     } else {
-        Write-Verbose 'Starting existing container.'
-        & podman container start $Name
-        exit 0
+        Write-Error "The $Name container already exists. Run with -Force to ovwerwrite it."
+        exit 1
     }
 }
 
-if (-not $msSqlPassword) {
-    $msSqlPassword = Read-Host -Prompt 'Password' -MaskInput
+if ($msSqlPassword) {
+    Write-Verbose 'Found password, skipping entry.'
+} else {
+    $msSqlPasswordEntry = Read-Host 'Server Administrator Password' -AsSecureString
+    $msSqlPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto(
+        [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($msSqlPasswordEntry))
 }
 
 $runArguments = @(
     '--env', 'ACCEPT_EULA=Y',
     '--env', "MSSQL_SA_PASSWORD=$msSqlPassword",
-    '--publish', "${port}:$port",
+    '--publish', "${Port}:$containerPort",
     '--name', $Name,
     '--hostname', $Name,
     '--detach',
-    $image
+    $Image
 )
 Write-Verbose 'Running container.'
 & podman run @runArguments | Out-Null
 
-Write-Verbose 'Creating sqlcmd context.'
-& sqlcmd config get-contexts --name $Name 2>&1> $null
-$hasContext = $LASTEXITCODE -eq 0
-if ($hasContext) {
-    & sqlcmd config delete-context --name $Name --cascade 2>&1> $null
+if (-not $SkipContext) {
+    Write-Verbose 'Creating sqlcmd context.'
+    & sqlcmd config get-contexts --name $ContextName 2>&1> $null
+    $hasContext = $LASTEXITCODE -eq 0
+    if ($hasContext) {
+        & sqlcmd config delete-context --name $ContextName --cascade 2>&1> $null
+    }
+
+    & sqlcmd config add-endpoint --name $ContextName --address 127.0.0.1 --port $Port 2>&1> $null
+
+    $oldSqlcmdPassword = $env:SQLCMD_PASSWORD
+    $env:SQLCMD_PASSWORD = $msSqlPassword
+    & sqlcmd config add-user --name $ContextName --username sa --password-encryption dpapi 2>&1> $null
+    $env:SQLCMD_PASSWORD = $oldSqlcmdPassword
+
+    & sqlcmd config add-context --name $ContextName --endpoint $ContextName --user $ContextName 2>&1> $null
 }
-
-& sqlcmd config add-endpoint --name $Name --address 127.0.0.1 --port $port 2>&1> $null
-
-$env:SQLCMD_PASSWORD = $msSqlPassword
-& sqlcmd config add-user --name $Name --username sa --password-encryption dpapi 2>&1> $null
-$env:SQLCMD_PASSWORD = $null
-
-& sqlcmd config add-context --name $Name --endpoint $Name --user $Name 2>&1> $null
