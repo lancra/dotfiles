@@ -57,6 +57,7 @@ Set-ProfileAlias iev 'import-environment-variables.ps1' -Force | Out-Null
 Set-ProfileAlias jqf 'Set-Content -Path "$(#{0})" -Value (jq ''.'' "$(#{0})")' -Bash -Force | Out-Null
 Set-ProfileAlias l 'lsd --long #{:*}' -Bash -Force | Out-Null
 Set-ProfileAlias lt 'lsd --long --tree --depth #{0} #{:*}' -Bash -Force | Out-Null
+Set-ProfileAlias riev 'git restore $env:HOME/.local/share/env/variables.yaml && import-environment-variables.ps1' -Bash -Force | Out-Null
 Set-ProfileAlias rmr 'Remove-Item -Path #{0} -Recurse' -Bash -Force | Out-Null
 Set-ProfileAlias wu 'winget upgrade #{:*}' -Bash -Force | Out-Null
 
