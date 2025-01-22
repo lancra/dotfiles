@@ -1,0 +1,72 @@
+[
+  {
+    "name": "cm",
+    "command": "check-machine.ps1",
+    "bash": "false"
+  },
+  {
+    "name": "cmi",
+    "command": "& check-machine.ps1 -Interactive",
+    "bash": "true"
+  },
+  {
+    "name": "em",
+    "command": "export-machine.ps1",
+    "bash": "false"
+  },
+  {
+    "name": "um",
+    "command": "update-machine.ps1",
+    "bash": "false"
+  },
+  {
+    "name": "uem",
+    "command": "& update-machine.ps1 && & export-machine.ps1",
+    "bash": "true"
+  },
+  {
+    "name": "cwd",
+    "command": "$pwd.Path | Set-Clipboard",
+    "bash": "true"
+  },
+  {
+    "name": "g",
+    "command": "git #{:*}",
+    "bash": "true"
+  },
+  {
+    "name": "iev",
+    "command": "import-environment-variables.ps1",
+    "bash": "false"
+  },
+  {
+    "name": "jqf",
+    "command": "Set-Content -Path \"$(#{0})\" -Value (jq '.' \"$(#{0})\")",
+    "bash": "true"
+  },
+  {
+    "name": "l",
+    "command": "lsd --long #{:*}",
+    "bash": "true"
+  },
+  {
+    "name": "lt",
+    "command": "lsd --long --tree --depth #{0} #{:*}",
+    "bash": "true"
+  },
+  {
+    "name": "riev",
+    "command": "git restore $env:HOME/.local/share/env/variables.yaml && import-environment-variables.ps1",
+    "bash": "true"
+  },
+  {
+    "name": "rmr",
+    "command": "Remove-Item -Path #{0} -Recurse",
+    "bash": "true"
+  },
+  {
+    "name": "wu",
+    "command": "winget upgrade #{:*}",
+    "bash": "true"
+  }
+]

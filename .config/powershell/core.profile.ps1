@@ -45,21 +45,13 @@ $env:DOTNET_SUGGEST_SCRIPT_VERSION = "1.0.2"
 Import-Module 'Lance'
 
 Import-Module HackF5.ProfileAlias
-Set-ProfileAlias cm 'check-machine.ps1' -Force | Out-Null
-Set-ProfileAlias cmi '& check-machine.ps1 -Interactive' -Bash -Force | Out-Null
-Set-ProfileAlias em 'export-machine.ps1' -Force | Out-Null
-Set-ProfileAlias um 'update-machine.ps1' -Force | Out-Null
-Set-ProfileAlias uem '& update-machine.ps1 && & export-machine.ps1' -Bash -Force | Out-Null
-
-Set-ProfileAlias cwd '$pwd.Path | Set-Clipboard' -Bash -Force | Out-Null
-Set-ProfileAlias g 'git #{:*}' -Bash -Force | Out-Null
-Set-ProfileAlias iev 'import-environment-variables.ps1' -Force | Out-Null
-Set-ProfileAlias jqf 'Set-Content -Path "$(#{0})" -Value (jq ''.'' "$(#{0})")' -Bash -Force | Out-Null
-Set-ProfileAlias l 'lsd --long #{:*}' -Bash -Force | Out-Null
-Set-ProfileAlias lt 'lsd --long --tree --depth #{0} #{:*}' -Bash -Force | Out-Null
-Set-ProfileAlias riev 'git restore $env:HOME/.local/share/env/variables.yaml && import-environment-variables.ps1' -Bash -Force | Out-Null
-Set-ProfileAlias rmr 'Remove-Item -Path #{0} -Recurse' -Bash -Force | Out-Null
-Set-ProfileAlias wu 'winget upgrade #{:*}' -Bash -Force | Out-Null
+$profileAliasesPath = Join-Path -Path $env:XDG_CONFIG_HOME -ChildPath 'powershell' -AdditionalChildPath 'aliases.json'
+Get-Content -Path $profileAliasesPath |
+    ConvertFrom-Json |
+    ForEach-Object {
+        $bash = [bool]::Parse($_.bash)
+        Set-ProfileAlias -Name $_.name -Command $_.command -Bash:$bash -Force | Out-Null
+    }
 
 Import-Module 'posh-git'
 oh-my-posh init pwsh --config "$env:XDG_CONFIG_HOME/powershell/lancra.omp.json" | Invoke-Expression
