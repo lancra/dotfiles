@@ -112,6 +112,7 @@ RedHat.Podman,winget,Podman,Full,Programming
 RedHat.Podman-Desktop,winget,Podman Desktop,Full,Programming
 rhysd.actionlint,winget,actionlint,Full,Programming
 RuneLite.RuneLite,winget,RuneLite,Full,Gaming
+RustemMussabekov.Raindrop,winget,Raindrop.io,Full,Utility
 Rustlang.Rustup,winget,rustup,Full,Programming
 sharkdp.bat,winget,bat,Full,File System
 sharkdp.fd,winget,fd,Full,File System
