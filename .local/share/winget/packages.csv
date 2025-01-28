@@ -100,6 +100,7 @@ OpenJS.NodeJS.LTS,winget,Node.js LTS,Full,Programming
 Oracle.JavaRuntimeEnvironment,winget,Java Runtime Environment,Full,Utility
 PawelSalawa.SQLiteStudio,winget,SQLiteStudio,Full,Programming
 PDFsam.PDFsam,winget,PDFsam,Full,Utility
+pnpm.pnpm,winget,Performant NPM,Full,Programming
 PostgreSQL.PostgreSQL.16,winget,PostgreSQL,Full,Programming
 PrivateInternetAccess.PrivateInternetAccess,winget,Private Internet Access,Full,Privacy
 PuTTY.PuTTY,winget,PuTTY,Full,Programming
