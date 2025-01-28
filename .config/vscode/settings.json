@@ -13,22 +13,19 @@
     "rewrap.autoWrap.enabled": true,
     "rewrap.wrappingColumn": 72
   },
+  "[csharp]": {
+    "editor.tabSize": 4
+  },
   "[csv][dynamic csv][tsv][csv (semicolon)]": {
     "editor.stickyScroll.enabled": true
   },
   "[html][javascript][markdown][scss][typescript][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.detectIndentation": false,
-    "editor.formatOnSave": true,
-    "editor.insertSpaces": true,
-    "editor.tabSize": 2
+    "editor.formatOnSave": true
   },
   "[json][jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features",
-    "editor.detectIndentation": false,
-    "editor.formatOnSave": true,
-    "editor.insertSpaces": true,
-    "editor.tabSize": 2
+    "editor.formatOnSave": true
   },
   "[powershell]": {
     "editor.rulers": [
@@ -40,13 +37,12 @@
         "color": "#FF8080",
         "column": 135
       }
-    ]
+    ],
+    "editor.tabSize": 4
   },
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
-    "editor.detectIndentation": false,
     "editor.formatOnSave": true,
-    "editor.insertSpaces": true,
     "editor.rulers": [
       {
         "color": "#FF8080",
@@ -57,10 +53,7 @@
   },
   "[xml]": {
     "editor.defaultFormatter": "redhat.vscode-xml",
-    "editor.detectIndentation": false,
-    "editor.formatOnSave": true,
-    "editor.insertSpaces": true,
-    "editor.tabSize": 2
+    "editor.formatOnSave": true
   },
   "colorize.enable_search_variables": false,
   "colorize.languages": [
@@ -76,6 +69,7 @@
     "svg",
     "xml"
   ],
+  "editor.detectIndentation": false,
   "editor.insertSpaces": true,
   "editor.linkedEditing": true,
   "editor.renderWhitespace": "all",
@@ -85,7 +79,7 @@
       "column": 135
     }
   ],
-  "editor.tabSize": 4,
+  "editor.tabSize": 2,
   "editor.unicodeHighlight.invisibleCharacters": true,
   "files.associations": {
     "*.snippet.json": "snippets",
