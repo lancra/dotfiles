@@ -51,6 +51,10 @@
     ],
     "editor.tabSize": 4
   },
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode",
+    "editor.formatOnSave": true
+  },
   "[xml]": {
     "editor.defaultFormatter": "redhat.vscode-xml",
     "editor.formatOnSave": true
