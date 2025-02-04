@@ -122,7 +122,7 @@ ShiningLight.OpenSSL.Dev,winget,OpenSSL,Full,Programming
 SumatraPDF.SumatraPDF,winget,Sumatra PDF,Full,Reading
 Valve.Steam,winget,Steam,Full,Gaming
 VideoLAN.VLC,winget,VLC,Full,Video
-vim.vim,winget,vim,Full,Text Editing
+vim.vim.nightly,winget,vim,Full,Text Editing
 WhirlwindFX.SignalRgb,winget,Signal RGB,Full,Utility
 Wilfred.difftastic,winget,difftastic,Full,Programming
 WinMerge.WinMerge,winget,WinMerge,Full,Programming
