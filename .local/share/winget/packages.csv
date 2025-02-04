@@ -98,6 +98,7 @@ Nvidia.PhysX,winget,Nvidia PhysX,None,Gaming
 Obsidian.Obsidian,winget,Obsidian,Full,Notes
 OpenJS.NodeJS.LTS,winget,Node.js LTS,Full,Programming
 Oracle.JavaRuntimeEnvironment,winget,Java Runtime Environment,Full,Utility
+Oracle.JDK.23,winget,Java Development Kit,Full,Programming
 PawelSalawa.SQLiteStudio,winget,SQLiteStudio,Full,Programming
 PDFsam.PDFsam,winget,PDFsam,Full,Utility
 pnpm.pnpm,winget,Performant NPM,Full,Programming
