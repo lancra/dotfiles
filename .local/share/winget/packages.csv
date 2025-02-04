@@ -49,6 +49,7 @@ Malwarebytes.Malwarebytes,winget,Malwarebytes,Full,Security
 Meld.Meld,winget,Meld,Full,Programming
 Microsoft.AppInstaller,winget,Microsoft App Installer,Full,Programming
 Microsoft.AzureCLI,winget,Azure CLI,Full,Programming
+Microsoft.AzureDataStudio,winget,Azure Data Studio,Full,Programming
 Microsoft.CLRTypesSQLServer.2019,winget,SQL Server 2019 CLR Types,None,Programming
 Microsoft.DevHome,winget,Dev Home,Full,Programming
 Microsoft.DotNet.DesktopRuntime.6,winget,.NET 6 Desktop Runtime,None,Programming
