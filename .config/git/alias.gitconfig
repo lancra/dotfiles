@@ -23,6 +23,7 @@
 	ddf = "-c diff.external=difft diff"
 	ddfs = "-c diff.external=difft diff --staged"
 	df = "diff"
+	dfe = "!git diff . :!$1"
 	dfs = "diff --staged"
 	dft = "difftool"
 	dftd = "difftool --dir-diff --no-symlinks"
