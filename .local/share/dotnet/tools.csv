@@ -5,3 +5,4 @@ dotnet-reportgenerator-globaltool,https://nuget.org/packages/dotnet-reportgenera
 dotnet-suggest,https://nuget.org/packages/dotnet-suggest
 dotnet-tools-outdated,https://nuget.org/packages/dotnet-tools-outdated
 dotnet-xscgen,https://nuget.org/packages/dotnet-xscgen
+refitter,https://nuget.org/packages/refitter
