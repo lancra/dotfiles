@@ -34,3 +34,6 @@ preferred_type_casting_style = cast
 
 [sqlfluff:rules:references.consistent]
 single_table_references = unqualified
+
+[sqlfluff:layout:type:from_clause]
+keyword_line_position = leading
