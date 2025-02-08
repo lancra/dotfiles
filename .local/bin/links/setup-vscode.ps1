@@ -1,15 +1,27 @@
 #Requires -RunAsAdministrator
 
 [CmdletBinding()]
-param()
+param(
+    [Parameter()]
+    [string] $Application = 'Visual Studio Code',
+
+    [Parameter()]
+    [string] $AppDataDirectory = 'Code',
+
+    [Parameter()]
+    [string] $DefaultConfigurationDirectory = '.vscode',
+
+    [Parameter()]
+    [string] $TrackedConfigurationDirectory = 'vscode'
+)
 
 $argvFileName = 'argv.json'
 $keybindingsFileName = 'keybindings.json'
 $settingsFileName = 'settings.json'
 
-$vsCodeUserDirectoryPath = "$env:APPDATA/Code/User"
+$vsCodeUserDirectoryPath = "$env:APPDATA/$AppDataDirectory/User"
 
-$argvSourcePath = "$env:HOME/.vscode/$argvFileName"
+$argvSourcePath = "$env:HOME/$DefaultConfigurationDirectory/$argvFileName"
 $keybindingsSourcePath = "$vsCodeUserDirectoryPath/$keybindingsFileName"
 $settingsSourcePath = "$vsCodeUserDirectoryPath/$settingsFileName"
 
@@ -17,7 +29,7 @@ $sourcePaths = @($argvSourcePath, $keybindingsSourcePath, $settingsSourcePath)
 $missingFiles = (Test-Path -Path $sourcePaths | Where-Object { -not $_ }).Length -ne 0
 
 if ($missingFiles) {
-    Write-Output 'Install Visual Studio Code before executing this script.'
+    Write-Output "Install $Application before executing this script."
     exit 1
 }
 
@@ -35,7 +47,7 @@ if (-not $anyMissingLinks) {
 
 if (-not $linkChecks[$argvSourcePath]) {
     $machine = $env:COMPUTERNAME.ToLower()
-    $argvTargetDirectoryPath = "$env:HOME/.config/machine/$machine/vscode"
+    $argvTargetDirectoryPath = "$env:HOME/.config/machine/$machine/$TrackedConfigurationDirectory"
     $argvTargetPath = "$argvTargetDirectoryPath/$argvFileName"
 
     New-Item -ItemType Directory -Path $argvTargetDirectoryPath -Force | Out-Null
@@ -45,7 +57,7 @@ if (-not $linkChecks[$argvSourcePath]) {
     Write-Output "Link established for $argvFileName."
 }
 
-$vsCodeConfigurationDirectoryPath = "$env:HOME/.config/vscode"
+$vsCodeConfigurationDirectoryPath = "$env:HOME/.config/$TrackedConfigurationDirectory"
 
 if (-not $linkChecks[$keybindingsSourcePath]) {
     $keybindingsTargetPath = "$vsCodeConfigurationDirectoryPath/$keybindingsFileName"
