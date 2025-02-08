@@ -1,5 +1,10 @@
 [
   {
+    "name": "cdu",
+    "command": "change-directory-up.ps1 -Count #{0}",
+    "bash": "true"
+  },
+  {
     "name": "cm",
     "command": "check-machine.ps1",
     "bash": "false"
