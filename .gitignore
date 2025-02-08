@@ -1,5 +1,5 @@
 # Hidden
-/.azuredatastudio/extensions/
+/.azuredatastudio/
 /.cache/
 /.dbus-keyrings/
 /.dotnet/
