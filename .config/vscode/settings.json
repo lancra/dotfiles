@@ -113,6 +113,21 @@
       "siblings_only": true
     }
   },
+  "mssql.connections": [
+    {
+      "authenticationType": "SqlLogin",
+      "connectTimeout": 15,
+      "applicationName": "vscode-mssql",
+      "profileName": "MSSQL",
+      "server": "127.0.0.1,1433",
+      "trustServerCertificate": true,
+      "user": "sa",
+      "password": "",
+      "savePassword": true,
+      "database": ""
+    }
+  ],
+  "mssql.enableRichExperiences": true,
   "notebook.lineNumbers": "on",
   "omnisharp.organizeImportsOnFormat": true,
   "powershell.codeFormatting.autoCorrectAliases": true,
