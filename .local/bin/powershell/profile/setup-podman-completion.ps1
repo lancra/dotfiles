@@ -247,3 +247,4 @@ Register-ArgumentCompleter -CommandName 'podman.exe' -ScriptBlock ${__podman.exe
 # This file is generated with "podman.exe completion"; see: podman-completion(1)
 
 Register-ArgumentCompleter -CommandName 'podman' -ScriptBlock ${__podman.exeCompleterBlock}
+Register-ArgumentCompleter -CommandName 'pm' -ScriptBlock ${__podman.exeCompleterBlock}

@@ -55,6 +55,11 @@
     "bash": "true"
   },
   {
+    "name": "pm",
+    "command": "podman #{:*}",
+    "bash": "true"
+  },
+  {
     "name": "riev",
     "command": "git restore $env:HOME/.local/share/env/variables.yaml && import-environment-variables.ps1",
     "bash": "true"
