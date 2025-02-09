@@ -25,7 +25,7 @@ function Get-MachineModule {
     )
     begin {
         $getModulesJsonCommand = 'Get-Module -ListAvailable | Select-Object -Property Name,Path | ConvertTo-Json'
-        $shellCommand = "& $Executable -Command '$getModulesJsonCommand'"
+        $shellCommand = "& $Executable -NoProfile -Command '$getModulesJsonCommand'"
     }
     process {
         Invoke-Command -ScriptBlock ([scriptblock]::Create($shellCommand)) |
