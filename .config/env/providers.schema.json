@@ -21,16 +21,17 @@
           "description": "The type of the file where configuration is stored.",
           "type": "string"
         },
-        "check": {
-          "description": "The value that determines whether an outdated resource check is available.",
-          "type": "boolean"
-        },
-        "export": {
-          "description": "The value that determines whether a resource configuration export is available.",
+        "versioned": {
+          "description": "The value that determines whether version tracking capability is available.",
           "type": "boolean"
         }
       },
-      "required": ["id", "resource", "store", "export"]
+      "required": [
+        "id",
+        "resource",
+        "store",
+        "versioned"
+      ]
     }
   },
   "type": "object",
@@ -43,5 +44,7 @@
       }
     }
   },
-  "required": ["providers"]
+  "required": [
+    "providers"
+  ]
 }

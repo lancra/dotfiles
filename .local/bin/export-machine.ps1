@@ -19,11 +19,9 @@ begin {
 process {
     & "$env:HOME/.local/bin/env/get-providers.ps1" -Id $Provider |
         ForEach-Object -Parallel {
-            if ($_.export) {
-                $script = "$env:HOME/.local/bin/$($_.id)/export-$($_.resource).ps1"
-                $target = "$env:XDG_DATA_HOME/$($_.id)/$($_.resource).$($_.store)"
-                & $script -Target $target
-            }
+            $script = "$env:HOME/.local/bin/$($_.id)/export-$($_.resource).ps1"
+            $target = "$env:XDG_DATA_HOME/$($_.id)/$($_.resource).$($_.store)"
+            & $script -Target $target
         }
 }
 end {

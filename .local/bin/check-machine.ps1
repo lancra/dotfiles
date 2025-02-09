@@ -20,7 +20,7 @@ begin {
 process {
     $outdatedItems = & "$env:HOME/.local/bin/env/get-providers.ps1" -Id $Provider |
         ForEach-Object -Parallel {
-            if ($_.check) {
+            if ($_.versioned) {
                 & "$env:HOME/.local/bin/$($_.id)/check-$($_.resource).ps1"
             }
         } |
