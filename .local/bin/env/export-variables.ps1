@@ -3,7 +3,7 @@
 [CmdletBinding()]
 param (
     [Parameter(Mandatory)]
-    [string]$Target
+    [string] $Target
 )
 
 $prefixVariableNames = @(
@@ -29,10 +29,12 @@ function Set-PathPrefix {
     [OutputType([string])]
     param (
         [Parameter(Mandatory)]
-        [System.Collections.Specialized.OrderedDictionary]$Prefixes,
-        [Parameter(Mandatory)]
-        [string]$Path,
-        [switch]$AllowExact
+        [System.Collections.Specialized.OrderedDictionary] $Prefixes,
+
+        [Parameter()]
+        [string] $Path,
+
+        [switch] $AllowExact
     )
     begin {
         $pathRegex = '[a-zA-Z]:[\\\/]'
@@ -66,9 +68,10 @@ function Get-EnvironmentVariable {
     [OutputType([ordered])]
     param (
         [Parameter(Mandatory)]
-        [string]$Key,
+        [string] $Key,
+
         [Parameter(Mandatory)]
-        [string[]]$IgnoredSubkeys
+        [string[]] $IgnoredSubkeys
     )
     begin {
         $registryValueOptions = [Microsoft.Win32.RegistryValueOptions]::DoNotExpandEnvironmentNames
