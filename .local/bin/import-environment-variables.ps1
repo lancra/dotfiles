@@ -1,7 +1,9 @@
 [CmdletBinding()]
 param (
     [Parameter()]
-    [string] $Source = "$env:XDG_DATA_HOME/env/variables.yaml"
+    [string] $Source = "$env:XDG_DATA_HOME/env/variables.yaml",
+
+    [switch]$DryRun
 )
 
 # Represents the comparison result for a single environment variable target.
@@ -193,7 +195,7 @@ $comparisonResult.TargetResults |
                     $failureContext = ' (Failed to import, re-execute as an administrator.)'
                 }
 
-                if ($importDescriptor.Valid) {
+                if ($importDescriptor.Valid -and -not $DryRun) {
                     [System.Environment]::SetEnvironmentVariable($variable, $sourceValueExpanded, $target) | Out-Null
                 }
 
@@ -205,4 +207,4 @@ $comparisonResult.TargetResults |
     }
 
 Write-Output ''
-Write-Output 'Completed import.'
+Write-Output "Completed import$($DryRun ? ' simulation' : '')."
