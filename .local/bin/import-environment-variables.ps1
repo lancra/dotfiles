@@ -171,7 +171,7 @@ $comparisonResult.TargetResults |
                     $sourceValue = ($sourceValue -join ';') + ';'
                 }
 
-                $sourceValueExpanded = [System.Environment]::ExpandEnvironmentVariables($sourceValue)
+                $sourceValueExpanded = $null -ne $sourceValue ? [System.Environment]::ExpandEnvironmentVariables($sourceValue) : $null
                 $targetValue = [System.Environment]::GetEnvironmentVariable($variable, $target)
 
                 $valuesEqual = $sourceValueExpanded -eq $targetValue
@@ -182,6 +182,7 @@ $comparisonResult.TargetResults |
                 $importDescriptor = $updatedImportDescriptor
                 if (-not $sourceValueExpanded) {
                     $importDescriptor = $removedImportDescriptor
+                    $sourceValueExpanded = [NullString]::Value
                 } elseif ($null -eq $targetValue) {
                     $importDescriptor = $addedImportDescriptor
                 }
