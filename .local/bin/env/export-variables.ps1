@@ -2,8 +2,11 @@
 
 [CmdletBinding()]
 param (
-    [Parameter(Mandatory)]
-    [string] $Target
+    [Parameter()]
+    [string] $GlobalTarget = "$env:XDG_DATA_HOME/env/variables.yaml",
+
+    [Parameter()]
+    [string] $LocalTarget = "$env:XDG_DATA_HOME/machine/$($env:COMPUTERNAME.ToLower())/env/variables.yaml"
 )
 
 $prefixVariableNames = @(
@@ -112,7 +115,7 @@ function Get-EnvironmentVariable {
     }
 }
 
-$variables = [ordered]@{}
+$sourceVariables = [ordered]@{}
 
 $builtInUserVariables = @(
     'TEMP',
@@ -130,7 +133,7 @@ $getUserVariablesArgs = @{
     Key = 'HKCU:\Environment'
     IgnoredSubkeys = $ignoredUserVariables
 }
-$variables['User'] = Get-EnvironmentVariable @getUserVariablesArgs
+$sourceVariables['User'] = Get-EnvironmentVariable @getUserVariablesArgs
 
 $builtInMachineVariables = @(
     'COMSPEC',
@@ -154,7 +157,92 @@ $getMachineVariablesArgs = @{
     Key = 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment'
     IgnoredSubkeys = $builtInMachineVariables
 }
-$variables['Machine'] = Get-EnvironmentVariable @getMachineVariablesArgs
+$sourceVariables['Machine'] = Get-EnvironmentVariable @getMachineVariablesArgs
 
-$variables | ConvertTo-Yaml |
-    Set-Content -Path $Target
+$sourceLocalVariables = [ordered]@{
+    User = [ordered]@{}
+    Machine = [ordered]@{}
+}
+
+$sourceGlobalVariables = [ordered]@{
+    User = [ordered]@{}
+    Machine = [ordered]@{}
+}
+$targetGlobalVariables = @{}
+if (Test-Path -Path $GlobalTarget) {
+    $targetGlobalVariables = Get-Content -Path $GlobalTarget |
+        ConvertFrom-Yaml
+}
+
+$sourceVariables.GetEnumerator() |
+    ForEach-Object {
+        $variableTarget = $_.Name
+
+        $_.Value.GetEnumerator() |
+            ForEach-Object {
+                $variableName = $_.Name
+                $variableValue = $_.Value
+
+                $targetContainsVariableTarget = $targetGlobalVariables.Contains($variableTarget)
+                $targetContainsVariableName = $targetContainsVariableTarget -and
+                    $targetGlobalVariables[$variableTarget].Contains($variableName)
+
+                $isPath = $variableName -eq 'PATH'
+                $isGlobal = $targetContainsVariableName -and -not $isPath
+
+                if (-not $isPath) {
+                    $modifiedSource = $isGlobal ? $sourceGlobalVariables : $sourceLocalVariables
+                    $modifiedSource[$variableTarget].Add($variableName, ([string]$variableValue))
+                } else {
+                    $variableValue |
+                        ForEach-Object {
+                            $isGlobal = $targetContainsVariableName -and
+                                $targetGlobalVariables[$variableTarget][$variableName].Contains($_)
+                            $modifiedSource = $isGlobal ? $sourceGlobalVariables : $sourceLocalVariables
+
+                            if (-not $modifiedSource[$variableTarget].Contains($variableName)) {
+                                $modifiedSource[$variableTarget].Add($variableName, @())
+                            }
+
+                            $modifiedSource[$variableTarget][$variableName] += ([string]$_)
+                        }
+                }
+            }
+    }
+
+function Write-Source {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [System.Collections.IDictionary] $Source
+    )
+    process {
+        $Source.GetEnumerator() |
+        ForEach-Object {
+            $variableTarget = $_.Name
+            $_.Value.GetEnumerator() |
+                ForEach-Object {
+                    if (-not ($_.Value -is [array])) {
+                        Write-Host "${variableTarget}: $($_.Name) = $($_.Value)"
+                    } else {
+                        Write-Host "${variableTarget}: $($_.Name) ="
+                        $_.Value |
+                            ForEach-Object {
+                                Write-Host "  - $_"
+                            }
+                    }
+                }
+        }
+    }
+}
+
+$formatManifestScriptPath = "$env:HOME/.local/bin/env/format-environment-variable-manifest.ps1"
+$sourceGlobalVariables |
+    ConvertTo-Yaml |
+    & $formatManifestScriptPath |
+    Set-Content -Path $GlobalTarget
+
+$sourceLocalVariables |
+    ConvertTo-Yaml |
+    & $formatManifestScriptPath |
+    Set-Content -Path $LocalTarget

@@ -1,9 +1,12 @@
 [CmdletBinding()]
 param (
     [Parameter()]
-    [string] $Source = "$env:XDG_DATA_HOME/env/variables.yaml",
+    [string] $GlobalManifest = "$env:XDG_DATA_HOME/env/variables.yaml",
 
-    [switch]$DryRun
+    [Parameter()]
+    [string] $LocalManifest = "$env:XDG_DATA_HOME/machine/$($env:COMPUTERNAME.ToLower())/env/variables.yaml",
+
+    [switch] $DryRun
 )
 
 # Represents the comparison result for a single environment variable target.
@@ -40,6 +43,8 @@ class ImportDescriptor {
         $this.Color = $color
     }
 }
+
+$manifestMergeScriptPath = "$env:HOME/.local/bin/env/merge-environment-variable-manifests.ps1"
 
 function Compare-EnvironmentVariable {
     [CmdletBinding()]
@@ -107,21 +112,24 @@ function Compare-EnvironmentVariable {
         $targetDirectory = "$env:TEMP/$(New-Guid)"
         New-Item -ItemType Directory -Path $targetDirectory -Force | Out-Null
 
-        $targetPath = "$targetDirectory/environment-variables.yaml"
-        & "$env:HOME/.local/bin/env/export-variables.ps1" -Target $targetPath
+        $targetGlobalPath = "$targetDirectory/variables.global.yaml"
+        $targetLocalPath = "$targetDirectory/variables.local.yaml"
+        $targetMergePath = "$targetDirectory/variables.yaml"
+        & "$env:HOME/.local/bin/env/export-variables.ps1" -GlobalTarget $targetGlobalPath -LocalTarget $targetLocalPath
+        & $manifestMergeScriptPath -Target $targetMergePath -GlobalManifest $targetGlobalPath -LocalManifest $targetLocalPath
 
         # Use UTF-8 so that Tee-Object doesn't garble Unicode symbols.
         $originalEncoding = [System.Console]::OutputEncoding
         [System.Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
-        dyff --color on between --omit-header --set-exit-code $targetPath $Source |
+        dyff --color on between --omit-header --set-exit-code $targetMergePath $Source |
             Tee-Object -Variable differences |
             Write-Host
         $hasDifferences = $LASTEXITCODE -ne 0
 
         [System.Console]::OutputEncoding = $originalEncoding
 
-        $comparisonResult = New-ComparisonResult -HasDifferences $hasDifferences -SourcePath $Source -TargetPath $targetPath
+        $comparisonResult = New-ComparisonResult -HasDifferences $hasDifferences -SourcePath $Source -TargetPath $targetMergePath
 
         Remove-Item -Path $targetDirectory -Recurse | Out-Null
 
@@ -129,7 +137,10 @@ function Compare-EnvironmentVariable {
     }
 }
 
-$comparisonResult = Compare-EnvironmentVariable -Source $Source
+$sourceMergePath = "$env:TEMP/variables.$((New-Guid).Guid).yaml"
+& $manifestMergeScriptPath -Target $sourceMergePath -GlobalManifest $GlobalManifest -LocalManifest $LocalManifest
+
+$comparisonResult = Compare-EnvironmentVariable -Source $sourceMergePath
 if (-not $comparisonResult.HasDifferences) {
     Write-Output 'No changes detected.'
     exit 0
@@ -149,7 +160,8 @@ if (-not $script:input.Equals($continueInput, [System.StringComparison]::Ordinal
     exit 0
 }
 
-$sourceObject = Get-Content -Path $Source | ConvertFrom-Yaml
+$sourceObject = Get-Content -Path $sourceMergePath | ConvertFrom-Yaml
+Remove-Item -Path $sourceMergePath | Out-Null
 
 $windowsPrincipal = New-Object System.Security.Principal.WindowsPrincipal([System.Security.Principal.WindowsIdentity]::GetCurrent())
 $runningAsAdministrator = $windowsPrincipal.IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)
