@@ -40,9 +40,19 @@
     "bash": "true"
   },
   {
+    "name": "eev",
+    "command": "& $env:HOME/.local/bin/env/export-variables.ps1",
+    "bash": "true"
+  },
+  {
     "name": "iev",
     "command": "import-environment-variables.ps1",
     "bash": "false"
+  },
+  {
+    "name": "riev",
+    "command": "git restore $env:HOME/.local/share/env/variables.yaml && import-environment-variables.ps1",
+    "bash": "true"
   },
   {
     "name": "jqf",
@@ -62,11 +72,6 @@
   {
     "name": "pm",
     "command": "podman #{:*}",
-    "bash": "true"
-  },
-  {
-    "name": "riev",
-    "command": "git restore $env:HOME/.local/share/env/variables.yaml && import-environment-variables.ps1",
     "bash": "true"
   },
   {

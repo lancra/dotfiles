@@ -14,12 +14,6 @@
       "versioned": true
     },
     {
-      "id": "env",
-      "resource": "variables",
-      "store": "yaml",
-      "versioned": false
-    },
-    {
       "id": "go",
       "resource": "packages",
       "store": "csv",
