@@ -1,7 +1,7 @@
-Id,Module
-dyff,github.com/homeport/dyff
-gron,github.com/tomnomnom/gron
-jd,github.com/josephburnett/jd
-leveldb-cli,github.com/liderman/leveldb-cli
-pup,github.com/ericchiang/pup
-yq,github.com/mikefarah/yq/v4
+Id,Name,Module
+github.com/homeport/dyff/cmd/dyff,dyff,github.com/homeport/dyff
+github.com/tomnomnom/gron,gron,github.com/tomnomnom/gron
+github.com/josephburnett/jd,jd,github.com/josephburnett/jd
+github.com/liderman/leveldb-cli,leveldb-cli,github.com/liderman/leveldb-cli
+github.com/ericchiang/pup,pup,github.com/ericchiang/pup
+github.com/mikefarah/yq/v4,yq,github.com/mikefarah/yq/v4

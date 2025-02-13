@@ -21,7 +21,7 @@ $foundFirstPackage = $false
         $packageLines = $_ -split '\\n' | Where-Object { $_ -ne '' }
 
         $metadataSegments = $packageLines[0] -split ': '
-        $id = [System.IO.Path]::GetFileNameWithoutExtension($metadataSegments[0])
+        $name = [System.IO.Path]::GetFileNameWithoutExtension($metadataSegments[0])
 
         $pathSegments = $packageLines[1] -split "`t" | Where-Object { $_ -ne '' }
         $path = $pathSegments[1]
@@ -31,10 +31,10 @@ $foundFirstPackage = $false
         $version = $moduleSegments[2]
 
         @{
-            Id = $id
-            Path = $path
+            Id = $path
+            Name = $name
             Module = $module
             Version = $version
         }
     } |
-    Sort-Object -Property Id
+    Sort-Object -Property Name

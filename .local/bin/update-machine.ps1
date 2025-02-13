@@ -27,12 +27,7 @@ process {
         Sort-Object -Property provider,id |
         ForEach-Object {
             Write-Host "$($_.provider): Updating $($_.id)..."
-            $updateId = $_.id
-            if ($_.provider -eq 'go') {
-                $updateId = $_.path
-            }
-
-            & "$env:HOME/.local/bin/$($_.provider)/update.ps1" -Id $updateId
+            & "$env:HOME/.local/bin/$($_.provider)/update.ps1" -Id $_.id
         }
 }
 end {
