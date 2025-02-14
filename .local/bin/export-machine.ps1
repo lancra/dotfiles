@@ -23,6 +23,8 @@ process {
             $target = "$env:XDG_DATA_HOME/$($_.id)/$($_.resource).$($_.store)"
             & $script -Target $target
         }
+
+    & "$env:HOME/.local/bin/env/export-variables.ps1"
 }
 end {
     & "$env:HOME/.local/bin/env/end-loading.ps1"
