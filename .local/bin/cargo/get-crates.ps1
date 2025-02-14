@@ -51,9 +51,9 @@ param()
         }
 
         @{
-            Id = $crate.Id
+            Id = $source
+            Name = $crate.Id
             Description = $crateDetails.Description
-            Source = $source
             Current = $crate.Current
             Available = $crateDetails.Available
         }
