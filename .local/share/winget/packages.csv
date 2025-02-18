@@ -96,6 +96,7 @@ Notepad++.Notepad++,winget,Notepad++,Full,Text Editing
 Nushell.Nushell,winget,Nushell,Full,Programming
 Nvidia.PhysX,winget,Nvidia PhysX,None,Gaming
 Obsidian.Obsidian,winget,Obsidian,Full,Notes
+OliverBetz.ExifTool,winget,ExifTool,Full,Utility
 OpenJS.NodeJS.LTS,winget,Node.js LTS,Full,Programming
 Oracle.JavaRuntimeEnvironment,winget,Java Runtime Environment,Full,Utility
 Oracle.JDK.23,winget,Java Development Kit,Full,Programming

@@ -16,6 +16,7 @@ User:
     - '%LOCALAPPDATA%\Programs\Python\Python312\'
     - '%LOCALAPPDATA%\Programs\Python\Launcher\'
     - '%LOCALAPPDATA%\Microsoft\WindowsApps'
+    - '%LOCALAPPDATA%\Programs\ExifTool'
 Machine:
   PATH:
     - '%SYSTEMROOT%'
