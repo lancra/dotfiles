@@ -114,7 +114,6 @@
     }
   },
   "notebook.lineNumbers": "on",
-  "omnisharp.organizeImportsOnFormat": true,
   "powershell.codeFormatting.autoCorrectAliases": true,
   "powershell.codeFormatting.useCorrectCasing": true,
   "powershell.powerShellDefaultVersion": "PowerShell (x64)",
