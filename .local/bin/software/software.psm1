@@ -12,6 +12,39 @@ class InstallationExportId {
     }
 }
 
+class InstallationId {
+    [string] $Value
+    [string] $Export
+    [string] $Provider
+
+    InstallationId([string] $value, [InstallationExportId] $exportId) {
+        $this.Value = $value
+        $this.Export = $exportId.Export
+        $this.Provider = $exportId.Provider
+    }
+
+    [bool] Equals($other) {
+        return $other -is [InstallationId] -and
+            $this.Value -eq $other.Value -and
+            $this.Export -eq $other.Export -and
+            $this.Provider -eq $other.Provider
+    }
+
+    [string] ToString() {
+        return "$($this.Provider).$($this.Export).$($this.Value)"
+    }
+}
+
+class Installation {
+    [InstallationId] $Id
+    [System.Collections.IDictionary] $Metadata
+
+    Installation([InstallationId] $id, [System.Collections.IDictionary] $metadata) {
+        $this.Id = $id
+        $this.Metadata = $metadata
+    }
+}
+
 class InstallationProvider {
     [string] $Id
     [InstallationExport[]] $Exports
