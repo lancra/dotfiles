@@ -1,0 +1,512 @@
+- Id: 7zip.7zip@winget
+  DisplayName: 7zip
+  Category: File System
+  Tracking: Full
+- Id: 9WZDNCRDMDM3@msstore
+  DisplayName: NuGet Package Explorer
+  Category: Programming
+  Tracking: Full
+- Id: AlexanderKojevnikov.Spek@winget
+  DisplayName: Spek
+  Category: Music
+  Tracking: Full
+- Id: Amazon.SendToKindle@winget
+  DisplayName: Send To Kindle
+  Category: Reading
+  Tracking: Full
+- Id: AntibodySoftware.WizTree@winget
+  DisplayName: WizTree
+  Category: File System
+  Tracking: Full
+- Id: Apple.iTunes@winget
+  DisplayName: iTunes
+  Category: Music
+  Tracking: Full
+- Id: Audacity.Audacity@winget
+  DisplayName: Audacity
+  Category: Music
+  Tracking: Full
+- Id: AutoHotkey.AutoHotkey@winget
+  DisplayName: AutoHotkey
+  Category: Utility
+  Tracking: Full
+- Id: Bethesda.Launcher@winget
+  DisplayName: Bethesda Launcher
+  Category: Gaming
+  Tracking: Full
+- Id: Bitwarden.CLI@winget
+  DisplayName: Bitwarden CLI
+  Category: Security
+  Tracking: Full
+- Id: BurntSushi.ripgrep.MSVC@winget
+  DisplayName: ripgrep
+  Category: File System
+  Tracking: Full
+- Id: calibre.calibre@winget
+  DisplayName: calibre
+  Category: Reading
+  Tracking: Full
+- Id: Canonical.Ubuntu@winget
+  DisplayName: Ubuntu
+  Category: Operating System
+  Tracking: Full
+- Id: dandavison.delta@winget
+  DisplayName: delta
+  Category: Programming
+  Tracking: Full
+- Id: DigitalOcean.Doctl@winget
+  DisplayName: DigitalOcean CLI
+  Category: Programming
+  Tracking: Full
+- Id: direnv.direnv@winget
+  DisplayName: direnv
+  Category: Programming
+  Tracking: Full
+- Id: Discord.Discord@winget
+  DisplayName: Discord
+  Category: Social
+  Tracking: Full
+- Id: dotPDN.PaintDotNet@winget
+  DisplayName: paint.net
+  Category: Graphics
+  Tracking: Full
+- Id: EpicGames.EpicGamesLauncher@winget
+  DisplayName: Epic Games Launcher
+  Category: Gaming
+  Tracking: Full
+- Id: FlorianHeidenreich.Mp3tag@winget
+  DisplayName: Mp3tag
+  Category: Music
+  Tracking: Full
+- Id: gerardog.gsudo@winget
+  DisplayName: gsudo
+  Category: Utility
+  Tracking: Full
+- Id: Git.Git@winget
+  DisplayName: Git
+  Category: Programming
+  Tracking: Full
+- Id: GitHub.cli@winget
+  DisplayName: GitHub CLI
+  Category: Programming
+  Tracking: Full
+- Id: GnuPG.GnuPG@winget
+  DisplayName: GNU Privacy Guard
+  Category: Programming
+  Tracking: Full
+- Id: GnuPG.Gpg4win@winget
+  DisplayName: GNU Privacy Guard for Windows
+  Category: Programming
+  Tracking: Full
+- Id: GnuWin32.Make@winget
+  DisplayName: GNU make
+  Category: Programming
+  Tracking: Full
+- Id: GoLang.Go@winget
+  DisplayName: Go
+  Category: Programming
+  Tracking: Full
+- Id: Google.AndroidStudio@winget
+  DisplayName: Google Android Studio
+  Category: Programming
+  Tracking: Full
+- Id: Google.Chrome@winget
+  DisplayName: Google Chrome
+  Category: Web
+  Tracking: Full
+- Id: Google.PlayGames.Beta@winget
+  DisplayName: Google Play Games
+  Category: Gaming
+  Tracking: Full
+- Id: Google.QuickShare@winget
+  DisplayName: Google Quick Share
+  Category: Utility
+  Tracking: Full
+- Id: Graphviz.Graphviz@winget
+  DisplayName: Graphviz
+  Category: Programming
+  Tracking: Full
+- Id: HandBrake.HandBrake@winget
+  DisplayName: HandBrake
+  Category: Video
+  Tracking: Full
+- Id: JanDeDobbeleer.OhMyPosh@winget
+  DisplayName: OhMyPosh
+  Category: Programming
+  Tracking: Full
+- Id: JGraph.Draw@winget
+  DisplayName: draw.io
+  Category: Programming
+  Tracking: Full
+- Id: JohnMacFarlane.Pandoc@winget
+  DisplayName: Pandoc
+  Category: Utility
+  Tracking: Full
+- Id: jqlang.jq@winget
+  DisplayName: jq
+  Category: Programming
+  Tracking: Full
+- Id: JRSoftware.InnoSetup@winget
+  DisplayName: InnoSetup
+  Category: Programming
+  Tracking: Full
+- Id: KDE.KDiff3@winget
+  DisplayName: KDiff3
+  Category: Programming
+  Tracking: Full
+- Id: KirillOsenkov.MSBuildStructuredLogViewer@winget
+  DisplayName: MSBuild Structured Log Viewer
+  Category: Programming
+  Tracking: Full
+- Id: koalaman.shellcheck@winget
+  DisplayName: shellcheck
+  Category: Programming
+  Tracking: Full
+- Id: kvakulo.switcheroo@winget
+  DisplayName: switcheroo
+  Category: Utility
+  Tracking: Full
+- Id: kymoto.InnoScriptStudio@winget
+  DisplayName: InnoScriptStudio
+  Category: Programming
+  Tracking: Full
+- Id: Logitech.OptionsPlus@winget
+  DisplayName: Logi Options+
+  Category: Utility
+  Tracking: Full
+- Id: lsd-rs.lsd@winget
+  DisplayName: lsd
+  Category: File System
+  Tracking: Full
+- Id: Malwarebytes.Malwarebytes@winget
+  DisplayName: Malwarebytes
+  Category: Security
+  Tracking: Full
+- Id: Meld.Meld@winget
+  DisplayName: Meld
+  Category: Programming
+  Tracking: Full
+- Id: Microsoft.AppInstaller@winget
+  DisplayName: Microsoft App Installer
+  Category: Programming
+  Tracking: Full
+- Id: Microsoft.AzureCLI@winget
+  DisplayName: Azure CLI
+  Category: Programming
+  Tracking: Full
+- Id: Microsoft.AzureDataStudio@winget
+  DisplayName: Azure Data Studio
+  Category: Programming
+  Tracking: Full
+- Id: Microsoft.CLRTypesSQLServer.2019@winget
+  DisplayName: SQL Server 2019 CLR Types
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.DevHome@winget
+  DisplayName: Dev Home
+  Category: Programming
+  Tracking: Full
+- Id: Microsoft.DotNet.DesktopRuntime.6@winget
+  DisplayName: .NET 6 Desktop Runtime
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.DotNet.DesktopRuntime.8@winget
+  DisplayName: .NET 8 Desktop Runtime
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.DotNet.Runtime.7@winget
+  DisplayName: .NET 7 Runtime
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.DotNet.SDK.8@winget
+  DisplayName: .NET 8 SDK
+  Category: Programming
+  Tracking: Partial
+- Id: Microsoft.DotNet.SDK.9@winget
+  DisplayName: .NET 9 SDK
+  Category: Programming
+  Tracking: Partial
+- Id: Microsoft.DotNet.UninstallTool@winget
+  DisplayName: .NET Uninstall Tool
+  Category: Programming
+  Tracking: Full
+- Id: Microsoft.Edge@winget
+  DisplayName: Microsoft Edge
+  Category: Web
+  Tracking: Full
+- Id: Microsoft.msodbcsql.17@winget
+  DisplayName: Microsoft ODBC Driver 17 for SQL Server
+  Category: Programming
+  Tracking: Full
+- Id: Microsoft.NuGet@winget
+  DisplayName: NuGet
+  Category: Programming
+  Tracking: Full
+- Id: Microsoft.OneDrive@winget
+  DisplayName: OneDrive
+  Category: File System
+  Tracking: Full
+- Id: Microsoft.PowerShell@winget
+  DisplayName: PowerShell
+  Category: Programming
+  Tracking: Full
+- Id: Microsoft.PowerToys@winget
+  DisplayName: PowerToys
+  Category: Utility
+  Tracking: Full
+- Id: Microsoft.Sqlcmd@winget
+  DisplayName: sqlcmd
+  Category: Programming
+  Tracking: Full
+- Id: Microsoft.Teams.Free@winget
+  DisplayName: Microsoft Teams Free
+  Category: Social
+  Tracking: None
+- Id: Microsoft.Teams@winget
+  DisplayName: Microsoft Teams
+  Category: Social
+  Tracking: None
+- Id: Microsoft.UI.Xaml.2.7@winget
+  DisplayName: WinUI 2.7
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.UI.Xaml.2.8@winget
+  DisplayName: WinUI 2.8
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.VCLibs.Desktop.14@winget
+  DisplayName: Microsoft Visual C++ 2015 UWP Desktop Runtime
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.VCRedist.2008.x64@winget
+  DisplayName: Microsoft Visual C++ 2008 Redistributable (x64)
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.VCRedist.2008.x86@winget
+  DisplayName: Microsoft Visual C++ 2008 Redistributable (x86)
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.VCRedist.2010.x64@winget
+  DisplayName: Microsoft Visual C++ 2010 Redistributable (x64)
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.VCRedist.2010.x86@winget
+  DisplayName: Microsoft Visual C++ 2010 Redistributable (x86)
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.VCRedist.2012.x64@winget
+  DisplayName: Microsoft Visual C++ 2012 Redistributable (x64)
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.VCRedist.2012.x86@winget
+  DisplayName: Microsoft Visual C++ 2012 Redistributable (x86)
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.VCRedist.2013.x64@winget
+  DisplayName: Microsoft Visual C++ 2013 Redistributable (x64)
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.VCRedist.2013.x86@winget
+  DisplayName: Microsoft Visual C++ 2013 Redistributable (x86)
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.VCRedist.2015+.x64@winget
+  DisplayName: Microsoft Visual C++ 2015-2022 Redistributable (x64)
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.VCRedist.2015+.x86@winget
+  DisplayName: Microsoft Visual C++ 2015-2022 Redistributable (x86)
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.VisualStudio.2022.Community@winget
+  DisplayName: Visual Studio 2022
+  Category: Programming
+  Tracking: Full
+- Id: Microsoft.VisualStudioCode@winget
+  DisplayName: Visual Studio Code
+  Category: Programming
+  Tracking: Full
+- Id: Microsoft.WebDeploy@winget
+  DisplayName: Web Deploy
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.WindowsTerminal.Preview@winget
+  DisplayName: Windows Terminal Preview
+  Category: Programming
+  Tracking: Full
+- Id: Microsoft.WindowsTerminal@winget
+  DisplayName: Windows Terminal
+  Category: Programming
+  Tracking: Full
+- Id: Microsoft.WSL@winget
+  DisplayName: Windows Subsystem for Linux
+  Category: Programming
+  Tracking: Full
+- Id: Microsoft.XNARedist@winget
+  DisplayName: XNA Redistributable
+  Category: Gaming
+  Tracking: Full
+- Id: MiKTeX.MiKTeX@winget
+  DisplayName: MiKTeX
+  Category: Utility
+  Tracking: Full
+- Id: Mobatek.MobaXterm@winget
+  DisplayName: MobaXterm
+  Category: Programming
+  Tracking: Full
+- Id: Mozilla.Firefox@winget
+  DisplayName: Mozilla Firefox
+  Category: Web
+  Tracking: Full
+- Id: Mozilla.Thunderbird@winget
+  DisplayName: Mozilla Thunderbird
+  Category: Utility
+  Tracking: Full
+- Id: MusicBrainz.Picard@winget
+  DisplayName: MusicBrainz Picard
+  Category: Music
+  Tracking: Full
+- Id: NickeManarin.ScreenToGif@winget
+  DisplayName: ScreenToGif
+  Category: Video
+  Tracking: Full
+- Id: Notepad++.Notepad++@winget
+  DisplayName: Notepad++
+  Category: Text Editing
+  Tracking: Full
+- Id: Nushell.Nushell@winget
+  DisplayName: Nushell
+  Category: Programming
+  Tracking: Full
+- Id: Nvidia.PhysX@winget
+  DisplayName: Nvidia PhysX
+  Category: Gaming
+  Tracking: None
+- Id: Obsidian.Obsidian@winget
+  DisplayName: Obsidian
+  Category: Notes
+  Tracking: Full
+- Id: OliverBetz.ExifTool@winget
+  DisplayName: ExifTool
+  Category: Utility
+  Tracking: Full
+- Id: OpenJS.NodeJS.LTS@winget
+  DisplayName: Node.js LTS
+  Category: Programming
+  Tracking: Full
+- Id: Oracle.JavaRuntimeEnvironment@winget
+  DisplayName: Java Runtime Environment
+  Category: Utility
+  Tracking: Full
+- Id: Oracle.JDK.23@winget
+  DisplayName: Java Development Kit
+  Category: Programming
+  Tracking: Full
+- Id: PawelSalawa.SQLiteStudio@winget
+  DisplayName: SQLiteStudio
+  Category: Programming
+  Tracking: Full
+- Id: PDFsam.PDFsam@winget
+  DisplayName: PDFsam
+  Category: Utility
+  Tracking: Full
+- Id: pnpm.pnpm@winget
+  DisplayName: Performant NPM
+  Category: Programming
+  Tracking: Full
+- Id: PostgreSQL.PostgreSQL.16@winget
+  DisplayName: PostgreSQL
+  Category: Programming
+  Tracking: Full
+- Id: PrivateInternetAccess.PrivateInternetAccess@winget
+  DisplayName: Private Internet Access
+  Category: Privacy
+  Tracking: Full
+- Id: PuTTY.PuTTY@winget
+  DisplayName: PuTTY
+  Category: Programming
+  Tracking: Full
+- Id: Python.Launcher@winget
+  DisplayName: Python Launcher
+  Category: Programming
+  Tracking: None
+- Id: Python.Python.3.12@winget
+  DisplayName: Python 3.12
+  Category: Programming
+  Tracking: Full
+- Id: qBittorrent.qBittorrent@winget
+  DisplayName: qBittorrent
+  Category: Utility
+  Tracking: Full
+- Id: RaspberryPiFoundation.RaspberryPiImager@winget
+  DisplayName: Raspberry Pi Imager
+  Category: Utility
+  Tracking: Full
+- Id: RedHat.Podman-Desktop@winget
+  DisplayName: Podman Desktop
+  Category: Programming
+  Tracking: Full
+- Id: RedHat.Podman@winget
+  DisplayName: Podman
+  Category: Programming
+  Tracking: Full
+- Id: rhysd.actionlint@winget
+  DisplayName: actionlint
+  Category: Programming
+  Tracking: Full
+- Id: RuneLite.RuneLite@winget
+  DisplayName: RuneLite
+  Category: Gaming
+  Tracking: Full
+- Id: RustemMussabekov.Raindrop@winget
+  DisplayName: Raindrop.io
+  Category: Utility
+  Tracking: Full
+- Id: Rustlang.Rustup@winget
+  DisplayName: rustup
+  Category: Programming
+  Tracking: Full
+- Id: sharkdp.bat@winget
+  DisplayName: bat
+  Category: File System
+  Tracking: Full
+- Id: sharkdp.fd@winget
+  DisplayName: fd
+  Category: File System
+  Tracking: Full
+- Id: ShiningLight.OpenSSL.Dev@winget
+  DisplayName: OpenSSL
+  Category: Programming
+  Tracking: Full
+- Id: SumatraPDF.SumatraPDF@winget
+  DisplayName: Sumatra PDF
+  Category: Reading
+  Tracking: Full
+- Id: Valve.Steam@winget
+  DisplayName: Steam
+  Category: Gaming
+  Tracking: Full
+- Id: VideoLAN.VLC@winget
+  DisplayName: VLC
+  Category: Video
+  Tracking: Full
+- Id: vim.vim.nightly@winget
+  DisplayName: vim
+  Category: Text Editing
+  Tracking: Full
+- Id: WhirlwindFX.SignalRgb@winget
+  DisplayName: Signal RGB
+  Category: Utility
+  Tracking: Full
+- Id: Wilfred.difftastic@winget
+  DisplayName: difftastic
+  Category: Programming
+  Tracking: Full
+- Id: WinMerge.WinMerge@winget
+  DisplayName: WinMerge
+  Category: Programming
+  Tracking: Full
+- Id: XPFM2K6GPV72CR@msstore
+  DisplayName: OP Auto Clicker
+  Category: Gaming
+  Tracking: Full

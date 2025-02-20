@@ -1,0 +1,8 @@
+- Id: Microsoft.Winget.Source_8wekyb3d8bbwe
+  Name: winget
+  Url: https://cdn.winget.microsoft.com/cache
+  Type: Microsoft.PreIndexed.Package
+- Id: StoreEdgeFD
+  Name: msstore
+  Url: https://storeedgefd.dsx.mp.microsoft.com/v9.0
+  Type: Microsoft.Rest

@@ -1,0 +1,8 @@
+- Id: check-jsonschema
+  Homepage: https://github.com/python-jsonschema/check-jsonschema
+- Id: pip
+  Homepage: https://pip.pypa.io/
+- Id: sqlfluff
+  Homepage: https://www.sqlfluff.com
+- Id: yamllint
+  Homepage: https://github.com/adrienverge/yamllint

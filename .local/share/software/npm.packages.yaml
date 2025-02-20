@@ -1,0 +1,16 @@
+- Id: '@openapitools/openapi-generator-cli'
+  Homepage: https://github.com/OpenAPITools/openapi-generator-cli
+- Id: '@stoplight/spectral-cli'
+  Homepage: https://github.com/stoplightio/spectral
+- Id: cspell
+  Homepage: https://cspell.org/
+- Id: markdownlint-cli
+  Homepage: https://github.com/igorshubovych/markdownlint-cli#readme
+- Id: npm
+  Homepage: https://docs.npmjs.com/
+- Id: nswag
+  Homepage: http://nswag.org
+- Id: prettier
+  Homepage: https://prettier.io
+- Id: speedscope
+  Homepage: https://github.com/jlfwong/speedscope#readme

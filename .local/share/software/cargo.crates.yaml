@@ -1,0 +1,45 @@
+- Id: https://crates.io/crates/bunyan
+  Name: bunyan
+  Description: A CLI to pretty print structured logs. A Rust port of the original JavaScript bunyan CLI.
+- Id: https://crates.io/crates/cargo-audit
+  Name: cargo-audit
+  Description: Audit Cargo.lock for crates with security vulnerabilities
+- Id: https://crates.io/crates/cargo-expand
+  Name: cargo-expand
+  Description: 'Wrapper around rustc -Zunpretty=expanded. Shows the result of macro expansion and #[derive] expansion.'
+- Id: https://crates.io/crates/cargo-udeps
+  Name: cargo-udeps
+  Description: Find unused dependencies in Cargo.toml
+- Id: https://crates.io/crates/cargo-update
+  Name: cargo-update
+  Description: A cargo subcommand for checking and applying updates to installed executables
+- Id: https://crates.io/crates/cargo-watch
+  Name: cargo-watch
+  Description: Watches over your Cargo project’s source
+- Id: https://crates.io/crates/mergiraf
+  Name: mergiraf
+  Description: A syntax-aware merge driver for Git
+- Id: https://crates.io/crates/rustlings
+  Name: rustlings
+  Description: Small exercises to get you used to reading and writing Rust code!
+- Id: https://crates.io/crates/sqlx-cli
+  Name: sqlx-cli
+  Description: Command-line utility for SQLx, the Rust SQL toolkit.
+- Id: https://crates.io/crates/tabiew
+  Name: tabiew
+  Description: A lightweight TUI application to view and query tabular data files, such as CSV, TSV, and parquet.
+- Id: https://crates.io/crates/taplo-cli
+  Name: taplo-cli
+  Description: A CLI for Taplo TOML toolkit
+- Id: https://crates.io/crates/tealdeer
+  Name: tealdeer
+  Description: Fetch and show tldr help pages for many CLI commands. Full featured offline client with caching support.
+- Id: https://crates.io/crates/typos-cli
+  Name: typos-cli
+  Description: Source Code Spelling Correction
+- Id: https://crates.io/crates/xsv
+  Name: xsv
+  Description: A high performance CSV command line toolkit.
+- Id: https://github.com/pamburus/hl.git
+  Name: hl
+  Description: A fast and powerful log viewer and processor that translates JSON logs or logfmt logs into a pretty human-readable format.

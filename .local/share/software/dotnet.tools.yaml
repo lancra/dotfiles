@@ -1,0 +1,14 @@
+- Id: dotnet-ef
+  Url: https://nuget.org/packages/dotnet-ef
+- Id: dotnet-repl
+  Url: https://nuget.org/packages/dotnet-repl
+- Id: dotnet-reportgenerator-globaltool
+  Url: https://nuget.org/packages/dotnet-reportgenerator-globaltool
+- Id: dotnet-suggest
+  Url: https://nuget.org/packages/dotnet-suggest
+- Id: dotnet-tools-outdated
+  Url: https://nuget.org/packages/dotnet-tools-outdated
+- Id: dotnet-xscgen
+  Url: https://nuget.org/packages/dotnet-xscgen
+- Id: refitter
+  Url: https://nuget.org/packages/refitter
