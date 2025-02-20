@@ -1,0 +1,92 @@
+{
+  "$schema": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/software/providers.schema.json",
+  "providers": [
+    {
+      "id": "cargo",
+      "exports": [
+        {
+          "id": "crates",
+          "scope": "global",
+          "versioned": true
+        }
+      ]
+    },
+    {
+      "id": "dotnet",
+      "exports": [
+        {
+          "id": "tools",
+          "scope": "global",
+          "versioned": true
+        }
+      ]
+    },
+    {
+      "id": "go",
+      "exports": [
+        {
+          "id": "packages",
+          "scope": "global",
+          "versioned": true
+        }
+      ]
+    },
+    {
+      "id": "npm",
+      "exports": [
+        {
+          "id": "packages",
+          "scope": "global",
+          "versioned": true
+        }
+      ]
+    },
+    {
+      "id": "pip",
+      "exports": [
+        {
+          "id": "packages",
+          "scope": "global",
+          "versioned": true
+        }
+      ]
+    },
+    {
+      "id": "powershell",
+      "exports": [
+        {
+          "id": "modules.system",
+          "name": "system-modules",
+          "scope": "local",
+          "versioned": false
+        },
+        {
+          "id": "modules.user",
+          "name": "user-modules",
+          "scope": "global",
+          "versioned": true
+        }
+      ]
+    },
+    {
+      "id": "winget",
+      "exports": [
+        {
+          "id": "packages",
+          "scope": "global",
+          "versioned": true
+        },
+        {
+          "id": "pins",
+          "scope": "global",
+          "versioned": false
+        },
+        {
+          "id": "sources",
+          "scope": "global",
+          "versioned": false
+        }
+      ]
+    }
+  ]
+}

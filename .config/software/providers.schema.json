@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/env/providers.schema.json",
+  "title": "Machine Configuration Providers",
+  "description": "Specifies machine configuration providers that are manually tracked.",
+  "definitions": {
+    "export": {
+      "title": "Configuration Provider Export",
+      "description": "Represents a software export for a provider.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "The unique identifier of the provider export.",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name of the provider export used for script references.",
+          "type": "string"
+        },
+        "scope": {
+          "description": "The scope at which the software is defined.",
+          "type": "string",
+          "enum": [
+            "local",
+            "global"
+          ]
+        },
+        "versioned": {
+          "description": "The value that determines whether the software is automatically updated.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "scope",
+        "versioned"
+      ]
+    },
+    "provider": {
+      "title": "Configuration Provider",
+      "description": "Represents a software provider, typically a package management tool.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "The unique identifier of the provider.",
+          "type": "string"
+        },
+        "exports": {
+          "description": "The software exports available for the provider.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/export"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "exports"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "providers": {
+      "description": "Represents the software providers.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/provider"
+      }
+    }
+  },
+  "required": [
+    "providers"
+  ]
+}
