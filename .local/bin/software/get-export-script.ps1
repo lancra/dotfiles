@@ -2,22 +2,28 @@ using module ./software.psm1
 
 [CmdletBinding()]
 param(
-    [Parameter(Mandatory, ParameterSetName = 'Check')]
-    [Parameter(Mandatory, ParameterSetName = 'Export')]
+    [Parameter(Mandatory)]
     [string] $Id,
 
     [Parameter(ParameterSetName = 'Check')]
     [switch] $Check,
 
     [Parameter(ParameterSetName = 'Export')]
-    [switch] $Export
+    [switch] $Export,
+
+    [Parameter(ParameterSetName = 'Update')]
+    [switch] $Update
 )
 
 $scriptPrefix = $null
+$singular = $false
 if ($Check) {
     $scriptPrefix = 'check-'
 } elseif ($Export) {
     $scriptPrefix = 'export-'
+} elseif ($Update) {
+    $scriptPrefix = 'update-'
+    $singular = $true
 }
 
 if ($null -eq $scriptPrefix) {
@@ -33,4 +39,9 @@ if (-not $targetExport.Versioned -and $Check) {
     throw "Unable to resolve a check script for the non-versioned $Id export."
 }
 
-"$env:HOME/.local/bin/software/$($targetExport.Id.Provider)/$scriptPrefix$($targetExport.Name).ps1"
+$scriptFileName = "$scriptPrefix$($targetExport.Name)"
+if ($singular) {
+    $scriptFileName = $scriptFileName.TrimEnd('s')
+}
+
+"$env:HOME/.local/bin/software/$($targetExport.Id.Provider)/$scriptFileName.ps1"

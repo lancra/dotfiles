@@ -26,21 +26,77 @@ param (
             $validExports -like "$wordToComplete*"
         }
     })]
-    [string] $Export
+    [string] $Export,
+
+    [switch] $Show,
+
+    [switch] $DryRun
 )
 begin {
     & "$env:HOME/.local/bin/env/begin-loading.ps1"
+
+    function Get-Upgrades {
+        [CmdletBinding()]
+        [OutputType([InstallationUpgrade[]])]
+        param(
+            [Parameter(Mandatory)]
+            [InstallationExport[]] $Exports
+        )
+        begin {
+            $sortProperties = @(
+                @{ Expression = { $_.Id.Provider }},
+                @{ Expression = { $_.Id.Export }},
+                'Name'
+            )
+        }
+        process {
+            $Exports |
+                ForEach-Object {
+                    & $PSScriptRoot/get-export-script.ps1 -Id $_.Id.ToString() -Check
+                } |
+                ForEach-Object -Parallel {
+                    & $_
+                } |
+                Sort-Object -Property $sortProperties
+        }
+    }
+
+    enum ConfirmationChoice {
+        Yes
+        No
+        Refresh
+    }
+
+    function Read-Choice {
+        [CmdletBinding()]
+        [OutputType([ConfirmationChoice])]
+        param()
+        begin {
+            $confirmationChoicesDisplay = [ConfirmationChoice].GetEnumNames() -join '/'
+        }
+        process {
+            $text = Read-Host -Prompt "Do you want to apply the upgrades [$confirmationChoicesDisplay]?"
+            if (-not $text) {
+                return $null
+            }
+
+            foreach ($choice in [ConfirmationChoice].GetEnumValues()) {
+                $choiceText = $choice.ToString()
+                if ($text -eq $choiceText) {
+                    return $choice
+                } elseif ($choiceText.StartsWith($text, [System.StringComparison]::OrdinalIgnoreCase)) {
+                    return $choice
+                }
+            }
+        }
+    }
 }
 process {
-    $upgrades = & $PSScriptRoot/get-exports.ps1 -Provider $Provider -Export $Export -Versioned |
-        ForEach-Object {
-            & $PSScriptRoot/get-export-script.ps1 -Id $_.Id.ToString() -Check
-        } |
-        ForEach-Object -Parallel {
-            & $_
-        }
+    $exports = & $PSScriptRoot/get-exports.ps1 -Provider $Provider -Export $Export -Versioned
+    $upgrades = Get-Upgrades -Exports $exports
 
-    if ($upgrades.Length -gt 0) {
+    $hasUpgrades = $upgrades.Length -gt 0
+    if ($hasUpgrades) {
         $displayProperties = @(
             @{ Name = 'Provider'; Expression = { $_.Id.Provider }},
             @{ Name = 'Export'; Expression = { $_.Id.Export }},
@@ -50,11 +106,61 @@ process {
         )
         $upgrades |
             Select-Object -Property $displayProperties |
-            Sort-Object -Property Provider, Export, Name |
             Format-Table
     } else {
         Write-Output 'No upgrades found.'
     }
 
     & "$env:HOME/.local/bin/env/end-loading.ps1"
+
+    if (-not $hasUpgrades -or $Show) {
+        exit 0
+    }
+
+    $script:selectedChoice = $null
+    do {
+        $script:selectedChoice = Read-Choice
+    }
+    while ($null -eq $script:selectedChoice)
+
+    if ($script:selectedChoice -eq [ConfirmationChoice]::No) {
+        exit 0
+    }
+
+    if ($script:selectedChoice -eq [ConfirmationChoice]::Refresh) {
+        $upgrades = Get-Upgrades -Exports $exports
+    }
+
+    try {
+        & "$env:HOME/.local/bin/env/begin-loading.ps1"
+
+        Write-Output ''
+        $upgrades |
+            ForEach-Object {
+                $exportId = "$($_.Id.Provider).$($_.Id.Export)"
+                Write-Output "$($exportId.ToString()): Updating $($_.Id.Value)."
+
+                $scriptPath = & $PSScriptRoot/get-export-script.ps1 -Id $exportId -Update
+
+                if (-not $DryRun) {
+                    & $scriptPath -Id $_.Id.Value
+                }
+            }
+
+        if (-not $DryRun) {
+            $exportParameters = @{}
+            if ($Provider) {
+                $exportParameters['Provider'] = $Provider
+            }
+
+            if ($Export) {
+                $exportParameters['Export'] = $Export
+            }
+
+            & $PSScriptRoot/export-software.ps1 @exportParameters
+        }
+    }
+    finally {
+        & "$env:HOME/.local/bin/env/end-loading.ps1"
+    }
 }
