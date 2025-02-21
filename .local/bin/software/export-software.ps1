@@ -41,8 +41,11 @@ begin {
         )
         process {
             $inMemoryInstallations = $Exports |
+                ForEach-Object {
+                    & $PSScriptRoot/get-export-script.ps1 -Id $_.Id.ToString() -Export
+                } |
                 ForEach-Object -Parallel {
-                    & "$using:softwareDirectory/$($_.Id.Provider)/export-$($_.Name).ps1"
+                    & $_
                 } |
                 Sort-Object -Property @(
                     @{ Expression = { $_.Id.Provider } },
@@ -182,8 +185,7 @@ begin {
     }
 }
 process {
-    $softwareDirectory = "$env:HOME/.local/bin/software"
-    $exports = & "$softwareDirectory/get-exports.ps1" -Provider $Provider -Export $Export
+    $exports = & $PSScriptRoot/get-exports.ps1 -Provider $Provider -Export $Export
 
     $inMemoryInstallations = Export-MachineManifest -Exports $exports
 
