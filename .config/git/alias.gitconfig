@@ -1,6 +1,6 @@
 [alias]
 	a = "add"
-	an = "add -N"
+	an = "add --intent-to-add"
 	ap = "add --patch"
 	br = "branch"
 	brc = "branch --show-current"
