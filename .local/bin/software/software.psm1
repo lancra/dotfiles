@@ -45,6 +45,27 @@ class Installation {
     }
 }
 
+class InstallationUpgrade {
+    [InstallationId] $Id
+    [string] $Name
+    [string] $Current
+    [string] $Available
+
+    InstallationUpgrade([InstallationId] $id, [string] $current, [string] $available) {
+        $this.Id = $id
+        $this.Name = $id
+        $this.Current = $current
+        $this.Available = $available
+    }
+
+    InstallationUpgrade([InstallationId] $id, [string] $name, [string] $current, [string] $available) {
+        $this.Id = $id
+        $this.Name = $name
+        $this.Current = $current
+        $this.Available = $available
+    }
+}
+
 class InstallationProvider {
     [string] $Id
     [InstallationExport[]] $Exports

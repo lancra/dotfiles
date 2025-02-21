@@ -26,7 +26,9 @@ $providerSegment = $identifierSegments[0]
 $provider = $providerSegment.Substring(0, $providerSegment.Length - 1)
 
 $exportSegment = $identifierSegments[1]
-$export = $exportSegment -replace 'export-', '' -replace '.ps1', ''
+$exportFileName = $exportSegment -replace '.ps1', ''
+$exportFileNameSegments = $exportFileName -split '-'
+$export = $exportFileNameSegments[1..($exportFileNameSegments.Length - 1)] -join '-'
 
 $exportDefinition = & $PSScriptRoot/get-exports.ps1 -Provider $provider -Name $export
 if (-not $exportDefinition) {
