@@ -1,0 +1,1 @@
+C:\Program Files (x86)\dotnet-core-uninstall\dotnet-core-uninstall.exe
