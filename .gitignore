@@ -70,6 +70,9 @@
 !/.docker/config.json
 !/.docker/daemon.json
 
+# Dotnet Suggest
+/.dotnet-suggest-registration.txt
+
 # Environment
 /.config/env/.ignored-user-variables.json
 
