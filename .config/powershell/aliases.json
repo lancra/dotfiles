@@ -1,87 +1,87 @@
-[
-  {
-    "name": "cdu",
-    "command": "change-directory-up.ps1 -Count #{0}",
-    "bash": "true"
-  },
-  {
-    "name": "cm",
-    "command": "check-machine.ps1",
-    "bash": "false"
-  },
-  {
-    "name": "cmi",
-    "command": "& check-machine.ps1 -Interactive",
-    "bash": "true"
-  },
-  {
-    "name": "em",
-    "command": "export-machine.ps1",
-    "bash": "false"
-  },
-  {
-    "name": "um",
-    "command": "update-machine.ps1",
-    "bash": "false"
-  },
-  {
-    "name": "uem",
-    "command": "& update-machine.ps1 && & export-machine.ps1",
-    "bash": "true"
-  },
-  {
-    "name": "cwd",
-    "command": "$pwd.Path | Set-Clipboard",
-    "bash": "true"
-  },
-  {
-    "name": "g",
-    "command": "git #{:*}",
-    "bash": "true"
-  },
-  {
-    "name": "eev",
+{
+  "eev": {
+    "group": "Environment",
     "command": "& $env:HOME/.local/bin/env/export-variables.ps1",
-    "bash": "true"
+    "bash": true
   },
-  {
-    "name": "iev",
+  "iev": {
+    "group": "Environment",
     "command": "& $env:HOME/.local/bin/env/import-variables.ps1",
-    "bash": "true"
+    "bash": true
   },
-  {
-    "name": "riev",
+  "riev": {
+    "group": "Environment",
     "command": "git restore */env/variables.yaml && iev",
-    "bash": "true"
+    "bash": true
   },
-  {
-    "name": "jqf",
-    "command": "Set-Content -Path \"$(#{0})\" -Value (jq '.' \"$(#{0})\")",
-    "bash": "true"
+  "cdu": {
+    "group": "FileSystem",
+    "command": "change-directory-up.ps1 -Count #{0}",
+    "bash": true
   },
-  {
-    "name": "l",
+  "cwd": {
+    "group": "FileSystem",
+    "command": "$pwd.Path | Set-Clipboard",
+    "bash": true
+  },
+  "l": {
+    "group": "FileSystem",
     "command": "lsd --long #{:*}",
-    "bash": "true"
+    "bash": true
   },
-  {
-    "name": "lt",
+  "lt": {
+    "group": "FileSystem",
     "command": "lsd --long --tree --depth #{0} #{:*}",
-    "bash": "true"
+    "bash": true
   },
-  {
-    "name": "pm",
-    "command": "podman #{:*}",
-    "bash": "true"
-  },
-  {
-    "name": "rmr",
+  "rmr": {
+    "group": "FileSystem",
     "command": "Remove-Item -Path #{0} -Recurse",
-    "bash": "true"
+    "bash": true
   },
-  {
-    "name": "wu",
+  "g": {
+    "group": "Git",
+    "command": "git #{:*}",
+    "bash": true
+  },
+  "jqf": {
+    "group": "JSON",
+    "command": "Set-Content -Path \"$(#{0})\" -Value (jq '.' \"$(#{0})\")",
+    "bash": true
+  },
+  "cm": {
+    "group": "Machine Administration",
+    "command": "check-machine.ps1",
+    "bash": false
+  },
+  "cmi": {
+    "group": "Machine Administration",
+    "command": "& check-machine.ps1 -Interactive",
+    "bash": true
+  },
+  "em": {
+    "group": "Machine Administration",
+    "command": "export-machine.ps1",
+    "bash": false
+  },
+  "uem": {
+    "group": "Machine Administration",
+    "command": "& update-machine.ps1 && & export-machine.ps1",
+    "bash": true
+  },
+  "um": {
+    "group": "Machine Administration",
+    "command": "update-machine.ps1",
+    "bash": false
+  },
+  "pm": {
+    "group": "Podman",
+    "command": "podman #{:*}",
+    "bash": true
+  },
+  "wu": {
+    "group": "WinGet",
     "command": "winget upgrade #{:*}",
-    "bash": "true"
+    "bash": true
   }
-]
+}
