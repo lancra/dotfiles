@@ -79,6 +79,16 @@
     "command": "podman #{:*}",
     "bash": true
   },
+  "cs": {
+    "group": "Software",
+    "command": "& $env:HOME/.local/bin/software/check-software.ps1",
+    "bash": true
+  },
+  "es": {
+    "group": "Software",
+    "command": "& $env:HOME/.local/bin/software/export-software.ps1",
+    "bash": true
+  },
   "wu": {
     "group": "WinGet",
     "command": "winget upgrade #{:*}",
