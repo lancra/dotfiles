@@ -135,16 +135,20 @@ process {
         & "$env:HOME/.local/bin/env/begin-loading.ps1"
 
         Write-Output ''
+        $upgradeCounter = 1
+        $upgradeTotal = $upgrades -is [array] ? $upgrades.Length : 1
         $upgrades |
             ForEach-Object {
                 $exportId = "$($_.Id.Provider).$($_.Id.Export)"
-                Write-Output "$($exportId.ToString()): Updating $($_.Id.Value)."
+                Write-Output "$($exportId.ToString()): Updating $($_.Id.Value) ($upgradeCounter/$upgradeTotal)."
 
                 $scriptPath = & $PSScriptRoot/get-export-script.ps1 -Id $exportId -Update
 
                 if (-not $DryRun) {
                     & $scriptPath -Id $_.Id.Value
                 }
+
+                $upgradeCounter++
             }
 
         if (-not $DryRun) {
