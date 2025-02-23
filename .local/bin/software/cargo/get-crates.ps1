@@ -38,16 +38,17 @@ param()
                 Select-Object -Property $registryProperties
         } else {
             $source = $_.Repository
-            $repositoryUri = [Uri]::new($_.Repository)
-            $githubRequestUri = "repos$($repositoryUri.AbsolutePath.TrimEnd('.git'))"
+            $repository = [Uri]::new($_.Repository)
+            $repositoryId = & "$env:HOME/.local/bin/git/get-repository-id.ps1" -Repository $repository
 
-            $repositoryProperties = @(
-                @{Name = $descriptionProperty; Expression = {$_.description}},
-                @{Name = $availableProperty; Expression = {$crate.Current}}
-            )
-            $crateDetails = & gh api $githubRequestUri |
-                ConvertFrom-Json |
-                Select-Object -Property $repositoryProperties
+            $crateDetails = @{
+                $descriptionProperty = & gh repo view $repositoryId --json description |
+                    ConvertFrom-Json |
+                    Select-Object -ExpandProperty description
+                $availableProperty = & "$env:HOME/.local/bin/git/get-latest-remote-tag.ps1" -Repository $repository |
+                    ForEach-Object { $_.TrimStart('v')
+                }
+            }
         }
 
         @{
