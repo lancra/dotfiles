@@ -64,6 +64,11 @@
     "command": "& $env:HOME/.local/bin/software/export-software.ps1",
     "bash": true
   },
+  "is": {
+    "group": "Software",
+    "command": "& $env:HOME/.local/bin/software/install-software.ps1",
+    "bash": true
+  },
   "wu": {
     "group": "WinGet",
     "command": "winget upgrade #{:*}",

@@ -11,6 +11,9 @@ param(
     [Parameter(ParameterSetName = 'Export')]
     [switch] $Export,
 
+    [Parameter(ParameterSetName = 'Install')]
+    [switch] $Install,
+
     [Parameter(ParameterSetName = 'Update')]
     [switch] $Update
 )
@@ -20,7 +23,7 @@ if ($null -eq $targetExport) {
     throw "Unable to resolve the unrecognized $Id export."
 }
 
-if (-not $targetExport.Versioned -and ($Check -or $Update)) {
+if (-not $targetExport.Versioned -and ($Check -or $Install -or $Update)) {
     throw "Unable to resolve a version administration script for the non-versioned $Id export."
 }
 
@@ -31,6 +34,9 @@ if ($Check) {
     $scriptPrefix = 'check-'
 } elseif ($Export) {
     $scriptPrefix = 'export-'
+} elseif ($Install) {
+    $scriptPrefix = $targetExport.Upsert ? $upsertPrefix : 'install-'
+    $singular = $true
 } elseif ($Update) {
     $scriptPrefix = $targetExport.Upsert ? $upsertPrefix : 'update-'
     $singular = $true
