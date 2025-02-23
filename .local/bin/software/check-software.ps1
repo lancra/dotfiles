@@ -140,7 +140,7 @@ process {
         $upgrades |
             ForEach-Object {
                 $exportId = "$($_.Id.Provider).$($_.Id.Export)"
-                Write-Output "$($exportId.ToString()): Updating $($_.Id.Value) ($upgradeCounter/$upgradeTotal)."
+                Write-Output "${exportId}: Updating $($_.Id.Value) ($upgradeCounter/$upgradeTotal)."
 
                 $scriptPath = & $PSScriptRoot/get-export-script.ps1 -Id $exportId -Update
 
