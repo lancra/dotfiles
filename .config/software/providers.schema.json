@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/env/providers.schema.json",
-  "title": "Machine Configuration Providers",
-  "description": "Specifies machine configuration providers that are manually tracked.",
+  "$id": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/software/providers.schema.json",
+  "title": "Software Configuration Providers",
+  "description": "Specifies software configuration providers that are manually tracked.",
   "definitions": {
     "export": {
       "title": "Configuration Provider Export",
