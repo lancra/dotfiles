@@ -15,28 +15,29 @@ param(
     [switch] $Update
 )
 
+$targetExport = & $PSScriptRoot/get-exports.ps1 -Export $Id
+if ($null -eq $targetExport) {
+    throw "Unable to resolve the unrecognized $Id export."
+}
+
+if (-not $targetExport.Versioned -and ($Check -or $Update)) {
+    throw "Unable to resolve a version administration script for the non-versioned $Id export."
+}
+
 $scriptPrefix = $null
+$upsertPrefix = 'upsert-'
 $singular = $false
 if ($Check) {
     $scriptPrefix = 'check-'
 } elseif ($Export) {
     $scriptPrefix = 'export-'
 } elseif ($Update) {
-    $scriptPrefix = 'update-'
+    $scriptPrefix = $targetExport.Upsert ? $upsertPrefix : 'update-'
     $singular = $true
 }
 
 if ($null -eq $scriptPrefix) {
     throw 'Unable to resolve the unrecognized software script type.'
-}
-
-$targetExport = & $PSScriptRoot/get-exports.ps1 -Export $Id
-if ($null -eq $targetExport) {
-    throw "Unable to resolve the unrecognized $Id export."
-}
-
-if (-not $targetExport.Versioned -and $Check) {
-    throw "Unable to resolve a check script for the non-versioned $Id export."
 }
 
 $scriptFileName = "$scriptPrefix$($targetExport.Name)"

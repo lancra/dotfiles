@@ -28,6 +28,10 @@
         "versioned": {
           "description": "The value that determines whether the software is automatically updated.",
           "type": "boolean"
+        },
+        "upsert": {
+          "description": "The value that determines whether the insert and update operations use the same logic.",
+          "type": "boolean"
         }
       },
       "required": [

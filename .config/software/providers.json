@@ -7,7 +7,8 @@
         {
           "id": "crates",
           "scope": "global",
-          "versioned": true
+          "versioned": true,
+          "upsert": true
         }
       ]
     },
@@ -17,7 +18,8 @@
         {
           "id": "tools",
           "scope": "global",
-          "versioned": true
+          "versioned": true,
+          "upsert": false
         }
       ]
     },
@@ -27,7 +29,8 @@
         {
           "id": "packages",
           "scope": "global",
-          "versioned": true
+          "versioned": true,
+          "upsert": true
         }
       ]
     },
@@ -37,7 +40,8 @@
         {
           "id": "packages",
           "scope": "global",
-          "versioned": true
+          "versioned": true,
+          "upsert": false
         }
       ]
     },
@@ -47,7 +51,8 @@
         {
           "id": "packages",
           "scope": "global",
-          "versioned": true
+          "versioned": true,
+          "upsert": false
         }
       ]
     },
@@ -64,7 +69,8 @@
           "id": "modules.user",
           "name": "user-modules",
           "scope": "global",
-          "versioned": true
+          "versioned": true,
+          "upsert": false
         }
       ]
     },
@@ -74,7 +80,8 @@
         {
           "id": "packages",
           "scope": "global",
-          "versioned": true
+          "versioned": true,
+          "upsert": false
         },
         {
           "id": "pins",
