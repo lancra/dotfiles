@@ -5,7 +5,7 @@ param()
 
 $exportId = & "$env:HOME/.local/bin/software/get-export-id-from-path.ps1"
 
-(& npm outdated -g --json |
+(& npm outdated --location=global --json |
     & jq 'to_entries | map({id: .key, current: .value.current, available: .value.latest})' |
     ConvertFrom-Json |
     ForEach-Object {
