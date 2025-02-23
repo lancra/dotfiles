@@ -49,31 +49,6 @@
     "command": "Set-Content -Path \"$(#{0})\" -Value (jq '.' \"$(#{0})\")",
     "bash": true
   },
-  "cm": {
-    "group": "Machine Administration",
-    "command": "check-machine.ps1",
-    "bash": false
-  },
-  "cmi": {
-    "group": "Machine Administration",
-    "command": "& check-machine.ps1 -Interactive",
-    "bash": true
-  },
-  "em": {
-    "group": "Machine Administration",
-    "command": "export-machine.ps1",
-    "bash": false
-  },
-  "uem": {
-    "group": "Machine Administration",
-    "command": "& update-machine.ps1 && & export-machine.ps1",
-    "bash": true
-  },
-  "um": {
-    "group": "Machine Administration",
-    "command": "update-machine.ps1",
-    "bash": false
-  },
   "pm": {
     "group": "Podman",
     "command": "podman #{:*}",
