@@ -174,7 +174,7 @@ winget,packages,ShiningLight.OpenSSL.Dev@winget
 winget,packages,SumatraPDF.SumatraPDF@winget
 winget,packages,Valve.Steam@winget
 winget,packages,VideoLAN.VLC@winget
-winget,packages,vim.vim.nightly@winget
+winget,packages,vim.vim@winget
 winget,packages,WhirlwindFX.SignalRgb@winget
 winget,packages,Wilfred.difftastic@winget
 winget,packages,WinMerge.WinMerge@winget

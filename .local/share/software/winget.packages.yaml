@@ -490,7 +490,7 @@
   DisplayName: VLC
   Category: Video
   Tracking: Full
-- Id: vim.vim.nightly@winget
+- Id: vim.vim@winget
   DisplayName: vim
   Category: Text Editing
   Tracking: Full
