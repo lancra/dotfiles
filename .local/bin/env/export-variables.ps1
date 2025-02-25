@@ -14,6 +14,7 @@ $prefixVariableNames = @(
     'APPDATA',
     'USERPROFILE',
     'DEVUSERPROFILE',
+    'XDG_CONFIG_HOME',
     'HOME',
     'DEV_HOME',
     'SYSTEMROOT',
