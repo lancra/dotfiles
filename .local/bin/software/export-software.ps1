@@ -95,6 +95,9 @@ begin {
             [InstallationExport] $Export,
 
             [Parameter(Mandatory)]
+            [InstallationId[]] $Ids,
+
+            [Parameter()]
             [PSObject[]] $Definitions
         )
         process {
@@ -107,7 +110,7 @@ begin {
                     ConvertFrom-Yaml
             }
 
-            $targetInstallationIds |
+            $Ids |
                 Select-Object -ExpandProperty Value |
                 ForEach-Object {
                     $definition = $Definitions |
@@ -163,7 +166,7 @@ process {
                     New-Object -Type PSObject -Property $properties
                 }
 
-            Export-Definitions -Export $_ -Definitions $definitions
+            Export-Definitions -Export $_ -Ids $targetInstallationIds -Definitions $definitions
         }
 
     & "$env:HOME/.local/bin/env/export-variables.ps1"
