@@ -4,4 +4,4 @@ param(
     [string] $Id
 )
 
-Install-Module -Name $Id
+Install-Module -Name $Id -Scope CurrentUser

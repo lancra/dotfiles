@@ -4,4 +4,4 @@ param(
     [string] $Id
 )
 
-Update-Module -Name $Id
+Update-Module -Name $Id -Scope CurrentUser
