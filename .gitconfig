@@ -1,3 +1,5 @@
+[branch]
+	sort = -committerdate
 [clone]
 	defaultRemoteName = origin
 [commit]
@@ -9,6 +11,8 @@
 [diff]
 	algorithm = histogram
 	colorMoved = default
+	mnemonicPrefix = true
+	renames = true
 	tool = vscode
 [difftool]
 	prompt = false
@@ -43,11 +47,19 @@
 [rebase]
 	autosquash = true
 	updateRefs = true
+[remote "origin"]
+	followRemoteHead = always
+[rerere]
+	autoUpdate = true
+	enabled = true
 [tag]
 	gpgSign = true
+	sort = version:refname
 [user]
 	email = lancra@outlook.com
 	name = Lance Craig
 	signingKey = lancra@outlook.com
+[versionSort]
+	suffix = -
 [winUpdater]
 	recentlySeenVersion = 2.24.1.windows.2
