@@ -106,8 +106,11 @@ begin {
 
             $persistedDefinitions = @()
             if (Test-Path -Path $definitionPath) {
-                $persistedDefinitions = Get-Content -Path $definitionPath |
-                    ConvertFrom-Yaml
+                $persistedDefinitions = (Get-Content -Path $definitionPath |
+                    ConvertFrom-Yaml -Ordered).GetEnumerator() |
+                    ForEach-Object {
+                        New-Object -TypeName PSObject -Property $_
+                    }
             }
 
             $Ids |
@@ -120,7 +123,7 @@ begin {
 
                     if ($definition) {
                         $definition
-                    } elseif ($persistedInstallation) {
+                    } elseif ($persistedDefinition) {
                         $persistedDefinition
                     }
                 } |
