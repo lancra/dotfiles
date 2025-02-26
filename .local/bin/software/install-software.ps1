@@ -65,13 +65,13 @@ $targetIds |
 
         $exportId = "$($targetId.Provider).$($targetId.Export)"
         if ($currentId) {
-            Write-Output "${exportId}: Skipping $($_.Value) ($installCounter/$installTotal)."
+            Write-Output "${exportId}: Skipping $($targetId.Value) ($installCounter/$installTotal)."
         } else {
-            Write-Output "${exportId}: Installing $($_.Value) ($installCounter/$installTotal)."
+            Write-Output "${exportId}: Installing $($targetId.Value) ($installCounter/$installTotal)."
             $scriptPath = & $PSScriptRoot/get-export-script.ps1 -Id $exportId -Install
 
             if (-not $DryRun) {
-                & $scriptPath -Id $_.Id.Value
+                & $scriptPath -Id $targetId.Value
             }
         }
 
