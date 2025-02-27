@@ -170,7 +170,7 @@ winget,packages,RustemMussabekov.Raindrop@winget
 winget,packages,Rustlang.Rustup@winget
 winget,packages,sharkdp.bat@winget
 winget,packages,sharkdp.fd@winget
-winget,packages,ShiningLight.OpenSSL.Dev@winget
+winget,packages,ShiningLight.OpenSSL.Light@winget
 winget,packages,SumatraPDF.SumatraPDF@winget
 winget,packages,Valve.Steam@winget
 winget,packages,VideoLAN.VLC@winget
@@ -185,6 +185,6 @@ winget,pins,Malwarebytes.Malwarebytes@winget
 winget,pins,Microsoft.DotNet.SDK.8@winget
 winget,pins,Microsoft.VCRedist.2015+.x64@winget
 winget,pins,pnpm.pnpm@winget
-winget,pins,ShiningLight.OpenSSL.Dev@winget
+winget,pins,ShiningLight.OpenSSL.Light@winget
 winget,sources,Microsoft.Winget.Source_8wekyb3d8bbwe
 winget,sources,StoreEdgeFD

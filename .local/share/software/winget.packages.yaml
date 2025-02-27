@@ -474,7 +474,7 @@
   DisplayName: fd
   Category: File System
   Tracking: Full
-- Id: ShiningLight.OpenSSL.Dev@winget
+- Id: ShiningLight.OpenSSL.Light@winget
   DisplayName: OpenSSL
   Category: Programming
   Tracking: Full
