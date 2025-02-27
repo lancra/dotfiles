@@ -3,13 +3,24 @@
 [CmdletBinding()]
 param()
 
+function Write-SetupOutput {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [PSObject[]] $InputObject
+    )
+    process {
+        Write-Output "dotnet-suggest: $InputObject"
+    }
+}
+
 $fileName = '.dotnet-suggest-registration.txt'
 $sourcePath = "$env:HOME/$fileName"
 $sourceExists = Test-Path -Path $sourcePath
 $isLink = & is-link.ps1 -Path $sourcePath -ErrorAction SilentlyContinue
 
 if ($isLink) {
-    Write-Output 'Links have already been established.'
+    Write-SetupOutput 'Links have already been established.'
     exit 0
 }
 
@@ -29,4 +40,4 @@ if (-not $targetExists) {
 
 $symlinkTarget = & resolve-relative-path.ps1 -Source $env:HOME -Target $machinePath
 New-Item -ItemType SymbolicLink -Path $sourcePath -Target $symlinkTarget | Out-Null
-Write-Output "Link established for .NET suggest."
+Write-SetupOutput "Link established for .NET suggest."
