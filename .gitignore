@@ -21,7 +21,6 @@
 /Cookies/
 /CrossDevice/
 /Desktop/
-/Documents/
 /Downloads/
 /Favorites/
 /Links/
@@ -47,6 +46,9 @@
 !/AppData/Local/
 !/AppData/Local/Packages/
 !/AppData/Roaming/
+
+# Windows User Documents
+/Documents/**
 
 # Android Studio
 /.android/
@@ -107,6 +109,15 @@
 # Podman
 /.config/containers/
 /.local/share/containers/
+
+# PowerShell Core
+!/Documents/PowerShell/
+!/Documents/PowerShell/*_profile.ps1
+!/Documents/PowerShell/powershell.config.json
+
+# PowerShell Windows
+!/Documents/WindowsPowerShell/
+!/Documents/WindowsPowerShell/*_profile.ps1
 
 # RuneScape
 /.runelite/

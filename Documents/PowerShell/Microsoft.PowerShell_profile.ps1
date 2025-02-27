@@ -1,0 +1,1 @@
+../../.config/powershell/core.profile.ps1
