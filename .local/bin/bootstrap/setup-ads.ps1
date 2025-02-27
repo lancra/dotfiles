@@ -9,4 +9,4 @@ $setupParameters = @{
     DefaultConfigurationDirectory = '.azuredatastudio'
     TrackedConfigurationDirectory = 'ads'
 }
-& $env:HOME/.local/bin/links/setup-vscode.ps1 @setupParameters
+& $PSScriptRoot/setup-vscode.ps1 @setupParameters

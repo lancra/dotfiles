@@ -13,17 +13,20 @@ if ($isLink) {
     exit 0
 }
 
-$machineRootDirectory = & get-or-add-machine-directory.ps1 -Configuration
+$machineRootDirectory = & "$env:HOME/.local/bin/env/get-or-add-machine-directory.ps1" -Configuration
 $machineDirectory = "$machineRootDirectory/dotnet"
 New-Item -ItemType Directory -Path $machineDirectory -Force | Out-Null
 
-$machinePath = "$machineDirectory/dotnet/$fileName"
-if ($sourceExists) {
-    Move-Item -Path $sourcePath -Destination $machinePath | Out-Null
-} else {
-    New-Item -ItemType File -Path $machinePath | Out-Null
+$machinePath = "$machineDirectory/$fileName"
+$targetExists = Test-Path -Path $machinePath
+if (-not $targetExists) {
+    if ($sourceExists) {
+        Move-Item -Path $sourcePath -Destination $machinePath | Out-Null
+    } else {
+        New-Item -ItemType File -Path $machinePath | Out-Null
+    }
 }
 
-$symlinkTarget = & resolve-relative-path.ps1 -Source $sourcePath -Target $machinePath
+$symlinkTarget = & resolve-relative-path.ps1 -Source $env:HOME -Target $machinePath
 New-Item -ItemType SymbolicLink -Path $sourcePath -Target $symlinkTarget | Out-Null
 Write-Output "Link established for .NET suggest."

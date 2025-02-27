@@ -46,13 +46,20 @@ if (-not $anyMissingLinks) {
 }
 
 if (-not $linkChecks[$argvSourcePath]) {
-    $machine = $env:COMPUTERNAME.ToLower()
-    $argvTargetDirectoryPath = "$env:HOME/.config/machine/$machine/$TrackedConfigurationDirectory"
+    $machineRootDirectory = & "$env:HOME/.local/bin/env/get-or-add-machine-directory.ps1" -Configuration
+    $argvTargetDirectoryPath = "$machineRootDirectory/$TrackedConfigurationDirectory"
     $argvTargetPath = "$argvTargetDirectoryPath/$argvFileName"
 
-    New-Item -ItemType Directory -Path $argvTargetDirectoryPath -Force | Out-Null
-    Move-Item -Path $argvSourcePath -Destination $argvTargetPath | Out-Null
-    New-Item -ItemType SymbolicLink -Path $argvSourcePath -Target $argvTargetPath | Out-Null
+    $targetExists = Test-Path -Path $argvTargetPath
+    if (-not $targetExists) {
+        New-Item -ItemType Directory -Path $argvTargetDirectoryPath -Force | Out-Null
+        Move-Item -Path $argvSourcePath -Destination $argvTargetPath | Out-Null
+    } else {
+        Remove-Item -Path $argvSourcePath | Out-Null
+    }
+
+    $symlinkTarget = resolve-relative-path.ps1 -Source $env:HOME/$DefaultConfigurationDirectory -Target $argvTargetPath
+    New-Item -ItemType SymbolicLink -Path $argvSourcePath -Target $symlinkTarget | Out-Null
 
     Write-Output "Link established for $argvFileName."
 }
