@@ -1,36 +1,87 @@
+#Requires -RunAsAdministrator
+
 [CmdletBinding()]
 param ()
 
-$configPath = "$env:XDG_CONFIG_HOME/powershell"
-$documentsPath = "$env:HOME/Documents"
+function Write-SetupOutput {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [PSObject[]] $InputObject
+    )
+    process {
+        Write-Output "pwsh: $InputObject"
+    }
+}
 
 $defaultProfileFileName = 'Microsoft.PowerShell_profile.ps1'
-$codeProfileFileName = 'Microsoft.VSCode_profile.ps1'
+$vsCodeProfileFileName = 'Microsoft.VSCode_profile.ps1'
 
-$coreConfigProfilePath = "$configPath/core.profile.ps1"
+$documentsPath = "$env:HOME/Documents"
 $coreDocumentsDirectory = "$documentsPath/PowerShell"
-New-Item -ItemType Directory -Path $coreDocumentsDirectory -Force | Out-Null
-
-$coreDefaultProfilePath = "$coreDocumentsDirectory/$defaultProfileFileName"
-if (-not (Test-Path -Path $coreDefaultProfilePath)) {
-    New-Item -ItemType SymbolicLink -Path $coreDefaultProfilePath -Target $coreConfigProfilePath
-}
-
-$coreCodeProfilePath = "$coreDocumentsDirectory/$codeProfileFileName"
-if (-not (Test-Path -Path $coreCodeProfilePath)) {
-    New-Item -ItemType SymbolicLink -Path $coreCodeProfilePath -Target $coreConfigProfilePath
-}
-
-$windowsConfigProfilePath = "$configPath/windows.profile.ps1"
 $windowsDocumentsDirectory = "$documentsPath/WindowsPowerShell"
+
+New-Item -ItemType Directory -Path $coreDocumentsDirectory -Force | Out-Null
 New-Item -ItemType Directory -Path $windowsDocumentsDirectory -Force | Out-Null
 
-$windowsDefaultProfilePath = "$windowsDocumentsDirectory/$defaultProfileFileName"
-if (-not (Test-Path -Path $windowsDefaultProfilePath)) {
-    New-Item -ItemType SymbolicLink -Path $windowsDefaultProfilePath -Target $windowsConfigProfilePath
+$coreDefaultProfileSourcePath = "$coreDocumentsDirectory/$defaultProfileFileName"
+$coreVSCodeProfileSourcePath = "$coreDocumentsDirectory/$vsCodeProfileFileName"
+$windowsDefaultProfileSourcePath = "$windowsDocumentsDirectory/$defaultProfileFileName"
+$windowsVSCodeProfileSourcePath = "$windowsDocumentsDirectory/$vsCodeProfileFileName"
+
+$sourcePaths = @(
+    $coreDefaultProfileSourcePath,
+    $coreVSCodeProfileSourcePath,
+    $windowsDefaultProfileSourcePath,
+    $windowsVSCodeProfileSourcePath
+)
+
+$linkChecks = @{}
+$sourcePaths |
+    ForEach-Object {
+        $pathExists = Test-Path -Path $_
+        $isLink = $pathExists -and (is-link.ps1 -Path $_)
+        $linkChecks[$_] = $isLink
+    }
+
+$anyMissingLinks = ($linkChecks.GetEnumerator() |
+    Where-Object { -not $_.Value }).Length -ne 0
+
+if (-not $anyMissingLinks) {
+    Write-SetupOutput 'Links have already been established.'
 }
 
-$windowsCodeProfilePath = "$windowsDocumentsDirectory/$codeProfileFileName"
-if (-not (Test-Path -Path $windowsCodeProfilePath)) {
-    New-Item -ItemType SymbolicLink -Path $windowsCodeProfilePath -Target $windowsConfigProfilePath
+$configPath = "$env:XDG_CONFIG_HOME/powershell"
+$coreConfigProfilePath = "$configPath/core.profile.ps1"
+$windowsConfigProfilePath = "$configPath/windows.profile.ps1"
+
+$coreSymlinkTarget = resolve-relative-path.ps1 -Source $coreDocumentsDirectory -Target $coreConfigProfilePath
+$windowsSymlinkTarget = resolve-relative-path.ps1 -Source $windowsDocumentsDirectory -Target $windowsConfigProfilePath
+
+if (-not $linkChecks[$coreDefaultProfileSourcePath]) {
+    Remove-Item -Path $coreDefaultProfileSourcePath -ErrorAction SilentlyContinue | Out-Null
+    New-Item -ItemType SymbolicLink -Path $coreDefaultProfileSourcePath -Target $coreSymlinkTarget | Out-Null
+
+    Write-SetupOutput 'Link established for default Core profile.'
+}
+
+if (-not $linkChecks[$coreVSCodeProfileSourcePath]) {
+    Remove-Item -Path $coreVSCodeProfileSourcePath -ErrorAction SilentlyContinue | Out-Null
+    New-Item -ItemType SymbolicLink -Path $coreVSCodeProfileSourcePath -Target $coreSymlinkTarget | Out-Null
+
+    Write-SetupOutput 'Link established for VS Code Core profile.'
+}
+
+if (-not $linkChecks[$windowsDefaultProfileSourcePath]) {
+    Remove-Item -Path $windowsDefaultProfileSourcePath -ErrorAction SilentlyContinue | Out-Null
+    New-Item -ItemType SymbolicLink -Path $windowsDefaultProfileSourcePath -Target $windowsSymlinkTarget | Out-Null
+
+    Write-SetupOutput 'Link established for default Windows profile.'
+}
+
+if (-not $linkChecks[$windowsVSCodeProfileSourcePath]) {
+    Remove-Item -Path $windowsVSCodeProfileSourcePath -ErrorAction SilentlyContinue | Out-Null
+    New-Item -ItemType SymbolicLink -Path $windowsVSCodeProfileSourcePath -Target $windowsSymlinkTarget | Out-Null
+
+    Write-SetupOutput 'Link established for VS Code Windows profile.'
 }
