@@ -51,6 +51,9 @@ powershell,modules.user,PSDepend
 powershell,modules.user,PSScriptAnalyzer
 powershell,modules.user,PSToml
 powershell,modules.user,Templating
+rust,toolchains,nightly-x86_64-pc-windows-msvc
+rust,toolchains,stable-x86_64-pc-windows-gnu
+rust,toolchains,stable-x86_64-pc-windows-msvc
 winget,packages,7zip.7zip@winget
 winget,packages,9WZDNCRDMDM3@msstore
 winget,packages,AlexanderKojevnikov.Spek@winget
