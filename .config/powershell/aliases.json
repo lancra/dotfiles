@@ -1,18 +1,18 @@
 {
   "eev": {
     "group": "Environment",
-    "command": "& $env:HOME/.local/bin/env/export-variables.ps1",
-    "bash": true
+    "command": "$env:HOME/.local/bin/env/export-variables.ps1",
+    "bash": false
   },
   "iev": {
     "group": "Environment",
-    "command": "& $env:HOME/.local/bin/env/import-variables.ps1",
-    "bash": true
+    "command": "$env:HOME/.local/bin/env/import-variables.ps1",
+    "bash": false
   },
   "riev": {
     "group": "Environment",
     "command": "git restore */env/variables.yaml && iev",
-    "bash": true
+    "bash": false
   },
   "cdu": {
     "group": "FileSystem",
@@ -41,8 +41,8 @@
   },
   "g": {
     "group": "Git",
-    "command": "git #{:*}",
-    "bash": true
+    "command": "git",
+    "bash": false
   },
   "jqf": {
     "group": "JSON",
@@ -56,18 +56,18 @@
   },
   "cs": {
     "group": "Software",
-    "command": "& $env:HOME/.local/bin/software/check-software.ps1",
-    "bash": true
+    "command": "$env:HOME/.local/bin/software/check-software.ps1",
+    "bash": false
   },
   "es": {
     "group": "Software",
-    "command": "& $env:HOME/.local/bin/software/export-software.ps1",
-    "bash": true
+    "command": "$env:HOME/.local/bin/software/export-software.ps1",
+    "bash": false
   },
   "is": {
     "group": "Software",
-    "command": "& $env:HOME/.local/bin/software/install-software.ps1",
-    "bash": true
+    "command": "$env:HOME/.local/bin/software/install-software.ps1",
+    "bash": false
   },
   "wu": {
     "group": "WinGet",
