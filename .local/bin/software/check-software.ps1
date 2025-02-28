@@ -2,7 +2,7 @@ using module ./software.psm1
 
 [CmdletBinding(DefaultParameterSetName = 'Provider')]
 param (
-    [Parameter(ParameterSetName = 'Provider')]
+    [Parameter(ParameterSetName = 'Provider', Position = 0)]
     [ValidateScript({
         $_ -in (& "$env:HOME/.local/bin/software/get-provider-ids.ps1")},
         ErrorMessage = 'Provider not found.')]
