@@ -87,16 +87,16 @@ function Compare-EnvironmentVariable {
             }
             process {
                 $userTarget = 'User'
-                $sourceUserVariables = Select-Variables -Path $SourcePath -Target $userTarget
-                $targetUserVariables = Select-Variables -Path $TargetPath -Target $userTarget
+                $sourceUserVariables = @(Select-Variables -Path $SourcePath -Target $userTarget)
+                $targetUserVariables = @(Select-Variables -Path $TargetPath -Target $userTarget)
                 $userVariables = ($sourceUserVariables + $targetUserVariables) |
                     Select-Object -Unique |
                     Sort-Object
                 $userComparisonResult = [TargetComparisonResult]::new([System.EnvironmentVariableTarget]$userTarget, $userVariables)
 
                 $machineTarget = 'Machine'
-                $sourceMachineVariables = Select-Variables -Path $SourcePath -Target $machineTarget
-                $targetMachineVariables = Select-Variables -Path $TargetPath -Target $machineTarget
+                $sourceMachineVariables = @(Select-Variables -Path $SourcePath -Target $machineTarget)
+                $targetMachineVariables = @(Select-Variables -Path $TargetPath -Target $machineTarget)
                 $machineVariables = ($sourceMachineVariables + $targetMachineVariables) |
                     Select-Object -Unique |
                     Sort-Object
