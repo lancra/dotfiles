@@ -54,6 +54,11 @@
     "command": "podman #{:*}",
     "bash": true
   },
+  "hp": {
+    "group": "PowerShell",
+    "command": "$env:HOME/.local/bin/get-extended-help.ps1",
+    "bash": false
+  },
   "cs": {
     "group": "Software",
     "command": "$env:HOME/.local/bin/software/check-software.ps1",
