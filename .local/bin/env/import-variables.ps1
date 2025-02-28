@@ -45,6 +45,8 @@ class ImportDescriptor {
 }
 
 $manifestMergeScriptPath = "$env:HOME/.local/bin/env/merge-environment-variable-manifests.ps1"
+$temporaryDirectory = "$env:TEMP/variable-import-$(New-Guid)"
+New-Item -ItemType Directory -Path $temporaryDirectory -Force | Out-Null
 
 function Compare-EnvironmentVariable {
     [CmdletBinding()]
@@ -109,13 +111,10 @@ function Compare-EnvironmentVariable {
     process {
         Write-Host 'Comparing configured environment variables with the registry.'
 
-        $targetDirectory = "$env:TEMP/$(New-Guid)"
-        New-Item -ItemType Directory -Path $targetDirectory -Force | Out-Null
-
-        $targetGlobalPath = "$targetDirectory/variables.global.yaml"
-        $targetLocalPath = "$targetDirectory/variables.local.yaml"
-        $targetMergePath = "$targetDirectory/variables.yaml"
-        & "$env:HOME/.local/bin/env/export-variables.ps1" -GlobalTarget $targetGlobalPath -LocalTarget $targetLocalPath
+        $targetGlobalPath = "$temporaryDirectory/variables.target.global.yaml"
+        $targetLocalPath = "$temporaryDirectory/variables.target.local.yaml"
+        $targetMergePath = "$temporaryDirectory/variables.target.yaml"
+        & "$env:HOME/.local/bin/env/export-variables.ps1" -GlobalTarget $targetGlobalPath -LocalTarget $targetLocalPath -Verbose:$false
         & $manifestMergeScriptPath -Target $targetMergePath -GlobalManifest $targetGlobalPath -LocalManifest $targetLocalPath
 
         # Use UTF-8 so that Tee-Object doesn't garble Unicode symbols.
@@ -131,16 +130,17 @@ function Compare-EnvironmentVariable {
 
         $comparisonResult = New-ComparisonResult -HasDifferences $hasDifferences -SourcePath $Source -TargetPath $targetMergePath
 
-        Remove-Item -Path $targetDirectory -Recurse | Out-Null
-
         $comparisonResult
     }
 }
 
-$sourceMergePath = "$env:TEMP/variables.$((New-Guid).Guid).yaml"
+$sourceMergePath = "$temporaryDirectory/variables.source.yaml"
 & $manifestMergeScriptPath -Target $sourceMergePath -GlobalManifest $GlobalManifest -LocalManifest $LocalManifest
+$sourceObject = Get-Content -Path $sourceMergePath | ConvertFrom-Yaml
 
 $comparisonResult = Compare-EnvironmentVariable -Source $sourceMergePath
+Remove-Item -Path $temporaryDirectory -Recurse | Out-Null
+
 if (-not $comparisonResult.HasDifferences) {
     Write-Output 'No changes detected.'
     exit 0
@@ -159,9 +159,6 @@ if (-not $script:input.Equals($continueInput, [System.StringComparison]::Ordinal
     Write-Output 'Canceled import.'
     exit 0
 }
-
-$sourceObject = Get-Content -Path $sourceMergePath | ConvertFrom-Yaml
-Remove-Item -Path $sourceMergePath | Out-Null
 
 $windowsPrincipal = New-Object System.Security.Principal.WindowsPrincipal([System.Security.Principal.WindowsIdentity]::GetCurrent())
 $runningAsAdministrator = $windowsPrincipal.IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)
