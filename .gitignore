@@ -10,10 +10,8 @@
 /.templateengine/
 /.vscode/
 /.bash_history
-/.lesshst
 /.gitconfig
 /.tig_history
-/_lesshst
 
 # Windows
 /Application Data/
@@ -93,6 +91,11 @@
 
 # Lemminx LSP
 /.config/lemminx/cache/
+
+# Less
+/.lesshst
+/.local/share/lesshst
+/_lesshst
 
 # LSDeluxe (lsd)
 !/AppData/Roaming/lsd/
