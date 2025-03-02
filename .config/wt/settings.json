@@ -4,8 +4,7 @@
   "actions": [
     {
       "command": "find",
-      "id": "User.find",
-      "keys": "ctrl+shift+f"
+      "id": "User.find"
     },
     {
       "command": {
@@ -13,61 +12,89 @@
         "split": "auto",
         "splitMode": "duplicate"
       },
-      "id": "User.splitPane.duplicate",
-      "keys": "alt+shift+d"
+      "id": "User.splitPane.duplicate"
     },
     {
       "command": {
         "action": "scrollToMark",
         "direction": "previous"
       },
-      "id": "User.scrollToMark.previous",
-      "keys": "ctrl+up"
+      "id": "User.scrollToMark.previous"
     },
     {
       "command": {
         "action": "scrollToMark",
         "direction": "next"
       },
+      "id": "User.scrollToMark.next"
+    },
+    {
+      "command": {
+        "action": "selectOutput",
+        "direction": "prev"
+      },
+      "id": "User.selectOutput.prev"
+    },
+    {
+      "command": {
+        "action": "selectCommand",
+        "direction": "prev"
+      },
+      "id": "User.selectCommand.prev"
+    },
+    {
+      "command": {
+        "action": "selectOutput",
+        "direction": "next"
+      },
+      "id": "User.selectOutput.next"
+    },
+    {
+      "command": {
+        "action": "selectCommand",
+        "direction": "next"
+      },
+      "id": "User.selectCommand.next"
+    }
+  ],
+  "compatibility.textMeasurement": "console",
+  "copyFormatting": "none",
+  "copyOnSelect": false,
+  "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+  "keybindings": [
+    {
+      "id": "User.selectOutput.next",
+      "keys": "ctrl+alt+j"
+    },
+    {
+      "id": "User.find",
+      "keys": "ctrl+shift+f"
+    },
+    {
       "id": "User.scrollToMark.next",
       "keys": "ctrl+down"
     },
     {
-      "command": {
-        "action": "selectCommand",
-        "direction": "prev"
-      },
+      "id": "User.splitPane.duplicate",
+      "keys": "alt+shift+d"
+    },
+    {
+      "id": "User.scrollToMark.previous",
+      "keys": "ctrl+up"
+    },
+    {
       "id": "User.selectCommand.prev",
       "keys": "ctrl+alt+h"
     },
     {
-      "command": {
-        "action": "selectCommand",
-        "direction": "next"
-      },
-      "id": "User.selectCommand.next",
-      "keys": "ctrl+alt+l"
-    },
-    {
-      "command": {
-        "action": "selectOutput",
-        "direction": "prev"
-      },
       "id": "User.selectOutput.prev",
       "keys": "ctrl+alt+k"
     },
     {
-      "command": {
-        "action": "selectOutput",
-        "direction": "next"
-      },
-      "id": "User.selectOutput.next",
-      "keys": "ctrl+alt+j"
+      "id": "User.selectCommand.next",
+      "keys": "ctrl+alt+l"
     }
   ],
-  "copyFormatting": "none",
-  "copyOnSelect": false,
-  "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
   "launchMode": "maximized",
   "newTabMenu": [
     {
