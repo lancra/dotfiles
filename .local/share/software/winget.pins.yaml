@@ -4,4 +4,4 @@
 - Id: Microsoft.DotNet.SDK.8@winget
 - Id: Microsoft.VCRedist.2015+.x64@winget
 - Id: pnpm.pnpm@winget
-- Id: ShiningLight.OpenSSL.Light@winget
+- Id: ShiningLight.OpenSSL.Dev@winget
