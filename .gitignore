@@ -37,6 +37,7 @@
 /Templates/
 /Videos/
 /NTUSER.DAT*
+/ntuser.dat*
 /ntuser.ini
 
 # Windows User App Data
