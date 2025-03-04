@@ -5,6 +5,7 @@ cargo,crates,https://crates.io/crates/cargo-expand
 cargo,crates,https://crates.io/crates/cargo-udeps
 cargo,crates,https://crates.io/crates/cargo-update
 cargo,crates,https://crates.io/crates/cargo-watch
+cargo,crates,https://crates.io/crates/content_inspector
 cargo,crates,https://crates.io/crates/mergiraf
 cargo,crates,https://crates.io/crates/rustlings
 cargo,crates,https://crates.io/crates/sqlx-cli

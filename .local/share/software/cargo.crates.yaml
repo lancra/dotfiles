@@ -16,6 +16,10 @@
 - Id: https://crates.io/crates/cargo-watch
   Name: cargo-watch
   Description: Watches over your Cargo project’s source
+- Id: https://crates.io/crates/content_inspector
+  Name: content_inspector
+  Description: Fast inspection of binary buffers to guess/determine the encoding
+  Examples: inspect
 - Id: https://crates.io/crates/mergiraf
   Name: mergiraf
   Description: A syntax-aware merge driver for Git
