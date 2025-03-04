@@ -10,14 +10,12 @@ $environmentGroup = 'environment'
 $idRegex = "(?<$channelGroup>.*?)-(?<host>(?<architecture>.*?)-(?<operating_system>.*)-(?<$environmentGroup>.*))"
 
 $currentVersionGroup = 'current_version'
-$currentCommitGroup = 'current_commit'
 $currentDateGroup = 'current_date'
 $availableVersionGroup = 'available_version'
-$availableCommitGroup = 'available_commit'
 $availableDateGroup = 'available_date'
 
-$currentRegex = "(?<$currentVersionGroup>.*?) \((?<$currentCommitGroup>.*?) (?<$currentDateGroup>.*?)\)"
-$availableRegex = "(?<$availableVersionGroup>.*?) \((?<$availableCommitGroup>.*?) (?<$availableDateGroup>.*?)\)"
+$currentRegex = "(?<$currentVersionGroup>.*?) \((?<current_commit>.*?) (?<$currentDateGroup>.*?)\)"
+$availableRegex = "(?<$availableVersionGroup>.*?) \((?<available_commit>.*?) (?<$availableDateGroup>.*?)\)"
 $versionRegex = "$currentRegex( -> $availableRegex)?"
 
 $channelSorting = @('stable', 'beta', 'nightly')
@@ -55,23 +53,28 @@ function Get-GroupValue {
 
         $versionMatch = $version | Select-String -Pattern $versionRegex
         $currentVersion = Get-GroupValue -Match $versionMatch -Group $currentVersionGroup
-        $currentCommit = Get-GroupValue -Match $versionMatch -Group $currentCommitGroup
         $currentDate = Get-GroupValue -Match $versionMatch -Group $currentDateGroup
+        $currentDate = [DateOnly]::Parse($currentDate)
+        $current = $currentVersion
+        if ($current.Contains('-')) {
+            $current = "$current.$($currentDate.ToString('yyyyMMdd'))"
+        }
+
         $availableVersion = Get-GroupValue -Match $versionMatch -Group $availableVersionGroup
-        $availableCommit = Get-GroupValue -Match $versionMatch -Group $availableCommitGroup
         $availableDate = Get-GroupValue -Match $versionMatch -Group $availableDateGroup
+        $available = $availableVersion ? $availableVersion : $currentVersion
+        if ($available.Contains('-')) {
+            $availableDate = $availableDate ? [DateOnly]::Parse($availableDate) : $currentDate
+            $available = "$available.$($availableDate.ToString('yyyyMMdd'))"
+        }
 
         @{
             Id = $id
             Name = "$channel ($environment)"
             Channel = $channel
             Environment = $environment
-            Current = $currentVersion
-            CurrentCommit = $currentCommit
-            CurrentDate = $currentDate
-            Available = $availableVersion ? $availableVersion : $currentVersion
-            AvailableCommit = $availableCommit ? $availableCommit : $currentCommit
-            AvailableDate = $availableDate ? $availableDate : $currentDate
+            Current = $current
+            Available = $available
         }
     } |
     Sort-Object -Property @(
