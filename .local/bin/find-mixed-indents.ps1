@@ -6,6 +6,8 @@ param(
     [Parameter()]
     [string] $IgnorePath,
 
+    [Parameter()]
+    [int] $Depth = $null
 )
 
 Get-Command -Name fd -ErrorAction Stop | Out-Null
@@ -26,6 +28,10 @@ if ($item.PSIsContainer) {
 
     if ($IgnorePath) {
         $fdOptions += "--ignore-file $IgnorePath"
+    }
+
+    if ($Depth) {
+        $fdOptions += "--max-depth $Depth"
     }
 
     $fdCommand = [scriptblock]::Create("fd $fdOptions . $Path")
