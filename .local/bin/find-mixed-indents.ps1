@@ -9,6 +9,7 @@ param(
 )
 
 Get-Command -Name fd -ErrorAction Stop | Out-Null
+Get-Command -Name inspect -ErrorAction Stop | Out-Null
 
 $item = Get-Item -Path $Path -ErrorAction SilentlyContinue
 if ($null -eq $item) {
@@ -38,17 +39,10 @@ function Test-TextFile {
         [Parameter(Mandatory)]
         [string] $Path
     )
-    begin {
-        $valueGroup = 'value'
-        $regex = "`"(?<path>.*?)`": (?<name>.*?): (?<$valueGroup>.*)"
-    }
     process {
-        $match = & git check-attr text -- $Path |
-            Select-String -Pattern $regex
-        $value = $match.Matches.Groups |
-            Where-Object -Property Name -EQ $valueGroup |
-            Select-Object -ExpandProperty Value
-        return $value -ne 'unset'
+        $inspection = & inspect $Path
+        $contentType = ($inspection -split ' ')[-1]
+        return $contentType -ne 'binary'
     }
 }
 
