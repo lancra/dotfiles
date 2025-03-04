@@ -34,13 +34,7 @@ function New-ConfigPackage {
     }
 }
 
-$persistedPackagesPath = "$env:XDG_DATA_HOME/software/winget.packages.yaml"
-
-$persistedPackages = @()
-if (Test-Path -Path $persistedPackagesPath) {
-    $persistedPackages = Get-Content -Path $persistedPackagesPath |
-        ConvertFrom-Yaml
-}
+$persistedPackages = & "$env:HOME/.local/bin/software/get-installation-definitions.ps1" -Export $exportId
 
 $inMemoryExportPath = "$env:TEMP/winget-packages.$((New-Guid).Guid).json"
 & winget export --output $inMemoryExportPath | Out-Null
