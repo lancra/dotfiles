@@ -28,7 +28,11 @@ $provider = $providerSegment.Substring(0, $providerSegment.Length - 1)
 $exportSegment = $identifierSegments[1]
 $exportFileName = $exportSegment -replace '.ps1', ''
 $exportFileNameSegments = $exportFileName -split '-'
+
 $export = $exportFileNameSegments[1..($exportFileNameSegments.Length - 1)] -join '-'
+if (@('install', 'update', 'upsert').Contains($exportFileNameSegments[0])) {
+    $export = "${export}s"
+}
 
 $exportDefinition = & $PSScriptRoot/get-exports.ps1 -Provider $provider -Name $export
 if (-not $exportDefinition) {
