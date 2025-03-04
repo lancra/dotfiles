@@ -6,7 +6,6 @@ param(
     [Parameter()]
     [string] $IgnorePath,
 
-    [switch] $Recurse
 )
 
 Get-Command -Name fd -ErrorAction Stop | Out-Null
@@ -28,7 +27,7 @@ if ($item.PSIsContainer) {
         $fdOptions += "--ignore-file $IgnorePath"
     }
 
-    $fdCommand = [scriptblock]::Create("fd $fdOptions $Path")
+    $fdCommand = [scriptblock]::Create("fd $fdOptions . $Path")
     $targets = Invoke-Command -ScriptBlock $fdCommand
 }
 
