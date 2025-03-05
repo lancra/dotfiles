@@ -1,5 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/powershell/aliases.schema.json",
+  "g": {
+    "group": "Application",
+    "command": "git",
+    "bash": false
+  },
   "eev": {
     "group": "Environment",
     "command": "$env:HOME/.local/bin/env/export-variables.ps1",
@@ -39,11 +44,6 @@
     "group": "FileSystem",
     "command": "Remove-Item -Path #{0} -Recurse",
     "bash": true
-  },
-  "g": {
-    "group": "Git",
-    "command": "git",
-    "bash": false
   },
   "jqf": {
     "group": "JSON",
