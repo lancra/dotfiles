@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/powershell/aliases.schema.json",
   "eev": {
     "group": "Environment",
     "command": "$env:HOME/.local/bin/env/export-variables.ps1",

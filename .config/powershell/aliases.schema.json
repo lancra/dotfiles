@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/powershell/aliases.schema.json",
+  "title": "PowerShell Aliases",
+  "description": "Collection of PowerShell aliases.",
+  "type": "object",
+  "additionalProperties": {
+    "description": "A PowerShell alias.",
+    "type": "object",
+    "properties": {
+      "group": {
+        "description": "The collection of related aliases.",
+        "type": "string",
+        "default": ""
+      },
+      "command": {
+        "description": "The command that the alias represents.",
+        "type": "string",
+        "default": ""
+      },
+      "bash": {
+        "description": "The value that determines whether Bash-like argument injection is supported via the profile alias module.",
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "required": [
+      "group",
+      "command",
+      "bash"
+    ]
+  }
+}
