@@ -1,5 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/powershell/aliases.schema.json",
+  "d": {
+    "group": "Application",
+    "command": "dotnet",
+    "bash": false
+  },
   "g": {
     "group": "Application",
     "command": "git",
