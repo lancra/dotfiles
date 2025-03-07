@@ -35,6 +35,28 @@ param (
 begin {
     & "$env:HOME/.local/bin/env/begin-loading.ps1"
 
+    function Get-Pins {
+        [CmdletBinding()]
+        [OutputType([InstallationId[]])]
+        param()
+        begin {
+            $machineDirectory = & "$env:HOME/.local/bin/env/get-or-add-machine-directory.ps1" -Data
+            $machinePinsPath = "$machineDirectory/software/pins.csv"
+        }
+        process {
+            if (-not (Test-Path -Path $machinePinsPath)) {
+                return @()
+            }
+
+            Get-Content -Path $machinePinsPath |
+                ConvertFrom-Csv |
+                ForEach-Object {
+                    $exportId = [InstallationExportId]::new($_.Export, $_.Provider)
+                    [InstallationId]::new($_.Id, $exportId)
+                }
+        }
+    }
+
     function Get-Upgrades {
         [CmdletBinding()]
         [OutputType([InstallationUpgrade[]])]
@@ -50,12 +72,23 @@ begin {
             )
         }
         process {
+            $pins = Get-Pins
             $Exports |
                 ForEach-Object {
                     & $PSScriptRoot/get-export-script.ps1 -Id $_.Id.ToString() -Check
                 } |
                 ForEach-Object -Parallel {
                     & $_
+                } |
+                ForEach-Object {
+                    $upgrade = $_
+                    $matchingPin = $pins |
+                        Where-Object { $_ -eq $upgrade.Id }
+                    if ($null -ne $matchingPin) {
+                        return
+                    }
+
+                    $upgrade
                 } |
                 Sort-Object -Property $sortProperties
         }
