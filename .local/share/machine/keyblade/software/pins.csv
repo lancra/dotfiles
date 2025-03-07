@@ -1,2 +1,3 @@
 Provider,Export,Id,Reason
 rust,toolchains,nightly-x86_64-pc-windows-msvc,The newest nightly is not required at this time.
+go,packages,github.com/homeport/dyff/cmd/dyff,The v1.10.0 release has a nil pointer panic.
