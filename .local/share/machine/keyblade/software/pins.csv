@@ -1,1 +1,2 @@
 Provider,Export,Id,Reason
+rust,toolchains,nightly-x86_64-pc-windows-msvc,The newest nightly is not required at this time.
