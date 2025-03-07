@@ -24,7 +24,7 @@ $inMemoryInstallations = $Exports |
 
 $persistedInstallations = @()
 $machineManifestDirectory = & "$env:HOME/.local/bin/env/get-or-add-machine-directory.ps1" -Data
-$machineManifestPath = "$machineManifestDirectory/software.csv"
+$machineManifestPath = "$machineManifestDirectory/software/installations.csv"
 if (Test-Path -Path $machineManifestPath) {
     $persistedInstallations = Get-Content -Path $machineManifestPath |
         ConvertFrom-Csv

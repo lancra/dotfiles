@@ -42,7 +42,7 @@ function Get-InstallationIds {
 }
 
 $targetManifestDirectory = & "$env:HOME/.local/bin/env/get-or-add-machine-directory.ps1" -Data
-$targetManifestPath = "$targetManifestDirectory/software.csv"
+$targetManifestPath = "$targetManifestDirectory/software/installations.csv"
 if (-not (Test-Path -Path $targetManifestPath)) {
     throw "The machine manifest was not found at '$targetManifestPath'."
 }

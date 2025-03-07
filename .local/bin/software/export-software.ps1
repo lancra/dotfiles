@@ -44,7 +44,7 @@ begin {
         )
         process {
             if ($Export.Scope -eq [InstallationExportScope]::Global) {
-                Get-ChildItem -Path "$env:XDG_DATA_HOME/machine" -Filter 'software.csv' -Depth 1 |
+                Get-ChildItem -Path "$env:XDG_DATA_HOME/machine/*/software" -Filter 'installations.csv' -Depth 1 |
                     ForEach-Object {
                         Get-Content -Path $_ |
                             ConvertFrom-Csv |
