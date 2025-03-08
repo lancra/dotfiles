@@ -11,7 +11,6 @@ User:
   PATH:
     - '%USERPROFILE%\.local\bin'
   PIP_CACHE_DIR: '%DEVUSERPROFILE%\AppData\Local\pip\Cache'
-  POSH_THEMES_PATH: '%LOCALAPPDATA%\Programs\oh-my-posh\themes\'
   RIPGREP_CONFIG_PATH: '%XDG_CONFIG_HOME%/ripgrep/config'
   XDG_CACHE_HOME: '%HOME%/.cache'
   XDG_CONFIG_HOME: '%HOME%/.config'
@@ -19,3 +18,4 @@ User:
   XDG_STATE_HOME: '%HOME%/.local/state'
 Machine:
   POSH_INSTALLER: 'winget'
+  POSH_THEMES_PATH: '%PROGRAMFILES(X86)%\oh-my-posh\themes\'
