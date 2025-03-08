@@ -49,6 +49,7 @@ $anyMissingLinks = ($linkChecks.GetEnumerator() |
 
 if (-not $anyMissingLinks) {
     Write-SetupOutput 'Links have already been established.'
+    exit 0
 }
 
 $configPath = "$env:XDG_CONFIG_HOME/powershell"
