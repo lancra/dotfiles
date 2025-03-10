@@ -1,6 +1,8 @@
 [CmdletBinding()]
 param(
-    [switch] $SkipPasswordManager
+    [switch] $SkipPasswordManager,
+
+    [switch] $Force
 )
 
 Get-Command -Name gpg -ErrorAction Stop | Out-Null
@@ -16,11 +18,16 @@ function Reset-File {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)]
-        [string] $Path
+        [string] $Path,
+
+        [switch] $SkipOriginal
     )
     process {
         Write-Verbose 'Deleting temporary files.'
-        Remove-Item -Path $Path | Out-Null
+        if (-not $SkipOriginal) {
+            Remove-Item -Path $Path | Out-Null
+        }
+
         Remove-Item -Path "$Path.gpg" | Out-Null
     }
 }
@@ -86,7 +93,17 @@ function Connect-Gpg {
     }
 }
 
-if (-not (Test-Gpg -Path $filePath)) {
+$cached = Test-Gpg -Path $filePath
+Write-Verbose "Found$(-not $cached ? ' no': '') cached passphrase."
+if ($cached -and $Force) {
+    Reset-File -Path $filePath -SkipOriginal
+
+    Write-Verbose 'Reloading agent to force a re-cache.'
+    & gpg-connect-agent.exe reloadagent /bye 2>&1> $null
+    $cached = $false
+}
+
+if (-not $cached) {
     if ($SkipPasswordManager) {
         $passphrase = Read-Host -Prompt 'Passphrase' -AsSecureString
     } else {
