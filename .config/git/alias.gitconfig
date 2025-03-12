@@ -35,7 +35,7 @@
 	gone = "!git brg | xargs -r git branch -D"
 	l = "log --format='%C(yellow)%h %C(blue bold)%ci%C(auto)%(decorate) %s'"
 	ll = "log --format='%C(yellow)%h %C(blue bold)%ci%C(auto)%(decorate) %s' -50"
-	lp = "!f() { git l --grep \"$1:.*\"; }; f"
+	lp = "!git l --grep \"$1:.*\" ${@:2} #"
 	ls = "log --format='%C(yellow)%h %C(blue bold)%ci%C(auto)%(decorate) %s' -20"
 	mg = "merge --no-ff"
 	mga = "merge --abort"
