@@ -6,24 +6,12 @@ param(
     [switch] $Staged
 )
 
-class Selection {
-    [char] $Code
-    [string] $Description
-    [scriptblock] $Command
-
-    Selection([char] $code, [string] $description, [scriptblock] $command) {
-        $this.Code = $code
-        $this.Description = $description
-        $this.Command = $command
-    }
-}
-
-class CommandBuilder {
+class GitCommandBuilder {
     [string] $Command
     [string[]] $Options
     [string] $Path
 
-    CommandBuilder([string] $command, [string] $path) {
+    GitCommandBuilder([string] $command, [string] $path) {
         $this.Command = $command
         $this.Options = @()
         $this.Path = $path
@@ -90,43 +78,197 @@ class StatusResult {
     }
 }
 
-function Get-Selection {
+class Operation {
+    [char] $Code
+    [string] $Description
+    [bool] $Actionable
+    [scriptblock] $Command
+
+    Operation([char] $code, [string] $description, [bool] $actionable, [scriptblock] $command) {
+        $this.Code = $code
+        $this.Description = $description
+        $this.Actionable = $actionable
+        $this.Command = $command
+    }
+}
+
+class OperationContext {
+    [string] $Path
+    [Operation[]] $Operations
+    [bool] $Exit
+    [int] $ExitCode
+
+    OperationContext([string] $path, [Operation[]] $operations) {
+        $this.Path = $path
+        $this.Operations = $operations
+        $this.Exit = $false
+        $this.ExitCode = 0
+    }
+}
+
+function Build-Operations {
     [CmdletBinding()]
-    [OutputType([Selection])]
+    [OutputType([Operation[]])]
+    param()
+    process {
+        $operations = -not $Staged ?
+            @(
+                [Operation]::new(
+                    'a',
+                    'add changes to the index',
+                    $true,
+                    {
+                        param([OperationContext] $context)
+                        & git add $context.Path
+                        $context.Exit = $true
+                    }
+                ),
+                [Operation]::new(
+                    'f',
+                    'restore fragment of changes from the working directory',
+                    $true,
+                    {
+                        param([OperationContext] $context)
+                        & git restore --patch $context.Path
+                        $context.Exit = $true
+                    }
+                ),
+                [Operation]::new(
+                    'p',
+                    'patch changes to the index',
+                    $true,
+                    {
+                        param([OperationContext] $context)
+                        & git add --patch $context.Path
+                        $context.Exit = $true
+                    }
+                ),
+                [Operation]::new(
+                    'r',
+                    'restore changes from the working directory',
+                    $true,
+                    {
+                        param([OperationContext] $context)
+                        & git restore $context.Path
+                        $context.Exit = $true
+                    }
+                )
+            ) :
+            @(
+                [Operation]::new(
+                    'f',
+                    'restore fragment of changes from the index',
+                    $true,
+                    {
+                        param([OperationContext] $context)
+                        & git restore --staged --patch $context.Path
+                        $context.Exit = $true
+                    }
+                ),
+                [Operation]::new(
+                    'r',
+                    'restore changes from the index',
+                    $true,
+                    {
+                        param([OperationContext] $context)
+                        & git restore --staged $context.Path
+                        $context.Exit = $true
+                    }
+                )
+            )
+
+        $operations += @(
+            [Operation]::new(
+                'b',
+                'break changes into separate files',
+                $true,
+                {
+                    param([OperationContext] $context)
+                    # TODO
+                    $context.Exit = $true
+                }
+            ),
+            [Operation]::new(
+                's',
+                'show status',
+                $true,
+                {
+                    param([OperationContext] $context)
+                    & git status --short $context.Path
+                    $context.Exit = $false
+                }
+            )
+            [Operation]::new(
+                'q',
+                'quit',
+                $false,
+                {
+                    param([OperationContext] $context)
+                    $context.Exit = $true
+                }
+            ),
+            [Operation]::new(
+                '?',
+                'print help',
+                $false,
+                {
+                    param([OperationContext] $context)
+                    $context.Operations |
+                        ForEach-Object {
+                            Write-Output "$($_.Code) - $($_.Description)"
+                        }
+
+                    $context.Exit = $false
+                }
+            )
+        )
+
+        $operations |
+            Sort-Object -Property @(
+                @{ Expression = { -not $_.Actionable } },
+                @{ Expression = { $_.Code -notmatch '[A-Za-z]' } },
+                @{ Expression = { $_.Code } }
+            )
+    }
+}
+
+function Get-Operation {
+    [CmdletBinding()]
+    [OutputType([Operation])]
     param(
         [Parameter(Mandatory)]
-        [Selection[]] $Selections
+        [Operation[]] $Operations
     )
     begin {
-        $selectionCodes = $Selections | ForEach-Object { $_.Code }
-        $selectionCodesDisplay = $selectionCodes -join ','
+        $codes = $Operations | ForEach-Object { $_.Code }
+        $codesDisplay = $codes -join ','
     }
     process {
-        $selection = $null
-        while ($null -eq $selection) {
-            $selection = Read-Host "Handle differences [$selectionCodesDisplay]"
+        $operation = $null
+        while ($null -eq $operation) {
+            $operation = Read-Host "Handle differences [$codesDisplay]"
 
-            if (-not $selection) {
-                $selection = $null
+            if (-not $operation) {
+                $operation = $null
                 continue
             }
 
-            if ($selection.Length -gt 1) {
-                Write-Host "Only one letter is expected, got '$selection'" -ForegroundColor Red
-                $selection = $null
+            if ($operation.Length -gt 1) {
+                Write-Host "Only one letter is expected, got '$operation'" -ForegroundColor Red
+                $operation = $null
                 continue
             }
 
-            $matchingSelection = $Selections |
-                Where-Object { $_.Code -eq $selection }
-            if ($null -eq $matchingSelection) {
-                Write-Host "Unknown command '$selection' (use '?' for help)" -ForegroundColor Red
-                $selection = $null
+            $matchingOperation = $Operations |
+                Where-Object { $_.Code -eq $operation }
+            if ($null -eq $matchingOperation) {
+                Write-Host "Unknown command '$operation' (use '?' for help)" -ForegroundColor Red
+                $operation = $null
                 continue
             }
         }
 
-        return $matchingSelection
+        return $matchingOperation
     }
 }
 
@@ -137,7 +279,7 @@ Write-Output ''
 
 $gitPath = $Path ? $Path : '.'
 
-$statusCommandBuilder = [CommandBuilder]::new('status', $gitPath)
+$statusCommandBuilder = [GitCommandBuilder]::new('status', $gitPath)
 $statusCommandBuilder.AddOption('--short')
 $statusCommand = $statusCommandBuilder.Build()
 
@@ -150,32 +292,7 @@ foreach ($statusResult in $statusResults) {
     Write-Output "LeftCode='$($statusResult.LeftCode)' RightCode='$($statusResult.RightCode)' Path='$($statusResult.Path)'"
 }
 
-$selections = -not $Staged ?
-    @(
-        [Selection]::new('a', 'add changes to the index', { & git add $gitPath }),
-        [Selection]::new('f', 'restore fragment of changes from the working directory', { & git restore --patch $gitPath }),
-        [Selection]::new('p', 'patch changes to the index', { & git add --patch $gitPath }),
-        [Selection]::new('r', 'restore changes from the working directory', { & git restore $gitPath })
-    ) :
-    @(
-        [Selection]::new('f', 'restore fragment of changes from the index', { & git restore --staged --patch $gitPath }),
-        [Selection]::new('r', 'restore changes from the index', { & git restore --staged $gitPath })
-    )
-$selections += @(
-    [Selection]::new('s', 'split changes by file', {}),
-    [Selection]::new('q', 'quit', {}),
-    [Selection]::new(
-        '?',
-        'print help',
-        {
-            $selections |
-                ForEach-Object {
-                    Write-Output "$($_.Code) - $($_.Description)"
-                }
-        })
-)
-
-$diffCommandBuilder = [CommandBuilder]::new('diff', $gitPath)
+$diffCommandBuilder = [GitCommandBuilder]::new('diff', $gitPath)
 $diffCommandBuilder.AddOptionIf('--staged', $Staged)
 
 $diffCommand = $diffCommandBuilder.Build()
@@ -187,13 +304,15 @@ $hasDifferences = $LASTEXITCODE -ne 0
 
 if ($hasDifferences) {
     Write-Output ''
-    $selection = $null
-    while ($null -eq $selection) {
-        $selection = Get-Selection -Selections $selections
-        Invoke-Command -ScriptBlock $selection.Command
 
-        if ($selection.Code -eq '?') {
-            $selection = $null
-        }
+    $operation = $null
+    $context = [OperationContext]::new($gitPath, (Build-Operations))
+    while (-not $context.Exit) {
+        $operation = Get-Operation -Operations $context.Operations
+        Invoke-Command -ScriptBlock $operation.Command -ArgumentList $context
+    }
+
+    if ($context.Exit) {
+        exit $context.ExitCode
     }
 }
