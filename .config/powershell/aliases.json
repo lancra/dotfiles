@@ -60,6 +60,16 @@
     "command": "Remove-Item -Path #{0} -Recurse",
     "bash": true
   },
+  "gdf": {
+    "group": "Git",
+    "command": "& $env:HOME/.local/bin/git/execute-interactive-diff.ps1 -Path #{0}",
+    "bash": true
+  },
+  "gdfs": {
+    "group": "Git",
+    "command": "& $env:HOME/.local/bin/git/execute-interactive-diff.ps1 -Path #{0} -Staged",
+    "bash": true
+  },
   "jqf": {
     "group": "JSON",
     "command": "Set-Content -Path \"$(#{0})\" -Value (jq '.' \"$(#{0})\")",
