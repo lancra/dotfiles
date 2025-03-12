@@ -1,10 +1,10 @@
 [CmdletBinding()]
 param(
-    [Parameter(Mandatory)]
-    [string] $Path,
+    [Parameter()]
+    [string] $Path = '.',
 
     [Parameter()]
-    [string] $IgnorePath,
+    [string] $IgnorePath = '.gitignore',
 
     [Parameter()]
     [int] $Depth = $null,
@@ -28,7 +28,7 @@ if ($item.PSIsContainer) {
         '--exclude .git'
     )
 
-    if ($IgnorePath) {
+    if ($IgnorePath -and (Test-Path -Path $IgnorePath)) {
         $fdOptions += "--ignore-file $IgnorePath"
     }
 
