@@ -70,6 +70,11 @@
     "command": "& $env:HOME/.local/bin/git/execute-interactive-diff.ps1 -Path #{0} -Staged",
     "bash": true
   },
+  "gs": {
+    "group": "Git",
+    "command": "& $env:HOME/.local/bin/git/execute-interactive-status.ps1 -Path #{0}",
+    "bash": true
+  },
   "jqf": {
     "group": "JSON",
     "command": "Set-Content -Path \"$(#{0})\" -Value (jq '.' \"$(#{0})\")",
