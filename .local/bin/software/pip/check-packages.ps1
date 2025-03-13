@@ -5,7 +5,7 @@ param()
 
 $exportId = & "$env:HOME/.local/bin/software/get-export-id-from-path.ps1"
 
-& pip list --not-required --outdated --format json |
+& pip list --not-required --outdated --format json 2> $null |
     ConvertFrom-Json |
     ForEach-Object {
         $id = [InstallationId]::new($_.name, $exportId)
