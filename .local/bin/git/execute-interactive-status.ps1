@@ -4,31 +4,6 @@ param(
     [string] $Path
 )
 
-<#
-global
----
-a - add
-b - break
-d - diff [index/working directory]
-f - fragmental restore [index/working directory]
-p - patch {if untracked, add intent then patch}
-r - restore [index/working directory]
-s - status
-q - quit
-? - help
-
-file
----
-a - add
-d - diff [index/working directory]
-f - fragmental restore [index/working directory] {index should also restore working directory adds (intents)}
-n - nothing
-p - patch {if untracked, add intent then patch}
-r - restore [index/working directory] {index should also restore working directory adds (intents)}
-q - quit
-? - help
-#>
-
 $redTextFormat = "`e[31m{0}`e[0m"
 $greenTextFormat = "`e[32m{0}`e[0m"
 
@@ -63,6 +38,54 @@ class StatusResult {
         }
 
         return [StatusResult]::new($statusFiles)
+    }
+}
+
+enum StatusCode {
+    Added
+    Deleted
+    Ignored
+    Modified
+    Renamed
+    TypeChanged
+    Unknown
+    Unmerged
+    Unmodified
+    Untracked
+}
+
+function Read-StatusCode {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [char] $Code
+    )
+    process {
+        switch ($Code) {
+            'A' { [StatusCode]::Added }
+            'D' { [StatusCode]::Deleted }
+            '!' { [StatusCode]::Ignored }
+            'M' { [StatusCode]::Modified }
+            'R' { [StatusCode]::Renamed }
+            'T' { [StatusCode]::TypeChanged }
+            'U' { [StatusCode]::Unmerged }
+            'X' { [StatusCode]::Unknown }
+            ' ' { [StatusCode]::Unmodified }
+            '?' { [StatusCode]::Untracked }
+        }
+    }
+}
+
+function Get-StatusCodeColor {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [OperationArea] $Area
+    )
+    process {
+        # TODO: Get colors by area.
+        # Green = Index for A, D, M, R, T.
+        # Red = Everything else.
     }
 }
 
@@ -172,6 +195,33 @@ class OperationContext {
     }
 }
 
+<#
+global
+---
+a - add
+b - break
+d - diff [index/working directory]
+f - fragmental restore [index/working directory]
+n - intent to add
+p - patch {if untracked, add intent then patch}
+r - restore [index/working directory]
+s - status
+q - quit
+? - help
+
+file
+---
+a - add
+d - diff [index/working directory]
+f - fragmental restore [index/working directory] {index should also restore working directory adds (intents)}
+i - ignore
+n - intent to add
+p - patch {if untracked, add intent then patch}
+r - restore [index/working directory] {index should also restore working directory adds (intents)}
+q - quit
+? - help
+#>
+
 function Build-Operations {
     [CmdletBinding()]
     [OutputType([Operation[]])]
@@ -191,6 +241,7 @@ function Build-Operations {
             }
             Code = 'a'
             Description = 'add changes to the index'
+            Area = @([OperationArea]::WorkingDirectory)
         }
         $operations += New-Operation @addOperation
 
@@ -214,6 +265,7 @@ function Build-Operations {
             }
             Code = 'd'
             Description = 'view differences'
+            Area = [OperationArea].GetEnumValues()
         }
         $operations += New-Operation @diffOperation
 
@@ -225,19 +277,31 @@ function Build-Operations {
             }
             Code = 'f'
             Description = 'restore fragment of changes'
+            Area = [OperationArea].GetEnumValues()
         }
         $operations += New-Operation @fragmentalRestoreOperation
 
-        $nothingOperation = @{
+        $ignoreOperation = @{
+            Command = {
+                param([OperationContext] $context)
+                $context.Exit = $true
+            }
+            Code = 'i'
+            Description = 'perform no action on the file'
+            Mode = @([OperationMode]::File)
+        }
+        $operations += New-Operation @ignoreOperation
+
+        $intentToAddOperation = @{
             Command = {
                 param([OperationContext] $context)
                 $context.Exit = $true
             }
             Code = 'n'
-            Description = 'perform no action on the file'
-            Mode = @([OperationMode]::File)
+            Description = 'mark file as intended to add'
+            Area = @([OperationArea]::WorkingDirectory)
         }
-        $operations += New-Operation @nothingOperation
+        $operations += New-Operation @intentToAddOperation
 
         $patchOperation = @{
             Command = {
@@ -247,6 +311,7 @@ function Build-Operations {
             }
             Code = 'p'
             Description = 'patch changes to the index'
+            Area = @([OperationArea]::WorkingDirectory)
         }
         $operations += New-Operation @patchOperation
 
@@ -258,6 +323,7 @@ function Build-Operations {
             }
             Code = 'r'
             Description = 'restore changes'
+            Area = [OperationArea].GetEnumValues()
         }
         $operations += New-Operation @restoreOperation
 
