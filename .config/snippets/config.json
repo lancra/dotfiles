@@ -5,6 +5,7 @@
       "name": "Azure Data Studio",
       "targetDirectory": "~/AppData/Roaming/azuredatastudio/User/snippets",
       "scopes": [
+        "loganalytics",
         "sql"
       ]
     },
