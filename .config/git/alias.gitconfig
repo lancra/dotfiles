@@ -3,6 +3,7 @@
 	an = "add --intent-to-add"
 	ap = "add --patch"
 	br = "branch"
+	bra = "branch --sort=refname --format='%(color:blue)%(committerdate:iso-local)%(color:reset) %(color:green)%(refname:short)%(color:reset) %(color:red)%(committeremail)%(color:reset)'"
 	brc = "branch --show-current"
 	brg = "!git branch --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}'"
 	brl = "!git branch --format '%(refname:short) %(upstream:short)' | awk '{if (!$2) print $1;}'"
