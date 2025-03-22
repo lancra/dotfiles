@@ -35,6 +35,11 @@
     "command": "git restore */env/variables.yaml && iev",
     "bash": true
   },
+  "cdr": {
+    "group": "FileSystem",
+    "command": "change-directory-repository-root.ps1",
+    "bash": false
+  },
   "cdu": {
     "group": "FileSystem",
     "command": "change-directory-up.ps1 -Count #{0}",
