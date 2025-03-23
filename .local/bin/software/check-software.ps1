@@ -35,20 +35,23 @@ param (
 begin {
     & "$env:HOME/.local/bin/env/begin-loading.ps1"
 
-    function Get-Pins {
+    function Get-MachineInstallationIds {
         [CmdletBinding()]
         [OutputType([InstallationId[]])]
-        param()
+        param(
+            [Parameter(Mandatory)]
+            [string] $FileName
+        )
         begin {
             $machineDirectory = & "$env:HOME/.local/bin/env/get-or-add-machine-directory.ps1" -Data
-            $machinePinsPath = "$machineDirectory/software/pins.csv"
+            $machineIdsPath = "$machineDirectory/software/$FileName.csv"
         }
         process {
-            if (-not (Test-Path -Path $machinePinsPath)) {
+            if (-not (Test-Path -Path $machineIdsPath)) {
                 return @()
             }
 
-            Get-Content -Path $machinePinsPath |
+            Get-Content -Path $machineIdsPath |
                 ConvertFrom-Csv |
                 ForEach-Object {
                     $exportId = [InstallationExportId]::new($_.Export, $_.Provider)
@@ -72,7 +75,7 @@ begin {
             )
         }
         process {
-            $pins = Get-Pins
+            $pins = Get-MachineInstallationIds -FileName 'pins'
             $Exports |
                 ForEach-Object {
                     & $PSScriptRoot/get-export-script.ps1 -Id $_.Id.ToString() -Check
@@ -128,8 +131,7 @@ process {
     $exports = & $PSScriptRoot/get-exports.ps1 -Provider $Provider -Export $Export -Versioned
     $upgrades = Get-Upgrades -Exports $exports
 
-    $hasUpgrades = $upgrades.Length -gt 0
-    if ($hasUpgrades) {
+    if ($upgrades.Length -gt 0) {
         $displayProperties = @(
             @{ Name = 'Provider'; Expression = { $_.Id.Provider }},
             @{ Name = 'Export'; Expression = { $_.Id.Export }},
@@ -146,7 +148,11 @@ process {
 
     & "$env:HOME/.local/bin/env/end-loading.ps1"
 
-    if (-not $hasUpgrades -or $Show) {
+    $disabledUpdates = Get-MachineInstallationIds -FileName 'disabled-updates'
+    $automatedUpgrades = $upgrades |
+        Where-Object { $_.Id -notin $disabledUpdates }
+
+    if ($automatedUpgrades.Length -eq 0 -or $Show) {
         exit 0
     }
 
@@ -162,6 +168,8 @@ process {
 
     if ($script:selectedChoice -eq [ConfirmationChoice]::Refresh) {
         $upgrades = Get-Upgrades -Exports $exports
+        $automatedUpgrades = $upgrades |
+            Where-Object { $_.Id -notin $disabledUpdates }
     }
 
     try {
@@ -169,8 +177,8 @@ process {
 
         Write-Output ''
         $upgradeCounter = 1
-        $upgradeTotal = $upgrades -is [array] ? $upgrades.Length : 1
-        $upgrades |
+        $upgradeTotal = $automatedUpgrades -is [array] ? $automatedUpgrades.Length : 1
+        $automatedUpgrades |
             ForEach-Object {
                 $exportId = "$($_.Id.Provider).$($_.Id.Export)"
                 Write-Output "${exportId}: Updating $($_.Id.Value) ($upgradeCounter/$upgradeTotal)."

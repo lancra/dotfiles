@@ -1,0 +1,4 @@
+Provider,Export,Id
+winget,packages,Microsoft.Edge@winget
+winget,packages,Microsoft.VisualStudioCode@winget
+winget,packages,Mozilla.Firefox@winget
