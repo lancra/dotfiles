@@ -95,6 +95,11 @@
     "command": "$env:HOME/.local/bin/software/install-software.ps1",
     "bash": false
   },
+  "sln": {
+    "group": "Visual Studio",
+    "command": "$env:HOME/.local/bin/vs/open-solution.ps1",
+    "bash": false
+  },
   "codeg": {
     "group": "Visual Studio Code",
     "command": "Get-ChildItem -Path #{0} | ForEach-Object { code $_ }",
