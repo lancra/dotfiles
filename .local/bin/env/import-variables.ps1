@@ -6,7 +6,9 @@ param (
     [Parameter()]
     [string] $LocalManifest = "$env:XDG_DATA_HOME/machine/$($env:COMPUTERNAME.ToLower())/env/variables.yaml",
 
-    [switch] $DryRun
+    [switch] $DryRun,
+
+    [switch] $Force
 )
 
 # Represents the comparison result for a single environment variable target.
@@ -146,18 +148,20 @@ if (-not $comparisonResult.HasDifferences) {
     exit 0
 }
 
-$continueInput = 'y'
-$cancelInput = 'N'
-$validInputs = @($continueInput, $cancelInput)
+if (-not $Force) {
+    $continueInput = 'y'
+    $cancelInput = 'N'
+    $validInputs = @($continueInput, $cancelInput)
 
-$script:input = ''
-do {
-    $script:input = Read-Host -Prompt "Continue with import? ($continueInput/$cancelInput)"
-} while ($script:input -and -not ($validInputs -like $script:input))
+    $script:input = ''
+    do {
+        $script:input = Read-Host -Prompt "Continue with import? ($continueInput/$cancelInput)"
+    } while ($script:input -and -not ($validInputs -like $script:input))
 
-if (-not $script:input.Equals($continueInput, [System.StringComparison]::OrdinalIgnoreCase)) {
-    Write-Output 'Canceled import.'
-    exit 0
+    if (-not $script:input.Equals($continueInput, [System.StringComparison]::OrdinalIgnoreCase)) {
+        Write-Output 'Canceled import.'
+        exit 0
+    }
 }
 
 $windowsPrincipal = New-Object System.Security.Principal.WindowsPrincipal([System.Security.Principal.WindowsIdentity]::GetCurrent())
