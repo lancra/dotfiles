@@ -10,6 +10,7 @@ User:
   ONEDRIVECONSUMER: '%USERPROFILE%\OneDrive'
   PATH:
     - '%USERPROFILE%\.local\bin'
+    - '%USERPROFILE%\OneDrive\Tools'
   PIP_CACHE_DIR: '%DEVUSERPROFILE%\AppData\Local\pip\Cache'
   RIPGREP_CONFIG_PATH: '%XDG_CONFIG_HOME%/ripgrep/config'
   XDG_CACHE_HOME: '%HOME%/.cache'
