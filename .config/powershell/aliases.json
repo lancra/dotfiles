@@ -42,8 +42,8 @@
   },
   "cdu": {
     "group": "FileSystem",
-    "command": "change-directory-up.ps1 -Count #{0}",
-    "bash": true
+    "command": "change-directory-up.ps1",
+    "bash": false
   },
   "cwd": {
     "group": "FileSystem",
