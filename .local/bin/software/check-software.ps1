@@ -13,7 +13,7 @@ param (
             $validProviders -like "$wordToComplete*"
         }
     })]
-    [string] $Provider,
+    [string[]] $Provider,
 
     [Parameter(ParameterSetName = 'Export')]
     [ValidateScript({
@@ -26,7 +26,7 @@ param (
             $validExports -like "$wordToComplete*"
         }
     })]
-    [string] $Export,
+    [string[]] $Export,
 
     [switch] $Show,
 
