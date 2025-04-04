@@ -193,16 +193,10 @@ process {
             }
 
         if (-not $DryRun) {
-            $exportParameters = @{}
-            if ($Provider) {
-                $exportParameters['Provider'] = $Provider
-            }
-
-            if ($Export) {
-                $exportParameters['Export'] = $Export
-            }
-
-            & $PSScriptRoot/export-software.ps1 @exportParameters
+            $upgradedExports = $automatedUpgrades |
+                ForEach-Object { "$($_.Id.Provider).$($_.Id.Export)" } |
+                Select-Object -Unique
+            & $PSScriptRoot/export-software.ps1 -Export $upgradedExports
         }
     }
     finally {
