@@ -130,6 +130,7 @@ begin {
 process {
     $exports = & $PSScriptRoot/get-exports.ps1 -Provider $Provider -Export $Export -Versioned
     $upgrades = Get-Upgrades -Exports $exports
+    $disabledUpdates = Get-MachineInstallationIds -FileName 'disabled-updates'
 
     if ($upgrades.Length -gt 0) {
         $displayProperties = @(
@@ -137,7 +138,8 @@ process {
             @{ Name = 'Export'; Expression = { $_.Id.Export }},
             'Name',
             'Current',
-            'Available'
+            'Available',
+            @{ Name = 'Automated'; Expression = { $_.Id -notin $disabledUpdates }}
         )
         $upgrades |
             Select-Object -Property $displayProperties |
@@ -148,10 +150,8 @@ process {
 
     & "$env:HOME/.local/bin/env/end-loading.ps1"
 
-    $disabledUpdates = Get-MachineInstallationIds -FileName 'disabled-updates'
     $automatedUpgrades = $upgrades |
         Where-Object { $_.Id -notin $disabledUpdates }
-
     if ($automatedUpgrades.Length -eq 0 -or $Show) {
         exit 0
     }
