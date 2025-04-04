@@ -14,7 +14,7 @@ param (
             $validProviders -like "$wordToComplete*"
         }
     })]
-    [string] $Provider,
+    [string[]] $Provider,
 
     [Parameter(ParameterSetName = 'Export')]
     [ValidateScript({
@@ -27,7 +27,7 @@ param (
             $validExports -like "$wordToComplete*"
         }
     })]
-    [string] $Export
+    [string[]] $Export
 )
 begin {
     & "$env:HOME/.local/bin/env/begin-loading.ps1"
@@ -135,8 +135,7 @@ begin {
 }
 process {
     $exports = & $PSScriptRoot/get-exports.ps1 -Provider $Provider -Export $Export
-
-    $inMemoryInstallations = & $PSScriptRoot/export-software-manifest.ps1 -Exports $Exports
+    $inMemoryInstallations = & $PSScriptRoot/export-software-manifest.ps1 -Exports $exports
 
     $exports |
         ForEach-Object {

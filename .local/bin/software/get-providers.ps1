@@ -3,7 +3,7 @@ using module ./software.psm1
 [CmdletBinding()]
 param(
     [Parameter()]
-    [string] $Provider
+    [string[]] $Provider
 )
 
 $providers = Get-Content -Path "$env:XDG_CONFIG_HOME/software/providers.json" |
@@ -23,7 +23,7 @@ $providers = Get-Content -Path "$env:XDG_CONFIG_HOME/software/providers.json" |
 
 if ($Provider) {
     $providers = $providers |
-        Where-Object -Property Id -EQ $Provider
+        Where-Object -Property Id -In $Provider
 }
 
 $providers
