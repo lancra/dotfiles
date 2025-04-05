@@ -162,5 +162,6 @@
   "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.iconTheme": "catppuccin-mocha",
   "workbench.editor.pinnedTabsOnSeparateRow": true,
+  "workbench.startupEditor": "none",
   "xml.server.workDir": "~/.config/lemminx"
 }
