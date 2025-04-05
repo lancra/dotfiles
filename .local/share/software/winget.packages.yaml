@@ -114,10 +114,6 @@
   DisplayName: Google Chrome
   Category: Web
   Tracking: Full
-- Id: Google.PlayGames.Beta@winget
-  DisplayName: Google Play Games
-  Category: Gaming
-  Tracking: Full
 - Id: Google.QuickShare@winget
   DisplayName: Google Quick Share
   Category: Utility
