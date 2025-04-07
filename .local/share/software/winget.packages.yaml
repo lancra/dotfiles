@@ -230,6 +230,10 @@
   DisplayName: Microsoft Edge
   Category: Web
   Tracking: Full
+- Id: Microsoft.MouseWithoutBorders@winget
+  DisplayName: Mouse Without Borders
+  Category: Utility
+  Tracking: Full
 - Id: Microsoft.msodbcsql.17@winget
   DisplayName: Microsoft ODBC Driver 17 for SQL Server
   Category: Programming

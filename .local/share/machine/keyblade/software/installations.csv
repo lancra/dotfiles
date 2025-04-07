@@ -113,6 +113,7 @@ winget,packages,Microsoft.DotNet.SDK.8@winget
 winget,packages,Microsoft.DotNet.SDK.9@winget
 winget,packages,Microsoft.DotNet.UninstallTool@winget
 winget,packages,Microsoft.Edge@winget
+winget,packages,Microsoft.MouseWithoutBorders@winget
 winget,packages,Microsoft.msodbcsql.17@winget
 winget,packages,Microsoft.NuGet@winget
 winget,packages,Microsoft.OneDrive@winget
