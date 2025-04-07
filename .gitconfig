@@ -19,6 +19,7 @@
 [difftool "meld"]
 	cmd = meld "$LOCAL" "$REMOTE"
 [fetch]
+	all = true
 	prune = true
 [filter "lfs"]
 	clean = git-lfs clean -- %f
