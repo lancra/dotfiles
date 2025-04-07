@@ -2,10 +2,6 @@
   Name: nightly (msvc)
   Channel: nightly
   Environment: msvc
-- Id: stable-x86_64-pc-windows-gnu
-  Name: stable (gnu)
-  Channel: stable
-  Environment: gnu
 - Id: stable-x86_64-pc-windows-msvc
   Name: stable (msvc)
   Channel: stable
