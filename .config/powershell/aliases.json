@@ -80,17 +80,17 @@
     "command": "$env:HOME/.local/bin/get-extended-help.ps1",
     "bash": false
   },
-  "cs": {
+  "swc": {
     "group": "Software",
     "command": "$env:HOME/.local/bin/software/check-software.ps1",
     "bash": false
   },
-  "es": {
+  "swe": {
     "group": "Software",
     "command": "$env:HOME/.local/bin/software/export-software.ps1",
     "bash": false
   },
-  "is": {
+  "swi": {
     "group": "Software",
     "command": "$env:HOME/.local/bin/software/install-software.ps1",
     "bash": false
