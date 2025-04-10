@@ -11,7 +11,7 @@
 	brmy = "!git branch --merged ${1-main} #"
 	brn = "branch --sort=-committerdate --format='%(color:blue)%(committerdate:iso-local) %(color:green)%(refname:short) %(color:red)%(committeremail)'"
 	bro = "branch --sort=committerdate --format='%(color:blue)%(committerdate:iso-local) %(color:green)%(refname:short) %(color:red)%(committeremail)'"
-	bru = "!git for-each-ref --format='  %(refname:strip=3)' refs/remotes/${1:-origin}"
+	bru = "!git for-each-ref --format '  %(color:red)%(refname:lstrip=2)%(color:reset)%(if)%(symref)%(then) -> %(symref:short)%(end)' refs/remotes/${1:-origin}"
 	ca = "commit --amend"
 	can = "commit --amend --no-edit"
 	cge = "config edit --global"
