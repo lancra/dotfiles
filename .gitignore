@@ -77,6 +77,9 @@
 # Environment
 /.config/env/.ignored-user-variables.json
 
+# Git
+/.config/git/alias.gitconfig
+
 # GitHub CLI
 !/AppData/Roaming/GitHub CLI/
 !/AppData/Roaming/GitHub CLI/config.yml
