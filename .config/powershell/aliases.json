@@ -65,6 +65,11 @@
     "command": "Remove-Item -Path #{0} -Recurse",
     "bash": true
   },
+  "ga": {
+    "group": "Git",
+    "command": "$env:HOME/.local/bin/git/generate-aliases.ps1",
+    "bash": false
+  },
   "jqf": {
     "group": "JSON",
     "command": "Set-Content -Path \"$(#{0})\" -Value (jq '.' \"$(#{0})\")",
