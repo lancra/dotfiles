@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/git/aliases.schema.json",
+  "title": "Git Aliases",
+  "description": "Specification to generate Git aliases.",
+  "type": "object",
+  "properties": {
+    "variables": {
+      "description": "The variables used for token substitution in Git aliases.",
+      "type": "object",
+      "additionalProperties": {
+        "description": "A variable used within a Git alias.",
+        "type": "string"
+      }
+    },
+    "definitions": {
+      "description": "The definitions of Git aliases.",
+      "type": "object",
+      "additionalProperties": {
+        "description": "A Git alias.",
+        "type": "object",
+        "properties": {
+          "title": {
+            "description": "The human readable name for the alias.",
+            "type": "string",
+            "default": ""
+          },
+          "body": {
+            "description": "The content of the alias.",
+            "type": "string",
+            "default": ""
+          }
+        },
+        "required": [
+          "title",
+          "body"
+        ]
+      }
+    }
+  },
+  "required": [
+    "variables",
+    "definitions"
+  ]
+}

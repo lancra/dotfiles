@@ -1,0 +1,306 @@
+{
+  "$schema": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/git/aliases.schema.json",
+  "variables": {
+    "branch_format": "%(color:blue)%(committerdate:iso-local) %(color:green)%(refname:short) %(color:red)%(committeremail)",
+    "branch_upstream_format": "  %(color:red)%(refname:lstrip=2)%(color:reset)%(if)%(symref)%(then) -> %(symref:short)%(end)",
+    "log_format": "%C(yellow)%h %C(blue bold)%ci%C(auto)%(decorate) %s"
+  },
+  "definitions": {
+    "a": {
+      "title": "Add",
+      "body": "add"
+    },
+    "an": {
+      "title": "Add Intent",
+      "body": "add --intent-to-add"
+    },
+    "ap": {
+      "title": "Add Patch",
+      "body": "add --patch"
+    },
+    "br": {
+      "title": "Branch",
+      "body": "branch"
+    },
+    "bra": {
+      "title": "Branches Alphabetical",
+      "body": "branch --sort=refname --format='__branch_format__'"
+    },
+    "brc": {
+      "title": "Branch Current",
+      "body": "branch --show-current"
+    },
+    "brg": {
+      "title": "Branches Gone",
+      "body": "!git branch --format '%(refname:short) %(upstream:track)' | awk '$2 == \\\"[gone]\\\" {print $1}'"
+    },
+    "brl": {
+      "title": "Branches Local",
+      "body": "!git branch --format '%(refname:short) %(upstream:short)' | awk '{if (!$2) print $1;}'"
+    },
+    "brmn": {
+      "title": "Branches Merged No",
+      "body": "!git branch --no-merged ${1-main} #"
+    },
+    "brmy": {
+      "title": "Branches Merged Yes",
+      "body": "!git branch --merged ${1-main} #"
+    },
+    "brn": {
+      "title": "Branches New",
+      "body": "branch --sort=-committerdate --format='__branch_format__'"
+    },
+    "bro": {
+      "title": "Branches Old",
+      "body": "branch --sort=committerdate --format='__branch_format__'"
+    },
+    "bru": {
+      "title": "Branches Upstream",
+      "body": "!git for-each-ref --format '__branch_upstream_format__' refs/remotes/${1:-origin}"
+    },
+    "ca": {
+      "title": "Commit Amend",
+      "body": "commit --amend"
+    },
+    "can": {
+      "title": "Commit Amend No Edit",
+      "body": "commit --amend --no-edit"
+    },
+    "cge": {
+      "title": "Configuration Edit Global",
+      "body": "config edit --global"
+    },
+    "ci": {
+      "title": "Commit",
+      "body": "commit"
+    },
+    "cif": {
+      "title": "Commit Fixup",
+      "body": "commit --fixup"
+    },
+    "civ": {
+      "title": "Commit Verbose",
+      "body": "-c commit.verbose=true commit"
+    },
+    "config-sources": {
+      "title": "Configuration Sources",
+      "body": "!git config list --show-scope | sed 's/=/\\t/' | awk '{OFS=FS=\\\"\\t\\\"} {t=$1; $1=$2; $2=$3; $3=t; print $1,$3,$2}' | sort -k1,1 -k2 | column -s $'\\t' --table --table-columns KEY,SCOPE,VALUE --table-wrap VALUE"
+    },
+    "cp": {
+      "title": "Cherry Pick",
+      "body": "cherry-pick"
+    },
+    "cpa": {
+      "title": "Cherry Pick Abort",
+      "body": "cherry-pick --abort"
+    },
+    "cpc": {
+      "title": "Cherry Pick Continue",
+      "body": "cherry-pick --continue"
+    },
+    "cps": {
+      "title": "Cherry Pick Skip",
+      "body": "cherry-pick --skip"
+    },
+    "ddf": {
+      "title": "Difftastic Diff",
+      "body": "-c diff.external=difft diff"
+    },
+    "ddfs": {
+      "title": "Difftastic Diff Staged",
+      "body": "-c diff.external=difft diff --staged"
+    },
+    "df": {
+      "title": "Diff",
+      "body": "diff"
+    },
+    "dfd": {
+      "title": "Diff Default",
+      "body": "-c core.pager= df"
+    },
+    "dfe": {
+      "title": "Diff Except",
+      "body": "!git diff . :!$1"
+    },
+    "dfs": {
+      "title": "Diff Staged",
+      "body": "diff --staged"
+    },
+    "dfsd": {
+      "title": "Diff Staged Default",
+      "body": "-c core.pager= dfs"
+    },
+    "dft": {
+      "title": "Diff Tool",
+      "body": "difftool"
+    },
+    "dftd": {
+      "title": "Diff Tool Directory",
+      "body": "difftool --dir-diff --no-symlinks"
+    },
+    "dl": {
+      "title": "Difftastic Log",
+      "body": "-c diff.external=difft log --patch --ext-diff"
+    },
+    "dsh": {
+      "title": "Difftastic Show",
+      "body": "-c diff.external=difft sh --ext-diff"
+    },
+    "fe": {
+      "title": "Fetch",
+      "body": "fetch"
+    },
+    "fed": {
+      "title": "Fetch Default",
+      "body": "!git fetch origin ${1-main}:${1-main} #"
+    },
+    "gone": {
+      "title": "Gone",
+      "body": "!git brg | xargs -r git branch -D"
+    },
+    "l": {
+      "title": "Log",
+      "body": "log --format='__log_format__'"
+    },
+    "ll": {
+      "title": "Log Long",
+      "body": "log --format='__log_format__' -50"
+    },
+    "lp": {
+      "title": "Log Prefix",
+      "body": "!git l --grep \\\"$1:.*\\\" ${@:2} #"
+    },
+    "ls": {
+      "title": "Log Short",
+      "body": "log --format='__log_format__' -20"
+    },
+    "mg": {
+      "title": "Merge",
+      "body": "merge --no-ff"
+    },
+    "mga": {
+      "title": "Merge Abort",
+      "body": "merge --abort"
+    },
+    "mgc": {
+      "title": "Merge Continue",
+      "body": "merge --continue"
+    },
+    "mgf": {
+      "title": "Merge Fast Forward",
+      "body": "merge"
+    },
+    "mgt": {
+      "title": "Merge Tool",
+      "body": "mergetool"
+    },
+    "pushf": {
+      "title": "Push Force",
+      "body": "push --force-with-lease"
+    },
+    "rb": {
+      "title": "Rebase",
+      "body": "rebase"
+    },
+    "rba": {
+      "title": "Rebase Abort",
+      "body": "rebase --abort"
+    },
+    "rbc": {
+      "title": "Rebase Continue",
+      "body": "rebase --continue"
+    },
+    "rbi": {
+      "title": "Rebase Interactive",
+      "body": "rebase --interactive"
+    },
+    "rt": {
+      "title": "Restore",
+      "body": "restore"
+    },
+    "rtp": {
+      "title": "Restore Patch",
+      "body": "restore --patch"
+    },
+    "rts": {
+      "title": "Restore Staged",
+      "body": "restore --staged"
+    },
+    "rtsp": {
+      "title": "Restore Staged Patch",
+      "body": "restore --staged --patch"
+    },
+    "sh": {
+      "title": "Show",
+      "body": "show"
+    },
+    "shs": {
+      "title": "Show Stat",
+      "body": "show --stat"
+    },
+    "st": {
+      "title": "Status",
+      "body": "status --short --untracked-files"
+    },
+    "sta": {
+      "title": "Stash",
+      "body": "stash"
+    },
+    "staa": {
+      "title": "Stash Apply",
+      "body": "stash apply"
+    },
+    "stad": {
+      "title": "Stash Drop",
+      "body": "stash drop"
+    },
+    "stal": {
+      "title": "Stash List",
+      "body": "stash list"
+    },
+    "stao": {
+      "title": "Stash Pop",
+      "body": "stash pop"
+    },
+    "stap": {
+      "title": "Stash Push",
+      "body": "stash push"
+    },
+    "stas": {
+      "title": "Stash Show",
+      "body": "stash show"
+    },
+    "sw": {
+      "title": "Switch",
+      "body": "switch"
+    },
+    "swapu": {
+      "title": "Switch and Pull",
+      "body": "!git swd && git pull"
+    },
+    "swd": {
+      "title": "Switch Default",
+      "body": "!git switch $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
+    },
+    "swm": {
+      "title": "Switch Main",
+      "body": "switch main"
+    },
+    "swn": {
+      "title": "Switch New",
+      "body": "!git switch --no-track --create $1 origin/${2-main} #"
+    },
+    "t": {
+      "title": "Tags",
+      "body": "log --tags --decorate --oneline --simplify-by-decoration"
+    },
+    "tl": {
+      "title": "Tag Latest",
+      "body": "t -1 --format='%(describe:tags)'"
+    },
+    "wipe": {
+      "title": "Wipe",
+      "body": "!git reset --hard && git clean -fd"
+    }
+  }
+}
