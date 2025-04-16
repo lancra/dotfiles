@@ -3,8 +3,10 @@ using module ./snippets/snippets.psm1
 [CmdletBinding(SupportsShouldProcess)]
 param (
     [Parameter()]
-    [string]$Source = "$env:XDG_CONFIG_HOME/snippets",
-    [switch]$SkipVisualStudio
+    [string] $Source = "$env:XDG_CONFIG_HOME/snippets",
+    [Parameter()]
+    [string[]] $Scope,
+    [switch] $SkipVisualStudio
 )
 
 $scopeResultWidth = 15
@@ -20,7 +22,7 @@ function Write-SnippetFormatResult {
         $countFormat = '{0:D3}'
     }
     process {
-        $scope = $Result.Scope.PadRight($scopeResultWidth, ' ')
+        $scopeName = $Result.Scope.PadRight($scopeResultWidth, ' ')
         $editor = $Result.Editor.PadRight($editorResultWidth, ' ')
 
         $oldCount = $countFormat -f $Result.OldCount
@@ -28,7 +30,7 @@ function Write-SnippetFormatResult {
 
         $hasChanges = $Result.HasChanges ? 'true' : 'false'
 
-        Write-Output "$scope$editor$oldCount -> $newCount $hasChanges"
+        Write-Output "$scopeName$editor$oldCount -> $newCount $hasChanges"
     }
 }
 
@@ -40,15 +42,16 @@ Write-Output $header
 Write-Output ([string]::new('-', $header.Length))
 
 $snippets.Scopes |
+    Where-Object { $Scope.Length -eq 0 -or $Scope -contains $_ } |
     ForEach-Object {
-        $scope = $_
-        $scopeSnippets = $snippets.ForScope($scope)
+        $scopeName = $_
+        $scopeSnippets = $snippets.ForScope($scopeName)
         foreach ($editor in $editors) {
             if ($editor.Key -eq 'vs' -and $SkipVisualStudio) {
                 continue
             }
 
-            if ($null -ne $editor.Scopes -and -not ($editor.Scopes -contains $scope)) {
+            if ($null -ne $editor.Scopes -and -not ($editor.Scopes -contains $scopeName)) {
                 continue
             }
 
