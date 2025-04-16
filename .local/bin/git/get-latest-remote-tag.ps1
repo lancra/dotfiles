@@ -6,7 +6,7 @@ param(
 )
 
 if ($Repository.Host -ne 'github.com') {
-    throw 'Only GitHub-based remotes are currently supported for latest tag retrievall.'
+    throw 'Only GitHub-based remotes are currently supported for latest tag retrieval.'
 }
 
 $id = & $PSScriptRoot/get-repository-id.ps1 -Repository $Repository
