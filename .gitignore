@@ -1,6 +1,5 @@
 # Hidden
 /.azuredatastudio/
-/.cache/
 /.dbus-keyrings/
 /.dotnet/
 /.github/token
@@ -165,3 +164,7 @@
 !/AppData/Local/Packages/Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe/
 !/AppData/Local/Packages/Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe/LocalState/
 !/AppData/Local/Packages/Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe/LocalState/settings.json
+
+# XDG
+/.cache/
+/.local/state/
