@@ -90,6 +90,11 @@ function Connect-Gpg {
         Write-Verbose 'Caching passphrase with GPG.'
         $rawPasphrase = $Passphrase | ConvertFrom-SecureString -AsPlainText
         & gpg --pinentry-mode loopback --passphrase $rawPasphrase --sign $Path
+
+        $gpgStateDirectory = "$env:XDG_STATE_HOME/gpg"
+        New-Item -ItemType Directory -Path $gpgStateDirectory -Force | Out-Null
+        $gpgAuthStatePath = "$gpgStateDirectory/auth"
+        Set-Content -Path $gpgAuthStatePath -Value (Get-Date -Format s)
     }
 }
 
