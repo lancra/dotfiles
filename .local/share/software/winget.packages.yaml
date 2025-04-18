@@ -398,8 +398,12 @@
   DisplayName: Java Runtime Environment
   Category: Utility
   Tracking: Full
+- Id: Oracle.JDK.23@winget
+  DisplayName: Java Development Kit 23
+  Category: Programming
+  Tracking: Full
 - Id: Oracle.JDK.24@winget
-  DisplayName: Java Development Kit
+  DisplayName: Java Development Kit 24
   Category: Programming
   Tracking: Full
 - Id: PawelSalawa.SQLiteStudio@winget

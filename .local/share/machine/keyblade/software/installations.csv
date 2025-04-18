@@ -154,6 +154,7 @@ winget,packages,Obsidian.Obsidian@winget
 winget,packages,OliverBetz.ExifTool@winget
 winget,packages,OpenJS.NodeJS.LTS@winget
 winget,packages,Oracle.JavaRuntimeEnvironment@winget
+winget,packages,Oracle.JDK.23@winget
 winget,packages,Oracle.JDK.24@winget
 winget,packages,PawelSalawa.SQLiteStudio@winget
 winget,packages,PDFsam.PDFsam@winget
