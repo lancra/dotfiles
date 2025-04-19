@@ -4,6 +4,9 @@
 - Id: https://crates.io/crates/cargo-audit
   Name: cargo-audit
   Description: Audit Cargo.lock for crates with security vulnerabilities
+- Id: https://crates.io/crates/cargo-binutils
+  Name: cargo-binutils
+  Description: Proxy for LLVM tools like llvm-nm, llvm-objdump and llvm-size
 - Id: https://crates.io/crates/cargo-expand
   Name: cargo-expand
   Description: 'Wrapper around rustc -Zunpretty=expanded. Shows the result of macro expansion and #[derive] expansion.'

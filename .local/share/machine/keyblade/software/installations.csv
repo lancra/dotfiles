@@ -1,6 +1,7 @@
 Provider,Export,Id
 cargo,crates,https://crates.io/crates/bunyan
 cargo,crates,https://crates.io/crates/cargo-audit
+cargo,crates,https://crates.io/crates/cargo-binutils
 cargo,crates,https://crates.io/crates/cargo-expand
 cargo,crates,https://crates.io/crates/cargo-udeps
 cargo,crates,https://crates.io/crates/cargo-update
