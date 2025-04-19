@@ -1,5 +1,6 @@
 - Id: cargo-x86_64-pc-windows-msvc
 - Id: clippy-x86_64-pc-windows-msvc
+- Id: llvm-tools-x86_64-pc-windows-msvc
 - Id: rust-docs-x86_64-pc-windows-msvc
 - Id: rust-src
 - Id: rust-std-x86_64-pc-windows-msvc

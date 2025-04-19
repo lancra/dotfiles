@@ -55,6 +55,7 @@ powershell,modules.user,PSToml
 powershell,modules.user,Templating
 rust,components,cargo-x86_64-pc-windows-msvc
 rust,components,clippy-x86_64-pc-windows-msvc
+rust,components,llvm-tools-x86_64-pc-windows-msvc
 rust,components,rust-docs-x86_64-pc-windows-msvc
 rust,components,rust-src
 rust,components,rust-std-x86_64-pc-windows-msvc
