@@ -78,6 +78,11 @@
       "id": "rust",
       "exports": [
         {
+          "id": "components",
+          "scope": "global",
+          "versioned": false
+        },
+        {
           "id": "toolchains",
           "scope": "global",
           "versioned": true,
