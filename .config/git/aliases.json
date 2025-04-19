@@ -130,6 +130,10 @@
       "title": "Diff Staged Default",
       "body": "-c core.pager= dfs"
     },
+    "dfse": {
+      "title": "Diff Staged Except",
+      "body": "!git diff --staged . :!$1"
+    },
     "dft": {
       "title": "Diff Tool",
       "body": "difftool"
