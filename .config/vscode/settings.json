@@ -113,6 +113,31 @@
       "siblings_only": true
     }
   },
+  "mssql.connectionGroups": [
+    {
+      "name": "ROOT",
+      "id": "47C4926F-A77E-45FC-9B26-7FDC21032D13"
+    }
+  ],
+  "mssql.connections": [
+    {
+      "authenticationType": "SqlLogin",
+      "connectTimeout": 15,
+      "applicationName": "vscode-mssql",
+      "profileName": "MSSQL",
+      "server": "127.0.0.1,1433",
+      "trustServerCertificate": true,
+      "user": "sa",
+      "password": "",
+      "savePassword": true,
+      "database": "",
+      "id": "D04B57A1-2795-4D5F-AB9E-1E62A2D9078E",
+      "groupId": "47C4926F-A77E-45FC-9B26-7FDC21032D13",
+      "profileSource": 0,
+      "emptyPasswordInput": false
+    }
+  ],
+  "mssql.enableRichExperiences": true,
   "notebook.lineNumbers": "on",
   "powershell.codeFormatting.autoCorrectAliases": true,
   "powershell.codeFormatting.useCorrectCasing": true,

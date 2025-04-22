@@ -77,5 +77,45 @@
   {
     "key": "ctrl+alt+s",
     "command": "workbench.action.files.saveWithoutFormatting"
+  },
+  {
+    "key": "f5",
+    "command": "-workbench.action.debug.continue",
+    "when": "debugState == 'stopped'"
+  },
+  {
+    "key": "f5",
+    "command": "workbench.action.debug.continue",
+    "when": "debugState == 'stopped' && editorLangId != 'sql'"
+  },
+  {
+    "key": "f5",
+    "command": "-workbench.action.debug.start",
+    "when": "debuggersAvailable && debugState == 'inactive'"
+  },
+  {
+    "key": "f5",
+    "command": "workbench.action.debug.start",
+    "when": "debuggersAvailable && debugState == 'inactive' && editorLangId != 'sql'"
+  },
+  {
+    "key": "f5",
+    "command": "-debug.openView",
+    "when": "!debuggersAvailable"
+  },
+  {
+    "key": "f5",
+    "command": "debug.openView",
+    "when": "!debuggersAvailable && editorLangId != 'sql'"
+  },
+  {
+    "key": "ctrl+shift+e",
+    "command": "-mssql.runQuery",
+    "when": "editorTextFocus && editorLangId == 'sql'"
+  },
+  {
+    "key": "f5",
+    "command": "mssql.runQuery",
+    "when": "editorTextFocus && editorLangId == 'sql'"
   }
 ]
