@@ -198,6 +198,10 @@
       "title": "Merge Tool",
       "body": "mergetool"
     },
+    "pl": {
+      "title": "Pull",
+      "body": "pull"
+    },
     "ps": {
       "title": "Push",
       "body": "push"
