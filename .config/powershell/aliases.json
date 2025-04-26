@@ -62,7 +62,7 @@
   },
   "rmr": {
     "group": "FileSystem",
-    "command": "Remove-Item -Path #{0} -Recurse",
+    "command": "Remove-Item -Path #{0} -Recurse -Force",
     "bash": true
   },
   "ga": {
