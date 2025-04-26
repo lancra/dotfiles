@@ -8,11 +8,10 @@
     },
     {
       "command": {
-        "action": "splitPane",
-        "split": "auto",
-        "splitMode": "duplicate"
+        "action": "scrollToMark",
+        "direction": "next"
       },
-      "id": "User.splitPane.duplicate"
+      "id": "User.scrollToMark.next"
     },
     {
       "command": {
@@ -23,17 +22,10 @@
     },
     {
       "command": {
-        "action": "scrollToMark",
+        "action": "selectCommand",
         "direction": "next"
       },
-      "id": "User.scrollToMark.next"
-    },
-    {
-      "command": {
-        "action": "selectOutput",
-        "direction": "prev"
-      },
-      "id": "User.selectOutput.prev"
+      "id": "User.selectCommand.next"
     },
     {
       "command": {
@@ -51,10 +43,18 @@
     },
     {
       "command": {
-        "action": "selectCommand",
-        "direction": "next"
+        "action": "selectOutput",
+        "direction": "prev"
       },
-      "id": "User.selectCommand.next"
+      "id": "User.selectOutput.prev"
+    },
+    {
+      "command": {
+        "action": "splitPane",
+        "split": "auto",
+        "splitMode": "duplicate"
+      },
+      "id": "User.splitPane.duplicate"
     }
   ],
   "compatibility.textMeasurement": "console",
@@ -62,10 +62,6 @@
   "copyOnSelect": false,
   "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
   "keybindings": [
-    {
-      "id": "User.selectOutput.next",
-      "keys": "ctrl+alt+j"
-    },
     {
       "id": "User.find",
       "keys": "ctrl+shift+f"
@@ -75,24 +71,28 @@
       "keys": "alt+down"
     },
     {
-      "id": "User.splitPane.duplicate",
-      "keys": "alt+shift+d"
-    },
-    {
       "id": "User.scrollToMark.previous",
       "keys": "alt+up"
+    },
+    {
+      "id": "User.selectCommand.next",
+      "keys": "ctrl+alt+l"
     },
     {
       "id": "User.selectCommand.prev",
       "keys": "ctrl+alt+h"
     },
     {
+      "id": "User.selectOutput.next",
+      "keys": "ctrl+alt+j"
+    },
+    {
       "id": "User.selectOutput.prev",
       "keys": "ctrl+alt+k"
     },
     {
-      "id": "User.selectCommand.next",
-      "keys": "ctrl+alt+l"
+      "id": "User.splitPane.duplicate",
+      "keys": "alt+shift+d"
     }
   ],
   "launchMode": "maximized",
