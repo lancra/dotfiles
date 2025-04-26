@@ -1,9 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/git/aliases.schema.json",
   "variables": {
-    "branch_format": "--format='%(color:blue)%(committerdate:iso-local) %(color:green)%(refname:short) %(color:red)%(committeremail)'",
+    "branch_format": "--format='%(color:blue)%(committerdate:format-local:%Y-%m-%d %H:%M:%S) %(color:green)%(refname:short) %(color:red)%(committeremail)'",
     "branch_upstream_format": "--format='  %(color:red)%(refname:lstrip=2)%(color:reset)%(if)%(symref)%(then) -> %(symref:short)%(end)'",
-    "log_format": "--format='%C(yellow)%h %C(blue bold)%ci%C(auto)%(decorate) %s'"
+    "log_format": "--format='%C(yellow)%h %C(blue bold)%cd%C(auto)%(decorate) %s' --date 'format-local:%Y-%m-%d %H:%M:%S'"
   },
   "definitions": {
     "a": {
