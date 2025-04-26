@@ -198,7 +198,11 @@
       "title": "Merge Tool",
       "body": "mergetool"
     },
-    "pushf": {
+    "ps": {
+      "title": "Push",
+      "body": "push"
+    },
+    "psf": {
       "title": "Push Force",
       "body": "push --force-with-lease"
     },
