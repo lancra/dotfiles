@@ -1,9 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/git/aliases.schema.json",
   "variables": {
-    "branch_format": "%(color:blue)%(committerdate:iso-local) %(color:green)%(refname:short) %(color:red)%(committeremail)",
-    "branch_upstream_format": "  %(color:red)%(refname:lstrip=2)%(color:reset)%(if)%(symref)%(then) -> %(symref:short)%(end)",
-    "log_format": "%C(yellow)%h %C(blue bold)%ci%C(auto)%(decorate) %s"
+    "branch_format": "--format='%(color:blue)%(committerdate:iso-local) %(color:green)%(refname:short) %(color:red)%(committeremail)'",
+    "branch_upstream_format": "--format='  %(color:red)%(refname:lstrip=2)%(color:reset)%(if)%(symref)%(then) -> %(symref:short)%(end)'",
+    "log_format": "--format='%C(yellow)%h %C(blue bold)%ci%C(auto)%(decorate) %s'"
   },
   "definitions": {
     "a": {
@@ -24,7 +24,7 @@
     },
     "bra": {
       "title": "Branches Alphabetical",
-      "body": "branch --sort=refname --format='__branch_format__'"
+      "body": "branch --sort=refname __branch_format__"
     },
     "brc": {
       "title": "Branch Current",
@@ -48,15 +48,15 @@
     },
     "brn": {
       "title": "Branches New",
-      "body": "branch --sort=-committerdate --format='__branch_format__'"
+      "body": "branch --sort=-committerdate __branch_format__"
     },
     "bro": {
       "title": "Branches Old",
-      "body": "branch --sort=committerdate --format='__branch_format__'"
+      "body": "branch --sort=committerdate __branch_format__"
     },
     "bru": {
       "title": "Branches Upstream",
-      "body": "!git for-each-ref --format '__branch_upstream_format__' refs/remotes/${1:-origin}"
+      "body": "!git for-each-ref __branch_upstream_format__ refs/remotes/${1:-origin}"
     },
     "ca": {
       "title": "Commit Amend",
@@ -164,11 +164,11 @@
     },
     "l": {
       "title": "Log",
-      "body": "log --format='__log_format__'"
+      "body": "log __log_format__"
     },
     "ll": {
       "title": "Log Long",
-      "body": "log --format='__log_format__' -50"
+      "body": "log __log_format__ -50"
     },
     "lp": {
       "title": "Log Prefix",
@@ -176,7 +176,7 @@
     },
     "ls": {
       "title": "Log Short",
-      "body": "log --format='__log_format__' -20"
+      "body": "log __log_format__ -20"
     },
     "mg": {
       "title": "Merge",
