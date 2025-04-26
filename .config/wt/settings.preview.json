@@ -204,6 +204,18 @@
         "hidden": false,
         "name": "Azure Cloud Shell",
         "source": "Windows.Terminal.Azure"
+      },
+      {
+        "guid": "{0409bb15-039e-57c4-a2fc-3f288c9ff3fb}",
+        "hidden": false,
+        "name": "Podman",
+        "source": "Microsoft.WSL"
+      },
+      {
+        "guid": "{326a14d8-32be-5e79-b368-69adf0c287b1}",
+        "hidden": false,
+        "name": "Podman Root",
+        "source": "Microsoft.WSL"
       }
     ]
   },
