@@ -32,9 +32,6 @@
 - Id: https://crates.io/crates/sqlx-cli
   Name: sqlx-cli
   Description: Command-line utility for SQLx, the Rust SQL toolkit.
-- Id: https://crates.io/crates/tabiew
-  Name: tabiew
-  Description: A lightweight TUI application to view and query tabular data files, such as CSV, TSV, and parquet.
 - Id: https://crates.io/crates/taplo-cli
   Name: taplo-cli
   Description: A CLI for Taplo TOML toolkit

@@ -10,7 +10,6 @@ cargo,crates,https://crates.io/crates/content_inspector
 cargo,crates,https://crates.io/crates/mergiraf
 cargo,crates,https://crates.io/crates/rustlings
 cargo,crates,https://crates.io/crates/sqlx-cli
-cargo,crates,https://crates.io/crates/tabiew
 cargo,crates,https://crates.io/crates/taplo-cli
 cargo,crates,https://crates.io/crates/tealdeer
 cargo,crates,https://crates.io/crates/typos-cli
