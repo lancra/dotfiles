@@ -370,10 +370,6 @@
   DisplayName: ScreenToGif
   Category: Video
   Tracking: Full
-- Id: Notepad++.Notepad++@winget
-  DisplayName: Notepad++
-  Category: Text Editing
-  Tracking: Full
 - Id: Nushell.Nushell@winget
   DisplayName: Nushell
   Category: Programming

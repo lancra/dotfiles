@@ -155,7 +155,6 @@ winget,packages,Mozilla.Firefox@winget
 winget,packages,Mozilla.Thunderbird@winget
 winget,packages,MusicBrainz.Picard@winget
 winget,packages,NickeManarin.ScreenToGif@winget
-winget,packages,Notepad++.Notepad++@winget
 winget,packages,Nushell.Nushell@winget
 winget,packages,Nvidia.PhysX@winget
 winget,packages,Obsidian.Obsidian@winget
