@@ -2,6 +2,7 @@ User:
   CARGO_HOME: '%DEV_HOME%/.cargo'
   DEV_HOME: 'D:/Users/lancra'
   DEVUSERPROFILE: 'D:\Users\lancra'
+  EDITOR: 'vim'
   GOPATH: '%DEVUSERPROFILE%\go'
   HOME: 'C:/Users/lancra'
   NPM_CONFIG_CACHE: '%DEVUSERPROFILE%\AppData\Local\npm-cache'
