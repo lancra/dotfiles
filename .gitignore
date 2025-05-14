@@ -137,6 +137,11 @@
 !/.rustup/settings.toml
 /projects/
 
+# tealdeer
+!/AppData/Roaming/tealdeer/
+!/AppData/Roaming/tealdeer/tealdeer/
+!/AppData/Roaming/tealdeer/tealdeer/config.toml
+
 # Vim
 /.config/vim/.backup/
 /.config/vim/.swap/
