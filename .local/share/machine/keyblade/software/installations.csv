@@ -112,7 +112,6 @@ winget,packages,Microsoft.AppInstaller@winget
 winget,packages,Microsoft.AzureCLI@winget
 winget,packages,Microsoft.AzureDataStudio@winget
 winget,packages,Microsoft.CLRTypesSQLServer.2019@winget
-winget,packages,Microsoft.DevHome@winget
 winget,packages,Microsoft.DotNet.DesktopRuntime.6@winget
 winget,packages,Microsoft.DotNet.DesktopRuntime.8@winget
 winget,packages,Microsoft.DotNet.Runtime.7@winget

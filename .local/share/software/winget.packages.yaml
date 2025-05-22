@@ -198,10 +198,6 @@
   DisplayName: SQL Server 2019 CLR Types
   Category: Programming
   Tracking: None
-- Id: Microsoft.DevHome@winget
-  DisplayName: Dev Home
-  Category: Programming
-  Tracking: Full
 - Id: Microsoft.DotNet.DesktopRuntime.6@winget
   DisplayName: .NET 6 Desktop Runtime
   Category: Programming
