@@ -73,6 +73,7 @@
     "svg",
     "xml"
   ],
+  "debug.allowBreakpointsEverywhere": true,
   "editor.detectIndentation": false,
   "editor.insertSpaces": true,
   "editor.linkedEditing": true,
