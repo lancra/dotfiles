@@ -181,6 +181,7 @@ winget,packages,Rustlang.Rustup@winget
 winget,packages,sharkdp.bat@winget
 winget,packages,sharkdp.fd@winget
 winget,packages,ShiningLight.OpenSSL.Dev@winget
+winget,packages,SQLite.SQLite@winget
 winget,packages,SumatraPDF.SumatraPDF@winget
 winget,packages,Valve.Steam@winget
 winget,packages,VideoLAN.VLC@winget

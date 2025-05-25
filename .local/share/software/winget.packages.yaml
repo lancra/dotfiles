@@ -474,6 +474,10 @@
   DisplayName: OpenSSL
   Category: Programming
   Tracking: Full
+- Id: SQLite.SQLite@winget
+  DisplayName: SQLite
+  Category: Programming
+  Tracking: Full
 - Id: SumatraPDF.SumatraPDF@winget
   DisplayName: Sumatra PDF
   Category: Reading
