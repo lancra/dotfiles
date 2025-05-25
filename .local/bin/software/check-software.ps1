@@ -35,23 +35,25 @@ param (
 begin {
     & "$env:HOME/.local/bin/env/begin-loading.ps1"
 
-    function Get-MachineInstallationIds {
+    function Get-InstallationIds {
         [CmdletBinding()]
         [OutputType([InstallationId[]])]
         param(
             [Parameter(Mandatory)]
-            [string] $FileName
+            [string] $FileName,
+
+            [switch] $Machine
         )
         begin {
-            $machineDirectory = & "$env:HOME/.local/bin/env/get-or-add-machine-directory.ps1" -Data
-            $machineIdsPath = "$machineDirectory/software/$FileName.csv"
+            $directory = $Machine ? (& "$env:HOME/.local/bin/env/get-or-add-machine-directory.ps1" -Data) : $env:XDG_DATA_HOME
+            $idsPath = "$directory/software/$FileName.csv"
         }
         process {
-            if (-not (Test-Path -Path $machineIdsPath)) {
+            if (-not (Test-Path -Path $idsPath)) {
                 return @()
             }
 
-            Get-Content -Path $machineIdsPath |
+            Get-Content -Path $idsPath |
                 ConvertFrom-Csv |
                 ForEach-Object {
                     $exportId = [InstallationExportId]::new($_.Export, $_.Provider)
@@ -75,7 +77,7 @@ begin {
             )
         }
         process {
-            $pins = Get-MachineInstallationIds -FileName 'pins'
+            $pins = Get-InstallationIds -FileName 'pins' -Machine
             $Exports |
                 ForEach-Object {
                     & $PSScriptRoot/get-export-script.ps1 -Id $_.Id.ToString() -Check
@@ -130,7 +132,7 @@ begin {
 process {
     $exports = & $PSScriptRoot/get-exports.ps1 -Provider $Provider -Export $Export -Versioned
     $upgrades = Get-Upgrades -Exports $exports
-    $disabledUpdates = Get-MachineInstallationIds -FileName 'disabled-updates'
+    $disabledUpdates = Get-InstallationIds -FileName 'disabled-updates'
 
     if ($upgrades.Length -gt 0) {
         $displayProperties = @(
