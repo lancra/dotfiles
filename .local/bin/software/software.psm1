@@ -66,6 +66,16 @@ class InstallationUpgrade {
     }
 }
 
+class InstallationPin {
+    [InstallationId] $Id
+    [version] $Version
+
+    InstallationPin([InstallationId] $id, [version] $version) {
+        $this.Id = $id
+        $this.Version = $version
+    }
+}
+
 class InstallationProvider {
     [string] $Id
     [InstallationExport[]] $Exports

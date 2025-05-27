@@ -35,6 +35,29 @@ param (
 begin {
     & "$env:HOME/.local/bin/env/begin-loading.ps1"
 
+    function Get-InstallationPins {
+        [CmdletBinding()]
+        [OutputType([InstallationPin[]])]
+        param()
+        begin {
+            $path = "$env:XDG_DATA_HOME/software/pins.csv"
+        }
+        process {
+            if (-not (Test-Path -Path $path)) {
+                return @()
+            }
+
+            Get-Content -Path $path |
+                ConvertFrom-Csv |
+                ForEach-Object {
+                    $exportId = [InstallationExportId]::new($_.Export, $_.Provider)
+                    $id = [InstallationId]::new($_.Id, $exportId)
+                    $version = $_.Version -ne '' ? [version]$_.Version : $null
+                    [InstallationPin]::new($id, $version)
+                }
+        }
+    }
+
     function Get-InstallationIds {
         [CmdletBinding()]
         [OutputType([InstallationId[]])]
@@ -43,14 +66,14 @@ begin {
             [string] $FileName
         )
         begin {
-            $idsPath = "$env:XDG_DATA_HOME/software/$FileName.csv"
+            $path = "$env:XDG_DATA_HOME/software/$FileName.csv"
         }
         process {
-            if (-not (Test-Path -Path $idsPath)) {
+            if (-not (Test-Path -Path $path)) {
                 return @()
             }
 
-            Get-Content -Path $idsPath |
+            Get-Content -Path $path |
                 ConvertFrom-Csv |
                 ForEach-Object {
                     $exportId = [InstallationExportId]::new($_.Export, $_.Provider)
@@ -74,7 +97,7 @@ begin {
             )
         }
         process {
-            $pins = Get-InstallationIds -FileName 'pins'
+            $pins = Get-InstallationPins
             $Exports |
                 ForEach-Object {
                     & $PSScriptRoot/get-export-script.ps1 -Id $_.Id.ToString() -Check
@@ -85,9 +108,12 @@ begin {
                 ForEach-Object {
                     $upgrade = $_
                     $matchingPin = $pins |
-                        Where-Object { $_ -eq $upgrade.Id }
+                        Where-Object { $_.Id -eq $upgrade.Id }
                     if ($null -ne $matchingPin) {
-                        return
+                        $upgradeVersion = [version]$upgrade.Available
+                        if ($null -eq $matchingPin.Version -or $matchingPin.Version -eq $upgradeVersion) {
+                            return
+                        }
                     }
 
                     $upgrade
