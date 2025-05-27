@@ -40,13 +40,10 @@ begin {
         [OutputType([InstallationId[]])]
         param(
             [Parameter(Mandatory)]
-            [string] $FileName,
-
-            [switch] $Machine
+            [string] $FileName
         )
         begin {
-            $directory = $Machine ? (& "$env:HOME/.local/bin/env/get-or-add-machine-directory.ps1" -Data) : $env:XDG_DATA_HOME
-            $idsPath = "$directory/software/$FileName.csv"
+            $idsPath = "$env:XDG_DATA_HOME/software/$FileName.csv"
         }
         process {
             if (-not (Test-Path -Path $idsPath)) {
@@ -77,7 +74,7 @@ begin {
             )
         }
         process {
-            $pins = Get-InstallationIds -FileName 'pins' -Machine
+            $pins = Get-InstallationIds -FileName 'pins'
             $Exports |
                 ForEach-Object {
                     & $PSScriptRoot/get-export-script.ps1 -Id $_.Id.ToString() -Check
