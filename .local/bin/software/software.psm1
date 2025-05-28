@@ -68,9 +68,9 @@ class InstallationUpgrade {
 
 class InstallationPin {
     [InstallationId] $Id
-    [version] $Version
+    [System.Management.Automation.SemanticVersion] $Version
 
-    InstallationPin([InstallationId] $id, [version] $version) {
+    InstallationPin([InstallationId] $id, [System.Management.Automation.SemanticVersion] $version) {
         $this.Id = $id
         $this.Version = $version
     }
