@@ -61,6 +61,7 @@ rust,components,rust-std-x86_64-pc-windows-msvc
 rust,components,rustc-x86_64-pc-windows-msvc
 rust,components,rustfmt-x86_64-pc-windows-msvc
 rust,toolchains,1.81-x86_64-pc-windows-msvc
+rust,toolchains,1.86-x86_64-pc-windows-msvc
 rust,toolchains,nightly-x86_64-pc-windows-msvc
 rust,toolchains,stable-x86_64-pc-windows-msvc
 winget,packages,7zip.7zip@winget

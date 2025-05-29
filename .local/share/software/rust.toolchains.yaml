@@ -2,6 +2,10 @@
   Name: 1.81 (msvc)
   Channel: "1.81"
   Environment: msvc
+- Id: 1.86-x86_64-pc-windows-msvc
+  Name: 1.86 (msvc)
+  Channel: "1.86"
+  Environment: msvc
 - Id: nightly-x86_64-pc-windows-msvc
   Name: nightly (msvc)
   Channel: nightly
