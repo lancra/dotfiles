@@ -70,6 +70,16 @@
     "command": "$env:HOME/.local/bin/git/generate-aliases.ps1",
     "bash": false
   },
+  "ghc": {
+    "group": "GitHub",
+    "command": "$env:HOME/.local/bin/github/open-commit.ps1",
+    "bash": false
+  },
+  "ghi": {
+    "group": "GitHub",
+    "command": "$env:HOME/.local/bin/github/open-issue.ps1",
+    "bash": false
+  },
   "jqf": {
     "group": "JSON",
     "command": "Set-Content -Path \"$(#{0})\" -Value (jq '.' \"$(#{0})\")",
