@@ -230,6 +230,18 @@
       "title": "Rebase Interactive",
       "body": "rebase --interactive"
     },
+    "rs": {
+      "title": "Reset",
+      "body": "reset"
+    },
+    "rsh": {
+      "title": "Reset Hard",
+      "body": "reset --hard"
+    },
+    "rss": {
+      "title": "Reset Soft",
+      "body": "reset --soft"
+    },
     "rt": {
       "title": "Restore",
       "body": "restore"
