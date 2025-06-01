@@ -95,6 +95,11 @@
     "command": "$env:HOME/.local/bin/get-extended-help.ps1",
     "bash": false
   },
+  "mano": {
+    "group": "PowerShell",
+    "command": "$env:HOME/.local/bin/open-online-help.ps1",
+    "bash": false
+  },
   "swc": {
     "group": "Software",
     "command": "$env:HOME/.local/bin/software/check-software.ps1",
