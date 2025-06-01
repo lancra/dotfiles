@@ -18,6 +18,10 @@
       "title": "Add Patch",
       "body": "add --patch"
     },
+    "bl": {
+      "title": "Blame",
+      "body": "blame"
+    },
     "br": {
       "title": "Branch",
       "body": "branch"
