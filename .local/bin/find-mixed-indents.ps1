@@ -12,8 +12,28 @@ param(
     [switch] $All
 )
 
-Get-Command -Name fd -ErrorAction Stop | Out-Null
-Get-Command -Name inspect -ErrorAction Stop | Out-Null
+function Test-Executable {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [string] $Executable,
+
+        [Parameter(Mandatory)]
+        [string] $Usage,
+
+        [Parameter(Mandatory)]
+        [string] $Installation
+    )
+    process {
+        $executableCommand = Get-Command -Name $Executable -ErrorAction SilentlyContinue
+        if (-not $executableCommand) {
+            throw "The $Executable executable used for $Usage is unavailable. Install it by executing ``$Installation``"
+        }
+    }
+}
+
+Test-Executable -Executable 'fd' -Usage 'fast filesystem searches' -Installation 'winget install --exact --id sharkdp.fd'
+Test-Executable -Executable 'inspect' -Usage 'file content type checks' -Installation 'cargo install --example inspect content_inspector'
 
 $item = Get-Item -Path $Path -ErrorAction SilentlyContinue
 if ($null -eq $item) {
