@@ -1,3 +1,20 @@
+<#
+.SYNOPSIS
+Resolves a relative path to a target path from a provided source path.
+
+.DESCRIPTION
+Determines whether the provided paths share a common ancestor. If so, the source
+path (for a filesystem item which must exist) has parent directory segments
+added to resolve to the common ancestor directory, and the remaining segments
+from the target path are appended. This script handles target paths for
+non-existent filesystem items.
+
+.PARAMETER Source
+The path of the source filesystem item to resolve from.
+
+.PARAMETER Target
+The path of the target filesystem item to resolve to.
+#>
 [CmdletBinding()]
 [OutputType([string])]
 param(

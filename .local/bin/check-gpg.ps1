@@ -1,3 +1,13 @@
+<#
+.SYNOPSIS
+Checks the unlock status of the GPG key used for Git.
+
+.DESCRIPTION
+Finds the GPG authentication state file and reads the contained timestamp. If
+the file is not found, authentication is deemed missing. If the timestamp is in
+the past, authentication is deemed expired. Otherwise, the expiration time is
+provided.
+#>
 [CmdletBinding()]
 param()
 
