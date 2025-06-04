@@ -1,3 +1,12 @@
+<#
+.SYNOPSIS
+Changes the working directory to the root of the current Git repository.
+
+.DESCRIPTION
+Checks whether the current working directory exists within a Git repository, and
+throws an error if not. If it does, the relative path is used to change
+directories up the required depth.
+#>
 [CmdletBinding()]
 param()
 

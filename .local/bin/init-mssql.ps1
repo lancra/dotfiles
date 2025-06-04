@@ -1,14 +1,37 @@
+<#
+.SYNOPSIS
+Initializes a Microsoft SQL Server container and enables usage in SQLCMD.
+
+.DESCRIPTION
+
+.PARAMETER Name
+
+.PARAMETER Image
+
+.PARAMETER Port
+
+.PARAMETER ContextName
+
+.PARAMETER Force
+
+.PARAMETER SkipContext
+#>
 [CmdletBinding()]
 param (
     [Parameter()]
     [string] $Name = 'mssql',
+
     [Parameter()]
     [string] $Image = 'mcr.microsoft.com/mssql/server:2022-latest',
+
     [Parameter()]
     [int] $Port,
+
     [Parameter()]
     [string] $ContextName = $Name,
+
     [switch]$Force,
+
     [switch]$SkipContext
 )
 

@@ -1,3 +1,38 @@
+<#
+.SYNOPSIS
+Finds files with multiple indentation strategies.
+
+.DESCRIPTION
+For all files matching the provided parameters, any line starting with
+whitespace is counted as being indented. These lines are grouped by the
+indentation strategy, including mixed indentations and uncommon indentations,
+such as form feeds or non-breaking spaces. The counts for each strategy are
+displayed as fixed-width tickers to ensure a tabular output, along with the
+filename and optional line count totals. By default, only files which are
+identified as having mixed indentation are shown.
+
+.PARAMETER Path
+The path to check indentation for. When a directory is provided, all descendants
+are checked which match supplied filter parameters. When a file is provided, it
+is checked alone. When this parameter is not provided, the working directory is
+used.
+
+.PARAMETER IgnorePath
+The path of the file which provides ignore patterns used when identifying
+descendants of a directory.
+
+.PARAMETER Depth
+The maximum directory depth to identify files to check. When this parameter is
+not provided, no maximum depth is used.
+
+.PARAMETER All
+Specifies that results for all files should be shown, regardless of whether
+their indentation is determined to be invalid.
+
+.PARAMETER ExcludeTotal
+Specifies that the total indented line count and overall line count should be
+excluded from the output.
+#>
 [CmdletBinding()]
 param(
     [Parameter()]

@@ -30,8 +30,10 @@ using module ./snippets/snippets.psm1
 param (
     [Parameter()]
     [string] $Source = "$env:XDG_CONFIG_HOME/snippets",
+
     [Parameter()]
     [string[]] $Scope,
+
     [switch] $SkipVisualStudio
 )
 

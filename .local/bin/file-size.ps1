@@ -1,3 +1,19 @@
+<#
+.SYNOPSIS
+Displays a user-friendly size for all relevant files in a tabular format.
+
+.DESCRIPTION
+Determines the target paths to show based on the provided path. For each target
+path, the right-aligned count is shown, then the right-aligned denomination is
+shown, followed by the left-aligned name. The smallest possible denomination is
+used where the whole number is limited to three digits. The name is shown after
+the size.
+
+.PARAMETER Path
+The path to display sizes for. When a directory is provided, the sizes of all
+children are shown. When a file is provided, the size of it is shown. When this
+is not provided, the working directory is used.
+#>
 [CmdletBinding()]
 [OutputType([string])]
 param(
