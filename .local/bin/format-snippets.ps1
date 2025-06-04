@@ -1,11 +1,39 @@
+<#
+.SYNOPSIS
+Transforms snippet definitions into formats usable by various editors.
+
+.DESCRIPTION
+Recursively finds all snippet definitions files in the source directory. Then,
+an editor-specific transformation is applied to each snippet to ensure it can be
+consumed. Depending on the editor, the snippets are then written as individual
+files or combined into an aggregate file.
+
+.PARAMETER Source
+The path of the source directory for snippet definitions.
+
+.PARAMETER SkipVisualStudio
+Specifies that snippet formatting should be skipped for the Visual Studio
+editor. Attempting to change snippets for this editor while it is running
+results in locks on the files between the script and Visual Studio. This
+parameter is useful when attempting to format snippets for another editor.
+
+.INPUTS
+The source directory can be piped in.
+
+.OUTPUTS
+Outputs a table containing the overview of changes by scope and editor.
+#>
+
 using module ./snippets/snippets.psm1
 
 [CmdletBinding(SupportsShouldProcess)]
 param (
     [Parameter()]
     [string] $Source = "$env:XDG_CONFIG_HOME/snippets",
+
     [Parameter()]
     [string[]] $Scope,
+
     [switch] $SkipVisualStudio
 )
 

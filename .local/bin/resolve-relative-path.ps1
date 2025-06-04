@@ -1,3 +1,15 @@
+<#
+.SYNOPSIS
+Resolves an absolute path from a path.
+
+.DESCRIPTION
+Iterates through each segment in a provided path to convert it into an absolute
+path. The working directory is used to resolve provided relative paths. This
+script handles paths for non-existent filesystem items.
+
+.PARAMETER Path
+The path to resolve.
+#>
 [CmdletBinding()]
 [OutputType([string])]
 param(

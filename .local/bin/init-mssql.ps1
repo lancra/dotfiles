@@ -1,14 +1,50 @@
+<#
+.SYNOPSIS
+Initializes a Microsoft SQL Server container and enables usage in SQLCMD.
+
+.DESCRIPTION
+Checks for an existing container by the provided name, and throws an error by
+default or removes it when executing forcefully. Then, using the password
+provided via a local variable or by manual input, a new container is initialized
+and started. Finally, a SQLCMD context is optionally configured for usage.
+
+.PARAMETER Name
+The name of the container to create.
+
+.PARAMETER Image
+The image to use when creating the container. When this parameter is not
+provided, the latest SQL Server image is used.
+
+.PARAMETER Port
+The port to bind the container to. When this parameter is not provided, the
+default SQL Server port of 1433 is used.
+
+.PARAMETER ContextName
+The name of the SQLCMD context to create. When this parameter is not provided,
+the container name is used.
+
+.PARAMETER Force
+Specifies that an existing container with the same name should first be removed.
+
+.PARAMETER SkipContext
+Specifies that the SQLCMD context should not be set up.
+#>
 [CmdletBinding()]
 param (
     [Parameter()]
     [string] $Name = 'mssql',
+
     [Parameter()]
     [string] $Image = 'mcr.microsoft.com/mssql/server:2022-latest',
+
     [Parameter()]
     [int] $Port,
+
     [Parameter()]
     [string] $ContextName = $Name,
+
     [switch]$Force,
+
     [switch]$SkipContext
 )
 

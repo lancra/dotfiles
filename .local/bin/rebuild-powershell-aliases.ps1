@@ -1,6 +1,7 @@
 <#
 .SYNOPSIS
 Rebuilds PowerShell aliases defined in the user profile.
+
 .DESCRIPTION
 Deletes the alias directory from local application data and reloads the profile.
 #>

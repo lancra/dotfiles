@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Unlocks the GPG secret key used for Git.
+
+.DESCRIPTION
+Checks for the lock status of the secret key by signing a temporary file. If
+executed forcefully, the GPG agent is restarted to lock the key. If the key is
+locked at this point, the passphrase (which is sourced from a password manager
+or manual input) is used to unlock it and the timestamp is saved in user state
+to avoid unnecessary unlock checks until the cache expires.
+
+.PARAMETER SkipPasswordManager
+Prompts the user for a passphrase rather than looking it up in a password
+manager.
+
+.PARAMETER Force
+Restarts the GPG agent, forcing an new key unlock and restarting the cache
+expiration.
+#>
 [CmdletBinding()]
 param(
     [switch] $SkipPasswordManager,
