@@ -9,7 +9,9 @@ param(
     [Parameter()]
     [int] $Depth = $null,
 
-    [switch] $All
+    [switch] $All,
+
+    [switch] $ExcludeTotal
 )
 
 function Test-Executable {
@@ -74,11 +76,80 @@ function Test-TextFile {
     }
 }
 
+function Test-FileRead {
+    [CmdletBinding()]
+    [OutputType([bool])]
+    param(
+        [Parameter(Mandatory)]
+        [string] $Path
+    )
+    process {
+        $canRead = $true
+        try {
+            [System.IO.File]::OpenRead($Path).Close()
+        }
+        catch {
+            $canRead = $false
+        }
+
+        $canRead
+    }
+}
+
+function ConvertTo-Ticker {
+    [CmdletBinding()]
+    [OutputType([string])]
+    param(
+        [Parameter(Mandatory)]
+        [int] $Count
+    )
+    process {
+        '{0:D5}' -f $Count
+    }
+}
+
 $spacesIdentifier = 'Spaces'
 $tabsIdentifier = 'Tabs'
 $mixedIdentifier = 'Mixed'
 $otherIdentifier = 'Other'
 $identifiers = @($spacesIdentifier, $tabsIdentifier, $mixedIdentifier, $otherIdentifier)
+
+function New-GroupSegment {
+    [CmdletBinding()]
+    [OutputType([PSObject])]
+    param(
+        [Parameter(Mandatory)]
+        [string] $Name,
+
+        [Parameter(Mandatory)]
+        [int] $Count,
+
+        [Parameter(Mandatory)]
+        [int] $TotalGroups
+    )
+    process {
+        $color = [System.Console]::ForegroundColor
+        if ($Count -ne 0 -and $Name -eq $otherIdentifier) {
+            $color = [System.ConsoleColor]::Magenta
+        } elseif ($Count -ne 0 -and ($TotalGroups -gt 1 -or $Name -eq $mixedIdentifier)) {
+            $color = [System.ConsoleColor]::Red
+        } elseif ($Count -ne 0 -and $TotalGroups -eq 1) {
+            $color = [System.ConsoleColor]::Green
+        }
+
+        $letter = $Name[0]
+        $ticker = ConvertTo-Ticker -Count $Count
+        $groupDisplay = "$letter$ticker "
+
+        $hideTicker = $Count -eq 0 -and $Name -eq $otherIdentifier
+        $text = -not $hideTicker ? $groupDisplay : [string]::new(' ', $groupDisplay.Length)
+
+        @{
+            Object = $text
+            ForegroundColor = $color
+        }
+    }
+}
 
 $targets |
     ForEach-Object {
@@ -86,8 +157,11 @@ $targets |
             return
         }
 
-        # Error action is set since some Windows system files can prevent reads and don't need to be checked anyways.
-        $groups = Select-String -Path $_ -Pattern '^\s+' -ErrorAction SilentlyContinue |
+        if (-not (Test-FileRead -Path $_)) {
+            return
+        }
+
+        $groups = @(Select-String -Path $_ -Pattern '^\s+' |
             Select-Object -ExpandProperty Matches |
             Select-Object -ExpandProperty Value |
             ForEach-Object {
@@ -104,7 +178,7 @@ $targets |
                     $otherIdentifier
                 }
             } |
-            Group-Object
+            Group-Object)
 
         $invalidGroupCount = $groups |
             Where-Object { $_.Name -eq $mixedIdentifier -or $_.Name -eq $otherIdentifier } |
@@ -114,31 +188,30 @@ $targets |
             return
         }
 
-        $outputSegments = $identifiers |
+        $totalLineCount = Get-Content -Path $_ |
+            Measure-Object -Line |
+            Select-Object -ExpandProperty Lines
+        $totalLineTicker = ConvertTo-Ticker -Count $totalLineCount
+
+        $indentedLineCount = $groups |
+            Measure-Object -Property Count -Sum |
+            Select-Object -ExpandProperty Sum
+        $indentedLineTicker = ConvertTo-Ticker -Count $indentedLineCount
+
+        $outputSegments = @()
+        if (-not $ExcludeTotal) {
+            $outputSegments += @{
+                Object = "$indentedLineTicker/${totalLineTicker}: "
+                ForegroundColor = [System.Console]::ForegroundColor
+            }
+        }
+
+        $outputSegments += $identifiers |
             ForEach-Object {
                 $group = $groups |
                     Where-Object -Property Name -EQ $_
 
-                $count = $group.Count ?? 0
-                $isOther = $_ -eq $otherIdentifier
-
-                $color = [System.Console]::ForegroundColor
-                if ($count -ne 0 -and $isOther) {
-                    $color = [System.ConsoleColor]::Magenta
-                } elseif ($count -ne 0 -and ($groups.Length -gt 1 -or $group.Name -eq $mixedIdentifier)) {
-                    $color = [System.ConsoleColor]::Red
-                } elseif ($count -ne 0 -and $groups.Length -eq 1) {
-                    $color = [System.ConsoleColor]::Green
-                }
-
-                $letter = $_[0]
-                $ticker = '{0:D4}' -f $count
-                $text = -not ($count -eq 0 -and $isOther) ? "$letter$ticker " : [string]::new(' ', 6)
-
-                @{
-                    Object = $text
-                    ForegroundColor = $color
-                }
+                New-GroupSegment -Name $_ -Count ($group.Count ?? 0) -TotalGroups $groups.Length
             }
 
         $outputSegments += @{ Object = ($_ -replace '\\', '/') }
