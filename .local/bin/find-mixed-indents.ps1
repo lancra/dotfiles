@@ -9,7 +9,9 @@ param(
     [Parameter()]
     [int] $Depth = $null,
 
-    [switch] $All
+    [switch] $All,
+
+    [switch] $ExcludeTotal
 )
 
 function Test-Executable {
@@ -159,7 +161,7 @@ $targets |
             return
         }
 
-        $groups = Select-String -Path $_ -Pattern '^\s+' |
+        $groups = @(Select-String -Path $_ -Pattern '^\s+' |
             Select-Object -ExpandProperty Matches |
             Select-Object -ExpandProperty Value |
             ForEach-Object {
@@ -176,7 +178,7 @@ $targets |
                     $otherIdentifier
                 }
             } |
-            Group-Object
+            Group-Object)
 
         $invalidGroupCount = $groups |
             Where-Object { $_.Name -eq $mixedIdentifier -or $_.Name -eq $otherIdentifier } |
@@ -186,7 +188,25 @@ $targets |
             return
         }
 
-        $outputSegments = $identifiers |
+        $totalLineCount = Get-Content -Path $_ |
+            Measure-Object -Line |
+            Select-Object -ExpandProperty Lines
+        $totalLineTicker = ConvertTo-Ticker -Count $totalLineCount
+
+        $indentedLineCount = $groups |
+            Measure-Object -Property Count -Sum |
+            Select-Object -ExpandProperty Sum
+        $indentedLineTicker = ConvertTo-Ticker -Count $indentedLineCount
+
+        $outputSegments = @()
+        if (-not $ExcludeTotal) {
+            $outputSegments += @{
+                Object = "$indentedLineTicker/${totalLineTicker}: "
+                ForegroundColor = [System.Console]::ForegroundColor
+            }
+        }
+
+        $outputSegments += $identifiers |
             ForEach-Object {
                 $group = $groups |
                     Where-Object -Property Name -EQ $_
