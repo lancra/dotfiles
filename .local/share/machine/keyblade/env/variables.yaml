@@ -10,7 +10,6 @@ User:
     - '%USERPROFILE%\.dotnet\tools'
     - '%DEVUSERPROFILE%\go\bin'
     - '%APPDATA%\npm'
-    - '%LOCALAPPDATA%\Pandoc\'
     - '%LOCALAPPDATA%\Programs\MiKTeX\miktex\bin\x64\'
     - '%LOCALAPPDATA%\Programs\Python\Python312\Scripts\'
     - '%LOCALAPPDATA%\Programs\Python\Python312\'
@@ -53,3 +52,4 @@ Machine:
     - '%PROGRAMFILES%\nodejs\'
     - '%PROGRAMFILES%\PuTTY\'
     - '%PROGRAMFILES%\Calibre2\'
+    - '%PROGRAMFILES%\Pandoc\'
