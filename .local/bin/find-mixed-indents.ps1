@@ -74,6 +74,26 @@ function Test-TextFile {
     }
 }
 
+function Test-FileRead {
+    [CmdletBinding()]
+    [OutputType([bool])]
+    param(
+        [Parameter(Mandatory)]
+        [string] $Path
+    )
+    process {
+        $canRead = $true
+        try {
+            [System.IO.File]::OpenRead($Path).Close()
+        }
+        catch {
+            $canRead = $false
+        }
+
+        $canRead
+    }
+}
+
 $spacesIdentifier = 'Spaces'
 $tabsIdentifier = 'Tabs'
 $mixedIdentifier = 'Mixed'
@@ -86,8 +106,11 @@ $targets |
             return
         }
 
-        # Error action is set since some Windows system files can prevent reads and don't need to be checked anyways.
-        $groups = Select-String -Path $_ -Pattern '^\s+' -ErrorAction SilentlyContinue |
+        if (-not (Test-FileRead -Path $_)) {
+            return
+        }
+
+        $groups = Select-String -Path $_ -Pattern '^\s+' |
             Select-Object -ExpandProperty Matches |
             Select-Object -ExpandProperty Value |
             ForEach-Object {
