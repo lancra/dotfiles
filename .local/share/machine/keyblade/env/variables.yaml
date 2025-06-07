@@ -29,7 +29,6 @@ Machine:
     - '%PROGRAMFILES(X86)%\NVIDIA Corporation\PhysX\Common'
     - '%PROGRAMFILES%\NVIDIA Corporation\NVIDIA app\NvDLISR'
     - '%PROGRAMFILES%\Common Files\Oracle\Java\javapath'
-    - '%PROGRAMFILES(X86)%\Common Files\Oracle\Java\javapath'
     - '%PROGRAMFILES(X86)%\Common Files\Oracle\Java\java8path'
     - '%PROGRAMFILES%\gsudo\Current'
     - '%PROGRAMFILES%\Vim\vim91'
