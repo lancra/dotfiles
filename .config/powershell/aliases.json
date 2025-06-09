@@ -90,6 +90,11 @@
     "command": "podman #{:*}",
     "bash": true
   },
+  "pmmr": {
+    "group": "Podman",
+    "command": "podman machine stop && podman machine start",
+    "bash": true
+  },
   "hp": {
     "group": "PowerShell",
     "command": "$env:HOME/.local/bin/get-extended-help.ps1",
