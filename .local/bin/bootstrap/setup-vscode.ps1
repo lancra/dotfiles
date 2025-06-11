@@ -69,7 +69,7 @@ if (-not $linkChecks[$argvSourcePath]) {
         Remove-Item -Path $argvSourcePath | Out-Null
     }
 
-    $symlinkTarget = resolve-relative-path.ps1 -Source $env:HOME/$DefaultConfigurationDirectory -Target $argvTargetPath
+    $symlinkTarget = resolve-relative-path-target.ps1 -Source $env:HOME/$DefaultConfigurationDirectory -Target $argvTargetPath
     New-Item -ItemType SymbolicLink -Path $argvSourcePath -Target $symlinkTarget | Out-Null
 
     Write-SetupOutput "Link established for $argvFileName."
@@ -79,7 +79,7 @@ $vsCodeConfigurationDirectoryPath = "$env:HOME/.config/$TrackedConfigurationDire
 
 if (-not $linkChecks[$keybindingsSourcePath]) {
     $keybindingsTargetPath = "$vsCodeConfigurationDirectoryPath/$keybindingsFileName"
-    $keybindingsSymlinkTarget = resolve-relative-path.ps1 -Source $keybindingsSourcePath -Target $keybindingsTargetPath
+    $keybindingsSymlinkTarget = resolve-relative-path-target.ps1 -Source $keybindingsSourcePath -Target $keybindingsTargetPath
 
     Remove-Item -Path $keybindingsSourcePath | Out-Null
     New-Item -ItemType SymbolicLink -Path $keybindingsSourcePath -Target $keybindingsSymlinkTarget | Out-Null
@@ -89,7 +89,7 @@ if (-not $linkChecks[$keybindingsSourcePath]) {
 
 if (-not $linkChecks[$settingsSourcePath]) {
     $settingsTargetPath = "$vsCodeConfigurationDirectoryPath/$settingsFileName"
-    $settingsSymlinkTarget = resolve-relative-path.ps1 -Source $settingsSourcePath -Target $settingsTargetPath
+    $settingsSymlinkTarget = resolve-relative-path-target.ps1 -Source $settingsSourcePath -Target $settingsTargetPath
 
     Remove-Item -Path $settingsSourcePath | Out-Null
     New-Item -ItemType SymbolicLink -Path $settingsSourcePath -Target $settingsSymlinkTarget | Out-Null

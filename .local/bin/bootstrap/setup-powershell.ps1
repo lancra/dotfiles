@@ -56,8 +56,8 @@ $configPath = "$env:XDG_CONFIG_HOME/powershell"
 $coreConfigProfilePath = "$configPath/core.profile.ps1"
 $windowsConfigProfilePath = "$configPath/windows.profile.ps1"
 
-$coreSymlinkTarget = resolve-relative-path.ps1 -Source $coreDocumentsDirectory -Target $coreConfigProfilePath
-$windowsSymlinkTarget = resolve-relative-path.ps1 -Source $windowsDocumentsDirectory -Target $windowsConfigProfilePath
+$coreSymlinkTarget = resolve-relative-path-target.ps1 -Source $coreDocumentsDirectory -Target $coreConfigProfilePath
+$windowsSymlinkTarget = resolve-relative-path-target.ps1 -Source $windowsDocumentsDirectory -Target $windowsConfigProfilePath
 
 if (-not $linkChecks[$coreDefaultProfileSourcePath]) {
     Remove-Item -Path $coreDefaultProfileSourcePath -ErrorAction SilentlyContinue | Out-Null

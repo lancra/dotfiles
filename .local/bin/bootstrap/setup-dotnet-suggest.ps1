@@ -38,6 +38,6 @@ if (-not $targetExists) {
     }
 }
 
-$symlinkTarget = & resolve-relative-path.ps1 -Source $env:HOME -Target $machinePath
+$symlinkTarget = & resolve-relative-path-target.ps1 -Source $env:HOME -Target $machinePath
 New-Item -ItemType SymbolicLink -Path $sourcePath -Target $symlinkTarget | Out-Null
 Write-SetupOutput "Link established for .NET suggest."
