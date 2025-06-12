@@ -42,7 +42,6 @@ $runArguments = @(
     '--env', "MSSQL_SA_PASSWORD=$msSqlPassword",
     '--publish', "${Port}:$containerPort",
     '--name', $Name,
-    '--hostname', $Name,
     '--detach',
     $Image
 )
