@@ -2,11 +2,9 @@
 [OutputType([string])]
 param(
     [Parameter(Mandatory)]
-    [ValidateScript({-not $_.StartsWith('.')}, ErrorMessage = 'Source must be an absolute path.')]
     [string] $Source,
 
     [Parameter(Mandatory)]
-    [ValidateScript({-not $_.StartsWith('.')}, ErrorMessage = 'Target must be an absolute path.')]
     [string] $Target
 )
 
@@ -15,8 +13,11 @@ if ($null -eq $sourceItem) {
     throw "Unable to find file or directory at $Source."
 }
 
+$absoluteSource = & resolve-relative-path.ps1 -Path $Source
+$absoluteTarget = & resolve-relative-path.ps1 -Path $Target
+
 $isSourceDirectory = $sourceItem.PSIsContainer
-$sourceDirectory = $isSourceDirectory ? $Source : [System.IO.Path]::GetDirectoryName($Source)
+$sourceDirectory = $isSourceDirectory ? $absoluteSource : [System.IO.Path]::GetDirectoryName($absoluteSource)
 
 $sourceUri = $null
 $validSourceUri = [System.Uri]::TryCreate($sourceDirectory, [System.UriKind]::Absolute, [ref] $sourceUri)
@@ -25,7 +26,7 @@ if (-not $validSourceUri) {
 }
 
 $targetUri = $null
-$validTargetUri = [System.Uri]::TryCreate($Target, [System.UriKind]::Absolute, [ref] $targetUri)
+$validTargetUri = [System.Uri]::TryCreate($absoluteTarget, [System.UriKind]::Absolute, [ref] $targetUri)
 if (-not $validTargetUri) {
     throw "Unable to parse a URI from '$Target'."
 }
