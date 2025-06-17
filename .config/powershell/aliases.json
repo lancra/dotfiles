@@ -37,12 +37,12 @@
   },
   "cdr": {
     "group": "FileSystem",
-    "command": "change-directory-repository-root.ps1",
+    "command": "$env:HOME/.local/bin/change-directory-repository-root.ps1",
     "bash": false
   },
   "cdu": {
     "group": "FileSystem",
-    "command": "change-directory-up.ps1",
+    "command": "$env:HOME/.local/bin/change-directory-up.ps1",
     "bash": false
   },
   "cwd": {
