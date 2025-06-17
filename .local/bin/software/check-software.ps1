@@ -1,3 +1,33 @@
+<#
+.SYNOPSIS
+Checks for outdated software and facilitates upgrades if found.
+
+.DESCRIPTION
+Filters the target software exports by provided values, then executes a version
+check for all matching installations, excluding matches with a pinned version
+specified. Any outdated installations found are identified as automated or
+manual for upgrades, and shown to the user along with a confirmation prompt.
+When the prompt is confirmed, each installation is individually upgraded. If the
+Refresh prompt option is selected, the upgrades are performed after a re-check
+on all relevant providers. If any upgrades were performed, the relevant
+providers are exported to machine state along with the environment variables.
+
+.PARAMETER Provider
+The optional software provider to check. If this parameter is not provided, all
+providers are checked.
+
+.PARAMETER Export
+The optional software provider export to check. If this parameter is not
+provided, all provider exports are checked.
+
+.PARAMETER Show
+Specifies that outdated software should be shown only, skipping the user prompt
+for upgrading.
+
+.PARAMETER DryRun
+Specifies to iterate through the software upgrades without executing them.
+#>
+
 using module ./software.psm1
 
 [CmdletBinding(DefaultParameterSetName = 'Provider')]

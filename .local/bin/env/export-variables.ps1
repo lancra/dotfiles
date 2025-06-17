@@ -1,5 +1,25 @@
 #Requires -Modules powershell-yaml
 
+<#
+.SYNOPSIS
+Export environment variables to provided manifest targets.
+
+.DESCRIPTION
+Retrieves user and machine environment variables from the registry, ignoring any
+identified as built-in and any specified in a local ignore file. Using variables
+noted as potential prefixes, the variable value is shortened using the prefix
+variable reference, including the individual filesystem paths contained within
+each PATH variable. The resulting variable specifications are then written to
+either the global or local target manifest. Specifications that are already
+present in the global manifest are placed there, and everything else is placed
+within the local manifest.
+
+.PARAMETER GlobalTarget
+The path to write the target manifest that is shared between multiple machines.
+
+.PARAMETER LocalTarget
+The path to write the target manifest that is specific to the current machine.
+#>
 [CmdletBinding()]
 param (
     [Parameter()]

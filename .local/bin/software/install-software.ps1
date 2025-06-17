@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Installs software installations as specified in a machine manifest.
+
+.DESCRIPTION
+Filters the target software exports by provided values, then retrieves the
+identifiers present in the machine manifest and the software installed on the
+machine for all matching installations. For all installations present in the
+manifest but missing on the machine, the export-specific installation script is
+executed.
+
+.PARAMETER Provider
+The optional software provider to install. If this parameter is not provided,
+all providers are installed.
+
+.PARAMETER DryRun
+Specifies to iterate through the software installs without executing them.
+#>
+
 using module ./software.psm1
 
 [CmdletBinding()]
