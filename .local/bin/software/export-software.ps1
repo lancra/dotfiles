@@ -1,4 +1,25 @@
 #Requires -Modules powershell-yaml
+
+<#
+.SYNOPSIS
+Exports software installation state for global and machine-specific states.
+
+.DESCRIPTION
+Filters the target software exports by provided values, then executes a manifest
+export for all matching installations. Then, iterating through each export, the
+unique installations from all machine manifests are used to determine the
+installation population for each definition collection. Finally, the environment
+variables are exported to their respective manifests.
+
+.PARAMETER Provider
+The optional software provider to export. If this parameter is not provided, all
+providers are exported.
+
+.PARAMETER Export
+The optional software provider export to export. If this parameter is not
+provided, all provider exports are exported.
+#>
+
 using module ./software.psm1
 
 [CmdletBinding(DefaultParameterSetName = 'Provider')]

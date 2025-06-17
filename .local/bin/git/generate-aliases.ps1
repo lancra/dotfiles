@@ -1,3 +1,12 @@
+<#
+.SYNOPSIS
+Generates a Git configuration file for aliases specified in the tracked file.
+
+.DESCRIPTION
+For each element in the JSON configuration file containing extended alias
+definitions, any variable tokens are replaced with the appropriate value. The
+resulting key-value is written to the Git configuration file.
+#>
 [CmdletBinding()]
 param()
 

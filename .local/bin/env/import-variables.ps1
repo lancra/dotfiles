@@ -1,3 +1,26 @@
+<#
+.SYNOPSIS
+Imports environment variables into the current machine from provided manifests.
+
+.DESCRIPTION
+The current environment variables are first exported to temporary manifest
+files. Those are then compared to the tracked manifests, looking for differences
+in variable presence and value. If differences are found, the tracked manifests
+are written to the machine.
+
+.PARAMETER GlobalManifest
+The path of the target manifest that is shared between multiple machines.
+
+.PARAMETER LocalManifest
+The path of the target manifest that is specific to the current machine.
+
+.PARAMETER DryRun
+Specifies that the changes to be made are only output from the script, leaving
+the machine state unchanged.
+
+.PARAMETER Force
+Specifies that the import should be completed without prompting the user.
+#>
 [CmdletBinding()]
 param (
     [Parameter()]
@@ -50,66 +73,66 @@ $manifestMergeScriptPath = "$env:HOME/.local/bin/env/merge-environment-variable-
 $temporaryDirectory = "$env:TEMP/variable-import-$(New-Guid)"
 New-Item -ItemType Directory -Path $temporaryDirectory -Force | Out-Null
 
+function Select-Variables {
+    [CmdletBinding()]
+    [OutputType([string[]])]
+    param(
+        [Parameter(Mandatory)]
+        [string] $Path,
+
+        [Parameter(Mandatory)]
+        [string] $Target
+    )
+    process {
+        Get-Content -Path $Path |
+            ConvertFrom-Yaml |
+            Select-Object -ExpandProperty $Target |
+            Select-Object -ExpandProperty Keys
+    }
+}
+
+function New-ComparisonResult {
+    [CmdletBinding()]
+    [OutputType([ComparisonResult])]
+    param(
+        [Parameter(Mandatory)]
+        [bool] $HasDifferences,
+
+        [Parameter(Mandatory)]
+        [string] $SourcePath,
+
+        [Parameter(Mandatory)]
+        [string] $TargetPath
+    )
+    process {
+        $userTarget = 'User'
+        $sourceUserVariables = @(Select-Variables -Path $SourcePath -Target $userTarget)
+        $targetUserVariables = @(Select-Variables -Path $TargetPath -Target $userTarget)
+        $userVariables = ($sourceUserVariables + $targetUserVariables) |
+            Select-Object -Unique |
+            Sort-Object
+        $userComparisonResult = [TargetComparisonResult]::new([System.EnvironmentVariableTarget]$userTarget, $userVariables)
+
+        $machineTarget = 'Machine'
+        $sourceMachineVariables = @(Select-Variables -Path $SourcePath -Target $machineTarget)
+        $targetMachineVariables = @(Select-Variables -Path $TargetPath -Target $machineTarget)
+        $machineVariables = ($sourceMachineVariables + $targetMachineVariables) |
+            Select-Object -Unique |
+            Sort-Object
+        $machineComparisonResult = [TargetComparisonResult]::new(
+            [System.EnvironmentVariableTarget]$machineTarget,
+            $machineVariables)
+
+        [ComparisonResult]::new($HasDifferences, @($userComparisonResult, $machineComparisonResult))
+    }
+}
 function Compare-EnvironmentVariable {
     [CmdletBinding()]
     [OutputType([ComparisonResult])]
     param (
         [Parameter(Mandatory)]
-        [string]$Source
+        [string] $Source
     )
-    begin {
-        function New-ComparisonResult {
-            [CmdletBinding()]
-            [OutputType([ComparisonResult])]
-            param(
-                [Parameter(Mandatory)]
-                [bool] $HasDifferences,
-                [Parameter(Mandatory)]
-                [string] $SourcePath,
-                [Parameter(Mandatory)]
-                [string] $TargetPath
-            )
-            begin {
-                function Select-Variables {
-                    [CmdletBinding()]
-                    [OutputType([string[]])]
-                    param(
-                        [Parameter(Mandatory)]
-                        [string] $Path,
-                        [Parameter(Mandatory)]
-                        [string] $Target
-                    )
-                    process {
-                        Get-Content -Path $Path |
-                            ConvertFrom-Yaml |
-                            Select-Object -ExpandProperty $Target |
-                            Select-Object -ExpandProperty Keys
-                    }
-                }
-            }
-            process {
-                $userTarget = 'User'
-                $sourceUserVariables = @(Select-Variables -Path $SourcePath -Target $userTarget)
-                $targetUserVariables = @(Select-Variables -Path $TargetPath -Target $userTarget)
-                $userVariables = ($sourceUserVariables + $targetUserVariables) |
-                    Select-Object -Unique |
-                    Sort-Object
-                $userComparisonResult = [TargetComparisonResult]::new([System.EnvironmentVariableTarget]$userTarget, $userVariables)
-
-                $machineTarget = 'Machine'
-                $sourceMachineVariables = @(Select-Variables -Path $SourcePath -Target $machineTarget)
-                $targetMachineVariables = @(Select-Variables -Path $TargetPath -Target $machineTarget)
-                $machineVariables = ($sourceMachineVariables + $targetMachineVariables) |
-                    Select-Object -Unique |
-                    Sort-Object
-                $machineComparisonResult = [TargetComparisonResult]::new(
-                    [System.EnvironmentVariableTarget]$machineTarget,
-                    $machineVariables)
-
-                [ComparisonResult]::new($HasDifferences, @($userComparisonResult, $machineComparisonResult))
-            }
-        }
-    }
     process {
         Write-Host 'Comparing configured environment variables with the registry.'
 

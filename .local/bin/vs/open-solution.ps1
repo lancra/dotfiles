@@ -1,3 +1,17 @@
+<#
+.SYNOPSIS
+Identifies a .NET solution in the provodied path and opens it in the default
+editor.
+
+.DESCRIPTION
+Searches for solution files in the provided path, for both the standard format
+and the newer SLNX format. If multiple are found, the latter format is preferred
+first, then the first identified file is used. The resulting file is finally
+opened in the default editor by file type.
+
+.PARAMETER Path
+The base path to use for the solution file search.
+#>
 [CmdletBinding()]
 param(
     [Parameter()]
