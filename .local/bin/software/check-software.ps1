@@ -7,8 +7,8 @@ param (
         $_ -in (& "$env:HOME/.local/bin/software/get-provider-ids.ps1")},
         ErrorMessage = 'Provider not found.')]
     [ArgumentCompleter({
-        param($cmd, $param, $wordToComplete)
-        if ($param -eq 'Provider') {
+        param($commandName, $parameterName, $wordToComplete)
+        if ($parameterName -eq 'Provider') {
             $validProviders = (& "$env:HOME/.local/bin/software/get-provider-ids.ps1")
             $validProviders -like "$wordToComplete*"
         }
@@ -20,8 +20,8 @@ param (
         $_ -in (& "$env:HOME/.local/bin/software/get-export-ids.ps1")},
         ErrorMessage = 'Export not found.')]
     [ArgumentCompleter({
-        param($cmd, $param, $wordToComplete)
-        if ($param -eq 'Export') {
+        param($commandName, $parameterName, $wordToComplete)
+        if ($parameterName -eq 'Export') {
             $validExports = (& "$env:HOME/.local/bin/software/get-export-ids.ps1")
             $validExports -like "$wordToComplete*"
         }

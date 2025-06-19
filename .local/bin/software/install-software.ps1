@@ -7,8 +7,8 @@ param(
         $_ -in (& "$env:HOME/.local/bin/software/get-provider-ids.ps1")},
         ErrorMessage = 'Provider not found.')]
     [ArgumentCompleter({
-        param($cmd, $param, $wordToComplete)
-        if ($param -eq 'Provider') {
+        param($commandName, $parameterName, $wordToComplete)
+        if ($parameterName -eq 'Provider') {
             $validProviders = (& "$env:HOME/.local/bin/software/get-provider-ids.ps1")
             $validProviders -like "$wordToComplete*"
         }
