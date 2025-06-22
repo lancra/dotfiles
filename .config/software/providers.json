@@ -62,7 +62,7 @@
         {
           "id": "modules.system",
           "name": "system-modules",
-          "scope": "local",
+          "scope": "global",
           "versioned": false
         },
         {
