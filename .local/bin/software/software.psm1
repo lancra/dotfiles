@@ -86,28 +86,20 @@ class InstallationProvider {
     }
 }
 
-enum InstallationExportScope {
-    Local
-    Global
-}
-
 class InstallationExport {
     [InstallationExportId] $Id
     [string] $Name
-    [InstallationExportScope] $Scope
     [bool] $Versioned
     [bool] $Upsert
 
     InstallationExport(
         [InstallationExportId] $id,
         [string] $name,
-        [InstallationExportScope] $scope,
         [bool] $versioned,
         [bool] $upsert
     ) {
         $this.Id = $id
         $this.Name = $name ? $name : $id.Export
-        $this.Scope = $scope
         $this.Versioned = $versioned
         $this.Upsert = $upsert
     }

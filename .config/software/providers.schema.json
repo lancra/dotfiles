@@ -17,14 +17,6 @@
           "description": "The name of the provider export used for script references.",
           "type": "string"
         },
-        "scope": {
-          "description": "The scope at which the software is defined.",
-          "type": "string",
-          "enum": [
-            "local",
-            "global"
-          ]
-        },
         "versioned": {
           "description": "The value that determines whether the software is automatically updated.",
           "type": "boolean"
@@ -36,7 +28,6 @@
       },
       "required": [
         "id",
-        "scope",
         "versioned"
       ]
     },

@@ -64,48 +64,17 @@ begin {
             [Installation[]] $InMemoryInstallations
         )
         process {
-            if ($Export.Scope -eq [InstallationExportScope]::Global) {
-                Get-ChildItem -Path "$env:XDG_DATA_HOME/machine/*/software" -Filter 'installations.csv' -Depth 1 |
-                    ForEach-Object {
-                        Get-Content -Path $_ |
-                            ConvertFrom-Csv |
-                            ForEach-Object {
-                                $exportId = [InstallationExportId]::new($_.Export, $_.Provider)
-                                [InstallationId]::new($_.Id, $exportId)
-                            }
-                    } |
-                    Where-Object { $_.Provider -eq $Export.Id.Provider -and $_.Export -eq $Export.Id.Export } |
-                    Sort-Object -Property @{ Expression = { $_.ToString() } } -Unique
-            } else {
-                $InMemoryInstallations |
-                    Where-Object { $_.Id.Provider -eq $Export.Id.Provider -and $_.Id.Export -eq $Export.Id.Export } |
-                    ForEach-Object {
-                        # Using Select-Object for the Id property results in object reference exceptions on equality comparison, so
-                        # this must instead redefine the property as a new class instance.
-                        [InstallationId]::new($_.Id.Value, [InstallationExportId]::new($_.Id.Export, $_.Id.Provider))
-                    }
-            }
-        }
-    }
-
-    function Get-DefinitionDirectory {
-        [CmdletBinding()]
-        [OutputType([string])]
-        param(
-            [Parameter(Mandatory)]
-            [InstallationExport] $Export
-        )
-        process {
-            if ($Export.Scope -eq [InstallationExportScope]::Global) {
-                $manifestGlobalDirectory = "$env:XDG_DATA_HOME/software"
-                New-Item -ItemType Directory -Path $manifestGlobalDirectory -Force | Out-Null
-                $manifestGlobalDirectory
-            } else {
-                $machineDataDirectory = & $env:HOME/.local/bin/env/get-or-add-machine-directory.ps1 -Data
-                $manifestLocalDirectory = "$machineDataDirectory/software"
-                New-Item -ItemType Directory -Path $manifestLocalDirectory -Force | Out-Null
-                $manifestLocalDirectory
-            }
+            Get-ChildItem -Path "$env:XDG_DATA_HOME/machine/*/software" -Filter 'installations.csv' -Depth 1 |
+                ForEach-Object {
+                    Get-Content -Path $_ |
+                        ConvertFrom-Csv |
+                        ForEach-Object {
+                            $exportId = [InstallationExportId]::new($_.Export, $_.Provider)
+                            [InstallationId]::new($_.Id, $exportId)
+                        }
+                } |
+                Where-Object { $_.Provider -eq $Export.Id.Provider -and $_.Export -eq $Export.Id.Export } |
+                Sort-Object -Property @{ Expression = { $_.ToString() } } -Unique
         }
     }
 
@@ -122,7 +91,9 @@ begin {
             [PSObject[]] $Definitions
         )
         process {
-            $definitionDirectory = Get-DefinitionDirectory -Export $Export
+            $definitionDirectory = "$env:XDG_DATA_HOME/software"
+            New-Item -ItemType Directory -Path $definitionDirectory -Force | Out-Null
+
             $definitionPath = "$definitionDirectory/$($Export.Id.ToString()).yaml"
 
             $persistedDefinitions = @()

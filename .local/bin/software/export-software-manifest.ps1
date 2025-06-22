@@ -44,7 +44,6 @@ $Exports |
                 @{ Name = 'Id'; Expression = { $_.Id.Value }}
             ) |
             Where-Object {
-                $targetExport.Scope -eq [InstallationExportScope]::Global -and
                 $_.Provider -eq $targetExport.Id.Provider -and
                 $_.Export -eq $targetExport.Id.Export
             }

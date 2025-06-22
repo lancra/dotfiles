@@ -6,7 +6,6 @@
       "exports": [
         {
           "id": "crates",
-          "scope": "global",
           "versioned": true,
           "upsert": true
         }
@@ -17,7 +16,6 @@
       "exports": [
         {
           "id": "tools",
-          "scope": "global",
           "versioned": true,
           "upsert": false
         }
@@ -28,7 +26,6 @@
       "exports": [
         {
           "id": "packages",
-          "scope": "global",
           "versioned": true,
           "upsert": true
         }
@@ -39,7 +36,6 @@
       "exports": [
         {
           "id": "packages",
-          "scope": "global",
           "versioned": true,
           "upsert": false
         }
@@ -50,7 +46,6 @@
       "exports": [
         {
           "id": "packages",
-          "scope": "global",
           "versioned": true,
           "upsert": false
         }
@@ -62,13 +57,11 @@
         {
           "id": "modules.system",
           "name": "system-modules",
-          "scope": "global",
           "versioned": false
         },
         {
           "id": "modules.user",
           "name": "user-modules",
-          "scope": "global",
           "versioned": true,
           "upsert": false
         }
@@ -79,12 +72,10 @@
       "exports": [
         {
           "id": "components",
-          "scope": "global",
           "versioned": false
         },
         {
           "id": "toolchains",
-          "scope": "global",
           "versioned": true,
           "upsert": true
         }
@@ -95,18 +86,15 @@
       "exports": [
         {
           "id": "packages",
-          "scope": "global",
           "versioned": true,
           "upsert": false
         },
         {
           "id": "pins",
-          "scope": "global",
           "versioned": false
         },
         {
           "id": "sources",
-          "scope": "global",
           "versioned": false
         }
       ]

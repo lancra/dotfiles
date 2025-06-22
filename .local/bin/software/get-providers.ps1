@@ -14,8 +14,7 @@ $providers = Get-Content -Path "$env:XDG_CONFIG_HOME/software/providers.json" |
         $exports = $_.exports |
             ForEach-Object {
                 $id = [InstallationExportId]::new($_.id, $providerId)
-                $scope = [InstallationExportScope]$_.scope
-                [InstallationExport]::new($id, $_.name, $scope, $_.versioned, $_.upsert)
+                [InstallationExport]::new($id, $_.name, $_.versioned, $_.upsert)
             }
 
         [InstallationProvider]::new($providerId, $exports)
