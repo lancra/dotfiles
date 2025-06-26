@@ -33,6 +33,10 @@ class InstallationId {
     [string] ToString() {
         return "$($this.Provider).$($this.Export).$($this.Value)"
     }
+
+    [int] GetHashCode() {
+        return $this.ToString().GetHashCode()
+    }
 }
 
 class Installation {
@@ -102,5 +106,15 @@ class InstallationExport {
         $this.Name = $name ? $name : $id.Export
         $this.Versioned = $versioned
         $this.Upsert = $upsert
+    }
+}
+
+class InstallationLocation {
+    [InstallationId] $Id
+    [string[]] $Machines
+
+    InstallationLocation([InstallationId] $id, [string[]] $machines) {
+        $this.Id = $id
+        $this.Machines = $machines
     }
 }
