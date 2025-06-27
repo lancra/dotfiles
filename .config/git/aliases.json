@@ -210,6 +210,10 @@
       "title": "Merge Tool",
       "body": "mergetool"
     },
+    "n": {
+      "title": "Notes",
+      "body": "notes"
+    },
     "pl": {
       "title": "Pull",
       "body": "pull"
