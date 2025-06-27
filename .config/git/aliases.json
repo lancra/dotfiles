@@ -162,6 +162,14 @@
       "title": "Fetch Default",
       "body": "!git fetch origin ${1-main}:${1-main} #"
     },
+    "fp": {
+      "title": "Format Patch",
+      "body": "format-patch"
+    },
+    "fpl": {
+      "title": "Format Patch Latest",
+      "body": "format-patch -1"
+    },
     "gone": {
       "title": "Gone",
       "body": "!git brg | xargs -r git branch -D"
