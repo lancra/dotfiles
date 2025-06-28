@@ -126,6 +126,12 @@ powershell,modules.user,Profiler
 powershell,modules.user,PSDepend
 powershell,modules.user,PSScriptAnalyzer
 powershell,modules.user,PSToml
+rust,components,cargo-x86_64-pc-windows-msvc
+rust,components,clippy-x86_64-pc-windows-msvc
+rust,components,rust-docs-x86_64-pc-windows-msvc
+rust,components,rust-std-x86_64-pc-windows-msvc
+rust,components,rustc-x86_64-pc-windows-msvc
+rust,components,rustfmt-x86_64-pc-windows-msvc
 rust,toolchains,stable-x86_64-pc-windows-msvc
 winget,packages,7zip.7zip@winget
 winget,packages,AntibodySoftware.WizTree@winget
