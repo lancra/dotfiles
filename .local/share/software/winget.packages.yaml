@@ -146,6 +146,10 @@
   DisplayName: InnoSetup
   Category: Programming
   Tracking: Full
+- Id: KDE.digiKam@winget
+  DisplayName: digiKam
+  Category: Utility
+  Tracking: Full
 - Id: KDE.KDiff3@winget
   DisplayName: KDiff3
   Category: Programming

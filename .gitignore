@@ -65,6 +65,9 @@
 # bat
 !/AppData/Roaming/bat
 
+# digiKam
+/.local/share/digikam
+
 # Docker
 /.docker/**
 !/.docker/config.json

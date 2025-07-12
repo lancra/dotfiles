@@ -188,6 +188,7 @@ winget,packages,JGraph.Draw@winget
 winget,packages,JohnMacFarlane.Pandoc@winget
 winget,packages,jqlang.jq@winget
 winget,packages,JRSoftware.InnoSetup@winget
+winget,packages,KDE.digiKam@winget
 winget,packages,KDE.KDiff3@winget
 winget,packages,KirillOsenkov.MSBuildStructuredLogViewer@winget
 winget,packages,koalaman.shellcheck@winget
