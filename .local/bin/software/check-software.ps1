@@ -82,7 +82,7 @@ begin {
                 ForEach-Object {
                     $exportId = [InstallationExportId]::new($_.Export, $_.Provider)
                     $id = [InstallationId]::new($_.Id, $exportId)
-                    $version = $_.Version -ne '' ? [System.Management.Automation.SemanticVersion]$_.Version : $null
+                    $version = -not [string]::IsNullOrEmpty($_.Version) ? [InstallationVersion]::new($_.Version) : $null
                     [InstallationPin]::new($id, $version)
                 }
         }
@@ -140,7 +140,7 @@ begin {
                     $matchingPin = $pins |
                         Where-Object { $_.Id -eq $upgrade.Id }
                     if ($null -ne $matchingPin) {
-                        $upgradeVersion = [System.Management.Automation.SemanticVersion]$upgrade.Available
+                        $upgradeVersion = [InstallationVersion]::new($upgrade.Available)
                         if ($null -eq $matchingPin.Version -or $matchingPin.Version -eq $upgradeVersion) {
                             return
                         }
