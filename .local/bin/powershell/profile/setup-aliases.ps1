@@ -13,4 +13,4 @@ Get-Content -Path "$env:XDG_CONFIG_HOME/powershell/aliases.json" |
     }
 
 # Remove built-in aliases
-Remove-Alias -Name sort -Force
+Remove-Alias -Name sort -Force -ErrorAction SilentlyContinue
