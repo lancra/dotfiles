@@ -30,6 +30,11 @@
     "command": "$env:HOME/.local/bin/env/import-variables.ps1",
     "bash": false
   },
+  "rev": {
+    "group": "Environment",
+    "command": "$env:HOME/.local/bin/env/remove-variable.ps1",
+    "bash": false
+  },
   "riev": {
     "group": "Environment",
     "command": "git restore */env/variables.yaml && iev -Force",
