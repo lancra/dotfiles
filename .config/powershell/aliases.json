@@ -110,6 +110,16 @@
     "command": "$env:HOME/.local/bin/open-online-help.ps1",
     "bash": false
   },
+  "ml": {
+    "group": "Programming",
+    "command": "podman run --platform 'linux/amd64' --rm --volume \"${PWD}:/tmp/lint:rw\" 'oxsecurity/megalinter-dotnet:v8'",
+    "bash": true
+  },
+  "mla": {
+    "group": "Programming",
+    "command": "podman run --platform 'linux/amd64' --rm --volume \"${PWD}:/tmp/lint:rw\" --env 'APPLY_FIXES=all' 'oxsecurity/megalinter-dotnet:v8'",
+    "bash": true
+  },
   "swc": {
     "group": "Software",
     "command": "$env:HOME/.local/bin/software/check-software.ps1",
