@@ -202,16 +202,8 @@
   DisplayName: SQL Server 2019 CLR Types
   Category: Programming
   Tracking: None
-- Id: Microsoft.DotNet.DesktopRuntime.6@winget
-  DisplayName: .NET 6 Desktop Runtime
-  Category: Programming
-  Tracking: None
 - Id: Microsoft.DotNet.DesktopRuntime.8@winget
   DisplayName: .NET 8 Desktop Runtime
-  Category: Programming
-  Tracking: None
-- Id: Microsoft.DotNet.Runtime.7@winget
-  DisplayName: .NET 7 Runtime
   Category: Programming
   Tracking: None
 - Id: Microsoft.DotNet.SDK.8@winget
