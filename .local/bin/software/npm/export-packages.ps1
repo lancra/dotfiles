@@ -5,7 +5,7 @@ param()
 
 $exportId = & "$env:HOME/.local/bin/software/get-export-id-from-path.ps1"
 
-$packages = (& npm list --location=global --json |
+$packages = (npm list --location=global --json |
     & jq --raw-output '.dependencies | keys[]' |
     ForEach-Object -Parallel {
         $homepage = & npm view --json $_ |
