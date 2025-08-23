@@ -8,8 +8,9 @@ $exportId = & "$env:HOME/.local/bin/software/get-export-id-from-path.ps1"
 $packages = (npm list --location=global --json |
     & jq --raw-output '.dependencies | keys[]' |
     ForEach-Object -Parallel {
-        $homepage = & npm view --json $_ |
-            & jq --raw-output '.homepage'
+        $homepage = npm view --json $_ |
+            ConvertFrom-Json |
+            Select-Object -ExpandProperty 'homepage'
 
         @{
             Id = $_
