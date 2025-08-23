@@ -122,6 +122,10 @@
   DisplayName: Graphviz
   Category: Programming
   Tracking: Full
+- Id: Gyan.FFmpeg@winget
+  DisplayName: FFmpeg
+  Category: Utility
+  Tracking: Full
 - Id: HandBrake.HandBrake@winget
   DisplayName: HandBrake
   Category: Video
