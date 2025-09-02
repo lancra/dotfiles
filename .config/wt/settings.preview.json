@@ -267,7 +267,6 @@
       "yellow": "#F9E2AF"
     }
   ],
-  "startOnUserLogin": true,
   "theme": "Catppuccin Mocha",
   "themes": [
     {
