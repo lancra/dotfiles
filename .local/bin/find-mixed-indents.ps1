@@ -121,7 +121,8 @@ function Test-FileRead {
     process {
         $canRead = $true
         try {
-            [System.IO.File]::OpenRead($Path).Close()
+            $absolutePath = Resolve-Path -Path $Path
+            [System.IO.File]::OpenRead($absolutePath).Close()
         }
         catch {
             $canRead = $false
