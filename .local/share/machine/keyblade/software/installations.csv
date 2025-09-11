@@ -206,6 +206,7 @@ winget,packages,Microsoft.CLRTypesSQLServer.2019@winget
 winget,packages,Microsoft.DotNet.DesktopRuntime.8@winget
 winget,packages,Microsoft.DotNet.SDK.8@winget
 winget,packages,Microsoft.DotNet.SDK.9@winget
+winget,packages,Microsoft.DotNet.SDK.Preview@winget
 winget,packages,Microsoft.DotNet.UninstallTool@winget
 winget,packages,Microsoft.Edge@winget
 winget,packages,Microsoft.MouseWithoutBorders@winget

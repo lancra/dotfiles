@@ -218,6 +218,10 @@
   DisplayName: .NET 9 SDK
   Category: Programming
   Tracking: Partial
+- Id: Microsoft.DotNet.SDK.Preview@winget
+  DisplayName: .NET Preview SDK
+  Category: Programming
+  Tracking: Partial
 - Id: Microsoft.DotNet.UninstallTool@winget
   DisplayName: .NET Uninstall Tool
   Category: Programming
