@@ -59,6 +59,7 @@
     "editor.defaultFormatter": "redhat.vscode-xml",
     "editor.formatOnSave": true
   },
+  "chat.disableAIFeatures": true,
   "colorize.enable_search_variables": false,
   "colorize.languages": [
     "css",
