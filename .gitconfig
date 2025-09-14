@@ -42,6 +42,11 @@
 [mergetool "meld"]
 	cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
 	useAutoMerge = true
+[notes]
+	rewriteRef = refs/notes/commits
+[notes "rewrite"]
+	amend = true
+	rebase = true
 [push]
 	autoSetupRemote = true
 	default = current
