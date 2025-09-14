@@ -10,3 +10,6 @@
 
 # Output file paths as hyperlinks.
 --hyperlink-format=default
+
+# Ignore Git directories.
+--glob=!.git
