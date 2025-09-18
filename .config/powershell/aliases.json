@@ -75,6 +75,16 @@
     "command": "$env:HOME/.local/bin/git/generate-aliases.ps1",
     "bash": false
   },
+  "gpnf": {
+    "group": "Git",
+    "command": "$env:HOME/.local/bin/git/prune-orphan-notes.ps1",
+    "bash": false
+  },
+  "gpnn": {
+    "group": "Git",
+    "command": "& $env:HOME/.local/bin/git/prune-orphan-notes.ps1 -Check",
+    "bash": true
+  },
   "ghc": {
     "group": "GitHub",
     "command": "$env:HOME/.local/bin/github/open-commit.ps1",
