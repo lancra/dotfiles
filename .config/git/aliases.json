@@ -226,6 +226,10 @@
       "title": "Push Force",
       "body": "push --force-with-lease"
     },
+    "psn": {
+      "title": "Push Notes",
+      "body": "push origin refs/notes/*"
+    },
     "rb": {
       "title": "Rebase",
       "body": "rebase"
