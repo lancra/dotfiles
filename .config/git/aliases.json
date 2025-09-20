@@ -222,9 +222,17 @@
       "title": "Push",
       "body": "push"
     },
+    "psa": {
+      "title": "Push All",
+      "body": "push --all"
+    },
     "psf": {
       "title": "Push Force",
       "body": "push --force-with-lease"
+    },
+    "psfa": {
+      "title": "Push Force All",
+      "body": "push --force-with-lease --all"
     },
     "psn": {
       "title": "Push Notes",
