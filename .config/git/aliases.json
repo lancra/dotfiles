@@ -3,7 +3,7 @@
   "variables": {
     "branch_format": "--format='%(color:blue)%(committerdate:format-local:%Y-%m-%d %H:%M:%S) %(color:green)%(refname:short) %(color:red)%(committeremail)'",
     "branch_upstream_format": "--format='  %(color:red)%(refname:lstrip=2)%(color:reset)%(if)%(symref)%(then) -> %(symref:short)%(end)'",
-    "log_format": "--format='%C(yellow)%h %C(blue bold)%cd%C(auto)%(decorate) %s' --date 'format-local:%Y-%m-%d %H:%M:%S'"
+    "log_format": "--format='%C(yellow)%h %C(blue bold)%cd%C(auto)%(decorate) %s' --date='format-local:%Y-%m-%d %H:%M:%S'"
   },
   "definitions": {
     "a": {
@@ -213,6 +213,10 @@
     "n": {
       "title": "Notes",
       "body": "notes"
+    },
+    "nl": {
+      "title": "Notes Log",
+      "body": "![ \\\"$(git notes)\\\" = \\\"\\\" ] || git notes | cut --delimiter=' ' --fields=2 | xargs git show --no-patch __log_format__ #"
     },
     "pl": {
       "title": "Pull",
