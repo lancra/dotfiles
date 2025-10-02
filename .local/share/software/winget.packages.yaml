@@ -198,10 +198,6 @@
   DisplayName: Azure CLI
   Category: Programming
   Tracking: Full
-- Id: Microsoft.AzureDataStudio@winget
-  DisplayName: Azure Data Studio
-  Category: Programming
-  Tracking: Full
 - Id: Microsoft.CLRTypesSQLServer.2019@winget
   DisplayName: SQL Server 2019 CLR Types
   Category: Programming
