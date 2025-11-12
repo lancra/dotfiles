@@ -178,6 +178,7 @@ foreach ($snippet in $Snippets.Values) {
     [void]$document.AppendChild($codeSnippetsElement)
 
     $codeSnippetElement = $document.CreateElement('CodeSnippet', $visualStudioNamespace)
+    $codeSnippetElement.SetAttribute('Format', '1.0.0')
     [void]$codeSnippetsElement.AppendChild($codeSnippetElement)
 
     $headerElement = $document.CreateElement('Header', $visualStudioNamespace)
