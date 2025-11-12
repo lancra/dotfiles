@@ -210,16 +210,16 @@
   DisplayName: .NET 8 Desktop Runtime
   Category: Programming
   Tracking: None
+- Id: Microsoft.DotNet.SDK.10@winget
+  DisplayName: .NET 10 SDK
+  Category: Programming
+  Tracking: Partial
 - Id: Microsoft.DotNet.SDK.8@winget
   DisplayName: .NET 8 SDK
   Category: Programming
   Tracking: Partial
 - Id: Microsoft.DotNet.SDK.9@winget
   DisplayName: .NET 9 SDK
-  Category: Programming
-  Tracking: Partial
-- Id: Microsoft.DotNet.SDK.Preview@winget
-  DisplayName: .NET Preview SDK
   Category: Programming
   Tracking: Partial
 - Id: Microsoft.DotNet.UninstallTool@winget
