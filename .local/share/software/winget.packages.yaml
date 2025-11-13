@@ -322,6 +322,10 @@
   DisplayName: Visual Studio 2022
   Category: Programming
   Tracking: Full
+- Id: Microsoft.VisualStudio.Community@winget
+  DisplayName: Visual Studio
+  Category: Programming
+  Tracking: Full
 - Id: Microsoft.VisualStudioCode@winget
   DisplayName: Visual Studio Code
   Category: Programming
