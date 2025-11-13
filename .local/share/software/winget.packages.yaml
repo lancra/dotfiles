@@ -238,6 +238,10 @@
   DisplayName: Microsoft ODBC Driver 17 for SQL Server
   Category: Programming
   Tracking: Full
+- Id: Microsoft.msodbcsql.18@winget
+  DisplayName: Microsoft ODBC Driver 18 for SQL Server
+  Category: Programming
+  Tracking: Full
 - Id: Microsoft.NuGet@winget
   DisplayName: NuGet
   Category: Programming
