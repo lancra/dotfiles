@@ -216,6 +216,18 @@
         "hidden": false,
         "name": "Podman Root",
         "source": "Microsoft.WSL"
+      },
+      {
+        "guid": "{2a7a0855-d43a-5ec9-b02a-9f62c9937a3e}",
+        "hidden": true,
+        "name": "Developer Command Prompt for VS 18",
+        "source": "Windows.Terminal.VisualStudio"
+      },
+      {
+        "guid": "{f143c1df-6979-5d79-9ae4-9acfed145c73}",
+        "hidden": true,
+        "name": "Developer PowerShell for VS 18",
+        "source": "Windows.Terminal.VisualStudio"
       }
     ]
   },
