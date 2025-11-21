@@ -1,5 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/powershell/aliases.schema.json",
+  "nugetp": {
+    "group": ".NET",
+    "command": "$env:HOME/.local/bin/get-latest-nuget-package.ps1",
+    "bash": false
+  },
   "c": {
     "group": "Application",
     "command": "cargo",
