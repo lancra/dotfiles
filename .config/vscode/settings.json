@@ -51,6 +51,9 @@
     ],
     "editor.tabSize": 4
   },
+  "[sql]": {
+    "editor.tabSize": 4
+  },
   "[svelte]": {
     "editor.defaultFormatter": "svelte.svelte-vscode",
     "editor.formatOnSave": true
