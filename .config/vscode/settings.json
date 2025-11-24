@@ -176,18 +176,18 @@
   "todohighlight.keywords": [
     {
       "text": "TODO:",
-      "color": "white",
-      "backgroundColor": "blue"
+      "color": "black",
+      "backgroundColor": "#90DBF4"
     },
     {
       "text": "FIXME:",
-      "color": "white",
-      "backgroundColor": "red"
+      "color": "black",
+      "backgroundColor": "#FFCFD2"
     },
     {
       "text": "HACK:",
       "color": "black",
-      "backgroundColor": "yellow"
+      "backgroundColor": "#FBF8CC"
     }
   ],
   "window.titleBarStyle": "custom",
