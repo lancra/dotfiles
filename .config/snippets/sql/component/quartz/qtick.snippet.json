@@ -1,0 +1,6 @@
+{
+  "title": "Convert Quartz.NET Ticks",
+  "description": "Converts Quartz.NET ticks to DateTime values.",
+  "scope": "sql",
+  "body": "CAST(${TM_SELECTED_TEXT:${1:column}} / 864000000000.0 - 693595.0 AS DATETIME)$0"
+}
