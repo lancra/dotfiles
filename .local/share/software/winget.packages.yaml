@@ -50,6 +50,10 @@
   DisplayName: Ubuntu
   Category: Operating System
   Tracking: Full
+- Id: CoreyButler.NVMforWindows@winget
+  DisplayName: Node Version Manager for Windows
+  Category: Programming
+  Tracking: Full
 - Id: dandavison.delta@winget
   DisplayName: delta
   Category: Programming

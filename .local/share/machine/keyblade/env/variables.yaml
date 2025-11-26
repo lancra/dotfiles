@@ -1,4 +1,6 @@
 User:
+  NVM_HOME: '%LOCALAPPDATA%\nvm'
+  NVM_SYMLINK: 'C:\nvm4w\nodejs'
   PATH:
     - '%LOCALAPPDATA%\Microsoft\WinGet\Links'
     - '%LOCALAPPDATA%\Programs\nu\bin\'
@@ -10,6 +12,8 @@ User:
     - '%USERPROFILE%\.dotnet\tools'
     - '%DEVUSERPROFILE%\go\bin'
     - '%APPDATA%\npm'
+    - '%LOCALAPPDATA%\nvm'
+    - 'C:\nvm4w\nodejs'
     - '%LOCALAPPDATA%\Programs\MiKTeX\miktex\bin\x64\'
     - '%LOCALAPPDATA%\Programs\Python\Python312\Scripts\'
     - '%LOCALAPPDATA%\Programs\Python\Python312\'

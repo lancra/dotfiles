@@ -164,6 +164,7 @@ winget,packages,Bitwarden.CLI@winget
 winget,packages,BurntSushi.ripgrep.MSVC@winget
 winget,packages,calibre.calibre@winget
 winget,packages,Canonical.Ubuntu@winget
+winget,packages,CoreyButler.NVMforWindows@winget
 winget,packages,dandavison.delta@winget
 winget,packages,DigitalOcean.Doctl@winget
 winget,packages,direnv.direnv@winget
