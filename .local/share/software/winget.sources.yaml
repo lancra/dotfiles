@@ -1,3 +1,7 @@
+- Id: Microsoft.Winget.Fonts.Source_8wekyb3d8bbwe
+  Name: winget-font
+  Url: https://cdn.winget.microsoft.com/fonts
+  Type: Microsoft.PreIndexed.Package
 - Id: Microsoft.Winget.Source_8wekyb3d8bbwe
   Name: winget
   Url: https://cdn.winget.microsoft.com/cache
