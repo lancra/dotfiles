@@ -283,7 +283,6 @@ winget,packages,Wilfred.difftastic@winget
 winget,packages,WinMerge.WinMerge@winget
 winget,packages,XPFM2K6GPV72CR@msstore
 winget,pins,Discord.Discord@winget
-winget,pins,Google.PlayGames.Beta@winget
 winget,pins,Malwarebytes.Malwarebytes@winget
 winget,pins,Microsoft.DotNet.SDK.8@winget
 winget,pins,Microsoft.VCRedist.2015+.x64@winget
