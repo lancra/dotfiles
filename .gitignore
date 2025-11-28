@@ -156,6 +156,7 @@
 
 # Visual Studio Code
 /vscode-remote-wsl/
+/.config/vscode/settings.json
 !/AppData/Roaming/Code/
 !/AppData/Roaming/Code/User/
 !/AppData/Roaming/Code/User/keybindings.json

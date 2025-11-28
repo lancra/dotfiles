@@ -160,6 +160,11 @@
     "command": "Get-ChildItem -Path #{0} | ForEach-Object { code $_ }",
     "bash": true
   },
+  "vscs": {
+    "group": "Visual Studio Code",
+    "command": "$env:HOME/.local/bin/vscode/generate-settings.ps1",
+    "bash": false
+  },
   "wu": {
     "group": "WinGet",
     "command": "winget upgrade #{:*}",
