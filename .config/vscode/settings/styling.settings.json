@@ -1,0 +1,7 @@
+{
+  "$schema": "vscode://schemas/settings/user",
+  "window.titleBarStyle": "custom",
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.editor.pinnedTabsOnSeparateRow": true,
+  "workbench.iconTheme": "catppuccin-mocha",
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "vscode://schemas/settings/user",
+  "chat.disableAIFeatures": true,
+  "debug.allowBreakpointsEverywhere": true,
+  "editor.linkedEditing": true,
+  "editor.renderWhitespace": "all",
+  "editor.unicodeHighlight.invisibleCharacters": true,
+  "files.associations": {
+    "*.snippet.json": "snippets",
+    "*.sqlfluff": "ini"
+  },
+  "files.autoSave": "off",
+  "notebook.lineNumbers": "on",
+  "powershell.powerShellDefaultVersion": "PowerShell (x64)",
+  "search.useIgnoreFiles": true,
+  "search.useParentIgnoreFiles": true,
+  "workbench.startupEditor": "none",
+  "xml.server.workDir": "~/.config/lemminx",
+}

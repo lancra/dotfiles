@@ -1,0 +1,11 @@
+{
+  "title": "Visual Studio Code Settings",
+  "description": "Provides the template for a file used to generate aggregate settings for Visual Studio Code.",
+  "scope": "json",
+  "body": [
+    "{",
+    "  \"\\$schema\": \"vscode://schemas/settings/user\",",
+    "  $0",
+    "}"
+  ]
+}

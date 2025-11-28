@@ -1,0 +1,16 @@
+{
+  "$schema": "vscode://schemas/settings/user",
+  "[json][jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.formatOnSave": true
+  },
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "**/*.snippet.json"
+      ],
+      "url": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/snippets/snippet.schema.json"
+    }
+  ],
+  "json.validate.enable": true,
+}

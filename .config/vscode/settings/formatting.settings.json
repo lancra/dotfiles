@@ -1,0 +1,28 @@
+{
+  // Global formatting settings and language-specific settings for languages without a dedicated file.
+  "$schema": "vscode://schemas/settings/user",
+  "[git-commit]": {
+    "rewrap.autoWrap.enabled": true,
+    "rewrap.wrappingColumn": 72
+  },
+  "[html][javascript][scss][typescript][yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "editor.formatOnSave": true
+  },
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode",
+    "editor.formatOnSave": true
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml",
+    "editor.formatOnSave": true
+  },
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "powershell.codeFormatting.autoCorrectAliases": true,
+  "powershell.codeFormatting.useCorrectCasing": true,
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "vscode://schemas/settings/user",
+  "colorize.enable_search_variables": false,
+  "colorize.languages": [
+    "css",
+    "json",
+    "jsonc",
+    "less",
+    "postcss",
+    "sass",
+    "scss",
+    "sss",
+    "stylus",
+    "svg",
+    "xml"
+  ],
+}

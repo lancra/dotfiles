@@ -1,0 +1,41 @@
+{
+  "$schema": "vscode://schemas/settings/user",
+  "[git-commit]": {
+    "editor.rulers": [
+      {
+        "color": "#D14341",
+        "column": 50
+      },
+      {
+        "color": "#C7C7C7",
+        "column": 72
+      }
+    ]
+  },
+  "[powershell]": {
+    "editor.rulers": [
+      {
+        "color": "#6A9955",
+        "column": 80
+      },
+      {
+        "color": "#FF8080",
+        "column": 135
+      }
+    ]
+  },
+  "[rust]": {
+    "editor.rulers": [
+      {
+        "color": "#FF8080",
+        "column": 100
+      }
+    ]
+  },
+  "editor.rulers": [
+    {
+      "color": "#FF8080",
+      "column": 135
+    }
+  ],
+}

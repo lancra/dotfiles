@@ -1,0 +1,16 @@
+{
+  // Global indentation settings and language-specific settings for languages without a dedicated file.
+  "$schema": "vscode://schemas/settings/user",
+  "[csharp]": {
+    "editor.tabSize": 4
+  },
+  "[powershell]": {
+    "editor.tabSize": 4
+  },
+  "[rust]": {
+    "editor.tabSize": 4
+  },
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+}
