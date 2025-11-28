@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/vscode/mssql.connections.schema.json",
+  "allowComments": true,
+  "allowTrailingCommas": true,
+  "title": "Microsoft SQL Server Configuration for Visual Studio Code",
+  "description": "The configuration used to generate Visual Studio Code settings for the MSSQL extension.",
+  "type": "object",
+  "definitions": {
+    "azureMfaConnection": {
+      "title": "Database Connection Using Azure MFA Authentication",
+      "description": "Provides a database connection which authenticates via Azure Multi-Factor Authentication.",
+      "type": "object",
+      "properties": {
+        "user": {
+          "description": "The user principal name of the Azure user to use for authentication.",
+          "type": "string",
+          "format": "email"
+        }
+      },
+      "required": [
+        "user"
+      ]
+    },
+    "sqlLoginConnection": {
+      "title": "Database Connection Using SQL Login Authentication",
+      "description": "Provides a database connection which authenticates via login stored in the server.",
+      "type": "object",
+      "properties": {
+        "user": {
+          "description": "The server user to use for authentication.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "user"
+      ]
+    },
+    "connection": {
+      "title": "Database Connection",
+      "description": "Provides a database connection.",
+      "type": "object",
+      "properties": {
+        "authentication": {
+          "description": "The mechanism to use for authenticating the user.",
+          "type": "string",
+          "enum": [
+            "AzureMfa",
+            "Integrated",
+            "SqlLogin"
+          ],
+          "default": "Integrated"
+        },
+        "server": {
+          "description": "The name of the server which hosts the database to connect to.",
+          "type": "string"
+        },
+        "database": {
+          "description": "The database to connect to.",
+          "type": "string"
+        },
+        "intent": {
+          "description": "The intended operations to execute using the connection.",
+          "type": "string",
+          "enum": [
+            "ReadOnly",
+            "ReadWrite"
+          ],
+          "default": "ReadWrite"
+        }
+      },
+      "required": [
+        "authentication",
+        "server",
+        "database",
+        "intent"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "authentication": {
+                "const": "AzureMfa"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/definitions/azureMfaConnection"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "authentication": {
+                "const": "SqlLogin"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/definitions/sqlLoginConnection"
+          }
+        }
+      ]
+    },
+    "group": {
+      "title": "Database Connection Group",
+      "description": "Provides a logical grouping of Microsoft SQL Server database connections.",
+      "type": "object",
+      "properties": {
+        "parent": {
+          "description": "The parent group for the current group. The value matching the group name indicates that it has no parent.",
+          "type": "string"
+        },
+        "prefix": {
+          "description": "The prefix to add to connections within the group. The first letter of the group name is used when no value is provided.",
+          "type": "string"
+        },
+        "color": {
+          "description": "The color used to identify connections as members of the group in the user interface.",
+          "type": "string",
+          "pattern": "^#[0-9A-F]{6}$"
+        },
+        "connections": {
+          "description": "The database connections for the group.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/connection"
+          }
+        }
+      },
+      "required": [
+        "parent",
+        "color",
+        "connections"
+      ]
+    }
+  },
+  "properties": {
+    "$schema": {
+      "description": "The schema to verify this document against.",
+      "type": "string",
+      "format": "uri"
+    }
+  },
+  "additionalProperties": {
+    "$ref": "#/definitions/group"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/vscode/mssql.connections.schema.json",
+  "ROOT": {
+    "parent": "ROOT",
+    "prefix": "",
+    "color": "#FFFFFF",
+    "connections": {
+      "Container": {
+        "authentication": "SqlLogin",
+        "server": "127.0.0.1,1433",
+        "database": "",
+        "intent": "ReadWrite",
+        "user": "sa"
+      }
+    }
+  },
+}
