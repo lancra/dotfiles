@@ -4,6 +4,13 @@
   "title": "PowerShell Aliases",
   "description": "Collection of PowerShell aliases.",
   "type": "object",
+  "properties": {
+    "$schema": {
+      "description": "The schema to verify this document against.",
+      "type": "string",
+      "format": "uri"
+    }
+  },
   "additionalProperties": {
     "description": "A PowerShell alias.",
     "type": "object",
