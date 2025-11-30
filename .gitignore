@@ -95,9 +95,6 @@
 # hl
 !/AppData/Roaming/hl
 
-# Lemminx LSP
-/.config/lemminx/cache/
-
 # Less
 /.lesshst
 /.local/share/lesshst

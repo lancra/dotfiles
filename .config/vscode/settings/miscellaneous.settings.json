@@ -15,5 +15,5 @@
   "search.useIgnoreFiles": true,
   "search.useParentIgnoreFiles": true,
   "workbench.startupEditor": "none",
-  "xml.server.workDir": "~/.config/lemminx",
+  "xml.server.workDir": "~/.cache/lemminx",
 }
