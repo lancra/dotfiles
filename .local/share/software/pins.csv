@@ -1,4 +1,3 @@
 Provider,Export,Id,Reason,Version
 rust,toolchains,nightly-x86_64-pc-windows-msvc,The newest nightly is not required at this time.,
-winget,packages,Google.AndroidStudio@winget,The software continually prompts for upgrade.,2025.2.1.7
 winget,packages,Microsoft.WindowsTerminal.Preview@winget,The software continually prompts for upgrade.,1.24.2372.0

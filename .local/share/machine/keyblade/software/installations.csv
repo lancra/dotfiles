@@ -179,7 +179,6 @@ winget,packages,GnuPG.GnuPG@winget
 winget,packages,GnuPG.Gpg4win@winget
 winget,packages,GnuWin32.Make@winget
 winget,packages,GoLang.Go@winget
-winget,packages,Google.AndroidStudio@winget
 winget,packages,Google.Chrome@winget
 winget,packages,Google.QuickShare@winget
 winget,packages,Graphviz.Graphviz@winget

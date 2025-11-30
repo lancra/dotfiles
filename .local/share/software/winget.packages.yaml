@@ -110,10 +110,6 @@
   DisplayName: Go
   Category: Programming
   Tracking: Full
-- Id: Google.AndroidStudio@winget
-  DisplayName: Google Android Studio
-  Category: Programming
-  Tracking: Full
 - Id: Google.Chrome@winget
   DisplayName: Google Chrome
   Category: Web
