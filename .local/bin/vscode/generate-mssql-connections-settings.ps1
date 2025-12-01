@@ -81,6 +81,7 @@ function Get-AzureUserId {
 }
 
 $schemaProperty = '$schema'
+$groupCounter = 1
 $groups = @()
 $connections = @()
 (Get-Content -Path $Source |
@@ -101,6 +102,9 @@ $connections = @()
                 Where-Object -Property 'id' -EQ $_.Value.parent
             $group |
                 Add-Member -MemberType NoteProperty -Name 'parentId' -Value $parentId
+
+            $group.name = "$groupCounter $($group.name)"
+            $groupCounter++
         }
 
         $prefix = $_.Value.prefix ?? $_.Name[0]
