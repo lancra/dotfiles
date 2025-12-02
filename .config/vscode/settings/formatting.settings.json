@@ -5,6 +5,10 @@
     "rewrap.autoWrap.enabled": true,
     "rewrap.wrappingColumn": 72
   },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.formatOnSave": true
+  },
   "[html][javascript][scss][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
