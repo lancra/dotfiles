@@ -1,4 +1,5 @@
 User:
+  BIN: '%USERPROFILE%\.local\bin'
   CARGO_HOME: '%DEV_HOME%/.cargo'
   DEV_HOME: 'D:/Users/lancra'
   DEVUSERPROFILE: 'D:\Users\lancra'
@@ -10,7 +11,7 @@ User:
   ONEDRIVE: '%USERPROFILE%\OneDrive'
   ONEDRIVECONSUMER: '%USERPROFILE%\OneDrive'
   PATH:
-    - '%USERPROFILE%\.local\bin'
+    - '%BIN%'
     - '%USERPROFILE%\OneDrive\Tools'
   PIP_CACHE_DIR: '%DEVUSERPROFILE%\AppData\Local\pip\Cache'
   RIPGREP_CONFIG_PATH: '%XDG_CONFIG_HOME%/ripgrep/config'

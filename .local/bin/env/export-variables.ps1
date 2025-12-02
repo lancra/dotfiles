@@ -29,9 +29,11 @@ param (
     [string] $LocalTarget = "$env:XDG_DATA_HOME/machine/$($env:COMPUTERNAME.ToLower())/env/variables.yaml"
 )
 
+# Prefixes are checked in the specified order, so child directories must be placed above their ancestors to resolve as intended.
 $prefixVariableNames = @(
     'LOCALAPPDATA',
     'APPDATA',
+    'BIN',
     'USERPROFILE',
     'DEVUSERPROFILE',
     'XDG_CONFIG_HOME',
