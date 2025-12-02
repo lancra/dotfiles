@@ -4,6 +4,16 @@
     "editor.defaultFormatter": "vscode.json-language-features",
     "editor.formatOnSave": true
   },
+  "[snippets]": {
+    "editor.detectIndentation": false,
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.suggest.insertMode": "replace",
+    "editor.tabSize": 2
+  },
   "json.schemas": [
     {
       "fileMatch": [
