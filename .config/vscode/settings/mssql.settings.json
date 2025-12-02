@@ -7,4 +7,5 @@
   "mssql.format.datatypeCasing": "uppercase",
   "mssql.format.keywordCasing": "uppercase",
   "mssql.format.placeSelectStatementReferencesOnNewLine": true,
+  "mssql.statusBar.enableConnectionColor": true,
 }
