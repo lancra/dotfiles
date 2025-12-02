@@ -57,7 +57,7 @@ if (-not $anyMissingLinks) {
 }
 
 if (-not $linkChecks[$argvSourcePath]) {
-    $machineRootDirectory = & "$env:HOME/.local/bin/env/get-or-add-machine-directory.ps1" -Configuration
+    $machineRootDirectory = & "$env:BIN/env/get-or-add-machine-directory.ps1" -Configuration
     $argvTargetDirectoryPath = "$machineRootDirectory/$TrackedConfigurationDirectory"
     $argvTargetPath = "$argvTargetDirectoryPath/$argvFileName"
 

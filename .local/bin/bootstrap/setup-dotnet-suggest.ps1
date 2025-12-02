@@ -24,7 +24,7 @@ if ($isLink) {
     exit 0
 }
 
-$machineRootDirectory = & "$env:HOME/.local/bin/env/get-or-add-machine-directory.ps1" -Configuration
+$machineRootDirectory = & "$env:BIN/env/get-or-add-machine-directory.ps1" -Configuration
 $machineDirectory = "$machineRootDirectory/dotnet"
 New-Item -ItemType Directory -Path $machineDirectory -Force | Out-Null
 
