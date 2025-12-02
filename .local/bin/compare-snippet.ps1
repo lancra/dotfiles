@@ -39,12 +39,12 @@ param (
 
     [Parameter()]
     [ValidateScript({
-        $_ -in (& "$env:HOME/.local/bin/snippets/get-definition-keys.ps1")},
+        $_ -in (& "$env:BIN/snippets/get-definition-keys.ps1")},
         ErrorMessage = 'Definition not found.')]
     [ArgumentCompleter({
         param($commandName, $parameterName, $wordToComplete)
         if ($parameterName -eq 'Definition') {
-            $validDefinitions = (& "$env:HOME/.local/bin/snippets/get-definition-keys.ps1")
+            $validDefinitions = (& "$env:BIN/snippets/get-definition-keys.ps1")
             $validDefinitions -like "$wordToComplete*"
         }
     })]
@@ -92,7 +92,7 @@ foreach ($editor in $editors) {
         }
     }
 
-    $scriptPath = "$env:HOME/.local/bin/snippets/$($editor.Key)/compare-snippet.ps1"
+    $scriptPath = "$env:BIN/snippets/$($editor.Key)/compare-snippet.ps1"
     if (-not (Test-Path -Path $scriptPath)) {
         continue
     }

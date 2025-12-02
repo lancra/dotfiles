@@ -17,7 +17,7 @@ class SnippetCollection {
             if ($extension -eq 'json') {
                 $snippets += [Snippet]::FromJson($path)
             } elseif ($extension -eq 'sql') {
-                $snippets += & "$env:HOME/.local/bin/snippets/read-sql-snippet.ps1" -Path $path
+                $snippets += & "$env:BIN/snippets/read-sql-snippet.ps1" -Path $path
             }
         }
 
