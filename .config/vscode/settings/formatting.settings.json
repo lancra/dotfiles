@@ -23,7 +23,10 @@
   },
   "[xml]": {
     "editor.defaultFormatter": "redhat.vscode-xml",
-    "editor.formatOnSave": true
+    "editor.detectIndentation": false,
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
   },
   "dotnet.formatting.organizeImportsOnFormat": true,
   "files.insertFinalNewline": true,
