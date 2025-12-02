@@ -51,4 +51,4 @@ if ($singular) {
     $scriptFileName = $scriptFileName.TrimEnd('s')
 }
 
-"$env:HOME/.local/bin/software/$($targetExport.Id.Provider)/$scriptFileName.ps1"
+"$env:BIN/software/$($targetExport.Id.Provider)/$scriptFileName.ps1"

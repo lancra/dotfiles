@@ -41,7 +41,7 @@ $exports |
             }
     }
 
-& $env:HOME/.local/bin/env/get-machines.ps1 |
+& $env:BIN/env/get-machines.ps1 |
     ForEach-Object {
         $machine = $_
         Get-Content -Path "$env:XDG_DATA_HOME/machine/$_/software/installations.csv" |

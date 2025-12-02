@@ -26,12 +26,12 @@ using module ./software.psm1
 param (
     [Parameter(ParameterSetName = 'Provider', Position = 0)]
     [ValidateScript({
-        $_ -in (& "$env:HOME/.local/bin/software/get-provider-ids.ps1")},
+        $_ -in (& "$env:BIN/software/get-provider-ids.ps1")},
         ErrorMessage = 'Provider not found.')]
     [ArgumentCompleter({
         param($commandName, $parameterName, $wordToComplete)
         if ($parameterName -eq 'Provider') {
-            $validProviders = (& "$env:HOME/.local/bin/software/get-provider-ids.ps1")
+            $validProviders = (& "$env:BIN/software/get-provider-ids.ps1")
             $validProviders -like "$wordToComplete*"
         }
     })]
@@ -39,19 +39,19 @@ param (
 
     [Parameter(ParameterSetName = 'Export')]
     [ValidateScript({
-        $_ -in (& "$env:HOME/.local/bin/software/get-export-ids.ps1")},
+        $_ -in (& "$env:BIN/software/get-export-ids.ps1")},
         ErrorMessage = 'Export not found.')]
     [ArgumentCompleter({
         param($commandName, $parameterName, $wordToComplete)
         if ($parameterName -eq 'Export') {
-            $validExports = (& "$env:HOME/.local/bin/software/get-export-ids.ps1")
+            $validExports = (& "$env:BIN/software/get-export-ids.ps1")
             $validExports -like "$wordToComplete*"
         }
     })]
     [string[]] $Export
 )
 begin {
-    & "$env:HOME/.local/bin/env/begin-loading.ps1"
+    & "$env:BIN/env/begin-loading.ps1"
 
     function Get-UniqueInstallationIdentifiers {
         [CmdletBinding()]
@@ -163,8 +163,8 @@ process {
             Export-Definitions -Export $_ -Ids $targetInstallationIds -Definitions $definitions
         }
 
-    & "$env:HOME/.local/bin/env/export-variables.ps1"
+    & "$env:BIN/env/export-variables.ps1"
 }
 end {
-    & "$env:HOME/.local/bin/env/end-loading.ps1"
+    & "$env:BIN/env/end-loading.ps1"
 }

@@ -3,7 +3,7 @@ using module ../software.psm1
 [CmdletBinding()]
 param()
 
-$exportId = & "$env:HOME/.local/bin/software/get-export-id-from-path.ps1"
+$exportId = & "$env:BIN/software/get-export-id-from-path.ps1"
 
 & pip list --not-required --outdated --format json 2> $null |
     ConvertFrom-Json |

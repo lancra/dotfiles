@@ -10,7 +10,7 @@ if (-not (Test-Path -Path $sentinelPath)) {
     New-Item -Path $sentinelPath | Out-Null
 }
 
-$exportId = & "$env:HOME/.local/bin/software/get-export-id-from-path.ps1"
+$exportId = & "$env:BIN/software/get-export-id-from-path.ps1"
 
 & dotnet tool list --global |
     ForEach-Object {

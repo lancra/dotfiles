@@ -39,13 +39,13 @@ param()
         } else {
             $source = $_.Repository
             $repository = [Uri]::new($_.Repository)
-            $repositoryId = & "$env:HOME/.local/bin/git/get-repository-id.ps1" -Repository $repository
+            $repositoryId = & "$env:BIN/git/get-repository-id.ps1" -Repository $repository
 
             $crateDetails = @{
                 $descriptionProperty = & gh repo view $repositoryId --json description |
                     ConvertFrom-Json |
                     Select-Object -ExpandProperty description
-                $availableProperty = & "$env:HOME/.local/bin/git/get-latest-remote-tag.ps1" -Repository $repository |
+                $availableProperty = & "$env:BIN/git/get-latest-remote-tag.ps1" -Repository $repository |
                     ForEach-Object { $_.TrimStart('v')
                 }
             }

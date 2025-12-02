@@ -4,7 +4,7 @@ using module ../software.psm1
 [CmdletBinding()]
 param()
 
-$exportId = & "$env:HOME/.local/bin/software/get-export-id-from-path.ps1"
+$exportId = & "$env:BIN/software/get-export-id-from-path.ps1"
 
 enum PackageTracking {
     # Represents a package tracked for initial installation and any updates.
@@ -34,7 +34,7 @@ function New-ConfigPackage {
     }
 }
 
-$persistedPackages = & "$env:HOME/.local/bin/software/get-installation-definitions.ps1" -Export $exportId
+$persistedPackages = & "$env:BIN/software/get-installation-definitions.ps1" -Export $exportId
 
 $inMemoryExportPath = "$env:TEMP/winget-packages.$((New-Guid).Guid).json"
 & winget export --output $inMemoryExportPath | Out-Null

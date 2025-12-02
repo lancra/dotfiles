@@ -34,12 +34,12 @@ using module ./software.psm1
 param (
     [Parameter(ParameterSetName = 'Provider', Position = 0)]
     [ValidateScript({
-        $_ -in (& "$env:HOME/.local/bin/software/get-provider-ids.ps1")},
+        $_ -in (& "$env:BIN/software/get-provider-ids.ps1")},
         ErrorMessage = 'Provider not found.')]
     [ArgumentCompleter({
         param($commandName, $parameterName, $wordToComplete)
         if ($parameterName -eq 'Provider') {
-            $validProviders = (& "$env:HOME/.local/bin/software/get-provider-ids.ps1")
+            $validProviders = (& "$env:BIN/software/get-provider-ids.ps1")
             $validProviders -like "$wordToComplete*"
         }
     })]
@@ -47,12 +47,12 @@ param (
 
     [Parameter(ParameterSetName = 'Export')]
     [ValidateScript({
-        $_ -in (& "$env:HOME/.local/bin/software/get-export-ids.ps1")},
+        $_ -in (& "$env:BIN/software/get-export-ids.ps1")},
         ErrorMessage = 'Export not found.')]
     [ArgumentCompleter({
         param($commandName, $parameterName, $wordToComplete)
         if ($parameterName -eq 'Export') {
-            $validExports = (& "$env:HOME/.local/bin/software/get-export-ids.ps1")
+            $validExports = (& "$env:BIN/software/get-export-ids.ps1")
             $validExports -like "$wordToComplete*"
         }
     })]
@@ -63,7 +63,7 @@ param (
     [switch] $DryRun
 )
 begin {
-    & "$env:HOME/.local/bin/env/begin-loading.ps1"
+    & "$env:BIN/env/begin-loading.ps1"
 
     function Get-InstallationPins {
         [CmdletBinding()]
@@ -203,7 +203,7 @@ process {
         Write-Output 'No upgrades found.'
     }
 
-    & "$env:HOME/.local/bin/env/end-loading.ps1"
+    & "$env:BIN/env/end-loading.ps1"
 
     $automatedUpgrades = $upgrades |
         Where-Object { $_.Id -notin $disabledUpdates }
@@ -228,7 +228,7 @@ process {
     }
 
     try {
-        & "$env:HOME/.local/bin/env/begin-loading.ps1"
+        & "$env:BIN/env/begin-loading.ps1"
 
         Write-Output ''
         $upgradeCounter = 1
@@ -255,6 +255,6 @@ process {
         }
     }
     finally {
-        & "$env:HOME/.local/bin/env/end-loading.ps1"
+        & "$env:BIN/env/end-loading.ps1"
     }
 }

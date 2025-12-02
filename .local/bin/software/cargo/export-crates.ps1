@@ -3,8 +3,8 @@ using module ../software.psm1
 [CmdletBinding()]
 param()
 
-$exportId = & "$env:HOME/.local/bin/software/get-export-id-from-path.ps1"
-$persistedCrates = & "$env:HOME/.local/bin/software/get-installation-definitions.ps1" -Export $exportId
+$exportId = & "$env:BIN/software/get-export-id-from-path.ps1"
+$persistedCrates = & "$env:BIN/software/get-installation-definitions.ps1" -Export $exportId
 
 $inMemoryProperties = @('Id', 'Name', 'Description')
 & $PSScriptRoot/get-crates.ps1 |

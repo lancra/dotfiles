@@ -23,12 +23,12 @@ using module ./software.psm1
 param(
     [Parameter()]
     [ValidateScript({
-        $_ -in (& "$env:HOME/.local/bin/software/get-provider-ids.ps1")},
+        $_ -in (& "$env:BIN/software/get-provider-ids.ps1")},
         ErrorMessage = 'Provider not found.')]
     [ArgumentCompleter({
         param($commandName, $parameterName, $wordToComplete)
         if ($parameterName -eq 'Provider') {
-            $validProviders = (& "$env:HOME/.local/bin/software/get-provider-ids.ps1")
+            $validProviders = (& "$env:BIN/software/get-provider-ids.ps1")
             $validProviders -like "$wordToComplete*"
         }
     })]
@@ -60,7 +60,7 @@ function Get-InstallationIds {
     }
 }
 
-$targetManifestDirectory = & "$env:HOME/.local/bin/env/get-or-add-machine-directory.ps1" -Data
+$targetManifestDirectory = & "$env:BIN/env/get-or-add-machine-directory.ps1" -Data
 $targetManifestPath = "$targetManifestDirectory/software/installations.csv"
 if (-not (Test-Path -Path $targetManifestPath)) {
     throw "The machine manifest was not found at '$targetManifestPath'."

@@ -4,8 +4,8 @@ param(
     [string] $Id
 )
 
-$exportId = & "$env:HOME/.local/bin/software/get-export-id-from-path.ps1"
-$definition = & "$env:HOME/.local/bin/software/get-installation-definitions.ps1" -Export $exportId -Id $Id
+$exportId = & "$env:BIN/software/get-export-id-from-path.ps1"
+$definition = & "$env:BIN/software/get-installation-definitions.ps1" -Export $exportId -Id $Id
 
 $arguments = @()
 
@@ -23,7 +23,7 @@ if (-not $Id.EndsWith('.git')) {
 } else {
     $arguments += "--git $Id"
 
-    $tag = & "$env:HOME/.local/bin/git/get-latest-remote-tag.ps1" -Repository $uri
+    $tag = & "$env:BIN/git/get-latest-remote-tag.ps1" -Repository $uri
     $arguments += "--tag $tag"
 }
 

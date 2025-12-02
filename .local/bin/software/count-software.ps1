@@ -23,12 +23,12 @@ using module ./software.psm1
 param(
     [Parameter(ParameterSetName = 'Provider', Position = 0)]
     [ValidateScript({
-        $_ -in (& "$env:HOME/.local/bin/software/get-provider-ids.ps1")},
+        $_ -in (& "$env:BIN/software/get-provider-ids.ps1")},
         ErrorMessage = 'Provider not found.')]
     [ArgumentCompleter({
         param($commandName, $parameterName, $wordToComplete)
         if ($parameterName -eq 'Provider') {
-            $validProviders = (& "$env:HOME/.local/bin/software/get-provider-ids.ps1")
+            $validProviders = (& "$env:BIN/software/get-provider-ids.ps1")
             $validProviders -like "$wordToComplete*"
         }
     })]
@@ -36,12 +36,12 @@ param(
 
     [Parameter(ParameterSetName = 'Export')]
     [ValidateScript({
-        $_ -in (& "$env:HOME/.local/bin/software/get-export-ids.ps1")},
+        $_ -in (& "$env:BIN/software/get-export-ids.ps1")},
         ErrorMessage = 'Export not found.')]
     [ArgumentCompleter({
         param($commandName, $parameterName, $wordToComplete)
         if ($parameterName -eq 'Export') {
-            $validExports = (& "$env:HOME/.local/bin/software/get-export-ids.ps1")
+            $validExports = (& "$env:BIN/software/get-export-ids.ps1")
             $validExports -like "$wordToComplete*"
         }
     })]
@@ -49,7 +49,7 @@ param(
 )
 
 $machinePropertyLookup = [ordered]@{}
-& $env:HOME/.local/bin/env/get-machines.ps1 |
+& $env:BIN/env/get-machines.ps1 |
     ForEach-Object {
         $machinePropertyLookup[$_] = "$($_.Substring(0, 1).ToUpper())$($_.Substring(1, $_.Length - 1))"
     }
