@@ -69,7 +69,7 @@ class ImportDescriptor {
     }
 }
 
-$manifestMergeScriptPath = "$env:HOME/.local/bin/env/merge-environment-variable-manifests.ps1"
+$manifestMergeScriptPath = "$env:BIN/env/merge-environment-variable-manifests.ps1"
 $temporaryDirectory = "$env:TEMP/variable-import-$(New-Guid)"
 New-Item -ItemType Directory -Path $temporaryDirectory -Force | Out-Null
 
@@ -139,7 +139,7 @@ function Compare-EnvironmentVariable {
         $targetGlobalPath = "$temporaryDirectory/variables.target.global.yaml"
         $targetLocalPath = "$temporaryDirectory/variables.target.local.yaml"
         $targetMergePath = "$temporaryDirectory/variables.target.yaml"
-        & "$env:HOME/.local/bin/env/export-variables.ps1" -GlobalTarget $targetGlobalPath -LocalTarget $targetLocalPath -Verbose:$false
+        & "$env:BIN/env/export-variables.ps1" -GlobalTarget $targetGlobalPath -LocalTarget $targetLocalPath -Verbose:$false
         & $manifestMergeScriptPath -Target $targetMergePath -GlobalManifest $targetGlobalPath -LocalManifest $targetLocalPath
 
         # Use UTF-8 so that Tee-Object doesn't garble Unicode symbols.

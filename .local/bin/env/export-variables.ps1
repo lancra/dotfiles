@@ -259,7 +259,7 @@ function Write-Source {
     }
 }
 
-$formatManifestScriptPath = "$env:HOME/.local/bin/env/format-environment-variable-manifest.ps1"
+$formatManifestScriptPath = "$env:BIN/env/format-environment-variable-manifest.ps1"
 $sourceGlobalVariables |
     ConvertTo-Yaml |
     & $formatManifestScriptPath |

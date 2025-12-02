@@ -204,7 +204,7 @@ if ($issues.Length -gt 0) {
     Write-Host ''
 }
 
-$formatManifestScriptPath = "$env:HOME/.local/bin/env/format-environment-variable-manifest.ps1"
+$formatManifestScriptPath = "$env:BIN/env/format-environment-variable-manifest.ps1"
 $newSourceObject |
     ConvertTo-Yaml |
     & $formatManifestScriptPath |
