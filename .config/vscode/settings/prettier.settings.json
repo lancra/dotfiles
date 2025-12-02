@@ -1,0 +1,5 @@
+{
+  "$schema": "vscode://schemas/settings/user",
+  "prettier.configPath": "%USERPROFILE%\\.prettierrc.json",
+  "prettier.prettierPath": "%APPDATA%\\npm\\prettier",
+}
