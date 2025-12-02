@@ -82,6 +82,15 @@
       ]
     },
     {
+      "id": "vscode",
+      "exports": [
+        {
+          "id": "extensions",
+          "versioned": false
+        }
+      ]
+    },
+    {
       "id": "winget",
       "exports": [
         {
