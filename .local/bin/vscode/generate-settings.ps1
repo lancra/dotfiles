@@ -6,7 +6,7 @@ param(
 
 $sourceDirectory = Join-Path $env:XDG_CONFIG_HOME -ChildPath 'vscode' -AdditionalChildPath 'settings'
 $generators = @{
-    'mssql.connections.json' = "$env:HOME/.local/bin/vscode/generate-mssql-connections-settings.ps1"
+    'mssql.connections.json' = "$env:BIN/vscode/generate-mssql-connections-settings.ps1"
 }
 
 $schemaProperty = '$schema'
