@@ -1,10 +1,7 @@
 {
   "$schema": "vscode://schemas/settings/user",
-  "[json][jsonc]": {
+  "[json][jsonc][snippets]": {
     "editor.defaultFormatter": "vscode.json-language-features",
-    "editor.formatOnSave": true
-  },
-  "[snippets]": {
     "editor.detectIndentation": false,
     "editor.formatOnSave": true,
     "editor.insertSpaces": true,
