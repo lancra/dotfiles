@@ -5,7 +5,7 @@
     "rewrap.autoWrap.enabled": true,
     "rewrap.wrappingColumn": 72
   },
-  "[html][javascript][scss][typescript][yaml]": {
+  "[html][javascript][scss][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
