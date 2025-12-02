@@ -1,5 +1,4 @@
 # Hidden
-/.azuredatastudio/
 /.dbus-keyrings/
 /.dotnet/
 /.github/token
@@ -55,12 +54,6 @@
 # Azure CLI
 /.azure/**
 !/.azure/config
-
-# Azure Data Studio
-!/AppData/Roaming/azuredatastudio/
-!/AppData/Roaming/azuredatastudio/User/
-!/AppData/Roaming/azuredatastudio/User/keybindings.json
-!/AppData/Roaming/azuredatastudio/User/settings.json
 
 # bat
 !/AppData/Roaming/bat

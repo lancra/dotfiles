@@ -1,15 +1,6 @@
 {
   "editors": [
     {
-      "key": "ads",
-      "name": "Azure Data Studio",
-      "targetDirectory": "~/AppData/Roaming/azuredatastudio/User/snippets",
-      "scopes": [
-        "loganalytics",
-        "sql"
-      ]
-    },
-    {
       "key": "vim",
       "name": "VIM",
       "targetDirectory": "~/.config/vim/UltiSnips",

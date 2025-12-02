@@ -3,7 +3,6 @@ User:
     - '%LOCALAPPDATA%\Microsoft\WinGet\Links'
     - '%LOCALAPPDATA%\Programs\nu\bin\'
     - '%LOCALAPPDATA%\Programs\Microsoft VS Code\bin'
-    - '%LOCALAPPDATA%\Programs\Azure Data Studio\bin'
     - '%DEVUSERPROFILE%\.cargo\bin'
     - '%USERPROFILE%\.dotnet\tools'
     - '%DEVUSERPROFILE%\go\bin'
@@ -17,7 +16,7 @@ User:
     - '%LOCALAPPDATA%\Programs\ExifTool'
 Machine:
   PATH:
-    - '%SYSTEMROOT%'
+    - "%SYSTEMROOT%"
     - '%SYSTEMROOT%\System32'
     - '%SYSTEMROOT%\System32\OpenSSH\'
     - '%SYSTEMROOT%\System32\Wbem'
@@ -42,4 +41,4 @@ Machine:
     - '%PROGRAMFILES%\Go\bin'
     - '%PROGRAMFILES%\nodejs\'
     - '%PROGRAMFILES%\PuTTY\'
-  ZES_ENABLE_SYSMAN: '1'
+  ZES_ENABLE_SYSMAN: "1"

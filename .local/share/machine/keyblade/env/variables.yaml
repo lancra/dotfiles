@@ -5,7 +5,6 @@ User:
     - '%LOCALAPPDATA%\Microsoft\WinGet\Links'
     - '%LOCALAPPDATA%\Programs\nu\bin\'
     - '%LOCALAPPDATA%\Programs\Microsoft VS Code\bin'
-    - '%LOCALAPPDATA%\Programs\Azure Data Studio\bin'
     - '%LOCALAPPDATA%\Programs\KDiff3\bin'
     - '%LOCALAPPDATA%\Programs\WinMerge\'
     - '%DEVUSERPROFILE%\.cargo\bin'
