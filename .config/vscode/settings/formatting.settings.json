@@ -25,6 +25,7 @@
     "editor.defaultFormatter": "redhat.vscode-xml",
     "editor.formatOnSave": true
   },
+  "dotnet.formatting.organizeImportsOnFormat": true,
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "powershell.codeFormatting.autoCorrectAliases": true,
