@@ -2,6 +2,7 @@
   "$schema": "vscode://schemas/settings/user",
   "chat.disableAIFeatures": true,
   "debug.allowBreakpointsEverywhere": true,
+  "editor.accessibilitySupport": "off",
   "editor.linkedEditing": true,
   "editor.renderWhitespace": "all",
   "editor.unicodeHighlight.invisibleCharacters": true,
