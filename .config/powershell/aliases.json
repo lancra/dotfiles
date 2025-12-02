@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/powershell/aliases.schema.json",
   "nugetp": {
     "group": ".NET",
-    "command": "$env:HOME/.local/bin/get-latest-nuget-package.ps1",
+    "command": "$env:BIN/get-latest-nuget-package.ps1",
     "bash": false
   },
   "c": {
@@ -27,17 +27,17 @@
   },
   "eev": {
     "group": "Environment",
-    "command": "$env:HOME/.local/bin/env/export-variables.ps1",
+    "command": "$env:BIN/env/export-variables.ps1",
     "bash": false
   },
   "iev": {
     "group": "Environment",
-    "command": "$env:HOME/.local/bin/env/import-variables.ps1",
+    "command": "$env:BIN/env/import-variables.ps1",
     "bash": false
   },
   "rev": {
     "group": "Environment",
-    "command": "$env:HOME/.local/bin/env/remove-variable.ps1",
+    "command": "$env:BIN/env/remove-variable.ps1",
     "bash": false
   },
   "riev": {
@@ -47,12 +47,12 @@
   },
   "cdr": {
     "group": "FileSystem",
-    "command": "$env:HOME/.local/bin/change-directory-repository-root.ps1",
+    "command": "$env:BIN/change-directory-repository-root.ps1",
     "bash": false
   },
   "cdu": {
     "group": "FileSystem",
-    "command": "$env:HOME/.local/bin/change-directory-up.ps1",
+    "command": "$env:BIN/change-directory-up.ps1",
     "bash": false
   },
   "cwd": {
@@ -77,27 +77,27 @@
   },
   "ga": {
     "group": "Git",
-    "command": "$env:HOME/.local/bin/git/generate-aliases.ps1",
+    "command": "$env:BIN/git/generate-aliases.ps1",
     "bash": false
   },
   "gpnf": {
     "group": "Git",
-    "command": "$env:HOME/.local/bin/git/prune-orphan-notes.ps1",
+    "command": "$env:BIN/git/prune-orphan-notes.ps1",
     "bash": false
   },
   "gpnn": {
     "group": "Git",
-    "command": "& $env:HOME/.local/bin/git/prune-orphan-notes.ps1 -Check",
+    "command": "& $env:BIN/git/prune-orphan-notes.ps1 -Check",
     "bash": true
   },
   "ghc": {
     "group": "GitHub",
-    "command": "$env:HOME/.local/bin/github/open-commit.ps1",
+    "command": "$env:BIN/github/open-commit.ps1",
     "bash": false
   },
   "ghi": {
     "group": "GitHub",
-    "command": "$env:HOME/.local/bin/github/open-issue.ps1",
+    "command": "$env:BIN/github/open-issue.ps1",
     "bash": false
   },
   "jqf": {
@@ -117,12 +117,12 @@
   },
   "hp": {
     "group": "PowerShell",
-    "command": "$env:HOME/.local/bin/get-extended-help.ps1",
+    "command": "$env:BIN/get-extended-help.ps1",
     "bash": false
   },
   "mano": {
     "group": "PowerShell",
-    "command": "$env:HOME/.local/bin/open-online-help.ps1",
+    "command": "$env:BIN/open-online-help.ps1",
     "bash": false
   },
   "ml": {
@@ -137,22 +137,22 @@
   },
   "swc": {
     "group": "Software",
-    "command": "$env:HOME/.local/bin/software/check-software.ps1",
+    "command": "$env:BIN/software/check-software.ps1",
     "bash": false
   },
   "swe": {
     "group": "Software",
-    "command": "$env:HOME/.local/bin/software/export-software.ps1",
+    "command": "$env:BIN/software/export-software.ps1",
     "bash": false
   },
   "swi": {
     "group": "Software",
-    "command": "$env:HOME/.local/bin/software/install-software.ps1",
+    "command": "$env:BIN/software/install-software.ps1",
     "bash": false
   },
   "sln": {
     "group": "Visual Studio",
-    "command": "$env:HOME/.local/bin/vs/open-solution.ps1",
+    "command": "$env:BIN/vs/open-solution.ps1",
     "bash": false
   },
   "codeg": {
@@ -162,12 +162,12 @@
   },
   "vscs": {
     "group": "Visual Studio Code",
-    "command": "$env:HOME/.local/bin/vscode/generate-settings.ps1",
+    "command": "$env:BIN/vscode/generate-settings.ps1",
     "bash": false
   },
   "vscsc": {
     "group": "Visual Studio Code",
-    "command": "$env:HOME/.local/bin/vscode/compare-settings.ps1",
+    "command": "$env:BIN/vscode/compare-settings.ps1",
     "bash": false
   },
   "wu": {
