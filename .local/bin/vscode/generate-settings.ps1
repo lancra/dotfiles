@@ -1,10 +1,10 @@
 [CmdletBinding()]
-param()
+param(
+    [Parameter()]
+    [string] $Path = "$env:XDG_CONFIG_HOME/vscode/settings.json"
+)
 
-$configurationDirectory = Join-Path -Path $env:XDG_CONFIG_HOME -ChildPath 'vscode'
-$sourceDirectory = Join-Path -Path $configurationDirectory -ChildPath 'settings'
-$targetPath = Join-Path -Path $configurationDirectory -ChildPath 'settings.json'
-
+$sourceDirectory = Join-Path $env:XDG_CONFIG_HOME -ChildPath 'vscode' -AdditionalChildPath 'settings'
 $generators = @{
     'mssql.connections.json' = "$env:HOME/.local/bin/vscode/generate-mssql-connections-settings.ps1"
 }
@@ -97,4 +97,4 @@ New-SortedSettings -Target $sortedSettings -Source $aggregateSettings
 
 $sortedSettings |
     ConvertTo-Json -Depth 3 |
-    Set-Content -Path $targetPath
+    Set-Content -Path $Path
