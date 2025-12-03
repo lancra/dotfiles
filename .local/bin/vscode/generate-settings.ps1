@@ -44,39 +44,6 @@ function Add-SettingsProperty {
     }
 }
 
-function New-SortedSettings {
-    [CmdletBinding()]
-    param(
-        [Parameter(Mandatory)]
-        [pscustomobject] $Target,
-
-        [Parameter(Mandatory)]
-        [pscustomobject] $Source,
-
-        [Parameter()]
-        [string] $Accessor
-    )
-    process {
-        $targetReference = '$Target'
-        $initialValue = '([PSCustomObject]@{})'
-        $Source.PSObject.Properties |
-            Sort-Object -Property Name |
-            ForEach-Object {
-                $propertyName = $_.Name
-
-                if ($_.Value -is [pscustomobject]) {
-                    "$targetReference$Accessor | Add-Member -MemberType NoteProperty -Name '$propertyName' -Value $initialValue" |
-                        Invoke-Expression
-                    New-SortedSettings -Target $Target -Source $_.Value -Accessor "$Accessor.'$propertyName'"
-                } else {
-                    $propertyValue = '$_.Value'
-                    "$targetReference$Accessor | Add-Member -MemberType NoteProperty -Name '$propertyName' -Value $propertyValue" |
-                        Invoke-Expression
-                }
-            }
-    }
-}
-
 $aggregateSettings = [pscustomobject]@{}
 Get-ChildItem -Path $sourceDirectory |
     ForEach-Object {
@@ -92,9 +59,5 @@ Get-ChildItem -Path $sourceDirectory |
         Add-SettingsProperty -Target $aggregateSettings -Source $settings
     }
 
-$sortedSettings = [pscustomobject]@{}
-New-SortedSettings -Target $sortedSettings -Source $aggregateSettings
-
-$sortedSettings |
-    ConvertTo-Json -Depth 3 |
+& "$env:BIN/vscode/sort-settings-object.ps1" -Settings $aggregateSettings |
     Set-Content -Path $Path
