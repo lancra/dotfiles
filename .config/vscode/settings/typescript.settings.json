@@ -2,10 +2,10 @@
   "$schema": "vscode://schemas/settings/user",
   "[typescript]": {
     "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
+      "source.organizeImports": "explicit",
     },
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
-  "typescript.implementationsCodeLens.enabled": true
+  "typescript.implementationsCodeLens.enabled": true,
 }

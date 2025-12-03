@@ -8,7 +8,7 @@
   "editor.unicodeHighlight.invisibleCharacters": true,
   "files.associations": {
     "*.snippet.json": "snippets",
-    "*.sqlfluff": "ini"
+    "*.sqlfluff": "ini",
   },
   "files.autoSave": "off",
   "notebook.lineNumbers": "on",

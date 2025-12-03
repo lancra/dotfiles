@@ -8,9 +8,9 @@
     "editor.quickSuggestions": {
       "other": true,
       "comments": false,
-      "strings": true
+      "strings": true,
     },
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
   },
-  "docker.extension.enableComposeLanguageServer": true
+  "docker.extension.enableComposeLanguageServer": true,
 }

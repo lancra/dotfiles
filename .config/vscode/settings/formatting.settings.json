@@ -3,30 +3,30 @@
   "$schema": "vscode://schemas/settings/user",
   "[git-commit]": {
     "rewrap.autoWrap.enabled": true,
-    "rewrap.wrappingColumn": 72
+    "rewrap.wrappingColumn": 72,
   },
   "[github-actions-workflow]": {
     "editor.defaultFormatter": "redhat.vscode-yaml",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "[html][javascript][scss][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "[svelte]": {
     "editor.defaultFormatter": "svelte.svelte-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "[xml]": {
     "editor.defaultFormatter": "redhat.vscode-xml",
     "editor.detectIndentation": false,
     "editor.formatOnSave": true,
     "editor.insertSpaces": true,
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
   },
   "dotnet.formatting.organizeImportsOnFormat": true,
   "files.insertFinalNewline": true,

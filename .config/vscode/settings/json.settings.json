@@ -6,18 +6,18 @@
     "editor.formatOnSave": true,
     "editor.insertSpaces": true,
     "editor.quickSuggestions": {
-      "strings": true
+      "strings": true,
     },
     "editor.suggest.insertMode": "replace",
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
   },
   "json.schemas": [
     {
       "fileMatch": [
-        "**/*.snippet.json"
+        "**/*.snippet.json",
       ],
-      "url": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/snippets/snippet.schema.json"
-    }
+      "url": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/snippets/snippet.schema.json",
+    },
   ],
   "json.validate.enable": true,
 }

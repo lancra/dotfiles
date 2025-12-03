@@ -8,18 +8,18 @@
       "icon": "terminal-cmd",
       "path": [
         "${env:windir}\\Sysnative\\cmd.exe",
-        "${env:windir}\\System32\\cmd.exe"
-      ]
+        "${env:windir}\\System32\\cmd.exe",
+      ],
     },
     "Git Bash": {
-      "source": "Git Bash"
+      "source": "Git Bash",
     },
     "PowerShell": {
       "icon": "terminal-powershell",
-      "source": "PowerShell"
+      "source": "PowerShell",
     },
     "Windows PowerShell": {
-      "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
-    }
+      "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    },
   },
 }

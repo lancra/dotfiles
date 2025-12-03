@@ -1,7 +1,7 @@
 {
   "$schema": "vscode://schemas/settings/user",
   "[sql]": {
-    "editor.tabSize": 4
+    "editor.tabSize": 4,
   },
   "mssql.enableRichExperiences": true,
   "mssql.format.datatypeCasing": "uppercase",

@@ -2,18 +2,18 @@
   "$schema": "vscode://schemas/settings/user",
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "markdownlint.config": {
     "default": true,
     "heading-style": {
-      "style": "atx"
+      "style": "atx",
     },
     "line-length": {
-      "line_length": 135
+      "line_length": 135,
     },
     "no-duplicate-heading": {
-      "siblings_only": true
+      "siblings_only": true,
     }
   },
 }

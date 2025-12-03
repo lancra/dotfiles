@@ -4,17 +4,17 @@
     {
       "text": "TODO:",
       "color": "black",
-      "backgroundColor": "#90DBF4"
+      "backgroundColor": "#90DBF4",
     },
     {
       "text": "FIXME:",
       "color": "black",
-      "backgroundColor": "#FFCFD2"
+      "backgroundColor": "#FFCFD2",
     },
     {
       "text": "HACK:",
       "color": "black",
-      "backgroundColor": "#FBF8CC"
-    }
+      "backgroundColor": "#FBF8CC",
+    },
   ],
 }
