@@ -1,0 +1,42 @@
+{
+  "$schema": "vscode://schemas/settings/user",
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": true,
+  "explorer.fileNesting.patterns": {
+    // .NET
+    "*.cs": "${capture}.designer.cs,${capture}.g.cs,${capture}.generated.cs,${capture}.run.json,${capture}.settings.json,${capture}.settings.*.json",
+    "*.csproj": "${capture}.csproj.user",
+    "*.cshtml": "${capture}.cshtml.cs,${capture}.cshtml.css",
+    "*.razor": "${capture}.razor.cs,${capture}.razor.css",
+    "*.resx": "${capture}.Designer.cs,${capture}.Designer.tt",
+    "*.xaml": "${capture}.xaml.cs",
+    "appsettings.json": "appsettings.*.json",
+    // .NET Web Forms
+    "*.asax": "${capture}.asax.cs,${capture}.asax.designer.cs,${capture}.asax.resx",
+    "*.ascx": "${capture}.ascx.cs,${capture}.ascx.designer.cs,${capture}.ascx.resx",
+    "*.aspx": "${capture}.aspx.cs,${capture}.aspx.designer.cs,${capture}.aspx.resx",
+    "*.config": "${capture}.*.config",
+    // Angular
+    "*.component.ts": "${capture}.component.html,${capture}.component.scss,${capture}.component.spec.ts",
+    "*.guard.ts": "${capture}.guard.spec.ts",
+    "*-guard.ts": "${capture}-guard.spec.ts",
+    "*.interceptor.ts": "${capture}.interceptor.spec.ts",
+    "*-interceptor.ts": "${capture}-interceptor.spec.ts",
+    "*.pipe.ts": "${capture}.pipe.spec.ts",
+    "*-pipe.ts": "${capture}-pipe.spec.ts",
+    "*.resolver.ts": "${capture}.resolver.spec.ts",
+    "*-resolver.ts": "${capture}-resolver.spec.ts",
+    "*.service.ts": "${capture}.service.spec.ts",
+    "app.ts": "app.config.ts,app.html,app.routes.ts,app.scss,app.spec.ts",
+    "environment.ts": "environment.*.ts",
+    // JavaScript / TypeScript
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js",
+    "*.ts": "${capture}.html,${capture}.js,${capture}.scss,${capture}.spec.ts",
+    "*.tsx": "${capture}.ts",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
+    "tsconfig.json": "tsconfig.*.json",
+    // Rust
+    "Cargo.toml": "Cargo.lock",
+  },
+}
