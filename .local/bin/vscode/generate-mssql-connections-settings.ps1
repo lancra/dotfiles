@@ -138,17 +138,17 @@ $connections = @()
 
                 if ($authentication -eq [AuthenticationType]::AzureMFA) {
                     $userPrincipalName = $_.Value.user
+                    $connection |
+                        Add-Member -MemberType NoteProperty -Name 'email' -Value $userPrincipalName
+
                     $userId = Get-AzureUserId -UserPrincipalName $userPrincipalName
-                    $domain = $userPrincipalName.Substring($userPrincipalName.IndexOf('@'))
+                    $domain = $userPrincipalName.Substring($userPrincipalName.IndexOf('@') + 1)
                     $tenantId = Get-AzureTenantId -Domain $domain
                     $connection |
                         Add-Member -MemberType NoteProperty -Name 'accountId' -Value "$userId.$tenantId"
 
                     $connection |
                         Add-Member -MemberType NoteProperty -Name 'azureAccountToken' -Value ''
-
-                    $connection |
-                        Add-Member -MemberType NoteProperty -Name 'email' -Value @userPrincipalName
                 } elseif ($authentication -eq [AuthenticationType]::SqlLogin) {
                     $connection.user = $_.Value.user
 
