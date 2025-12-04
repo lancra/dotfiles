@@ -37,6 +37,23 @@ function Get-HashGuid {
 $azureTenants = @{}
 $azureUsers = @{}
 
+$azureUserExpirations = @{}
+Get-Content -Path "$env:XDG_CONFIG_HOME/vscode/settings.json" |
+    ConvertFrom-Json |
+    Select-Object -ExpandProperty 'mssql.connections' |
+    ForEach-Object {
+        $currentExpiration = $_.expiresOn
+        if ($null -eq $_.expiresOn) {
+            return
+        }
+
+        $userPrincipalName = $_.email
+        $maximumExpiration = $azureUserExpirations[$userPrincipalName]
+        if (-not $maximumExpiration -or $currentExpiration -gt $maximumExpiration) {
+            $azureUserExpirations[$userPrincipalName] = $currentExpiration
+        }
+    }
+
 function Get-AzureTenantId {
     [CmdletBinding()]
     [OutputType([guid])]
@@ -146,6 +163,10 @@ $connections = @()
                     $tenantId = Get-AzureTenantId -Domain $domain
                     $connection |
                         Add-Member -MemberType NoteProperty -Name 'accountId' -Value "$userId.$tenantId"
+
+                    $expiration = $azureUserExpirations[$userPrincipalName] ?? 0
+                    $connection |
+                        Add-Member -MemberType NoteProperty -Name 'expiresOn' -Value $expiration
 
                     $connection |
                         Add-Member -MemberType NoteProperty -Name 'azureAccountToken' -Value ''
