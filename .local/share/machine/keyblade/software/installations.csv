@@ -28,6 +28,7 @@ go,packages,github.com/josephburnett/jd
 go,packages,github.com/liderman/leveldb-cli
 go,packages,github.com/mikefarah/yq/v4
 go,packages,github.com/tomnomnom/gron
+npm,packages,@angular/cli
 npm,packages,@openapitools/openapi-generator-cli
 npm,packages,@stoplight/spectral-cli
 npm,packages,cspell
