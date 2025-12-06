@@ -69,6 +69,9 @@
 # Dotnet Suggest
 /.dotnet-suggest-registration.txt
 
+# Dotnet Tools Outdated
+/.config/dotnet-tools-outdated/appsettings-fulltemplate.json
+
 # Environment
 /.config/env/.ignored-user-variables.json
 
