@@ -10,6 +10,7 @@ $generators = @{
 }
 
 $schemaProperty = '$schema'
+$addPropertyFormat = '{0} | Add-Member -MemberType NoteProperty -Name ''{1}'' -Value {2}'
 function Add-SettingsProperty {
     [CmdletBinding()]
     param(
@@ -29,16 +30,48 @@ function Add-SettingsProperty {
             ForEach-Object {
                 $propertyName = $_.Name
                 $propertyAccessor = "$Accessor.'$propertyName'"
-                $targetPropertyValue = "$targetReference$propertyAccessor" |
+                $propertyValueAccessor = '$_.Value'
+
+                $targetObjectAccessor = "$targetReference$Accessor"
+                $targetPropertyAccessor = "$targetReference$propertyAccessor"
+                $targetPropertyValue = $targetPropertyAccessor |
                     Invoke-Expression
-                if ($null -eq $targetPropertyValue) {
-                    $propertyValue = '$_.Value'
-                    "$targetReference$Accessor | Add-Member -MemberType NoteProperty -Name '$propertyName' -Value $propertyValue" |
-                        Invoke-Expression
+
+                if ($_.Value -is [array]) {
+                    if ($null -eq $targetPropertyValue) {
+                        $addPropertyFormat -f $targetObjectAccessor, $propertyName, '@()' |
+                            Invoke-Expression
+                    }
+
+                    for ($i = 0; $i -lt $_.Value.Length; $i++) {
+                        $propertyElementValue = $_.Value[$i]
+                        $propertyElementValueAccessor = '$_.Value[$i]'
+
+                        # This structure assumes that nested arrays are not part of VS Code settings.
+                        if ($propertyElementValue -is [pscustomobject]) {
+                            "$targetPropertyAccessor += ([pscustomobject]@{})" |
+                                Invoke-Expression
+                            Add-SettingsProperty -Target $Target -Source $propertyElementValue -Accessor "$propertyAccessor[$i]"
+                        } else {
+                            "$targetPropertyAccessor += $propertyElementValueAccessor" |
+                                Invoke-Expression
+                        }
+                    }
                 } elseif ($_.Value -is [pscustomobject]) {
+                    if ($null -eq $targetPropertyValue) {
+                        $addPropertyFormat -f $targetObjectAccessor, $propertyName, '([pscustomobject]@{})' |
+                            Invoke-Expression
+                    }
+
                     Add-SettingsProperty -Target $Target -Source $_.Value -Accessor $propertyAccessor
                 } else {
-                    Write-Output "`e[31mDuplicate definitions found for `"$propertyAccessor`".`e[39m"
+                    if ($null -ne $targetPropertyValue) {
+                        Write-Output "`e[31mDuplicate definitions found for `"$propertyAccessor`".`e[39m"
+                        return
+                    }
+
+                    $addPropertyFormat -f $targetObjectAccessor, $propertyName, $propertyValueAccessor |
+                        Invoke-Expression
                 }
             }
     }
