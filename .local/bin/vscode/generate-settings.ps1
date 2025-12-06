@@ -11,6 +11,7 @@ $generators = @{
 
 $schemaProperty = '$schema'
 $addPropertyFormat = '{0} | Add-Member -MemberType NoteProperty -Name ''{1}'' -Value {2}'
+$expandEnvironmentVariablesFormat = '([System.Environment]::ExpandEnvironmentVariables({0}))'
 function Add-SettingsProperty {
     [CmdletBinding()]
     param(
@@ -52,6 +53,9 @@ function Add-SettingsProperty {
                             "$targetPropertyAccessor += ([pscustomobject]@{})" |
                                 Invoke-Expression
                             Add-SettingsProperty -Target $Target -Source $propertyElementValue -Accessor "$propertyAccessor[$i]"
+                        } elseif ($propertyElementValue -is [string]) {
+                            "$targetPropertyAccessor += $($expandEnvironmentVariablesFormat -f '$_.Value[$i]')" |
+                                Invoke-Expression
                         } else {
                             "$targetPropertyAccessor += $propertyElementValueAccessor" |
                                 Invoke-Expression
@@ -70,8 +74,13 @@ function Add-SettingsProperty {
                         return
                     }
 
-                    $addPropertyFormat -f $targetObjectAccessor, $propertyName, $propertyValueAccessor |
-                        Invoke-Expression
+                    if ($_.Value -is [string]) {
+                        $addPropertyFormat -f $targetObjectAccessor, $propertyName, ($expandEnvironmentVariablesFormat -f $propertyValueAccessor) |
+                            Invoke-Expression
+                    } else {
+                        $addPropertyFormat -f $targetObjectAccessor, $propertyName, $propertyValueAccessor |
+                            Invoke-Expression
+                    }
                 }
             }
     }
