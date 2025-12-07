@@ -7,8 +7,8 @@
       "args": [],
       "icon": "terminal-cmd",
       "path": [
-        "${env:windir}\\Sysnative\\cmd.exe",
-        "${env:windir}\\System32\\cmd.exe",
+        "%SYSTEMROOT%\\Sysnative\\cmd.exe",
+        "%SYSTEMROOT%\\System32\\cmd.exe",
       ],
     },
     "Git Bash": {
@@ -19,7 +19,7 @@
       "source": "PowerShell",
     },
     "Windows PowerShell": {
-      "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "path": "%SYSTEMROOT%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
     },
   },
 }
