@@ -110,13 +110,14 @@ $connections = @()
 
         $group = [pscustomobject]@{
             name = $_.Name
-            id = Get-HashGuid -Value $_.Name
+            id = (Get-HashGuid -Value $_.Name).Guid
             color = $_.Value.color
         }
 
         if ($_.Value.parent -ne $_.Name) {
             $parentId = $groups |
-                Where-Object -Property 'id' -EQ $_.Value.parent
+                Where-Object -Property 'name' -EQ $_.Value.parent |
+                Select-Object -ExpandProperty 'id' -First 1
             $group |
                 Add-Member -MemberType NoteProperty -Name 'parentId' -Value $parentId
 
@@ -144,7 +145,7 @@ $connections = @()
                     database = $_.Value.database
                     encrypt = 'Mandatory'
                     groupId = $group.id
-                    id = Get-HashGuid -Value $profileName
+                    id = (Get-HashGuid -Value $profileName).Guid
                     password = ''
                     profileName = $profileName
                     profileSource = 0
