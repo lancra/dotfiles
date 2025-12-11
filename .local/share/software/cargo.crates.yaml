@@ -23,6 +23,9 @@
   Name: content_inspector
   Description: Fast inspection of binary buffers to guess/determine the encoding
   Examples: inspect
+- Id: https://crates.io/crates/git-task
+  Name: git-task
+  Description: Local-first task manager/bug tracker within your git repository which can sync issues with remote sources.
 - Id: https://crates.io/crates/mergiraf
   Name: mergiraf
   Description: A syntax-aware merge driver for Git
