@@ -127,12 +127,12 @@
   },
   "ml": {
     "group": "Programming",
-    "command": "podman run --platform 'linux/amd64' --rm --volume \"${PWD}:/tmp/lint:rw\" 'oxsecurity/megalinter-dotnet:v8'",
+    "command": "podman run --platform 'linux/amd64' --rm --volume \"${PWD}:/tmp/lint:rw\" 'oxsecurity/megalinter-dotnet:latest'",
     "bash": true
   },
   "mla": {
     "group": "Programming",
-    "command": "podman run --platform 'linux/amd64' --rm --volume \"${PWD}:/tmp/lint:rw\" --env 'APPLY_FIXES=all' 'oxsecurity/megalinter-dotnet:v8'",
+    "command": "podman run --platform 'linux/amd64' --rm --volume \"${PWD}:/tmp/lint:rw\" --env 'APPLY_FIXES=all' 'oxsecurity/megalinter-dotnet:latest'",
     "bash": true
   },
   "swc": {
