@@ -117,5 +117,14 @@
     "key": "f5",
     "command": "mssql.runQuery",
     "when": "editorTextFocus && editorLangId == 'sql'"
+  },
+  {
+    "key": "ctrl+shift+d",
+    "command": "-mssql.disconnect",
+    "when": "editorTextFocus && editorLangId == 'sql'"
+  },
+  {
+    "key": "ctrl+shift+d",
+    "command": "mssql.changeDatabase"
   }
 ]
