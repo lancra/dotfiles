@@ -21,6 +21,8 @@ param(
     [Parameter()]
     [string] $Maximum,
 
+    [switch] $IncludePrerelease,
+
     [switch] $UseClipboard
 )
 
@@ -84,11 +86,11 @@ class PackageVersion : System.IComparable {
         $maxPrereleaseSegments = [int]::Max($this.Prerelease.Length, $other.Prerelease.Length)
         for ($i = 0; $i -lt $maxPrereleaseSegments; $i++) {
             if ($i -gt ($this.Prerelease.Length - 1)) {
-                return -1
+                return 1
             }
 
             if ($i -gt ($other.Prerelease.Length - 1)) {
-                return 1
+                return -1
             }
 
             $thisSegment = $this.Prerelease[$i]
@@ -204,6 +206,10 @@ $searchArguments = @(
     ForEach-Object {
         $searchArguments += "--source '$_'"
     }
+
+if ($IncludePrerelease) {
+    $searchArguments += '--prerelease'
+}
 
 $minimumVersion = -not [string]::IsNullOrEmpty($Minimum) ? [PackageVersion]::new($Minimum) : $null
 $maximumVersion = -not [string]::IsNullOrEmpty($Maximum) ? [PackageVersion]::new($Maximum) : $null
