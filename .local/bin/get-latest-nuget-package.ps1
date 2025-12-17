@@ -1,3 +1,42 @@
+<#
+.SYNOPSIS
+Gets the latest version of a specified NuGet package.
+
+.DESCRIPTION
+The provided sources are searched for the specified package identifier. The
+resulting versions are ordered using a natural sort to ensure the latest version
+appears first. The first result is then output in the provided format. If usage
+of the clipboard has been enabled, the output is also copied there.
+
+.PARAMETER Id
+The identifier of the NuGet package to find.
+
+.PARAMETER Output
+The format to provide the resulting package as.
+
+CentralPackageManagement: Outputs the PackageVersion and PackageReference MSBuild properties.
+Open: Opens the package on NuGet.org.
+PackageReference: Outputs the PackageReference MSBuild property.
+PackageVersion: Outputs the PackageReference MSBuild property.
+Version: Outputs the version.
+
+.PARAMETER Source
+The sources to check for the package in. The NuGet API is provided as a default.
+
+.PARAMETER Minimum
+The inclusive minimum package version to limit the search to.
+
+.PARAMETER Maximum
+The exclusive maximum package version to limit the search to.
+
+.PARAMETER IncludePrerelease
+Specifies that prerelease versions should be included in the search.
+
+.PARAMETER UseClipboard
+Specifies that the output should also be copied to the clipboard. The script
+will force input at a prompt after this action, and restore the previous
+clipboard contents upon completion.
+#>
 [CmdletBinding()]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
