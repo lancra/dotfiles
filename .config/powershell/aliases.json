@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/powershell/aliases.schema.json",
   "nugetp": {
     "group": ".NET",
-    "command": "$env:BIN/get-latest-nuget-package.ps1",
+    "command": "$env:BIN/dotnet/get-latest-nuget-package.ps1",
     "bash": false
   },
   "c": {
