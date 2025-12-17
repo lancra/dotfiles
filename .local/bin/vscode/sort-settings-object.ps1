@@ -4,6 +4,15 @@ param(
     [Parameter(Mandatory)]
     [pscustomobject] $Settings
 )
+
+$objectArraySortProperties = @{
+    'editor.rulers' = 'column'
+    'json.schemas' = 'url'
+    'mssql.connectionGroups' = 'name'
+    'mssql.connections' = 'profileName'
+    'todohighlight.keywords' = 'text'
+}
+
 function New-SortedSettings {
     [CmdletBinding()]
     param(
@@ -29,8 +38,16 @@ function New-SortedSettings {
                         Invoke-Expression
                     New-SortedSettings -Target $Target -Source $_.Value -Accessor "$Accessor.'$propertyName'"
                 } else {
-                    $propertyValue = '$_.Value'
-                    "$targetReference$Accessor | Add-Member -MemberType NoteProperty -Name '$propertyName' -Value $propertyValue" |
+                    if ($_.Value -is [array]) {
+                        $sortProperty = $_.Value.Length -gt 0 -and $_.Value[0] -is [pscustomobject] `
+                            ? $objectArraySortProperties[$propertyName] `
+                            : '$null'
+                        $propertyValueAccessor = "@(`$_.Value | Sort-Object -Property '$sortProperty')"
+                    } else {
+                        $propertyValueAccessor = '$_.Value'
+                    }
+
+                    "$targetReference$Accessor | Add-Member -MemberType NoteProperty -Name '$propertyName' -Value $propertyValueAccessor" |
                         Invoke-Expression
                 }
             }
