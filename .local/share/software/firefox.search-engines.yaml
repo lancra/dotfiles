@@ -1,0 +1,52 @@
+- Id: fdm
+  Name: Freedium
+  Uri: https://freedium.cfd/{searchTerms}
+  Guid: fad3232a-da19-46f1-b72f-e7597f2ab6cb
+- Id: gd
+  Name: Grim Dawn Wiki
+  Uri: https://grimdawn.fandom.com/wiki/Special:Search?scope=internal&navigationSearch=true&query={searchTerms}
+  Guid: 6125ebe4-99d5-460c-b4b4-007ac6e71b1e
+- Id: ghr
+  Name: GitHub Repositories
+  Uri: https://github.com/search?type=repositories&q={searchTerms}
+  Guid: bd6d5bfd-74db-4062-909a-9ca3a8a6dc1f
+- Id: hexcode
+  Name: Color Hex
+  Uri: https://www.color-hex.com/color/{searchTerms}
+  Guid: 147e0ac4-4bb6-4424-b8d2-056e781c0fee
+- Id: httpcode
+  Name: HTTP Status Code
+  Uri: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/{searchTerms}
+  Guid: 967c4666-caf8-4e7b-a6dc-7cbc03eb62e2
+- Id: jw
+  Name: Just Watch
+  Uri: https://www.justwatch.com/us/search?q={searchTerms}
+  Guid: ec67a353-2d54-4b9d-806e-9bae41f2b5da
+- Id: mcr
+  Name: Microsoft Artifact Registry
+  Uri: https://mcr.microsoft.com/en-us/artifact/mar/{searchTerms}/tags
+  Guid: e0b6f70a-9a40-4775-9f47-80562ff0fb21
+- Id: mcrs
+  Name: Microsoft Artifact Registry Search
+  Uri: https://mcr.microsoft.com/en-us/catalog?search={searchTerms}
+  Guid: 34f0d7b0-4922-41d2-96b0-e0da8202137a
+- Id: npmp
+  Name: NPM Packages
+  Uri: https://www.npmjs.com/package/{searchTerms}
+  Guid: 871a087f-9561-4620-8f6f-164791e07f3f
+- Id: nugetp
+  Name: NuGet Packages
+  Uri: https://www.nuget.org/packages/{searchTerms}
+  Guid: 629caf89-26a2-49dc-a6c5-569cb3f2f7d4
+- Id: r
+  Name: Reddit
+  Uri: https://reddit.com/r/{searchTerms}
+  Guid: aae42d77-8dde-47df-b6b9-739457add718
+- Id: steamgame
+  Name: Steam Game
+  Uri: https://store.steampowered.com/app/{searchTerms}
+  Guid: 98a8888d-07bf-4615-a260-feab4846814c
+- Id: steams
+  Name: Steam Search
+  Uri: https://store.steampowered.com/search/?term={searchTerms}
+  Guid: 7f773a26-b939-4b54-be3a-aaaa36e12f30
