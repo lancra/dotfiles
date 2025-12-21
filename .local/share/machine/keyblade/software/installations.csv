@@ -20,6 +20,7 @@ dotnet,tools,dotnet-ef
 dotnet,tools,dotnet-repl
 dotnet,tools,dotnet-reportgenerator-globaltool
 dotnet,tools,dotnet-suggest
+dotnet,tools,dotnet-t4
 dotnet,tools,dotnet-tools-outdated
 dotnet,tools,dotnet-xscgen
 dotnet,tools,refitter
