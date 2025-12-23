@@ -184,7 +184,7 @@
     },
     "lp": {
       "title": "Log Prefix",
-      "body": "!git l --grep \\\"$1:.*\\\" ${@:2} #"
+      "body": "!git l --grep \\\"^$1:\\\" ${@:2} #"
     },
     "ls": {
       "title": "Log Short",
