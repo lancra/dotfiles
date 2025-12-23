@@ -1,0 +1,5 @@
+{
+  "$schema": "vscode://schemas/settings/user",
+  "trailing-spaces.backgroundColor": "rgba(245,194,231,1)",
+  "trailing-spaces.highlightCurrentLine": false,
+}

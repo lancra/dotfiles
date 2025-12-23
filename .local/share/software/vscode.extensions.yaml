@@ -186,6 +186,10 @@
   Uuid: 06574cb4-e5dc-4631-8174-a543a4533621
   DisplayName: rust-analyzer
   Description: Rust language support for Visual Studio Code
+- Id: shardulm94.trailing-spaces
+  Uuid: 6ad45f5a-09ec-44e5-b363-867ddc1ec674
+  DisplayName: Trailing Spaces
+  Description: Highlight trailing spaces and delete them in a flash!
 - Id: stkb.rewrap
   Uuid: b24a13f5-4e50-4d9a-ab0a-87f47d9fdfcb
   DisplayName: Rewrap

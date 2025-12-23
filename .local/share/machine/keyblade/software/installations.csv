@@ -214,6 +214,7 @@ vscode,extensions,redhat.vscode-xml
 vscode,extensions,redhat.vscode-yaml
 vscode,extensions,richie5um2.vscode-sort-json
 vscode,extensions,rust-lang.rust-analyzer
+vscode,extensions,shardulm94.trailing-spaces
 vscode,extensions,stkb.rewrap
 vscode,extensions,svelte.svelte-vscode
 vscode,extensions,tamasfe.even-better-toml
