@@ -25,7 +25,7 @@ Get-Content -Path "$env:HOME/.vscode/extensions/extensions.json" |
 
         $id = [InstallationId]::new($identifier.id, $exportId)
         $metadata = [ordered]@{
-            Uuid = $identifier.uuid
+            Uuid = $identifier.uuid ?? $_.metadata.id
             DisplayName = $manifestMetadata.DisplayName
             Description = $manifestMetadata.Description.InnerText
         }
