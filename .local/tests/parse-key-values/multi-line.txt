@@ -1,0 +1,42 @@
+SINGLE_QUOTE='This
+"value"
+has
+`multiple`
+lines.'
+DOUBLE_QUOTE="This
+'value'
+has
+`multiple`
+lines."
+BACKTICK=`This
+'value'
+has
+"multiple"
+lines.`
+SINGLE_QUOTE_NEWLINES='This\nvalue
+has
+multiple\nlines.'
+DOUBLE_QUOTE_NEWLINES="This\nvalue
+has
+multiple\nlines."
+BACKTICK_NEWLINES=`This\nvalue
+has
+multiple\nlines.`
+SINGLE_QUOTE_COMMENT='Multi-line
+with
+#single quotes.' # And a trailing comment.
+DOUBLE_QUOTE_COMMENT="Multi-line
+with
+#double quotes." # And a trailing comment.
+BACKTICK_COMMENT=`Multi-line
+with
+#backticks.` # And a trailing comment.
+SINGLE_QUOTE_SPACES='This value  
+  has extra
+  spaces.  '
+DOUBLE_QUOTE_SPACES="This value  
+  has extra
+  spaces.  "
+BACKTICK_SPACES=`This value  
+  has extra
+  spaces.  `

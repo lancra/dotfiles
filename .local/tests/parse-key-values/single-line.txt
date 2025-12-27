@@ -1,0 +1,36 @@
+BASIC=basic
+
+# ^ Blank Line
+EMPTY_VALUE=
+EMPTY_SINGLE_QUOTES_VALUE=''
+EMPTY_DOUBLE_QUOTES_VALUE=""
+EMPTY_BACKTICKS_VALUE=``
+DOUBLE_QUOTES_IN_SINGLE_QUOTES_VALUE='This value has "double quotes".'
+BACKTICKS_IN_SINGLE_QUOTES_VALUE='This value has `backticks`.'
+SINGLE_QUOTES_IN_DOUBLE_QUOTES_VALUE="This value has 'single quotes'."
+BACKTICKS_IN_DOUBLE_QUOTES_VALUE="This value has `backticks`."
+SINGLE_QUOTES_IN_BACKTICKS_VALUE=`This value has 'single quotes'.`
+DOUBLE_QUOTES_IN_BACKTICKS_VALUE=`This value has "double quotes".`
+SINGLE_QUOTES_IN_UNQUOTED_VALUE=This value has 'single quotes'.
+DOUBLE_QUOTES_IN_UNQUOTED_VALUE=This value has "double quotes".
+BACKTICKS_IN_UNQUOTED_VALUE=This value has `backticks`.
+  SURROUNDING_SPACES_KEY  =spaces
+SURROUNDING_SPACES_VALUE=  spaces  
+SURROUNDING_SPACES_VALUE_SINGLE_QUOTES='  spaces  '
+SURROUNDING_SPACES_VALUE_DOUBLE_QUOTES="  spaces  "
+SURROUNDING_SPACES_VALUE_BACKTICKS=`  spaces  `
+INNER SPACES KEY=spaces
+NEWLINES_VALUE=This\nis\nnot\nmultiline.
+SINGLE_QUOTE_NEWLINES_VALUE='This\nis\nnot\nmultiline.'
+DOUBLE_QUOTE_NEWLINES_VALUE="This\nis\nmultiline."
+BACKTICK_NEWLINES_VALUE=`This\nis\nnot\nmultiline.`
+# COMMENT=skipped
+  # COMMENT_WITH_SPACES=skipped
+INLINE_COMMENT=value# This is a comment.
+INLINE_COMMENT_EMPTY=# This is a comment
+INLINE_COMMENT_SPACED=value #This is a comment.
+INLINE_COMMENT_SINGLE_QUOTES='value in #single quotes' # This is a comment.
+INLINE_COMMENT_DOUBLE_QUOTES="value in #double quotes" # This is a comment.
+INLINE_COMMENT_BACKTICKS=`value in #backticks` # This is a comment.
+EQUALS=value=has=equals
+JSON='{ "property": "text" }'
