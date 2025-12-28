@@ -66,9 +66,6 @@
 !/.docker/config.json
 !/.docker/daemon.json
 
-# Dotnet Suggest
-/.dotnet-suggest-registration.txt
-
 # Dotnet Tools Outdated
 /.config/dotnet-tools-outdated/appsettings-fulltemplate.json
 

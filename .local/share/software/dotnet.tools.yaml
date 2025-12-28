@@ -4,8 +4,6 @@
   Url: https://nuget.org/packages/dotnet-repl
 - Id: dotnet-reportgenerator-globaltool
   Url: https://nuget.org/packages/dotnet-reportgenerator-globaltool
-- Id: dotnet-suggest
-  Url: https://nuget.org/packages/dotnet-suggest
 - Id: dotnet-t4
   Url: https://nuget.org/packages/dotnet-t4
 - Id: dotnet-tools-outdated
