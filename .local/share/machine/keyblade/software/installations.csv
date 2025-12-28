@@ -9,6 +9,7 @@ cargo,crates,https://crates.io/crates/cargo-watch
 cargo,crates,https://crates.io/crates/content_inspector
 cargo,crates,https://crates.io/crates/git-task
 cargo,crates,https://crates.io/crates/mergiraf
+cargo,crates,https://crates.io/crates/qrrs
 cargo,crates,https://crates.io/crates/rustlings
 cargo,crates,https://crates.io/crates/sqlx-cli
 cargo,crates,https://crates.io/crates/taplo-cli

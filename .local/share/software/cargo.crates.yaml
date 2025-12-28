@@ -29,6 +29,9 @@
 - Id: https://crates.io/crates/mergiraf
   Name: mergiraf
   Description: A syntax-aware merge driver for Git
+- Id: https://crates.io/crates/qrrs
+  Name: qrrs
+  Description: CLI QR code generator and reader
 - Id: https://crates.io/crates/rustlings
   Name: rustlings
   Description: Small exercises to get you used to reading and writing Rust code!
