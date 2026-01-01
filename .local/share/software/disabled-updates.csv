@@ -1,4 +1,5 @@
 Provider,Export,Id
+winget,packages,Discord.Discord@winget
 winget,packages,Microsoft.Edge@winget
 winget,packages,Microsoft.PowerShell@winget
 winget,packages,Microsoft.VisualStudioCode@winget
