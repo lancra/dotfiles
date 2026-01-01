@@ -61,6 +61,7 @@ begin {
             [InstallationExport] $Export,
 
             [Parameter(Mandatory)]
+            [AllowEmptyCollection()]
             [Installation[]] $InMemoryInstallations
         )
         process {
@@ -85,6 +86,7 @@ begin {
             [InstallationExport] $Export,
 
             [Parameter(Mandatory)]
+            [AllowEmptyCollection()]
             [InstallationId[]] $Ids,
 
             [Parameter()]
@@ -98,11 +100,14 @@ begin {
 
             $persistedDefinitions = @()
             if (Test-Path -Path $definitionPath) {
-                $persistedDefinitions = (Get-Content -Path $definitionPath |
-                    ConvertFrom-Yaml -Ordered).GetEnumerator() |
-                    ForEach-Object {
-                        New-Object -TypeName PSObject -Property $_
-                    }
+                $persistedDefinitionsContent = Get-Content -Path $definitionPath
+                if ($persistedDefinitionsContent) {
+                    $persistedDefinitions = ($persistedDefinitionsContent |
+                        ConvertFrom-Yaml -Ordered).GetEnumerator() |
+                        ForEach-Object {
+                            New-Object -TypeName PSObject -Property $_
+                        }
+                }
             }
 
             $Ids |
@@ -127,7 +132,7 @@ begin {
 }
 process {
     $exports = & $PSScriptRoot/get-exports.ps1 -Provider $Provider -Export $Export
-    $inMemoryInstallations = & $PSScriptRoot/export-software-manifest.ps1 -Exports $exports
+    $inMemoryInstallations = (& $PSScriptRoot/export-software-manifest.ps1 -Exports $exports) ?? @()
 
     $exports |
         ForEach-Object {
@@ -135,7 +140,7 @@ process {
                 Export = $_
                 InMemoryInstallations = $inMemoryInstallations
             }
-            $targetInstallationIds = Get-UniqueInstallationIdentifiers @getUniqueInstallationIdentifiersParameters
+            $targetInstallationIds = (Get-UniqueInstallationIdentifiers @getUniqueInstallationIdentifiersParameters) ?? @()
 
             $definitions = $inMemoryInstallations |
                 Where-Object { $targetInstallationIds -contains $_.Id } |
