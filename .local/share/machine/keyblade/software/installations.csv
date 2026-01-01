@@ -289,6 +289,7 @@ winget,packages,Microsoft.OneDrive@winget
 winget,packages,Microsoft.PowerShell@winget
 winget,packages,Microsoft.PowerToys@winget
 winget,packages,Microsoft.Sqlcmd@winget
+winget,packages,Microsoft.SQLServer.OLEDBDriver@winget
 winget,packages,Microsoft.Teams.Free@winget
 winget,packages,Microsoft.Teams@winget
 winget,packages,Microsoft.UI.Xaml.2.7@winget

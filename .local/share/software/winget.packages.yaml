@@ -262,6 +262,10 @@
   DisplayName: sqlcmd
   Category: Programming
   Tracking: Full
+- Id: Microsoft.SQLServer.OLEDBDriver@winget
+  DisplayName: Microsoft SQL Server OLE DB Driver
+  Category: Programming
+  Tracking: Full
 - Id: Microsoft.Teams.Free@winget
   DisplayName: Microsoft Teams Free
   Category: Social
