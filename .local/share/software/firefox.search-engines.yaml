@@ -30,6 +30,10 @@
   Name: Microsoft Artifact Registry Search
   Uri: https://mcr.microsoft.com/en-us/catalog?search={searchTerms}
   Guid: 34f0d7b0-4922-41d2-96b0-e0da8202137a
+- Id: mcw
+  Name: Minecraft Wiki
+  Uri: https://minecraft.wiki/w/Special:Search?search={searchTerms}
+  Guid: 0042a2ea-02aa-4107-a80a-f4735b3a0ac0
 - Id: npmp
   Name: NPM Packages
   Uri: https://www.npmjs.com/package/{searchTerms}
