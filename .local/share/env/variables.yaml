@@ -14,7 +14,7 @@ User:
     - '%BIN%'
     - '%USERPROFILE%\OneDrive\Tools'
   PIP_CACHE_DIR: '%DEVUSERPROFILE%\AppData\Local\pip\Cache'
-  POSH_INSTALLER: 'winget'
+  POSH_INSTALLER: 'manual'
   POSH_THEMES_PATH: '%LOCALAPPDATA%\Programs\oh-my-posh\themes\'
   RIPGREP_CONFIG_PATH: '%XDG_CONFIG_HOME%/ripgrep/config'
   XDG_CACHE_HOME: '%HOME%/.cache'
