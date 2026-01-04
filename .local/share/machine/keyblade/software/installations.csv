@@ -257,6 +257,7 @@ winget,packages,Google.QuickShare@winget
 winget,packages,Graphviz.Graphviz@winget
 winget,packages,Gyan.FFmpeg@winget
 winget,packages,HandBrake.HandBrake@winget
+winget,packages,ImageMagick.ImageMagick@winget
 winget,packages,Intel.ProcessorDiagnosticTool@winget
 winget,packages,JanDeDobbeleer.OhMyPosh@winget
 winget,packages,JGraph.Draw@winget

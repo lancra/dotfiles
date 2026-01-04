@@ -130,6 +130,10 @@
   DisplayName: HandBrake
   Category: Video
   Tracking: Full
+- Id: ImageMagick.ImageMagick@winget
+  DisplayName: ImageMagick
+  Category: Utility
+  Tracking: Full
 - Id: Intel.ProcessorDiagnosticTool@winget
   DisplayName: Intel Processor Diagnostic Tool
   Category: Utility

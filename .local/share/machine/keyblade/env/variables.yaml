@@ -54,4 +54,5 @@ Machine:
     - '%PROGRAMFILES%\nodejs\'
     - '%PROGRAMFILES%\PuTTY\'
     - '%PROGRAMFILES%\Calibre2\'
+    - '%PROGRAMFILES%\ImageMagick-7.1.2-Q16-HDRI'
     - '%PROGRAMFILES%\Pandoc\'
