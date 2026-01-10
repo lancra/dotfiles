@@ -18,6 +18,10 @@
   Name: HTTP Status Code
   Uri: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/{searchTerms}
   Guid: 967c4666-caf8-4e7b-a6dc-7cbc03eb62e2
+- Id: isbn
+  Name: ISBN Search
+  Uri: https://isbnsearch.org/isbn/{searchTerms}
+  Guid: a60a940b-6149-467b-956e-038477315b86
 - Id: jw
   Name: Just Watch
   Uri: https://www.justwatch.com/us/search?q={searchTerms}
