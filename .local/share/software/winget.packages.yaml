@@ -254,6 +254,10 @@
   DisplayName: OneDrive
   Category: File System
   Tracking: Full
+- Id: Microsoft.OpenCLGLVulkanCompatibilityPack@winget
+  DisplayName: OpenCL, OpenGL, and Vulkan Compatibility Pack
+  Category: Utility
+  Tracking: Full
 - Id: Microsoft.PowerShell@winget
   DisplayName: PowerShell
   Category: Programming

@@ -289,6 +289,7 @@ winget,packages,Microsoft.msodbcsql.17@winget
 winget,packages,Microsoft.msodbcsql.18@winget
 winget,packages,Microsoft.NuGet@winget
 winget,packages,Microsoft.OneDrive@winget
+winget,packages,Microsoft.OpenCLGLVulkanCompatibilityPack@winget
 winget,packages,Microsoft.PowerShell@winget
 winget,packages,Microsoft.PowerToys@winget
 winget,packages,Microsoft.Sqlcmd@winget
