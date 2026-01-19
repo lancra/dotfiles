@@ -142,6 +142,10 @@
   DisplayName: OhMyPosh
   Category: Programming
   Tracking: Full
+- Id: JetBrains.dotPeek@winget
+  DisplayName: JetBrains dotPeek
+  Category: Programming
+  Tracking: Full
 - Id: JGraph.Draw@winget
   DisplayName: draw.io
   Category: Programming

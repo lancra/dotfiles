@@ -261,6 +261,7 @@ winget,packages,HandBrake.HandBrake@winget
 winget,packages,ImageMagick.ImageMagick@winget
 winget,packages,Intel.ProcessorDiagnosticTool@winget
 winget,packages,JanDeDobbeleer.OhMyPosh@winget
+winget,packages,JetBrains.dotPeek@winget
 winget,packages,JGraph.Draw@winget
 winget,packages,JohnMacFarlane.Pandoc@winget
 winget,packages,jqlang.jq@winget
