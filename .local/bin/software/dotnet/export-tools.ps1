@@ -12,17 +12,13 @@ if (-not (Test-Path -Path $sentinelPath)) {
 
 $exportId = & "$env:BIN/software/get-export-id-from-path.ps1"
 
-& dotnet tool list --global |
+& dotnet tool list --global --format json |
+    ConvertFrom-Json |
+    Select-Object -ExpandProperty 'data' |
     ForEach-Object {
-        if ($_.StartsWith('Package Id') -or $_.StartsWith('---')) {
-            return
-        }
-
-        $spaceIndex = $_.IndexOf(' ')
-        $toolId = $_.Substring(0, $spaceIndex)
-        $id = [InstallationId]::new($toolId, $exportId)
+        $id = [InstallationId]::new($_.packageId, $exportId)
         $metadata = [ordered]@{
-            Url = "https://nuget.org/packages/$toolId"
+            Url = "https://nuget.org/packages/$($_.packageId)"
         }
 
         [Installation]::new($id, $metadata)
