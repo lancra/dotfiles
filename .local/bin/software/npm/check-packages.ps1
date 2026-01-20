@@ -10,5 +10,5 @@ $exportId = & "$env:BIN/software/get-export-id-from-path.ps1"
     ConvertFrom-Json |
     ForEach-Object {
         $id = [InstallationId]::new($_.id, $exportId)
-        [InstallationUpgrade]::new($id, $_.current, $_.available)
+        [InstallationUpgrade]::new($id, $_.id, $_.current, $_.available)
     }) 2> $null
