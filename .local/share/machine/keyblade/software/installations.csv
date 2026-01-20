@@ -310,7 +310,6 @@ winget,packages,Microsoft.VCRedist.2013.x64@winget
 winget,packages,Microsoft.VCRedist.2013.x86@winget
 winget,packages,Microsoft.VCRedist.2015+.x64@winget
 winget,packages,Microsoft.VCRedist.2015+.x86@winget
-winget,packages,Microsoft.VisualStudio.2022.Community@winget
 winget,packages,Microsoft.VisualStudio.Community@winget
 winget,packages,Microsoft.VisualStudioCode@winget
 winget,packages,Microsoft.WebDeploy@winget
