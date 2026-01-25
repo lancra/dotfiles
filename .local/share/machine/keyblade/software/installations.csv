@@ -246,6 +246,7 @@ winget,packages,Discord.Discord@winget
 winget,packages,dotPDN.PaintDotNet@winget
 winget,packages,EpicGames.EpicGamesLauncher@winget
 winget,packages,FlorianHeidenreich.Mp3tag@winget
+winget,packages,Foxit.FoxitReader@winget
 winget,packages,gerardog.gsudo@winget
 winget,packages,Git.Git@winget
 winget,packages,GitHub.cli@winget

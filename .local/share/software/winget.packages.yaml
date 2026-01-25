@@ -82,6 +82,10 @@
   DisplayName: Mp3tag
   Category: Music
   Tracking: Full
+- Id: Foxit.FoxitReader@winget
+  DisplayName: Foxit PDF Reader
+  Category: Utility
+  Tracking: Full
 - Id: gerardog.gsudo@winget
   DisplayName: gsudo
   Category: Utility
