@@ -226,14 +226,6 @@
   DisplayName: .NET 10 SDK
   Category: Programming
   Tracking: Partial
-- Id: Microsoft.DotNet.SDK.8@winget
-  DisplayName: .NET 8 SDK
-  Category: Programming
-  Tracking: Partial
-- Id: Microsoft.DotNet.SDK.9@winget
-  DisplayName: .NET 9 SDK
-  Category: Programming
-  Tracking: Partial
 - Id: Microsoft.DotNet.UninstallTool@winget
   DisplayName: .NET Uninstall Tool
   Category: Programming
