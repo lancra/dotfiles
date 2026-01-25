@@ -334,10 +334,6 @@
   DisplayName: Microsoft Visual C++ 2015-2022 Redistributable (x86)
   Category: Programming
   Tracking: None
-- Id: Microsoft.VisualStudio.2022.Community@winget
-  DisplayName: Visual Studio 2022
-  Category: Programming
-  Tracking: Full
 - Id: Microsoft.VisualStudio.Community@winget
   DisplayName: Visual Studio
   Category: Programming
