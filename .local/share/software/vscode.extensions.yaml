@@ -40,7 +40,7 @@
   Description: Edit smarter, ship faster with an enhanced Docker-development experience
 - Id: editorconfig.editorconfig
   Uuid: f60a60a6-95ba-42d4-b41c-3d24c1b89588
-  DisplayName: EditorConfig for VS Code
+  DisplayName: EditorConfig
   Description: EditorConfig Support for Visual Studio Code
 - Id: esbenp.prettier-vscode
   Uuid: 96fa4707-6983-4489-b7c5-d5ffdfdcce90
