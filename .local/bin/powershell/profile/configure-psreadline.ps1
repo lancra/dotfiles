@@ -1,3 +1,4 @@
+# Enable vi mode
 Set-PSReadLineOption -EditMode Vi -ViModeIndicator Cursor
 Set-PSReadLineKeyHandler -Key '*,y' -BriefDescription 'global yank' -ViMode Command -Scriptblock {
     param($key, $arg)
@@ -6,3 +7,7 @@ Set-PSReadLineKeyHandler -Key '*,y' -BriefDescription 'global yank' -ViMode Comm
     [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
     Set-Clipboard -Value $line
 }
+
+# Setup previous command chord
+Set-PSReadLineKeyHandler -Chord 'Alt+l' -Function HistorySearchBackward
+Set-PSReadLineOption -HistorySearchCursorMovesToEnd
