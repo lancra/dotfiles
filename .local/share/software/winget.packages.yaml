@@ -22,6 +22,10 @@
   DisplayName: iTunes
   Category: Music
   Tracking: Full
+- Id: Atuinsh.Atuin@winget
+  DisplayName: Atuin
+  Category: Programming
+  Tracking: Full
 - Id: Audacity.Audacity@winget
   DisplayName: Audacity
   Category: Music

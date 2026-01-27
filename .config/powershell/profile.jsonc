@@ -1,3 +1,8 @@
 {
-  "dependencies": {},
+  "dependencies": {
+    "setup-atuin": [
+      // Atuin needs to know the prompt line count for correct display, which is only available after Oh My Posh is set up.
+      "setup-oh-my-posh",
+    ],
+  },
 }

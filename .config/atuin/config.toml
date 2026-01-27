@@ -1,0 +1,62 @@
+auto_sync = false
+dialect = "us"
+enter_accept = true
+exit_mode = "return-original"
+filter_mode = "global"
+search_mode = "fuzzy"
+show_help = true
+show_numeric_shortcuts = true
+show_tabs = true
+timezone = "local"
+update_check = false
+
+[stats]
+common_prefix = ["sudo"]
+common_subcommands = [
+  "apt",
+  "cargo",
+  "composer",
+  "dnf",
+  "docker",
+  "d",
+  "dotnet",
+  "g",
+  "git",
+  "go",
+  "ip",
+  "jj",
+  "kubectl",
+  "nix",
+  "nmcli",
+  "npm",
+  "pecl",
+  "pnpm",
+  "pm",
+  "podman",
+  "port",
+  "systemctl",
+  "tmux",
+  "yarn",
+]
+
+[keys]
+scroll_exits = true
+exit_past_line_start = true
+accept_past_line_end = true
+accept_past_line_start = false
+accept_with_backspace = false
+
+[sync]
+records = false
+
+[preview]
+strategy = "auto"
+
+[daemon]
+enabled = false
+
+[theme]
+name = "catppuccin-mocha-green"
+
+[search]
+filters = [ "global", "host", "session", "session-preload", "workspace", "directory" ]
