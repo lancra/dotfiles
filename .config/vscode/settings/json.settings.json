@@ -14,6 +14,14 @@
   "json.schemas": [
     {
       "fileMatch": [
+        "*.jsonc"
+      ],
+      "schema": {
+        "allowTrailingCommas": true,
+      },
+    },
+    {
+      "fileMatch": [
         "**/*.snippet.json",
       ],
       "url": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/snippets/snippet.schema.json",
