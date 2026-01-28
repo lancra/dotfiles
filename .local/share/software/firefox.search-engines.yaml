@@ -58,3 +58,11 @@
   Name: Steam Search
   Uri: https://store.steampowered.com/search/?term={searchTerms}
   Guid: 7f773a26-b939-4b54-be3a-aaaa36e12f30
+- Id: vscext
+  Name: Visual Studio Code Extensions
+  Uri: https://marketplace.visualstudio.com/search?target=VSCode&term={searchTerms}
+  Guid: ef9bc414-6723-487f-95f7-979f54d7c03e
+- Id: vsext
+  Name: Visual Studio Extensions
+  Uri: https://marketplace.visualstudio.com/search?target=VS&term={searchTerms}
+  Guid: 0c0c437e-87c2-47d5-9fdb-1ae73031e77e

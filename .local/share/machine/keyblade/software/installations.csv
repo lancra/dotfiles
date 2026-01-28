@@ -39,6 +39,8 @@ firefox,search-engines,nugetp
 firefox,search-engines,r
 firefox,search-engines,steamgame
 firefox,search-engines,steams
+firefox,search-engines,vscext
+firefox,search-engines,vsext
 go,packages,github.com/ericchiang/pup
 go,packages,github.com/homeport/dyff/cmd/dyff
 go,packages,github.com/josephburnett/jd
