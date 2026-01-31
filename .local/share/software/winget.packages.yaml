@@ -350,6 +350,10 @@
   DisplayName: Web Deploy
   Category: Programming
   Tracking: None
+- Id: Microsoft.WinAppCli@winget
+  DisplayName: winapp
+  Category: Programming
+  Tracking: Full
 - Id: Microsoft.WindowsTerminal.Preview@winget
   DisplayName: Windows Terminal Preview
   Category: Programming
