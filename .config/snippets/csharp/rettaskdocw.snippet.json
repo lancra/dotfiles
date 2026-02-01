@@ -1,0 +1,10 @@
+{
+  "title": "Wrapped Returned Task Documentation",
+  "description": "The wrapped XML documentation for a returned asynchronous Task.",
+  "scope": "csharp",
+  "body": [
+    "/// <returns>",
+    "/// The <see cref=\"Task\"/> that represents the asynchronous operation, containing the $0",
+    "/// </returns>"
+  ]
+}
