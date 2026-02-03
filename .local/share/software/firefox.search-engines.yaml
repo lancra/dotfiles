@@ -47,9 +47,13 @@
   Uri: https://www.npmjs.com/search?q={searchTerms}
   Guid: 255cd1ff-40b1-4992-a418-8aa828477467
 - Id: nugetp
-  Name: NuGet Packages
+  Name: NuGet Package
   Uri: https://www.nuget.org/packages/{searchTerms}
   Guid: 629caf89-26a2-49dc-a6c5-569cb3f2f7d4
+- Id: nugetps
+  Name: NuGet Package Search
+  Uri: https://www.nuget.org/packages?q={searchTerms}
+  Guid: 95d2f3ad-4bde-4b85-86f2-42bed57f5421
 - Id: r
   Name: Reddit
   Uri: https://reddit.com/r/{searchTerms}
