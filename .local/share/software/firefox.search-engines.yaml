@@ -1,3 +1,7 @@
+- Id: docker
+  Name: Docker Hub Search
+  Uri: https://hub.docker.com/search?q={searchTerms}
+  Guid: d27a3274-15af-45b1-983c-33d01d8bd00f
 - Id: fdm
   Name: Freedium
   Uri: https://freedium.cfd/{searchTerms}

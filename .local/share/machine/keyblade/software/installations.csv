@@ -24,6 +24,7 @@ dotnet,tools,dotnet-t4
 dotnet,tools,dotnet-tools-outdated
 dotnet,tools,dotnet-xscgen
 dotnet,tools,refitter
+firefox,search-engines,docker
 firefox,search-engines,fdm
 firefox,search-engines,gd
 firefox,search-engines,ghr
