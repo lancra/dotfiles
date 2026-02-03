@@ -39,9 +39,13 @@
   Uri: https://minecraft.wiki/w/Special:Search?search={searchTerms}
   Guid: 0042a2ea-02aa-4107-a80a-f4735b3a0ac0
 - Id: npmp
-  Name: NPM Packages
+  Name: NPM Package
   Uri: https://www.npmjs.com/package/{searchTerms}
   Guid: 871a087f-9561-4620-8f6f-164791e07f3f
+- Id: npmps
+  Name: NPM Package Search
+  Uri: https://www.npmjs.com/search?q={searchTerms}
+  Guid: 255cd1ff-40b1-4992-a418-8aa828477467
 - Id: nugetp
   Name: NuGet Packages
   Uri: https://www.nuget.org/packages/{searchTerms}
