@@ -334,6 +334,10 @@
       "title": "Switch and Pull",
       "body": "!git swd && git pull"
     },
+    "swc": {
+      "title": "Switch Create",
+      "body": "switch --create"
+    },
     "swd": {
       "title": "Switch Default",
       "body": "!git switch $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
