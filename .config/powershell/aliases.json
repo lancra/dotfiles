@@ -55,6 +55,11 @@
     "command": "$env:BIN/change-directory-up.ps1",
     "bash": false
   },
+  "csd": {
+    "group": "FileSystem",
+    "command": "& $env:BIN/resolve-relative-path.ps1 -Path #{0} | Set-Clipboard",
+    "bash": true
+  },
   "cwd": {
     "group": "FileSystem",
     "command": "$pwd.Path | Set-Clipboard",
@@ -69,6 +74,11 @@
     "group": "FileSystem",
     "command": "lsd --long --tree --depth #{0} #{:*}",
     "bash": true
+  },
+  "psd": {
+    "group": "FileSystem",
+    "command": "$env:BIN/resolve-relative-path.ps1",
+    "bash": false
   },
   "rmr": {
     "group": "FileSystem",
