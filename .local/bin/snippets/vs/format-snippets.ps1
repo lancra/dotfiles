@@ -174,12 +174,9 @@ foreach ($snippet in $Snippets.Values) {
     $declaration = $document.CreateXmlDeclaration('1.0', 'utf-8', '')
     [void]$document.AppendChild($declaration)
 
-    $codeSnippetsElement = $document.CreateElement('CodeSnippets', $visualStudioNamespace)
-    [void]$document.AppendChild($codeSnippetsElement)
-
     $codeSnippetElement = $document.CreateElement('CodeSnippet', $visualStudioNamespace)
     $codeSnippetElement.SetAttribute('Format', '1.0.0')
-    [void]$codeSnippetsElement.AppendChild($codeSnippetElement)
+    [void]$document.AppendChild($codeSnippetElement)
 
     $headerElement = $document.CreateElement('Header', $visualStudioNamespace)
     [void]$codeSnippetElement.AppendChild($headerElement)
