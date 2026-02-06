@@ -171,12 +171,22 @@ class SnippetFormatResult {
     }
 }
 
+class SnippetEditorScope {
+    [string]$Key
+    [hashtable]$Properties
+
+    SnippetEditorScope([string]$key, [hashtable]$properties) {
+        $this.Key = $key
+        $this.Properties = $properties
+    }
+}
+
 class SnippetEditor {
     [string]$Key
     [string]$Name
     [string]$TargetDirectory
-    [string[]]$Scopes
-    [hashtable]$ScopeOverrides
+    [SnippetEditorScope[]]$Scopes
+    [bool]$IgnoreUndefinedScopes
 
     static [SnippetEditor[]] FromConfiguration() {
         $path = "$env:XDG_CONFIG_HOME/snippets/config.json"
@@ -184,18 +194,18 @@ class SnippetEditor {
         $editorProperties = @(
             @{Name = 'Key'; Expression = {$_.key}},
             @{Name = 'Name'; Expression = {$_.name}},
-            @{Name = 'TargetDirectory'; Expression = {$_.targetDirectory}}
-            @{Name = 'Scopes'; Expression = {$_.scopes}},
+            @{Name = 'TargetDirectory'; Expression = {$_.targetDirectory}},
             @{
-                Name = 'ScopeOverrides'
+                Name = 'Scopes'
                 Expression = {
-                    $scopeOverrides = @{}
-                    $_.scopeOverrides.PSObject.Properties |
+                    $_.scopes.PSObject.Properties |
                         ForEach-Object {
-                            $scopeOverrides[$_.Name] = $_.Value
+                            $properties = & $env:BIN/powershell/convert-to-hashtable.ps1 -Object $_.Value
+                            [SnippetEditorScope]::new($_.Name, $properties)
                         }
-                    return $scopeOverrides
-                }}
+                }
+            },
+            @{Name = 'IgnoreUndefinedScopes'; Expression = { $_.ignoreUndefinedScopes ?? $false }}
         )
 
         $editors = [SnippetEditor[]](Get-Content -Path $path |

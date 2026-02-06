@@ -14,7 +14,10 @@ $script:missingScope = $false
 $snippetContents = @{}
 $Snippet.Scope |
     ForEach-Object {
-        $scope = $Configuration.ScopeOverrides.$_ ?? $_
+        $scopeProperties = $Configuration.Scopes |
+            Where-Object -Property Key -EQ $_ |
+            Select-Object -ExpandProperty Properties
+        $scope = $scopeProperties.override ?? $_
         $prefix = $Snippet.Prefix[0]
         $snippetScopePath = Join-Path -Path $directory -ChildPath $scope -AdditionalChildPath "$prefix.snippets"
         if (-not (Test-Path -Path $snippetScopePath)) {

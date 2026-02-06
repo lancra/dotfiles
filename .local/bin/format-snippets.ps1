@@ -11,6 +11,10 @@ files or combined into an aggregate file.
 .PARAMETER Source
 The path of the source directory for snippet definitions.
 
+.PARAMETER Scope
+The scopes to include for formatting. If no scopes are specified, all scopes are
+included.
+
 .PARAMETER SkipVisualStudio
 Specifies that snippet formatting should be skipped for the Visual Studio
 editor. Attempting to change snippets for this editor while it is running
@@ -79,8 +83,12 @@ $snippets.Scopes |
                 continue
             }
 
-            if ($null -ne $editor.Scopes -and -not ($editor.Scopes -contains $scopeName)) {
-                continue
+            if ($null -ne $editor.Scopes -and $editor.IgnoreUndefinedScopes) {
+                $editorScopeKeys = $editor.Scopes |
+                    Select-Object -ExpandProperty Key
+                if (-not ($editorScopeKeys -contains $scopeName)) {
+                    continue
+                }
             }
 
             $scriptPath = "$env:BIN/snippets/$($editor.Key)/format-snippets.ps1"

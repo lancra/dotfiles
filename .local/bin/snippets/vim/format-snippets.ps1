@@ -9,7 +9,10 @@ param (
     [SnippetEditor]$Configuration
 )
 
-$vimScope = $Configuration.ScopeOverrides.($Snippets.Scope) ?? $Snippets.Scope
+$scopeProperties = $Configuration.Scopes |
+    Where-Object -Property Key -EQ $Snippets.Scope |
+    Select-Object -ExpandProperty Properties
+$vimScope = $scopeProperties.override ?? $Snippets.Scope
 
 $targetDirectory = Resolve-Path -Path $Configuration.TargetDirectory
 $targetScopeDirectory = Join-Path -Path $targetDirectory -ChildPath $vimScope

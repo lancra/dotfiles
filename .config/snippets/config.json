@@ -4,24 +4,33 @@
       "key": "vim",
       "name": "VIM",
       "targetDirectory": "~/.config/vim/UltiSnips",
-      "scopeOverrides": {
-        "csharp": "cs",
-        "git-commit": "gitcommit",
-        "powershell": "ps1"
-      }
+      "scopes": {
+        "csharp": {
+          "override": "cs"
+        },
+        "git-commit": {
+          "override": "gitcommit"
+        },
+        "powershell": {
+          "override": "ps1"
+        }
+      },
+      "ignoreUndefinedScopes": false
     },
     {
       "key": "vs",
       "name": "Visual Studio",
       "targetDirectory": "~/Documents/Visual Studio 18/Code Snippets/Visual C#/My Code Snippets",
-      "scopes": [
-        "csharp"
-      ]
+      "scopes": {
+        "csharp": {}
+      },
+      "ignoreUndefinedScopes": true
     },
     {
       "key": "vscode",
       "name": "Visual Studio Code",
-      "targetDirectory": "~/AppData/Roaming/Code/User/snippets"
+      "targetDirectory": "~/AppData/Roaming/Code/User/snippets",
+      "ignoreUndefinedScopes": false
     }
   ]
 }

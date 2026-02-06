@@ -86,7 +86,9 @@ foreach ($editor in $editors) {
     }
 
     if ($null -ne $editor.Scopes) {
-        $sharedScopes = $editor.Scopes | Where-Object {$snippet.Scope -contains $_}
+        $sharedScopes = $editor.Scopes |
+            Select-Object -ExpandProperty Key |
+            Where-Object { $snippet.Scope -contains $_ }
         if ($sharedScopes.Count -eq 0) {
             continue
         }
