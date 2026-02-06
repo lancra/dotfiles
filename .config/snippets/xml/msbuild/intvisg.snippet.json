@@ -1,0 +1,17 @@
+{
+  "title": "Internals Visible To Item Group",
+  "description": "The MSBuild item group used to expose project internals to another project.",
+  "scope": "xml",
+  "body": [
+    "<ItemGroup>",
+    "  <InternalsVisibleTo Include=\"DynamicProxyGenAssembly2\" />",
+    "  <InternalsVisibleTo Include=\"${1:Project}\" />",
+    "</ItemGroup>$0"
+  ],
+  "placeholders": {
+    "1": {
+      "variable": "project",
+      "tooltip": "The project to expose internals to."
+    }
+  }
+}

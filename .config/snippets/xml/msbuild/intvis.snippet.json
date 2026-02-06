@@ -1,0 +1,12 @@
+{
+  "title": "Internals Visible To Item",
+  "description": "The MSBuild item used to expose project internals to another project.",
+  "scope": "xml",
+  "body": "<InternalsVisibleTo Include=\"${1:Project}\" />$0",
+  "placeholders": {
+    "1": {
+      "variable": "project",
+      "tooltip": "The project to expose internals to."
+    }
+  }
+}
