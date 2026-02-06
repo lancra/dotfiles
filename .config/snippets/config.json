@@ -20,9 +20,11 @@
     {
       "key": "vs",
       "name": "Visual Studio",
-      "targetDirectory": "~/Documents/Visual Studio 18/Code Snippets/Visual C#/My Code Snippets",
+      "targetDirectory": "~/Documents/Visual Studio 18/Code Snippets",
       "scopes": {
-        "csharp": {}
+        "csharp": {
+          "directory": "Visual C#/My Code Snippets"
+        }
       },
       "ignoreUndefinedScopes": true
     },

@@ -9,7 +9,14 @@ param (
     [SnippetEditor]$Configuration
 )
 
-$visualStudioTarget = Resolve-Path -Path $Configuration.TargetDirectory
+$scopeProperties = $Configuration.Scopes |
+    Where-Object -Property Key -EQ $Snippets.Scope |
+    Select-Object -ExpandProperty Properties
+
+$baseVisualStudioTarget = Join-Path -Path $Configuration.TargetDirectory -ChildPath $scopeProperties.directory
+$visualStudioTarget = Resolve-Path -Path $baseVisualStudioTarget
+
+$languageAttributeValue = $scopeProperties.attribute ?? $Snippets.Scope
 $visualStudioNamespace = 'http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet'
 
 function New-LiteralElement {
@@ -136,7 +143,7 @@ function Set-VisualStudioSnippetToken {
     }
 }
 
-$bodySeparator = [System.Environment]::NewLine + '      '
+$bodySeparator = [System.Environment]::NewLine + [string]::new(' ', 6)
 
 New-Item -ItemType Directory -Path $visualStudioTarget -Force | Out-Null
 
@@ -211,7 +218,7 @@ foreach ($snippet in $Snippets.Values) {
     }
 
     $codeElement = $document.CreateElement('Code', $visualStudioNamespace)
-    $codeElement.SetAttribute('Language', 'csharp')
+    $codeElement.SetAttribute('Language', $languageAttributeValue)
     [void]$snippetElement.AppendChild($codeElement)
 
     $codeCDataSection = $document.CreateCDataSection($codeValue)

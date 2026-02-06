@@ -8,7 +8,13 @@ param (
     [SnippetEditor]$Configuration
 )
 
-$visualStudioDirectory = Resolve-Path -Path $Configuration.TargetDirectory
+# NOTE: This approach must be modified for snippets that have multiple scopes supported by Visual Studio.
+$scopeProperties = $Configuration.Scopes |
+    Where-Object { $Snippet.Scope -contains $_.Key } |
+    Select-Object -ExpandProperty Properties
+
+$baseVisualStudioDirectory = Join-Path -Path $Configuration.TargetDirectory -ChildPath $scopeProperties.directory
+$visualStudioDirectory = Resolve-Path -Path $baseVisualStudioDirectory
 
 $visualStudioPath = "$visualStudioDirectory/$Name.snippet"
 if (-not (Test-Path -Path $visualStudioPath)) {
