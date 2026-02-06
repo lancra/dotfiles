@@ -24,6 +24,10 @@
       "scopes": {
         "csharp": {
           "directory": "Visual C#/My Code Snippets"
+        },
+        "xml": {
+          "attribute": "XML",
+          "directory": "XML/My Xml Snippets"
         }
       },
       "ignoreUndefinedScopes": true
