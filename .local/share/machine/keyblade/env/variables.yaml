@@ -2,8 +2,8 @@ User:
   NVM_HOME: '%LOCALAPPDATA%\nvm'
   NVM_SYMLINK: 'C:\nvm4w\nodejs'
   PATH:
-    - '%LOCALAPPDATA%\Microsoft\WinGet\Links'
     - '%LOCALAPPDATA%\Programs\oh-my-posh\bin\'
+    - '%LOCALAPPDATA%\Microsoft\WinGet\Links'
     - '%LOCALAPPDATA%\Programs\nu\bin\'
     - '%LOCALAPPDATA%\Programs\Microsoft VS Code\bin'
     - '%LOCALAPPDATA%\Programs\KDiff3\bin'
