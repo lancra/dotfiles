@@ -5,4 +5,14 @@ param(
     [uri] $Repository
 )
 
-(($Repository.Segments | Select-Object -Last 2) -join '').TrimEnd('.git')
+$segments = $Repository |
+    Select-Object -ExpandProperty Segments |
+    Select-Object -Last 2
+$id = $segments -join ''
+
+$idSuffix = '.git'
+if ($id.EndsWith($idSuffix)) {
+    $id = $id.Substring(0, $id.Length - $idSuffix.Length)
+}
+
+$id
