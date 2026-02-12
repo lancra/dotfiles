@@ -90,6 +90,11 @@
     "command": "$env:BIN/git/generate-aliases.ps1",
     "bash": false
   },
+  "gor": {
+    "group": "Git",
+    "command": "$env:BIN/git/open-remote.ps1",
+    "bash": false
+  },
   "gpnf": {
     "group": "Git",
     "command": "$env:BIN/git/prune-orphan-notes.ps1",
