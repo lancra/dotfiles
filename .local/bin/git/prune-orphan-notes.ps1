@@ -24,11 +24,7 @@ param(
     [switch] $Check
 )
 
-$repositoryRoot = git -C $Repository rev-parse --show-toplevel 2> $null
-if ($LASTEXITCODE -eq 128) {
-    throw "The provided path '$Repository' is not a Git repository."
-}
-
+$repositoryRoot = & "$env:BIN/git/get-repository-root.ps1" -Path $Repository
 git -C $repositoryRoot notes list |
     ForEach-Object {
         $noteIds = $_ -split ' '

@@ -16,7 +16,7 @@ function Get-RemoteUrl {
         [string] $Path
     )
     process {
-        (& git -C $Path remote get-url origin).TrimEnd('.git')
+        & git -C $Path remote get-url origin
     }
 }
 
@@ -26,11 +26,7 @@ if ($Local) {
 } elseif ($Remote) {
     $repositoryUri = "https://github.com/$Remote"
 } else {
-    & git rev-parse 2> $null
-    if ($LASTEXITCODE -eq 128) {
-        throw "No repository provided and working directory is not within a repository."
-    }
-
+    & "$env:BIN/git/check-repository.ps1"
     $repositoryUri = Get-RemoteUrl -Path $PWD
 }
 
