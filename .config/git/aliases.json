@@ -258,6 +258,10 @@
       "title": "Rebase Interactive",
       "body": "rebase --interactive"
     },
+    "rem": {
+      "title": "Remote",
+      "body": "remote"
+    },
     "rs": {
       "title": "Reset",
       "body": "reset"
