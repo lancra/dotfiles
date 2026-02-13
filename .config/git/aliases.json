@@ -366,6 +366,10 @@
       "title": "Tag Latest",
       "body": "t -1 --format='%(describe:tags)'"
     },
+    "wip": {
+      "title": "Work In Progress Commit",
+      "body": "!git add . && git commit --message wip #"
+    },
     "wipe": {
       "title": "Wipe",
       "body": "!git reset --hard && git clean -fd"
