@@ -266,6 +266,10 @@
       "title": "Reset",
       "body": "reset"
     },
+    "rs1": {
+      "title": "Reset One Commit",
+      "body": "reset HEAD~"
+    },
     "rsh": {
       "title": "Reset Hard",
       "body": "reset --hard"
