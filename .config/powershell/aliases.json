@@ -189,5 +189,10 @@
     "group": "WinGet",
     "command": "winget upgrade #{:*}",
     "bash": true
+  },
+  "wth": {
+    "group": "Windows Terminal",
+    "command": "& Start-Process -FilePath 'https://learn.microsoft.com/en-us/windows/terminal/command-line-arguments'",
+    "bash": true
   }
 }
