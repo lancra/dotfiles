@@ -43,6 +43,13 @@
     },
     {
       "command": {
+        "action": "moveTab",
+        "direction": "backward"
+      },
+      "id": "User.moveTab.backward"
+    },
+    {
+      "command": {
         "action": "selectOutput",
         "direction": "prev"
       },
@@ -55,6 +62,13 @@
         "splitMode": "duplicate"
       },
       "id": "User.splitPane.duplicate"
+    },
+    {
+      "command": {
+        "action": "moveTab",
+        "direction": "forward"
+      },
+      "id": "User.moveTab.forward"
     }
   ],
   "compatibility.textMeasurement": "console",
@@ -93,6 +107,14 @@
     {
       "id": "User.splitPane.duplicate",
       "keys": "alt+shift+d"
+    },
+    {
+      "id": "User.moveTab.backward",
+      "keys": "ctrl+shift+left"
+    },
+    {
+      "id": "User.moveTab.forward",
+      "keys": "ctrl+shift+right"
     }
   ],
   "launchMode": "maximized",
