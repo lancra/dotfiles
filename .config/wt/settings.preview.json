@@ -101,6 +101,7 @@
       "type": "remainingProfiles"
     }
   ],
+  "newTabPosition": "afterCurrentTab",
   "profiles": {
     "defaults": {
       "autoMarkPrompts": true,
