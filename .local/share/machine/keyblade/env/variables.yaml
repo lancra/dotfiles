@@ -34,7 +34,7 @@ Machine:
     - '%PROGRAMFILES%\Common Files\Oracle\Java\javapath'
     - '%PROGRAMFILES(X86)%\Common Files\Oracle\Java\java8path'
     - '%PROGRAMFILES%\gsudo\Current'
-    - '%PROGRAMFILES%\Vim\vim91'
+    - '%PROGRAMFILES%\Vim\vim92'
     - '%PROGRAMFILES%\Git\cmd'
     - '%PROGRAMFILES%\Git\usr\bin'
     - '%PROGRAMFILES%\GnuPG\bin'

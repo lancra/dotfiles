@@ -6,7 +6,7 @@
 	gpgSign = true
 [core]
 	autocrlf = false
-	editor = 'c:/Program Files/Vim/vim91/vim.exe'
+	editor = 'c:/Program Files/Vim/vim92/vim.exe'
 	symlinks = true
 [diff]
 	algorithm = histogram
