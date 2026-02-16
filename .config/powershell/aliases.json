@@ -5,6 +5,16 @@
     "command": "$env:BIN/dotnet/get-latest-nuget-package.ps1",
     "bash": false
   },
+  "ngi": {
+    "group": "Angular",
+    "command": "$env:BIN/angular/invoke-ng.ps1",
+    "bash": false
+  },
+  "ngs": {
+    "group": "Angular",
+    "command": "& $env:BIN/angular/invoke-ng.ps1 -Action serve",
+    "bash": true
+  },
   "c": {
     "group": "Application",
     "command": "cargo",
