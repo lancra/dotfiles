@@ -319,6 +319,7 @@ winget,packages,Microsoft.VisualStudio.Community@winget
 winget,packages,Microsoft.VisualStudioCode@winget
 winget,packages,Microsoft.WebDeploy@winget
 winget,packages,Microsoft.WinAppCli@winget
+winget,packages,Microsoft.WindowsSDK.10.0.26100@winget
 winget,packages,Microsoft.WindowsTerminal.Preview@winget
 winget,packages,Microsoft.WindowsTerminal@winget
 winget,packages,Microsoft.WSL@winget
