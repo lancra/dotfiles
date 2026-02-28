@@ -2,6 +2,16 @@
   "$schema": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/software/providers.schema.json",
   "providers": [
     {
+      "id": "az",
+      "exports": [
+        {
+          "id": "extensions",
+          "versioned": true,
+          "upsert": false
+        }
+      ]
+    },
+    {
       "id": "cargo",
       "exports": [
         {

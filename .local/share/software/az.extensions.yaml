@@ -1,0 +1,4 @@
+- Id: azure-devops
+  Description: Tools for managing Azure DevOps.
+  Preview: false
+  Experimental: false
