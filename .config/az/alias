@@ -1,0 +1,5 @@
+[ls]
+command = list
+
+[rg]
+command = group

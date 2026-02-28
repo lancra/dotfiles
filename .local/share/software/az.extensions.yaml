@@ -1,3 +1,7 @@
+- Id: alias
+  Description: Support for command aliases
+  Preview: true
+  Experimental: false
 - Id: azure-devops
   Description: Tools for managing Azure DevOps.
   Preview: false
