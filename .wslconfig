@@ -1,3 +1,4 @@
 [wsl2]
 memory=2147483648
+networkingMode=mirrored
 swap=4294967296
