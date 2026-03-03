@@ -6,10 +6,6 @@
   "editor.linkedEditing": true,
   "editor.renderWhitespace": "all",
   "editor.unicodeHighlight.invisibleCharacters": true,
-  "files.associations": {
-    "*.snippet.json": "snippets",
-    "*.sqlfluff": "ini",
-  },
   "files.autoSave": "off",
   "notebook.lineNumbers": "on",
   "powershell.powerShellDefaultVersion": "PowerShell (x64)",
