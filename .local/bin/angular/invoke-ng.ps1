@@ -28,6 +28,10 @@ determined.
 The Angular project directory to filter search results by. No filtering is
 applied to the search by default.
 
+.PARAMETER UseProfile
+When provided, spawned PowerShell instances use the default profile. Instances
+are spawned with no profile by default.
+
 .PARAMETER Overwrite
 When provided, the current terminal instance is overwritten by the target
 command.
@@ -52,6 +56,7 @@ param(
     [Parameter()]
     [string] $Directory,
 
+    [switch] $UseProfile,
     [switch] $Overwrite,
     [switch] $Window
 )
@@ -159,10 +164,12 @@ function Invoke-PowerShellCommand {
     )
     process {
         # Ignore Window parameter since the PowerShell Core terminal does not support tabs.
-        $arguments = @(
-            '-NoProfile',
-            ($Command ? "-Command $Command" : '-NoExit')
-        )
+        $arguments = @(($Command ? "-Command $Command" : '-NoExit'))
+
+        if (-not $UseProfile) {
+            $arguments += ,'-NoProfile'
+        }
+
         Start-Process -FilePath 'pwsh' -ArgumentList $arguments -WorkingDirectory $WorkingDirectory
     }
 }
@@ -178,7 +185,7 @@ function Invoke-WindowsTerminalCommand {
     )
     process {
         $windowIndex = $Window ? -1 : 0
-        $wtCommandLine = $Command ? " pwsh -NoProfile -Command $Command" : ''
+        $wtCommandLine = $Command ? " pwsh $(-not $UseProfile ? '-NoProfile ' : '')-Command $Command" : ''
         $wtCommand = [scriptblock]::Create("wt --window $windowIndex new-tab --startingDirectory '$WorkingDirectory'$wtCommandLine")
         Invoke-Command -ScriptBlock $wtCommand
     }
