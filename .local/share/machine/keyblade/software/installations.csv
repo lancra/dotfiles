@@ -258,6 +258,7 @@ winget,packages,Foxit.FoxitReader@winget
 winget,packages,gerardog.gsudo@winget
 winget,packages,Git.Git@winget
 winget,packages,GitHub.cli@winget
+winget,packages,GitHub.Copilot@winget
 winget,packages,GnuPG.GnuPG@winget
 winget,packages,GnuPG.Gpg4win@winget
 winget,packages,GnuWin32.Make@winget

@@ -83,6 +83,10 @@
 !/AppData/Roaming/GitHub CLI/
 !/AppData/Roaming/GitHub CLI/config.yml
 
+# GitHub Copilot
+/.copilot/**
+!/.copilot/config.json
+
 # GPG
 /.gnupg/**
 !/.gnupg/gpg-agent.conf

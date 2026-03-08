@@ -102,6 +102,10 @@
   DisplayName: GitHub CLI
   Category: Programming
   Tracking: Full
+- Id: GitHub.Copilot@winget
+  DisplayName: GitHub Copilot CLI
+  Category: Programming
+  Tracking: Full
 - Id: GnuPG.GnuPG@winget
   DisplayName: GNU Privacy Guard
   Category: Programming
