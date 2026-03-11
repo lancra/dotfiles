@@ -14,6 +14,62 @@ function Get-NormalizedPath {
     }
 }
 
+$script:timings = @()
+$script:timer = [System.Diagnostics.Stopwatch]::new()
+
+function Add-Timing {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [string] $Section
+    )
+    process {
+        $script:timings += ,[pscustomobject]@{
+            Section = $Section
+            ElapsedMilliseconds = $script:timer.ElapsedMilliseconds
+        }
+
+        $script:timer.Restart()
+    }
+}
+
+function Export-Timings {
+    [CmdletBinding()]
+    param()
+    begin {
+        $timingsDirectory = "$env:XDG_STATE_HOME/powershell/profile"
+        $timingsDate = Get-Date
+        $timingsPath = "$timingsDirectory/timings.$($timingsDate.ToString('yyyyMMddTHHmmssfff')).json"
+    }
+    process {
+        New-Item -Path $timingsDirectory -ItemType Directory -Force | Out-Null
+
+        $entryProperties = @(
+            @{ Name = 'name'; Expression = { $_.Section }},
+            @{ Name = 'milliseconds'; Expression = { $_.ElapsedMilliseconds }}
+        )
+        $entries = $script:timings |
+            Select-Object -Property $entryProperties
+
+        $processPath = Get-Process -Id $PID |
+            Select-Object -ExpandProperty Parent |
+            Select-Object -ExpandProperty Path
+
+        $totalMilliseconds = [int]($entries |
+            Measure-Object -Property 'milliseconds' -Sum |
+            Select-Object -ExpandProperty Sum)
+
+        $timings = [pscustomobject]@{
+            date = $timingsDate.ToString('yyyy-MM-ddTHH:mm:ss.fff')
+            process = $processPath
+            total = $totalMilliseconds
+            entries = $entries
+        } |
+            ConvertTo-Json |
+            Set-Content -Path $timingsPath
+    }
+}
+
 $scriptsDirectoryPath = Get-NormalizedPath -Path "$env:BIN/powershell/profile"
 $getScriptsArguments = @{
     Path = $scriptsDirectoryPath
@@ -63,9 +119,14 @@ $dependencies.PSObject.Properties |
         $scriptPaths.Insert($maxDependencyIndex, $dependentPath)
     }
 
+$script:timer.Start()
 $scriptPaths |
     ForEach-Object {
         if ($PSCmdlet.ShouldProcess($_, '.')) {
             . $_
+
+            Add-Timing -Section $_.Substring($scriptsDirectoryPath.Length + 1)
         }
     }
+
+Export-Timings
