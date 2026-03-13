@@ -1,3 +1,6 @@
+- Id: github.com/chojs23/ec/cmd/ec
+  Name: ec
+  Module: github.com/chojs23/ec
 - Id: github.com/ericchiang/pup
   Name: pup
   Module: github.com/ericchiang/pup
