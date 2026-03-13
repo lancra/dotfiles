@@ -42,6 +42,9 @@
 [mergetool]
 	keepBackup = false
 	prompt = false
+[mergetool "ec"]
+	cmd = ec "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+	trustExitCode = true
 [mergetool "meld"]
 	cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
 	useAutoMerge = true
