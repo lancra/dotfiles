@@ -289,6 +289,7 @@ winget,packages,lsd-rs.lsd@winget
 winget,packages,Malwarebytes.Malwarebytes@winget
 winget,packages,Meld.Meld@winget
 winget,packages,Microsoft.AppInstaller@winget
+winget,packages,Microsoft.Aspire@winget
 winget,packages,Microsoft.AzureCLI@winget
 winget,packages,Microsoft.CLRTypesSQLServer.2019@winget
 winget,packages,Microsoft.DotNet.DesktopRuntime.8@winget

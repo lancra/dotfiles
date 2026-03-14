@@ -218,6 +218,10 @@
   DisplayName: Microsoft App Installer
   Category: Programming
   Tracking: Full
+- Id: Microsoft.Aspire@winget
+  DisplayName: Microsoft Aspire CLI
+  Category: Programming
+  Tracking: Full
 - Id: Microsoft.AzureCLI@winget
   DisplayName: Azure CLI
   Category: Programming

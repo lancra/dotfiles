@@ -70,6 +70,9 @@
 !/.docker/config.json
 !/.docker/daemon.json
 
+# Dotnet Aspire
+/.aspire/bin/
+
 # Dotnet Tools Outdated
 /.config/dotnet-tools-outdated/appsettings-fulltemplate.json
 
