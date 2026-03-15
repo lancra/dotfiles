@@ -1,6 +1,7 @@
 {
   "$schema": "vscode://schemas/settings/user",
   "files.associations": {
+    "*.args": "ini",
     "*.snippet.json": "snippets",
     "*.sql": "sql",
     "*.sqlfluff": "ini",
