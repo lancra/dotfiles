@@ -255,6 +255,7 @@ winget,packages,direnv.direnv@winget
 winget,packages,Discord.Discord@winget
 winget,packages,dotPDN.PaintDotNet@winget
 winget,packages,EpicGames.EpicGamesLauncher@winget
+winget,packages,Espanso.Espanso@winget
 winget,packages,FlorianHeidenreich.Mp3tag@winget
 winget,packages,Foxit.FoxitReader@winget
 winget,packages,gerardog.gsudo@winget

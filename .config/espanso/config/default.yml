@@ -1,0 +1,7 @@
+# espanso configuration file
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/config.schema.json
+# source: https://raw.githubusercontent.com/espanso/espanso/dev/espanso/src/res/config/default.yml
+# documentation: https://espanso.org/docs/
+
+show_notifications: false

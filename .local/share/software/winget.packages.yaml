@@ -82,6 +82,10 @@
   DisplayName: Epic Games Launcher
   Category: Gaming
   Tracking: Full
+- Id: Espanso.Espanso@winget
+  DisplayName: Espanso
+  Category: Utility
+  Tracking: Full
 - Id: FlorianHeidenreich.Mp3tag@winget
   DisplayName: Mp3tag
   Category: Music

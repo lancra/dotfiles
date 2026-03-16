@@ -21,6 +21,7 @@ User:
     - '%LOCALAPPDATA%\Programs\Python\Launcher\'
     - '%LOCALAPPDATA%\Microsoft\WindowsApps'
     - '%LOCALAPPDATA%\Programs\ExifTool'
+    - '%LOCALAPPDATA%\Programs\Espanso'
 Machine:
   PATH:
     - '%SYSTEMROOT%'

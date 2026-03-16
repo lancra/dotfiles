@@ -1,0 +1,31 @@
+# espanso match file
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
+# source: https://raw.githubusercontent.com/espanso/espanso/dev/espanso/src/res/config/base.yml
+# documentation: https://espanso.org/docs/
+
+matches:
+  - trigger: ':date:'
+    replace: '{{today_date}}'
+    label: Today's date in the ISO 8601 format.
+    vars:
+      - name: today_date
+        type: date
+        params:
+          format: '%Y-%m-%d'
+  - trigger: ':datetime:'
+    replace: '{{today_datetime}}'
+    label: Today's date and time in the ISO 8601 format.
+    vars:
+      - name: today_datetime
+        type: date
+        params:
+          format: '%Y-%m-%dT%H:%M:%S'
+  - trigger: ':datetimef:'
+    replace: '{{today_datetime_file}}'
+    label: Today's date and time in a format acceptable for file names.
+    vars:
+      - name: today_datetime_file
+        type: date
+        params:
+          format: '%Y%m%dT%H%M%S'
