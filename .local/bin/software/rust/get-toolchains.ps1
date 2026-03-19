@@ -3,7 +3,7 @@ param()
 
 $idGroup = 'id'
 $versionGroup = 'version'
-$toolchainRegex = "(?<$idGroup>.*?) - (?<status>.*?) : (?<$versionGroup>.*)"
+$toolchainRegex = "(?<$idGroup>.*?) - (?<status>.*?): (?<$versionGroup>.*)"
 
 $channelGroup = 'channel'
 $environmentGroup = 'environment'
