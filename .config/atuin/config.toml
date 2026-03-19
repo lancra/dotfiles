@@ -11,6 +11,9 @@ show_tabs = true
 timezone = "local"
 update_check = false
 
+[logs]
+dir = "~/.local/share/atuin/logs"
+
 [stats]
 common_prefix = ["sudo"]
 common_subcommands = [
