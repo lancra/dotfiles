@@ -88,6 +88,7 @@
 # GitHub CLI
 !/AppData/Roaming/GitHub CLI/
 !/AppData/Roaming/GitHub CLI/config.yml
+!/AppData/Roaming/GitHub CLI/hosts.yml
 
 # GitHub Copilot
 /.copilot/**
