@@ -140,6 +140,11 @@
     "command": "podman machine stop && podman machine start",
     "bash": true
   },
+  "gfa": {
+    "group": "PowerShell",
+    "command": "$env:BIN/powershell/get-full-alias.ps1",
+    "bash": false
+  },
   "hp": {
     "group": "PowerShell",
     "command": "$env:BIN/get-extended-help.ps1",
