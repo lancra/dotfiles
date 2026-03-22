@@ -30,6 +30,11 @@
     "command": "git",
     "bash": false
   },
+  "pm": {
+    "group": "Application",
+    "command": "podman",
+    "bash": false
+  },
   "ru": {
     "group": "Application",
     "command": "rustup",
@@ -128,11 +133,6 @@
   "jqf": {
     "group": "JSON",
     "command": "Set-Content -Path \"$(#{0})\" -Value (jq '.' \"$(#{0})\")",
-    "bash": true
-  },
-  "pm": {
-    "group": "Podman",
-    "command": "podman #{:*}",
     "bash": true
   },
   "pmmr": {
