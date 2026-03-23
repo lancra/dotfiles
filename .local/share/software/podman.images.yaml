@@ -1,0 +1,6 @@
+- Id: docker.io/oxsecurity/megalinter-dotnet:latest
+  Architecture: amd64
+  OperatingSystem: linux
+- Id: mcr.microsoft.com/mssql/server:2025-latest
+  Architecture: amd64
+  OperatingSystem: linux

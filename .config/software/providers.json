@@ -71,6 +71,16 @@
       ]
     },
     {
+      "id": "podman",
+      "exports": [
+        {
+          "id": "images",
+          "versioned": true,
+          "upsert": true
+        }
+      ]
+    },
+    {
       "id": "powershell",
       "exports": [
         {

@@ -67,6 +67,8 @@ pip,packages,check-jsonschema
 pip,packages,pip
 pip,packages,sqlfluff
 pip,packages,yamllint
+podman,images,docker.io/oxsecurity/megalinter-dotnet:latest
+podman,images,mcr.microsoft.com/mssql/server:2025-latest
 powershell,modules.system,AppBackgroundTask
 powershell,modules.system,Appx
 powershell,modules.system,BitLocker
