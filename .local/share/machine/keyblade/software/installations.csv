@@ -99,6 +99,7 @@ powershell,modules.system,Microsoft.PowerShell.ODataUtils
 powershell,modules.system,Microsoft.PowerShell.Operation.Validation
 powershell,modules.system,Microsoft.PowerShell.PSResourceGet
 powershell,modules.system,Microsoft.PowerShell.Security
+powershell,modules.system,Microsoft.PowerShell.ThreadJob
 powershell,modules.system,Microsoft.PowerShell.Utility
 powershell,modules.system,Microsoft.ReFsDedup.Commands
 powershell,modules.system,Microsoft.Windows.Bcd.Cmdlets
@@ -141,7 +142,6 @@ powershell,modules.system,SmbWitness
 powershell,modules.system,StartLayout
 powershell,modules.system,Storage
 powershell,modules.system,StorageBusCache
-powershell,modules.system,ThreadJob
 powershell,modules.system,TLS
 powershell,modules.system,TroubleshootingPack
 powershell,modules.system,TrustedPlatformModule

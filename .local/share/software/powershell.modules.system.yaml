@@ -121,6 +121,9 @@
   Locations:
     - Application.Core
     - System.Windows
+- Id: Microsoft.PowerShell.ThreadJob
+  Shell: Core
+  Locations: Application.Core
 - Id: Microsoft.PowerShell.Utility
   Shell: Both
   Locations:
