@@ -74,10 +74,6 @@
   Uuid: d0bfc4ab-1d3a-4487-8782-7cf6027b4fff
   DisplayName: C#
   Description: Base language support for C#
-- Id: ms-dotnettools.dotnet-interactive-vscode
-  Uuid: 2c76994b-85ab-4c26-8881-83028e2ecbf4
-  DisplayName: Polyglot Notebooks
-  Description: Polyglot Notebooks for VS Code. Use multiple languages in one notebook with full language server support for each language and share variables between them.
 - Id: ms-dotnettools.vscode-dotnet-runtime
   Uuid: 1aab81a1-b3d9-4aef-976b-577d5d90fe3f
   DisplayName: .NET Install Tool
