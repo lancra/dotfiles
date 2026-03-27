@@ -18,6 +18,7 @@ cargo,crates,https://crates.io/crates/taplo-cli
 cargo,crates,https://crates.io/crates/tealdeer
 cargo,crates,https://crates.io/crates/typos-cli
 cargo,crates,https://crates.io/crates/xsv
+cargo,crates,https://crates.io/crates/zizmor
 cargo,crates,https://github.com/pamburus/hl.git
 dotnet,tools,dotnet-ef
 dotnet,tools,dotnet-repl

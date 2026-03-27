@@ -50,6 +50,9 @@
 - Id: https://crates.io/crates/xsv
   Name: xsv
   Description: A high performance CSV command line toolkit.
+- Id: https://crates.io/crates/zizmor
+  Name: zizmor
+  Description: Static analysis for GitHub Actions
 - Id: https://github.com/pamburus/hl.git
   Name: hl
   Description: A fast and powerful log viewer and processor that translates JSON logs or logfmt logs into a pretty human-readable format.
