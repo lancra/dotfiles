@@ -2,6 +2,8 @@
   Homepage: https://github.com/python-jsonschema/check-jsonschema
 - Id: pip
   Homepage: https://pip.pypa.io/
+- Id: podman-compose
+  Homepage: https://github.com/containers/podman-compose
 - Id: sqlfluff
   Homepage: https://www.sqlfluff.com
 - Id: yamllint

@@ -66,6 +66,7 @@ npm,packages,prettier
 npm,packages,speedscope
 pip,packages,check-jsonschema
 pip,packages,pip
+pip,packages,podman-compose
 pip,packages,sqlfluff
 pip,packages,yamllint
 podman,images,docker.io/oxsecurity/megalinter-dotnet:latest
