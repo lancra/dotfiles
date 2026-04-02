@@ -146,7 +146,7 @@ $builtInUserVariables = @(
 )
 
 $ignoredUserVariables = $builtInUserVariables
-$ignoredUserVariablesPath = Join-Path -Path $env:XDG_CONFIG_HOME -ChildPath 'env' -AdditionalChildPath '.ignored-user-variables.json'
+$ignoredUserVariablesPath = Join-Path -Path $env:XDG_CONFIG_HOME -ChildPath 'env' -AdditionalChildPath '.ignored.user-variables.json'
 if (Test-Path -Path $ignoredUserVariablesPath) {
     @(Get-Content -Path $ignoredUserVariablesPath | ConvertFrom-Json) |
         ForEach-Object { $ignoredUserVariables += $_ }
