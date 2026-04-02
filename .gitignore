@@ -47,6 +47,9 @@
 # Windows User Documents
 /Documents/**
 
+# Local Ignore Files
+.ignored.*.json
+
 # Android Studio
 /.android/
 /.config/.android/
