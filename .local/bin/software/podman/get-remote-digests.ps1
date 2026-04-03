@@ -47,15 +47,15 @@ function Get-DockerHubDigests {
     }
 }
 
-function Get-MicrosoftContainerRegistryDigests {
+function Get-CachedDigests {
     [CmdletBinding()]
     [OutputType([hashtable])]
     param()
     process {
         $cacheFileName = $Repository.Replace('/', '-')
-        $cacheFilePath = "$env:XDG_CACHE_HOME/mcr.microsoft.com/$cacheFileName.json"
+        $cacheFilePath = "$env:XDG_CACHE_HOME/image-digests/$Registry/$cacheFileName.json"
         if (-not (Test-Path -Path $cacheFilePath)) {
-            & "$PSScriptRoot/cache-digests-from-microsoft-container-registry.ps1" -Repository $Repository
+            & "$PSScriptRoot/cache-digests-from-registry.ps1" -Registry $Registry -Repository $Repository
         }
 
         Get-Content -Path $cacheFilePath |
@@ -65,7 +65,7 @@ function Get-MicrosoftContainerRegistryDigests {
 
 switch ($Registry) {
     'docker.io' { return Get-DockerHubDigests }
-    'mcr.microsoft.com' { return Get-MicrosoftContainerRegistryDigests }
+    'mcr.microsoft.com' { return Get-CachedDigests }
 }
 
 Write-Warning "Unknown podman image registry '$Registry'."

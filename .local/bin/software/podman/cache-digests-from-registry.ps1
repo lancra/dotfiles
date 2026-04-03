@@ -1,6 +1,9 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory)]
+    [string] $Registry,
+
+    [Parameter(Mandatory)]
     [string] $Repository
 )
 
@@ -62,9 +65,9 @@ $getRepositoryTagDigestFunction = ${function:Get-RepositoryTagDigest}.ToString()
 $tagsByDigest = @{}
 $tagProperties = @(
     @{ Name = 'Tag'; Expression = { $_ } },
-    @{ Name = 'Url'; Expression = { "https://mcr.microsoft.com/v2/$Repository/manifests/$_" } }
+    @{ Name = 'Url'; Expression = { "https://$Registry/v2/$Repository/manifests/$_" } }
 )
-& curl --silent "https://mcr.microsoft.com/v2/$Repository/tags/list" |
+& curl --silent "https://$Registry/v2/$Repository/tags/list" |
     ConvertFrom-Json |
     Select-Object -ExpandProperty 'tags' |
     Select-Object -Property $tagProperties |
@@ -89,7 +92,7 @@ $tagProperties = @(
         $tagsByDigest[$_.Digest] += ,$_.Tag
     }
 
-$cacheDirectoryPath = "$env:XDG_CACHE_HOME/mcr.microsoft.com"
+$cacheDirectoryPath = "$env:XDG_CACHE_HOME/image-digests/$Registry"
 New-Item -ItemType Directory -Path $cacheDirectoryPath -ErrorAction SilentlyContinue |
     Out-Null
 

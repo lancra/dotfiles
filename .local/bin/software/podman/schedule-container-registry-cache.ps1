@@ -6,7 +6,7 @@ $commandArguments = @(
     '-NonInteractive',
     '-WindowStyle Hidden',
     '-NoProfile',
-    "-File `"$env:BIN/software/podman/cache-all-digests-from-microsoft-container-registry.ps1`""
+    "-File `"$env:BIN/software/podman/cache-all-digests-from-registries.ps1`""
 )
 $action = New-ScheduledTaskAction -Execute 'pwsh.exe' -Argument "$commandArguments"
 $settings = New-ScheduledTaskSettingsSet -ExecutionTimeLimit ([timespan]::FromMinutes(10))
@@ -19,7 +19,7 @@ $triggerProperties = @{
 $trigger = New-CimInstance -CimClass $stateChangeTrigger -Property $triggerProperties -ClientOnly
 
 $registerArguments = @{
-    TaskName = 'Cache Microsoft Container Registry Digests'
+    TaskName = 'Cache Container Registry Digests'
     TaskPath = 'Personal'
     Action = $action
     Settings = $settings
