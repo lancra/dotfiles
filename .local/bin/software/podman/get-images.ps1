@@ -35,23 +35,15 @@ $repositoryIgnorePatterns = @(
             return
         }
 
-        $parts = $_.repository.Split('/')
-        $registry = $parts[0]
-
-        if ($registry -eq 'mcr.microsoft.com') {
-            $namespace = ''
-            $repository = [string]::Join('/', $parts[1..($parts.Length - 1)])
-        } else {
-            $namespace = $parts[1]
-            $repository = [string]::Join('/', $parts[2..($parts.Length - 1)])
-        }
+        $id = "$($_.repository):$($_.tag)"
+        $repositorySegments = & "$PSScriptRoot/parse-image-id.ps1" -Id $id
 
         @{
-            Id = "$($_.repository):$($_.tag)"
-            Registry = $parts[0]
-            Namespace = $namespace
-            Repository = $repository
-            Tag = $_.tag
+            Id = $id
+            Registry = $repositorySegments.Registry
+            Namespace = $repositorySegments.Namespace
+            Repository = $repositorySegments.Repository
+            Tag = $repositorySegments.Tag
             Digest = $_.Digest
             Architecture = $_.Arch
             OperatingSystem = $_.Os

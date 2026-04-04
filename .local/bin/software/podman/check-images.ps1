@@ -22,12 +22,7 @@ function Get-VersionTag {
 
 & $PSScriptRoot/get-images.ps1 |
     ForEach-Object {
-        $digestLookupArguments = @{
-            Registry = $_.Registry
-            Namespace = $_.Namespace
-            Repository = $_.Repository
-        }
-        $digestLookup = & "$PSScriptRoot/get-remote-digests.ps1" @digestLookupArguments
+        $digestLookup = & "$PSScriptRoot/get-remote-digests.ps1" -Id $_.Id
         if ($digestLookup.Count -eq 0) {
             Write-Warning "No digests found for $($_.Id)."
             return

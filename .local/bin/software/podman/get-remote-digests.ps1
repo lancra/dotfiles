@@ -2,14 +2,10 @@
 [OutputType([hashtable])]
 param(
     [Parameter(Mandatory)]
-    [string] $Registry,
-
-    [Parameter()]
-    [string] $Namespace,
-
-    [Parameter(Mandatory)]
-    [string] $Repository
+    [string] $Id
 )
+
+$image = & "$PSScriptRoot/parse-image-id.ps1" -Id $Id
 
 function Get-DockerHubDigests {
     [CmdletBinding()]
@@ -17,7 +13,7 @@ function Get-DockerHubDigests {
     param()
     process {
         $tagsByDigest = @{}
-        $url = "https://hub.docker.com/v2/namespaces/$Namespace/repositories/$Repository/tags?page_size=100"
+        $url = "https://hub.docker.com/v2/namespaces/$($image.Namespace)/repositories/$($image.Repository)/tags?page_size=100"
         do {
             $response = & curl --silent $url |
                 ConvertFrom-Json
@@ -52,10 +48,15 @@ function Get-CachedDigests {
     [OutputType([hashtable])]
     param()
     process {
-        $cacheFileName = $Repository.Replace('/', '-')
-        $cacheFilePath = "$env:XDG_CACHE_HOME/image-digests/$Registry/$cacheFileName.json"
+        $fullRepository = $image.Repository
+        if (-not [string]::IsNullOrEmpty($image.Namespace)) {
+            $fullRepository = "$($image.Namespace)/$fullRepository"
+        }
+
+        $cacheFileName = $fullRepository.Replace('/', '-')
+        $cacheFilePath = "$env:XDG_CACHE_HOME/image-digests/$($image.Registry)/$cacheFileName.json"
         if (-not (Test-Path -Path $cacheFilePath)) {
-            & "$PSScriptRoot/cache-digests-from-registry.ps1" -Registry $Registry -Repository $Repository
+            & "$PSScriptRoot/cache-digests-from-registry.ps1" -Registry $image.Registry -Repository $fullRepository
         }
 
         Get-Content -Path $cacheFilePath |
@@ -63,10 +64,10 @@ function Get-CachedDigests {
     }
 }
 
-switch ($Registry) {
+switch ($image.Registry) {
     'docker.io' { return Get-DockerHubDigests }
     'mcr.microsoft.com' { return Get-CachedDigests }
 }
 
-Write-Warning "Unknown podman image registry '$Registry'."
+Write-Warning "Unknown podman image registry '$($image.Registry)'."
 return @{}
