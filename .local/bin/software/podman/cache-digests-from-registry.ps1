@@ -32,9 +32,57 @@ function New-CurlCommand {
         }
 
         $arguments += $Option
-        $arguments += $Url
+        $arguments += "'$Url'"
 
         return [scriptblock]::Create("$arguments")
+    }
+}
+
+function Get-Tags {
+    [CmdletBinding()]
+    [OutputType([string[]])]
+    param(
+        [Parameter()]
+        [string] $Token
+    )
+    process {
+        $urlFormat = "https://$Registry{0}"
+        $responsePath = "$([System.IO.Path]::GetTempFileName()).json"
+        $urlGroupName = 'url'
+        $linkPattern = "<(?<$urlGroupName>.*?)>; rel=`"next`""
+
+        $hasNextRequest = $true
+        $url = $urlFormat -f "/v2/$Repository/tags/list?n=1000"
+
+        $tags = @()
+        while ($hasNextRequest) {
+            $getTagsCommandArguments = @{
+                Url = $url
+                Token = $Token
+                Option = @(
+                    "--output '$responsePath'",
+                    "--write-out '%header{Link}'"
+                )
+            }
+            $getTagsCommand = New-CurlCommand @getTagsCommandArguments
+
+            $link = Invoke-Command -ScriptBlock $getTagsCommand
+            $tags += (Get-Content -Path $responsePath |
+                ConvertFrom-Json |
+                Select-Object -ExpandProperty 'tags')
+
+            $hasNextRequest = $null -ne $link
+            $linkUrl = $link |
+                Select-String -Pattern $linkPattern |
+                Select-Object -ExpandProperty Matches |
+                Select-Object -ExpandProperty Groups |
+                Where-Object -Property Name -EQ $urlGroupName |
+                Select-Object -ExpandProperty Value
+            $url = $urlFormat -f $linkUrl
+        }
+
+        Remove-Item -Path $responsePath
+        return $tags
     }
 }
 
@@ -113,10 +161,7 @@ if ($registryDefinition.Authentication) {
     $token = & "$PSScriptRoot/get-$($registryDefinition.ScriptName)-token.ps1" -Repository $Repository
 }
 
-$getTagsCommand = New-CurlCommand -Url "https://$Registry/v2/$Repository/tags/list" -Token $token
-Invoke-Command -ScriptBlock $getTagsCommand |
-    ConvertFrom-Json |
-    Select-Object -ExpandProperty 'tags' |
+Get-Tags -Token $token |
     Select-Object -Property $tagProperties |
     ForEach-Object -Parallel {
         ${function:New-CurlCommand} = $using:newCurlCommandFunction
