@@ -9,6 +9,13 @@
       "digestStorage": "api"
     },
     {
+      "uri": "ghcr.io",
+      "name": "GitHub Container Registry",
+      "scriptName": "github-container-registry",
+      "authentication": true,
+      "digestStorage": "cache"
+    },
+    {
       "uri": "mcr.microsoft.com",
       "name": "Microsoft Container Registry",
       "scriptName": "microsoft-container-registry",
