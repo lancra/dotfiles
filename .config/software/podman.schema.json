@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/software/podman.schema.json",
+  "title": "Podman Software Configuration",
+  "description": "Specifies Podman configuration for usage in software management.",
+  "definitions": {
+    "registry": {
+      "title": "Podman Registry",
+      "description": "Represents a remote registry used by Podman.",
+      "type": "object",
+      "properties": {
+        "uri": {
+          "description": "The domain for the registry.",
+          "type": "string",
+          "format": "uri-reference"
+        },
+        "name": {
+          "description": "The display name of the registry.",
+          "type": "string"
+        },
+        "scriptName": {
+          "description": "The name used for scripts specific to the registry.",
+          "type": "string"
+        },
+        "authentication": {
+          "description": "Determines whether requests to the registry must be authenticated.",
+          "type": "boolean",
+          "default": false
+        },
+        "digestStorage": {
+          "description": "Specifies the mechanism used to store image digests used in version management.",
+          "type": "string",
+          "enum": [
+            "api",
+            "cache"
+          ]
+        }
+      },
+      "required": [
+        "uri",
+        "name",
+        "scriptName",
+        "authentication",
+        "digestStorage"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "registries": {
+      "description": "Defines the remote registries usable with Podman management.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/registry"
+      }
+    }
+  },
+  "required": [
+    "registries"
+  ]
+}

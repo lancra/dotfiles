@@ -1,0 +1,19 @@
+{
+  "$schema": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/software/podman.schema.json",
+  "registries": [
+    {
+      "uri": "docker.io",
+      "name": "Docker Hub",
+      "scriptName": "docker-hub",
+      "authentication": false,
+      "digestStorage": "api"
+    },
+    {
+      "uri": "mcr.microsoft.com",
+      "name": "Microsoft Container Registry",
+      "scriptName": "microsoft-container-registry",
+      "authentication": false,
+      "digestStorage": "cache"
+    }
+  ]
+}

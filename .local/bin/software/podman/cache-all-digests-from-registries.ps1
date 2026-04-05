@@ -1,12 +1,16 @@
 [CmdletBinding()]
 param()
 
-$registries = @(
-    'mcr.microsoft.com'
-)
+$registryUris = & "$PSScriptRoot/get-registry-definitions.ps1" -DigestStorage 'cache' |
+    Select-Object -ExpandProperty 'uri'
 
 & "$PSScriptRoot/get-images.ps1" |
-    Where-Object { $registries -contains $_.Registry } |
+    Where-Object { $registryUris -contains $_.Registry } |
     ForEach-Object {
-        & "$PSScriptRoot/cache-digests-from-registry.ps1" -Registry $_.Registry -Repository $_.Repository
+        $repository = $_.Repository
+        if (-not [string]::IsNullOrEmpty($_.Namespace)) {
+            $repository = "$($_.Namespace)/$repository"
+        }
+
+        & "$PSScriptRoot/cache-digests-from-registry.ps1" -Registry $_.Registry -Repository $repository
     }
