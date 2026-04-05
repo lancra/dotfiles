@@ -22,7 +22,17 @@ function Get-VersionTag {
 
 & $PSScriptRoot/get-images.ps1 |
     ForEach-Object {
-        $digestLookup = & "$PSScriptRoot/get-remote-digests.ps1" -Id $_.Id
+        $registryDefinition = & "$PSScriptRoot/get-registry-definitions.ps1" -Uri $_.Registry
+        if ($null -eq $registryDefinition) {
+            Write-Warning "Unknown podman image registry '$($_.Registry)'."
+            return
+        }
+
+        $getRemoteDigestsScriptName = $registryDefinition.DigestStorage -eq 'api' `
+            ? "get-$($registryDefinition.ScriptName)-remote-digests" `
+            : 'get-cached-remote-digests'
+
+        $digestLookup = & "$PSScriptRoot/$getRemoteDigestsScriptName.ps1" -Image $_
         if ($digestLookup.Count -eq 0) {
             Write-Warning "No digests found for $($_.Id)."
             return
