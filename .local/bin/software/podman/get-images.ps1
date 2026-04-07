@@ -1,12 +1,11 @@
 [CmdletBinding()]
 param()
 
-$ignoredRepositories = @()
-$ignoredRepositoriesPath = "$env:XDG_CONFIG_HOME/software/.ignored.podman-images.json"
-if (Test-Path -Path $ignoredRepositoriesPath) {
-    $ignoredRepositories = Get-Content -Path $env:XDG_CONFIG_HOME/software/.ignored.podman-images.json |
-        ConvertFrom-Json
-}
+$configurationDirectory = "$env:XDG_CONFIG_HOME/software"
+$ignoredRepositories = (Get-Content -Path "$configurationDirectory/.ignored.podman-images.json" -ErrorAction SilentlyContinue |
+    ConvertFrom-Json) ?? @()
+$includedRepositories = (Get-Content -Path "$configurationDirectory/.included.podman-images.json" -ErrorAction SilentlyContinue |
+    ConvertFrom-Json) ?? @()
 
 $repositoryIgnorePatterns = @(
     '<none>',
@@ -18,11 +17,11 @@ $repositoryIgnorePatterns = @(
         $_ |
             ConvertFrom-Json
     } |
+    Where-Object { $includedRepositories.Length -eq 0 -or $includedRepositories -contains $_.repository } |
+    Where-Object {
+        $includedRepositories.Length -gt 0 -or $ignoredRepositories.Length -eq 0 -or $ignoredRepositories -notcontains $_.repository
+    } |
     ForEach-Object {
-        if ($ignoredRepositories -contains $_.repository) {
-            return
-        }
-
         $ignoreRepositoryFromPattern = $false
         foreach ($pattern in $repositoryIgnorePatterns) {
             if ($_.repository -match $pattern) {
