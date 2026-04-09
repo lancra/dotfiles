@@ -306,6 +306,10 @@
   DisplayName: WinUI 2.8
   Category: Programming
   Tracking: None
+- Id: Microsoft.VCLibs.14@winget
+  DisplayName: Microsoft Visual C++ 2015 UWP Runtime Package
+  Category: Programming
+  Tracking: None
 - Id: Microsoft.VCLibs.Desktop.14@winget
   DisplayName: Microsoft Visual C++ 2015 UWP Desktop Runtime
   Category: Programming
@@ -366,6 +370,38 @@
   DisplayName: winapp
   Category: Programming
   Tracking: Full
+- Id: Microsoft.WindowsAppRuntime.1.1@winget
+  DisplayName: Windows App Runtime 1.1
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.WindowsAppRuntime.1.2@winget
+  DisplayName: Windows App Runtime 1.2
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.WindowsAppRuntime.1.3@winget
+  DisplayName: Windows App Runtime 1.3
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.WindowsAppRuntime.1.4@winget
+  DisplayName: Windows App Runtime 1.4
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.WindowsAppRuntime.1.5@winget
+  DisplayName: Windows App Runtime 1.5
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.WindowsAppRuntime.1.6@winget
+  DisplayName: Windows App Runtime 1.6
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.WindowsAppRuntime.1.7@winget
+  DisplayName: Windows App Runtime 1.7
+  Category: Programming
+  Tracking: None
+- Id: Microsoft.WindowsAppRuntime.1.8@winget
+  DisplayName: Windows App Runtime 1.8
+  Category: Programming
+  Tracking: None
 - Id: Microsoft.WindowsSDK.10.0.26100@winget
   DisplayName: Windows Software Development Kit
   Category: Programming

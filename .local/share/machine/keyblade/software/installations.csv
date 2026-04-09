@@ -314,6 +314,7 @@ winget,packages,Microsoft.Teams.Free@winget
 winget,packages,Microsoft.Teams@winget
 winget,packages,Microsoft.UI.Xaml.2.7@winget
 winget,packages,Microsoft.UI.Xaml.2.8@winget
+winget,packages,Microsoft.VCLibs.14@winget
 winget,packages,Microsoft.VCLibs.Desktop.14@winget
 winget,packages,Microsoft.VCRedist.2008.x64@winget
 winget,packages,Microsoft.VCRedist.2008.x86@winget
@@ -329,6 +330,14 @@ winget,packages,Microsoft.VisualStudio.Community@winget
 winget,packages,Microsoft.VisualStudioCode@winget
 winget,packages,Microsoft.WebDeploy@winget
 winget,packages,Microsoft.WinAppCli@winget
+winget,packages,Microsoft.WindowsAppRuntime.1.1@winget
+winget,packages,Microsoft.WindowsAppRuntime.1.2@winget
+winget,packages,Microsoft.WindowsAppRuntime.1.3@winget
+winget,packages,Microsoft.WindowsAppRuntime.1.4@winget
+winget,packages,Microsoft.WindowsAppRuntime.1.5@winget
+winget,packages,Microsoft.WindowsAppRuntime.1.6@winget
+winget,packages,Microsoft.WindowsAppRuntime.1.7@winget
+winget,packages,Microsoft.WindowsAppRuntime.1.8@winget
 winget,packages,Microsoft.WindowsSDK.10.0.26100@winget
 winget,packages,Microsoft.WindowsTerminal.Preview@winget
 winget,packages,Microsoft.WindowsTerminal@winget
