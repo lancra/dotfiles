@@ -171,7 +171,7 @@ $arguments.GetEnumerator() |
     }
 
 $projectPath = Join-Path -Path $rootPath -ChildPath $Project
-$startupPath = Join-Path -Path $rootPath -ChildPath $StartupProject
+$startupPath = -not [string]::IsNullOrEmpty($StartupProject) ? (Join-Path -Path $rootPath -ChildPath $StartupProject) : $null
 $connection = [System.Environment]::GetEnvironmentVariable($ConnectionVariable)
 
 function New-DotnetToolScript {
@@ -195,10 +195,13 @@ function New-DotnetToolScript {
 
         $segments = @(
             $toolCommand,
-            "--project '$projectPath'",
-            "--startup-project '$startupPath'",
-            "--configuration '$BuildConfiguration'"
+            "--configuration '$BuildConfiguration'",
+            "--project '$projectPath'"
         )
+
+        if ($startupPath) {
+            $segments += "--startup-project '$startupPath'"
+        }
 
         if (-not $IncludeBuild) {
             $segments += '--no-build'
