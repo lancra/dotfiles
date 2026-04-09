@@ -58,6 +58,10 @@
   Name: NuGet Package Search
   Uri: https://www.nuget.org/packages?q={searchTerms}
   Guid: 95d2f3ad-4bde-4b85-86f2-42bed57f5421
+- Id: port
+  Name: Port Details
+  Uri: https://www.speedguide.net/port.php?port={searchTerms}
+  Guid: d56e11bb-091e-4a68-ae88-e634fe052ecc
 - Id: r
   Name: Reddit
   Uri: https://reddit.com/r/{searchTerms}
