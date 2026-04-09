@@ -74,15 +74,20 @@ if ($msSqlPassword) {
 }
 
 $runArguments = @(
-    '--env', 'ACCEPT_EULA=Y',
-    '--env', "MSSQL_SA_PASSWORD=$msSqlPassword",
-    '--publish', "${Port}:$containerPort",
-    '--name', $Name,
+    'podman',
+    'run',
+    '--env ACCEPT_EULA=Y',
+    "--env 'MSSQL_SA_PASSWORD=$msSqlPassword'",
+    "--publish ${Port}:$containerPort",
+    "--name '$Name'",
     '--detach',
     $Image
 )
+$runCommand = [scriptblock]::Create("$runArguments")
+
 Write-Verbose 'Running container.'
-& podman run @runArguments | Out-Null
+Invoke-Command -ScriptBlock $runCommand |
+    Out-Null
 
 if (-not $SkipContext) {
     Write-Verbose 'Creating sqlcmd context.'
