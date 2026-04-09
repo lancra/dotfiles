@@ -65,8 +65,9 @@ if ($containerExists) {
     }
 }
 
-if ($msSqlPassword) {
+if (-not [string]::IsNullOrEmpty($env:DATABASE_PASSWORD)) {
     Write-Verbose 'Found password, skipping entry.'
+    $msSqlPassword = $env:DATABASE_PASSWORD
 } else {
     $msSqlPasswordEntry = Read-Host 'Server Administrator Password' -AsSecureString
     $msSqlPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto(
