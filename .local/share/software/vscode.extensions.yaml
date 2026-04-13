@@ -1,3 +1,7 @@
+- Id: alefragnani.bookmarks
+  Uuid: b689fcc8-d494-4dbf-a228-2c694a578afc
+  DisplayName: Bookmarks
+  Description: Mark lines and jump to them
 - Id: alexcvzz.vscode-sqlite
   Uuid: eaee103c-e866-4b73-87f8-3749cab64da2
   DisplayName: SQLite

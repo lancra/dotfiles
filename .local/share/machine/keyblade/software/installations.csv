@@ -183,6 +183,7 @@ rust,toolchains,1.81-x86_64-pc-windows-msvc
 rust,toolchains,1.86-x86_64-pc-windows-msvc
 rust,toolchains,nightly-x86_64-pc-windows-msvc
 rust,toolchains,stable-x86_64-pc-windows-msvc
+vscode,extensions,alefragnani.bookmarks
 vscode,extensions,alexcvzz.vscode-sqlite
 vscode,extensions,asciidoctor.asciidoctor-vscode
 vscode,extensions,bierner.color-info
