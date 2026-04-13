@@ -6,8 +6,7 @@ Displays a user-friendly size for all relevant files in a tabular format.
 Determines the target paths to show based on the provided path. For each target
 path, the right-aligned count is shown, then the right-aligned denomination is
 shown, followed by the left-aligned name. The smallest possible denomination is
-used where the whole number is limited to three digits. The name is shown after
-the size.
+used where the whole number is limited to three digits.
 
 .PARAMETER Path
 The path to display sizes for. When a directory is provided, the sizes of all
@@ -20,64 +19,6 @@ param(
     [Parameter()]
     [string] $Path = '.'
 )
-
-class FileSize {
-    [decimal] $Count
-    [string] $Denomination
-    [string] $Path
-
-    FileSize([decimal] $count, [string] $denomination, [string] $path) {
-        $this.Count = $count
-        $this.Denomination = $denomination
-        $this.Path = $path
-    }
-
-    [void] Print() {
-        $displayCount = ('{0:N2}' -f $this.Count).PadLeft(6)
-        $displayDenomination = $this.Denomination.PadLeft(2)
-
-        Write-Host "$displayCount $displayDenomination " -ForegroundColor Yellow -NoNewline
-        Write-Host $this.Path
-    }
-}
-
-function Get-Size {
-    [CmdletBinding()]
-    [OutputType([FileSize])]
-    param(
-        [Parameter(Mandatory)]
-        [string] $Path
-    )
-    begin {
-        function Format-Size {
-            [CmdletBinding()]
-            [OutputType([FileSize])]
-            param(
-                [Parameter(Mandatory)]
-                [long] $Count,
-
-                [Parameter(Mandatory)]
-                [long] $DenominationCount,
-
-                [Parameter(Mandatory)]
-                [string] $Denomination
-            )
-            process {
-                $isLargestDenomination = $Count -ge $DenominationCount -or $DenominationCount -eq 1
-                return $isLargestDenomination ? [FileSize]::new($Count / $DenominationCount, $Denomination, $Path) : $null
-            }
-        }
-    }
-    process {
-        $bytes = Get-Item -Path $Path |
-            Select-Object -ExpandProperty Length
-        return (Format-Size -Count $bytes -DenominationCount 1TB -Denomination 'TB') `
-            ?? (Format-Size -Count $bytes -DenominationCount 1GB -Denomination 'GB') `
-            ?? (Format-Size -Count $bytes -DenominationCount 1MB -Denomination 'MB') `
-            ?? (Format-Size -Count $bytes -DenominationCount 1KB -Denomination 'KB') `
-            ?? (Format-Size -Count $bytes -DenominationCount 1 -Denomination 'B')
-    }
-}
 
 $item = Get-Item -Path $Path -ErrorAction SilentlyContinue
 $targetPaths = @($Path)
@@ -92,6 +33,8 @@ if ($null -eq $item) {
 
 $targetPaths |
     ForEach-Object {
-        $size = Get-Size -Path $_
-        $size.Print()
+        $bytes = Get-Item -Path $_ |
+            Select-Object -ExpandProperty Length
+        $size = & "$PSScriptRoot/get-byte-size.ps1" -Count $bytes -Format 'padded'
+        "`e[93m$size`e[39m $_"
     }
