@@ -7,7 +7,11 @@ param(
 $exportId = & "$env:BIN/software/get-export-id-from-path.ps1"
 $definition = & "$env:BIN/software/get-installation-definitions.ps1" -Export $exportId -Id $Id
 
-$arguments = @()
+$arguments = @(
+    'cargo',
+    'install',
+    '--locked'
+)
 
 if ($definition.Examples) {
     $definition.Examples |
@@ -27,5 +31,5 @@ if (-not $Id.EndsWith('.git')) {
     $arguments += "--tag $tag"
 }
 
-$command = [scriptblock]::Create("cargo install $arguments")
+$command = [scriptblock]::Create($arguments)
 Invoke-Command -ScriptBlock $command
