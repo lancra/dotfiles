@@ -490,6 +490,10 @@
   DisplayName: Performant NPM
   Category: Programming
   Tracking: Full
+- Id: Podman.CLI@winget
+  DisplayName: Podman
+  Category: Programming
+  Tracking: Full
 - Id: PostgreSQL.PostgreSQL.16@winget
   DisplayName: PostgreSQL
   Category: Programming
@@ -520,10 +524,6 @@
   Tracking: Full
 - Id: RedHat.Podman-Desktop@winget
   DisplayName: Podman Desktop
-  Category: Programming
-  Tracking: Full
-- Id: RedHat.Podman@winget
-  DisplayName: Podman
   Category: Programming
   Tracking: Full
 - Id: rhysd.actionlint@winget

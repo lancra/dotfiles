@@ -197,6 +197,7 @@ winget,packages,OpenJS.NodeJS.LTS@winget
 winget,packages,PawelSalawa.SQLiteStudio@winget
 winget,packages,PDFsam.PDFsam@winget
 winget,packages,pnpm.pnpm@winget
+winget,packages,Podman.CLI@winget
 winget,packages,PostgreSQL.PostgreSQL.16@winget
 winget,packages,PrivateInternetAccess.PrivateInternetAccess@winget
 winget,packages,PuTTY.PuTTY@winget
@@ -204,7 +205,6 @@ winget,packages,Python.Launcher@winget
 winget,packages,Python.Python.3.12@winget
 winget,packages,qBittorrent.qBittorrent@winget
 winget,packages,RedHat.Podman-Desktop@winget
-winget,packages,RedHat.Podman@winget
 winget,packages,rhysd.actionlint@winget
 winget,packages,RustemMussabekov.Raindrop@winget
 winget,packages,Rustlang.Rustup@winget
