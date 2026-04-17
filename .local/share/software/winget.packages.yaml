@@ -14,6 +14,10 @@
   DisplayName: Send To Kindle
   Category: Reading
   Tracking: Full
+- Id: Anchore.Syft@winget
+  DisplayName: Syft
+  Category: Programming
+  Tracking: Full
 - Id: AntibodySoftware.WizTree@winget
   DisplayName: WizTree
   Category: File System

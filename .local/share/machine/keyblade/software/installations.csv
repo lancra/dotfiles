@@ -243,6 +243,7 @@ winget,packages,7zip.7zip@winget
 winget,packages,9WZDNCRDMDM3@msstore
 winget,packages,AlexanderKojevnikov.Spek@winget
 winget,packages,Amazon.SendToKindle@winget
+winget,packages,Anchore.Syft@winget
 winget,packages,AntibodySoftware.WizTree@winget
 winget,packages,Apple.iTunes@winget
 winget,packages,Atuinsh.Atuin@winget
