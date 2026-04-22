@@ -44,12 +44,12 @@
       "body": "!git branch --format '%(refname:short) %(upstream:short)' | awk '{if (!$2) print $1;}'"
     },
     "brmn": {
-      "title": "Branches Merged No",
-      "body": "!git branch --no-merged ${1-main} #"
+      "title": "Branches Not Merged",
+      "body": "!git branch --format='%(refname:short)' --no-merged ${1-main} #"
     },
     "brmy": {
-      "title": "Branches Merged Yes",
-      "body": "!git branch --merged ${1-main} #"
+      "title": "Branches Merged",
+      "body": "!git branch --format='%(refname:short)' --merged ${1-main} | grep --invert-match main #"
     },
     "brn": {
       "title": "Branches New",
