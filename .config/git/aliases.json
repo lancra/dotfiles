@@ -173,7 +173,7 @@
     },
     "gone": {
       "title": "Gone",
-      "body": "!git brg | xargs -r git branch -D"
+      "body": "!git brg | xargs --no-run-if-empty git branch -D"
     },
     "l": {
       "title": "Log",
