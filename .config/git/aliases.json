@@ -51,6 +51,10 @@
       "title": "Branches Merged",
       "body": "!git branch --format='%(refname:short)' --merged ${1-main} | grep --invert-match main #"
     },
+    "brmyd": {
+      "title": "Delete Merged Branches",
+      "body": "!git branch --format='%(refname:short)' --merged ${1-main} | grep --invert-match main | xargs --no-run-if-empty git branch -d"
+    },
     "brn": {
       "title": "Branches New",
       "body": "branch --sort=-committerdate __branch_format__"
