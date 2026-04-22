@@ -191,6 +191,10 @@
       "title": "Log Long",
       "body": "log __log_format__ -50"
     },
+    "llp": {
+      "title": "Log First Parent Long",
+      "body": "log __log_format__ --first-parent -50"
+    },
     "lla": {
       "title": "Log Long with Author",
       "body": "log __log_author_format__ -50"
@@ -206,6 +210,10 @@
     "lsa": {
       "title": "Log Short with Author",
       "body": "log __log_author_format__ -20"
+    },
+    "lsp": {
+      "title": "Log First Parent Short",
+      "body": "log __log_format__ --first-parent -20"
     },
     "mg": {
       "title": "Merge",
