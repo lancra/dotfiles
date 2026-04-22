@@ -518,6 +518,10 @@
   DisplayName: Python 3.12
   Category: Programming
   Tracking: Full
+- Id: Python.PythonInstallManager@winget
+  DisplayName: Python Install Manager
+  Category: Programming
+  Tracking: Full
 - Id: qBittorrent.qBittorrent@winget
   DisplayName: qBittorrent
   Category: Utility

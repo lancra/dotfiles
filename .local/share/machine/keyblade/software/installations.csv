@@ -366,8 +366,8 @@ winget,packages,Podman.CLI@winget
 winget,packages,PostgreSQL.PostgreSQL.16@winget
 winget,packages,PrivateInternetAccess.PrivateInternetAccess@winget
 winget,packages,PuTTY.PuTTY@winget
-winget,packages,Python.Launcher@winget
 winget,packages,Python.Python.3.12@winget
+winget,packages,Python.PythonInstallManager@winget
 winget,packages,qBittorrent.qBittorrent@winget
 winget,packages,RaspberryPiFoundation.RaspberryPiImager@winget
 winget,packages,RedHat.Podman-Desktop@winget
