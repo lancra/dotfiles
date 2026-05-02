@@ -108,9 +108,10 @@ $connections = @()
             return
         }
 
+        $groupId = $_.Name -eq 'ROOT' ? $_.Name : (Get-HashGuid -Value $_.Name).Guid
         $group = [pscustomobject]@{
             name = $_.Name
-            id = (Get-HashGuid -Value $_.Name).Guid
+            id = $groupId
             color = $_.Value.color
         }
 
@@ -144,7 +145,7 @@ $connections = @()
                     connectTimeout = 30
                     database = $_.Value.database
                     encrypt = 'Mandatory'
-                    groupId = $group.id
+                    groupId = $groupId
                     id = (Get-HashGuid -Value $profileName).Guid
                     password = ''
                     profileName = $profileName
