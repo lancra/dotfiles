@@ -242,6 +242,10 @@
   DisplayName: .NET 8 Desktop Runtime
   Category: Programming
   Tracking: None
+- Id: Microsoft.DotNet.Native.Runtime@winget
+  DisplayName: .NET Native Runtime
+  Category: Programming
+  Tracking: None
 - Id: Microsoft.DotNet.SDK.10@winget
   DisplayName: .NET 10 SDK
   Category: Programming
