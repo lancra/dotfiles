@@ -542,6 +542,10 @@
   DisplayName: actionlint
   Category: Programming
   Tracking: Full
+- Id: RicoSuter.NSwagStudio@winget
+  DisplayName: NSwag Studio
+  Category: Programming
+  Tracking: Full
 - Id: RuneLite.RuneLite@winget
   DisplayName: RuneLite
   Category: Gaming

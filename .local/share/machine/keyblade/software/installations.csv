@@ -26,6 +26,7 @@ dotnet,tools,dotnet-reportgenerator-globaltool
 dotnet,tools,dotnet-t4
 dotnet,tools,dotnet-tools-outdated
 dotnet,tools,dotnet-xscgen
+dotnet,tools,nswag.consolecore
 dotnet,tools,refitter
 firefox,search-engines,docker
 firefox,search-engines,fdm
@@ -373,6 +374,7 @@ winget,packages,qBittorrent.qBittorrent@winget
 winget,packages,RaspberryPiFoundation.RaspberryPiImager@winget
 winget,packages,RedHat.Podman-Desktop@winget
 winget,packages,rhysd.actionlint@winget
+winget,packages,RicoSuter.NSwagStudio@winget
 winget,packages,RuneLite.RuneLite@winget
 winget,packages,RustemMussabekov.Raindrop@winget
 winget,packages,Rustlang.Rustup@winget

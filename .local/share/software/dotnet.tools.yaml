@@ -10,5 +10,7 @@
   Url: https://nuget.org/packages/dotnet-tools-outdated
 - Id: dotnet-xscgen
   Url: https://nuget.org/packages/dotnet-xscgen
+- Id: nswag.consolecore
+  Url: https://nuget.org/packages/nswag.consolecore
 - Id: refitter
   Url: https://nuget.org/packages/refitter
