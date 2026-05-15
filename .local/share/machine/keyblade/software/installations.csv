@@ -343,7 +343,6 @@ winget,packages,Microsoft.WindowsAppRuntime.1.5@winget
 winget,packages,Microsoft.WindowsAppRuntime.1.6@winget
 winget,packages,Microsoft.WindowsAppRuntime.1.7@winget
 winget,packages,Microsoft.WindowsAppRuntime.1.8@winget
-winget,packages,Microsoft.WindowsSDK.10.0.26100@winget
 winget,packages,Microsoft.WindowsTerminal.Preview@winget
 winget,packages,Microsoft.WindowsTerminal@winget
 winget,packages,Microsoft.WSL@winget
