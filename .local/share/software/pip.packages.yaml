@@ -4,6 +4,8 @@
   Homepage: https://pip.pypa.io/
 - Id: podman-compose
   Homepage: https://github.com/containers/podman-compose
+- Id: pytest
+  Homepage: https://docs.pytest.org/en/latest/
 - Id: sqlfluff
   Homepage: https://www.sqlfluff.com
 - Id: yamllint
