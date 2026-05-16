@@ -165,6 +165,16 @@
     "command": "podman run --platform 'linux/amd64' --rm --volume \"${PWD}:/tmp/lint:rw\" --env 'APPLY_FIXES=all' 'oxsecurity/megalinter-dotnet:latest'",
     "bash": true
   },
+  "ziz": {
+    "group": "Programming",
+    "command": "zizmor --gh-token (gh auth token) #{:*} #{0}",
+    "bash": true
+  },
+  "zizp": {
+    "group": "Programming",
+    "command": "zizmor --gh-token (gh auth token) --pedantic #{:*} #{0}",
+    "bash": true
+  },
   "swc": {
     "group": "Software",
     "command": "$env:BIN/software/check-software.ps1",
