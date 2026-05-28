@@ -1,6 +1,28 @@
 [CmdletBinding()]
 param()
 
+function Get-CargoIndexPath {
+    [CmdletBinding()]
+    [OutputType([string])]
+    param(
+        [Parameter(Mandatory)]
+        [string] $Id
+    )
+    process {
+        # See: https://doc.rust-lang.org/cargo/reference/registry-index.html#index-files
+        $indexPathPrefix = switch ($Id.Length) {
+            1 { '1' }
+            2 { '2' }
+            3 { "3/$($Id.Substring(0, 1))" }
+            default { "$($Id.Substring(0, 2))/$($Id.Substring(2, 2))" }
+        }
+
+        return "$indexPathPrefix/$Id"
+    }
+}
+
+$getCargoIndexDefinition = ${function:Get-CargoIndexPath}.ToString()
+
 & cargo install --list |
     ForEach-Object {
         if ($_[0] -ne ' ') {
@@ -27,15 +49,19 @@ param()
 
         $fromRegistry = $null -eq $crate.Repository
         if ($fromRegistry) {
+            ${function:Get-CargoIndexPath} = $using:getCargoIndexDefinition
+
             $source = "https://crates.io/crates/$($crate.Id)"
-            $registryProperties = @(
-                @{Name = $descriptionProperty; Expression = {$_.description}},
-                @{Name = $availableProperty; Expression = {$_.max_stable_version ?? $crate.Current}}
-            )
-            $crateDetails = & curl --silent "https://crates.io/api/v1/crates/$($crate.Id)" |
-                ConvertFrom-Json |
-                Select-Object -ExpandProperty crate |
-                Select-Object -Property $registryProperties
+            $indexPath = Get-CargoIndexPath -Id $crate.Id
+
+            $crateDetails = @{
+                $descriptionProperty = & cargo info --quiet "$($crate.Id)" |
+                    Select-Object -Skip 1 -First 1
+                $availableProperty = & curl --silent "https://index.crates.io/$indexPath" |
+                    Select-Object -Last 1 |
+                    ConvertFrom-Json |
+                    Select-Object -ExpandProperty 'vers'
+            }
         } else {
             $source = $_.Repository
             $repository = [Uri]::new($_.Repository)
