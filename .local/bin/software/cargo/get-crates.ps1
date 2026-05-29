@@ -54,12 +54,18 @@ $getCargoIndexDefinition = ${function:Get-CargoIndexPath}.ToString()
             $source = "https://crates.io/crates/$($crate.Id)"
             $indexPath = Get-CargoIndexPath -Id $crate.Id
 
+            $prereleaseFilter = { $null -ne ($_.vers -as [version]) }
             $crateDetails = @{
                 $descriptionProperty = & cargo info --quiet "$($crate.Id)" |
                     Select-Object -Skip 1 -First 1
                 $availableProperty = & curl --silent "https://index.crates.io/$indexPath" |
+                    ForEach-Object {
+                        $_ |
+                            ConvertFrom-Json
+                    } |
+                    Where-Object $prereleaseFilter |
+                    Sort-Object -Property { $_.vers -as [version] } |
                     Select-Object -Last 1 |
-                    ConvertFrom-Json |
                     Select-Object -ExpandProperty 'vers'
             }
         } else {
