@@ -155,6 +155,11 @@
     "command": "$env:BIN/get-extended-help.ps1",
     "bash": false
   },
+  "lp": {
+    "group": "PowerShell",
+    "command": ". $PROFILE",
+    "bash": true
+  },
   "mano": {
     "group": "PowerShell",
     "command": "$env:BIN/open-online-help.ps1",
