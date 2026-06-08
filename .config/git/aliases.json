@@ -3,8 +3,10 @@
   "variables": {
     "branch_format": "--format='%(color:blue)%(committerdate:format-local:%Y-%m-%d %H:%M:%S) %(color:green)%(refname:short) %(color:red)%(committeremail)'",
     "branch_upstream_format": "--format='  %(color:red)%(refname:lstrip=2)%(color:reset)%(if)%(symref)%(then) -> %(symref:short)%(end)'",
+    "log_author_format": "--format='%C(yellow)%h %C(blue bold)%cd %C(magenta)%<(30,trunc)%aE%C(auto)%(decorate) %s' --date='format-local:%Y-%m-%d %H:%M:%S'",
     "log_format": "--format='%C(yellow)%h %C(blue bold)%cd%C(auto)%(decorate) %s' --date='format-local:%Y-%m-%d %H:%M:%S'",
-    "log_author_format": "--format='%C(yellow)%h %C(blue bold)%cd %C(magenta)%<(30,trunc)%aE%C(auto)%(decorate) %s' --date='format-local:%Y-%m-%d %H:%M:%S'"
+    "log_long_option": "-50",
+    "log_short_option": "-20"
   },
   "definitions": {
     "a": {
@@ -193,15 +195,15 @@
     },
     "ll": {
       "title": "Log Long",
-      "body": "log __log_format__ -50"
+      "body": "log __log_format__ __log_long_option__"
     },
     "lla": {
       "title": "Log Long with Author",
-      "body": "log __log_author_format__ -50"
+      "body": "log __log_author_format__ __log_long_option__"
     },
     "llfp": {
       "title": "Log First Parent Long",
-      "body": "log __log_format__ --first-parent -50"
+      "body": "log __log_format__ --first-parent __log_long_option__"
     },
     "lm": {
       "title": "Log Merge",
@@ -213,15 +215,15 @@
     },
     "ls": {
       "title": "Log Short",
-      "body": "log __log_format__ -20"
+      "body": "log __log_format__ __log_short_option__"
     },
     "lsa": {
       "title": "Log Short with Author",
-      "body": "log __log_author_format__ -20"
+      "body": "log __log_author_format__ __log_short_option__"
     },
     "lsfp": {
       "title": "Log First Parent Short",
-      "body": "log __log_format__ --first-parent -20"
+      "body": "log __log_format__ --first-parent __log_short_option__"
     },
     "mg": {
       "title": "Merge",
