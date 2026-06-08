@@ -46,7 +46,7 @@ param(
     [string] $Path = $PWD,
 
     [Parameter()]
-    [string] $Project = 'src/Migrations',
+    [string] $Project = 'src/Database',
 
     [Parameter()]
     [string] $StartupProject = 'tools/Migrator',
@@ -58,7 +58,7 @@ param(
     [string] $ConnectionVariable = 'DATABASE_CONNECTION',
 
     [Parameter()]
-    [string] $BundleDirectory = 'artifacts/db',
+    [string] $BundleDirectory = 'artifacts/database',
 
     [switch] $IncludeBuild
 )
