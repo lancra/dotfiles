@@ -203,6 +203,10 @@
       "title": "Log First Parent Long",
       "body": "log __log_format__ --first-parent -50"
     },
+    "lm": {
+      "title": "Log Merge",
+      "body": "!git l $1^1..$1^2"
+    },
     "lp": {
       "title": "Log Prefix",
       "body": "!git l --grep \\\"^$1:\\\" ${@:2} #"
