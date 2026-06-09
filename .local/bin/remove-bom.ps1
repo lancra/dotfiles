@@ -17,7 +17,7 @@ param(
 
 $byteOrderMark = @(0xEF, 0xBB, 0xBF)
 
-$file = Get-Item -Path $Path -ErrorAction SilentlyContinue
+$file = Get-Item -LiteralPath $Path -ErrorAction SilentlyContinue
 if ($null -eq $file) {
     throw "No file was found at '$Path'."
 } elseif ($file.PSIsContainer) {
