@@ -1,0 +1,20 @@
+{
+  "title": "Resources File Element",
+  "description": "Provides an element for a resx resources file.",
+  "scope": "xml",
+  "body": [
+    "<data name=\"${1:Name}\" xml:space=\"preserve\">",
+    "  <value>${2:Value}</value>",
+    "</data>$0"
+  ],
+  "placeholders": {
+    "1": {
+      "variable": "name",
+      "tooltip": "The name of the resource."
+    },
+    "2": {
+      "variable": "value",
+      "tooltip": "The value of the resource."
+    }
+  }
+}
