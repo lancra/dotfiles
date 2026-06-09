@@ -50,10 +50,6 @@
   Uuid: 96fa4707-6983-4489-b7c5-d5ffdfdcce90
   DisplayName: Prettier - Code formatter
   Description: Code formatter using prettier
-- Id: github.copilot-chat
-  Uuid: 7ec7d6e6-b89e-4cc5-a59b-d6c4d238246f
-  DisplayName: GitHub Copilot Chat
-  Description: AI chat features powered by Copilot
 - Id: github.vscode-github-actions
   Uuid: 04f49bfc-8330-4eee-8237-ea938fb755ef
   DisplayName: GitHub Actions
