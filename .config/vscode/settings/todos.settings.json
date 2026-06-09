@@ -1,5 +1,6 @@
 {
   "$schema": "vscode://schemas/settings/user",
+  "todo-tree.ripgrep.ripgrep": "%LOCALAPPDATA%\\Microsoft\\WinGet\\Links\\rg.exe",
   "todohighlight.keywords": [
     {
       "text": "FIXME:",
