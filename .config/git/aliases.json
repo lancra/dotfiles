@@ -225,6 +225,10 @@
       "title": "Log First Parent Short",
       "body": "log __log_format__ --first-parent __log_short_option__"
     },
+    "lu": {
+      "title": "Log Unmerged",
+      "body": "log __log_format__ --no-merges main.."
+    },
     "mg": {
       "title": "Merge",
       "body": "merge --no-ff"
