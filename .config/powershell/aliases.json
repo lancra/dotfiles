@@ -120,6 +120,11 @@
     "command": "& $env:BIN/git/prune-orphan-notes.ps1 -Check",
     "bash": true
   },
+  "gr": {
+    "group": "Git",
+    "command": "$env:BIN/git/repeat-last-git-command.ps1",
+    "bash": false
+  },
   "ghc": {
     "group": "GitHub",
     "command": "$env:BIN/github/open-commit.ps1",
