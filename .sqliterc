@@ -1,0 +1,3 @@
+.headers on
+.mode qbox --quote relaxed --wrap 40
+.nullvalue NULL
