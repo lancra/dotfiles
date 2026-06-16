@@ -262,6 +262,10 @@
   DisplayName: Microsoft Edge
   Category: Web
   Tracking: Full
+- Id: Microsoft.GameInput@winget
+  DisplayName: Microsoft GameInput
+  Category: Programming
+  Tracking: Full
 - Id: Microsoft.MouseWithoutBorders@winget
   DisplayName: Mouse Without Borders
   Category: Utility

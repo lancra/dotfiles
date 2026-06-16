@@ -307,6 +307,7 @@ winget,packages,Microsoft.DotNet.Native.Runtime@winget
 winget,packages,Microsoft.DotNet.SDK.10@winget
 winget,packages,Microsoft.DotNet.UninstallTool@winget
 winget,packages,Microsoft.Edge@winget
+winget,packages,Microsoft.GameInput@winget
 winget,packages,Microsoft.MouseWithoutBorders@winget
 winget,packages,Microsoft.msodbcsql.17@winget
 winget,packages,Microsoft.msodbcsql.18@winget
