@@ -562,6 +562,10 @@
   DisplayName: rustup
   Category: Programming
   Tracking: Full
+- Id: ShareX.ShareX@winget
+  DisplayName: ShareX
+  Category: Utility
+  Tracking: Full
 - Id: sharkdp.bat@winget
   DisplayName: bat
   Category: File System

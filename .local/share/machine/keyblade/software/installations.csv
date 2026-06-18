@@ -381,6 +381,7 @@ winget,packages,RicoSuter.NSwagStudio@winget
 winget,packages,RuneLite.RuneLite@winget
 winget,packages,RustemMussabekov.Raindrop@winget
 winget,packages,Rustlang.Rustup@winget
+winget,packages,ShareX.ShareX@winget
 winget,packages,sharkdp.bat@winget
 winget,packages,sharkdp.fd@winget
 winget,packages,ShiningLight.OpenSSL.Dev@winget
