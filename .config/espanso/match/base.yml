@@ -29,3 +29,6 @@ matches:
         type: date
         params:
           format: '%Y%m%dT%H%M%S'
+  - trigger: ':lp:'
+    replace: . $PROFILE
+    label: Reload the PowerShell profile.
