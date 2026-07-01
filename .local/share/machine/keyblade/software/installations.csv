@@ -296,6 +296,7 @@ winget,packages,kvakulo.switcheroo@winget
 winget,packages,kymoto.InnoScriptStudio@winget
 winget,packages,Logitech.OptionsPlus@winget
 winget,packages,lsd-rs.lsd@winget
+winget,packages,lycheeverse.lychee@winget
 winget,packages,Malwarebytes.Malwarebytes@winget
 winget,packages,Meld.Meld@winget
 winget,packages,Microsoft.AppInstaller@winget

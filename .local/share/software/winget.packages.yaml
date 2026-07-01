@@ -214,6 +214,10 @@
   DisplayName: lsd
   Category: File System
   Tracking: Full
+- Id: lycheeverse.lychee@winget
+  DisplayName: lychee
+  Category: Programming
+  Tracking: Full
 - Id: Malwarebytes.Malwarebytes@winget
   DisplayName: Malwarebytes
   Category: Security
