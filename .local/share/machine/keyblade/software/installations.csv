@@ -66,6 +66,7 @@ npm,packages,npm
 npm,packages,nswag
 npm,packages,prettier
 npm,packages,speedscope
+npm,packages,sv
 pip,packages,check-jsonschema
 pip,packages,pip
 pip,packages,podman-compose
