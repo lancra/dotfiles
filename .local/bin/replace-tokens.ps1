@@ -20,7 +20,7 @@ underscores.
 [CmdletBinding()]
 [OutputType([string[]])]
 param(
-    [Parameter(Mandatory)]
+    [Parameter()]
     [AllowEmptyCollection()]
     [string[]] $Text,
 
