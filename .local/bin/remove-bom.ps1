@@ -24,7 +24,7 @@ if ($null -eq $file) {
     throw "Unable to operate on directory at '$Path'."
 }
 
-$bytes = [System.IO.File]::ReadAllBytes($Path)
+$bytes = [System.IO.File]::ReadAllBytes($file.FullName)
 
 for ($i = 0; $i -lt $byteOrderMark.Length; $i++) {
     if ($bytes[$i] -ne $byteOrderMark[$i]) {
@@ -33,4 +33,4 @@ for ($i = 0; $i -lt $byteOrderMark.Length; $i++) {
     }
 }
 
-[System.IO.File]::WriteAllBytes($Path, $bytes[3..$bytes.Length])
+[System.IO.File]::WriteAllBytes($file.FullName, $bytes[3..$bytes.Length])
