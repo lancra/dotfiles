@@ -2,7 +2,6 @@ User:
   NVM_HOME: '%LOCALAPPDATA%\nvm'
   NVM_SYMLINK: 'C:\nvm4w\nodejs'
   PATH:
-    - '%LOCALAPPDATA%\Programs\oh-my-posh\bin\'
     - '%LOCALAPPDATA%\Microsoft\WinGet\Links'
     - '%LOCALAPPDATA%\Microsoft\WinGet\Packages\lycheeverse.lychee_Microsoft.Winget.Source_8wekyb3d8bbwe\lychee-x86_64-pc-windows-msvc'
     - '%LOCALAPPDATA%\Microsoft\WinGet\Packages\pnpm.pnpm_Microsoft.Winget.Source_8wekyb3d8bbwe'
