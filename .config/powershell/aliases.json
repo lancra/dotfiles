@@ -1,5 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/powershell/aliases.schema.json",
+  "dnew": {
+    "group": ".NET",
+    "command": "$env:BIN/dotnet/new-dotnet-project.ps1",
+    "bash": false
+  },
   "nugetp": {
     "group": ".NET",
     "command": "$env:BIN/dotnet/get-latest-nuget-package.ps1",
