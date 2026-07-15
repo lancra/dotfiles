@@ -145,6 +145,14 @@
       "title": "Diff Staged Except",
       "body": "!git diff --staged . :!$1"
     },
+    "dfsst": {
+      "title": "Diff Staged Stat",
+      "body": "diff --staged --stat"
+    },
+    "dfst": {
+      "title": "Diff Stat",
+      "body": "diff --stat"
+    },
     "dft": {
       "title": "Diff Tool",
       "body": "difftool"
