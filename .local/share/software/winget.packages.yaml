@@ -494,8 +494,8 @@
   DisplayName: Java Development Kit 24
   Category: Programming
   Tracking: Full
-- Id: PawelSalawa.SQLiteStudio@winget
-  DisplayName: SQLiteStudio
+- Id: PawelSalawa.Letos@winget
+  DisplayName: Letos
   Category: Programming
   Tracking: Full
 - Id: PDFsam.PDFsam@winget

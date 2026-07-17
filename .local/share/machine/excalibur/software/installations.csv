@@ -194,7 +194,7 @@ winget,packages,Nushell.Nushell@winget
 winget,packages,Obsidian.Obsidian@winget
 winget,packages,OliverBetz.ExifTool@winget
 winget,packages,OpenJS.NodeJS.LTS@winget
-winget,packages,PawelSalawa.SQLiteStudio@winget
+winget,packages,PawelSalawa.Letos@winget
 winget,packages,PDFsam.PDFsam@winget
 winget,packages,pnpm.pnpm@winget
 winget,packages,Podman.CLI@winget
