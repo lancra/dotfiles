@@ -13,5 +13,5 @@ Get-InstalledModule |
         }
 
         $id = [InstallationId]::new($_.Name, $exportId)
-        [InstallationUpgrade]::new($id, $_.Version, $latestModule.Version)
+        [InstallationUpgrade]::new($id, $_.Name, $_.Version, $latestModule.Version)
     }
