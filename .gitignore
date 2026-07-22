@@ -114,6 +114,10 @@
 !/AppData/Roaming/lsd/
 !/AppData/Roaming/lsd/config.yaml
 
+# Meld
+/.local/share/meld.log
+/.local/share/recently-used.xbel
+
 # nushell
 /.config/nushell/history.txt
 !/AppData/Roaming/nushell
