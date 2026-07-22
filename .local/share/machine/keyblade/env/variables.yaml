@@ -23,6 +23,7 @@ User:
     - '%LOCALAPPDATA%\Microsoft\WindowsApps'
     - '%LOCALAPPDATA%\Programs\ExifTool'
     - '%LOCALAPPDATA%\Programs\Espanso'
+    - '%LOCALAPPDATA%\Programs\Meld'
 Machine:
   PATH:
     - '%SYSTEMROOT%'
@@ -42,7 +43,6 @@ Machine:
     - '%PROGRAMFILES%\Git\usr\bin'
     - '%PROGRAMFILES%\GnuPG\bin'
     - '%PROGRAMFILES(X86)%\gnupg\bin'
-    - '%PROGRAMFILES%\Meld\'
     - '%PROGRAMFILES%\GitHub CLI\'
     - '%PROGRAMFILES%\PostgreSQL\16\bin\'
     - '%PROGRAMFILES%\Microsoft SDKs\Azure\CLI2\wbin'
