@@ -1,5 +1,15 @@
 #requires -Modules Pester
 
+<#
+.SYNOPSIS
+Runs PowerShell script tests.
+
+.DESCRIPTION
+Defines the configuration required to run defined tests and invokes Pester.
+
+.PARAMETER Detailed
+Specifies that the Detailed Pester output verbosity should be used.
+#>
 [CmdletBinding()]
 param(
     [switch] $Detailed
