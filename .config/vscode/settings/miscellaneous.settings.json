@@ -12,6 +12,7 @@
   "powershell.powerShellDefaultVersion": "PowerShell (x64)",
   "search.useIgnoreFiles": true,
   "search.useParentIgnoreFiles": true,
+  "workbench.editor.useModal": "off",
   "workbench.startupEditor": "none",
   "xml.server.workDir": "~/.cache/lemminx",
 }
