@@ -86,6 +86,10 @@
   DisplayName: Epic Games Launcher
   Category: Gaming
   Tracking: Full
+- Id: EpicGames.EpicOnlineServices@winget
+  DisplayName: Epic Online Services
+  Category: Gaming
+  Tracking: Full
 - Id: Espanso.Espanso@winget
   DisplayName: Espanso
   Category: Utility
