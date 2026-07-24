@@ -94,7 +94,7 @@
 
 # GitHub Copilot
 /.copilot/**
-!/.copilot/config.json
+!/.copilot/settings.json
 
 # GPG
 /.gnupg/**
