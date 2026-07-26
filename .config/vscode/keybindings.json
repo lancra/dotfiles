@@ -119,6 +119,10 @@
     "when": "editorTextFocus && editorLangId == 'sql'"
   },
   {
+    "key": "alt+pausebreak",
+    "command": "mssql.cancelQuery"
+  },
+  {
     "key": "ctrl+shift+d",
     "command": "-mssql.disconnect",
     "when": "editorTextFocus && editorLangId == 'sql'"
