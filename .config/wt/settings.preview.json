@@ -243,6 +243,7 @@
       }
     ]
   },
+  "safeUriSchemes": ["vscode"],
   "schemes": [
     {
       "background": "#40050A",
