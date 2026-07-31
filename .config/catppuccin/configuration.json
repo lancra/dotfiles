@@ -1,0 +1,14 @@
+[
+  {
+    "name": "atuin",
+    "file": "~/.config/atuin/themes/catppuccin-mocha-green.toml",
+    "repository": "catppuccin/atuin",
+    "source": "themes/mocha/catppuccin-mocha-green.toml"
+  },
+  {
+    "name": "delta",
+    "file": "~/.config/delta/themes/catppuccin.gitconfig",
+    "repository": "catppuccin/delta",
+    "source": "catppuccin.gitconfig"
+  }
+]
