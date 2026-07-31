@@ -385,9 +385,9 @@
       "title": "Switch",
       "body": "switch"
     },
-    "swapu": {
+    "swapl": {
       "title": "Switch and Pull",
-      "body": "!git swd && git pull"
+      "body": "!git swd && git pl"
     },
     "swc": {
       "title": "Switch Create",
