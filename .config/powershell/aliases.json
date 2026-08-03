@@ -210,6 +210,11 @@
     "command": "$env:BIN/software/install-software.ps1",
     "bash": false
   },
+  "sync-themes": {
+    "group": "Theming",
+    "command": "$env:BIN/catppuccin/sync.ps1",
+    "bash": false
+  },
   "sln": {
     "group": "Visual Studio",
     "command": "$env:BIN/vs/open-solution.ps1",
