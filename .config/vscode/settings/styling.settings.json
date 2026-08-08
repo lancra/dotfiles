@@ -1,5 +1,6 @@
 {
   "$schema": "vscode://schemas/settings/user",
+  "catppuccin.accentColor": "green",
   "window.titleBarStyle": "custom",
   "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.editor.pinnedTabsOnSeparateRow": true,
