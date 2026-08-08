@@ -8,5 +8,6 @@
   "mssql.format.datatypeCasing": "uppercase",
   "mssql.format.keywordCasing": "uppercase",
   "mssql.format.placeSelectStatementReferencesOnNewLine": true,
+  "mssql.preview.useVscodeAccountsForEntraMFA": false,
   "mssql.statusBar.enableConnectionColor": true,
 }
