@@ -3,6 +3,7 @@
   "[sql]": {
     "editor.tabSize": 4,
   },
+  "mssql.autoDisableNonTSqlLanguageService": false,
   "mssql.enableRichExperiences": true,
   "mssql.format.datatypeCasing": "uppercase",
   "mssql.format.keywordCasing": "uppercase",
