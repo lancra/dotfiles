@@ -4,5 +4,6 @@
   "window.titleBarStyle": "custom",
   "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.editor.pinnedTabsOnSeparateRow": true,
+  "workbench.experimental.modernUI": true,
   "workbench.iconTheme": "catppuccin-mocha",
 }
