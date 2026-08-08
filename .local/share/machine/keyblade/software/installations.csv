@@ -359,6 +359,7 @@ winget,packages,MiKTeX.MiKTeX@winget
 winget,packages,Mobatek.MobaXterm@winget
 winget,packages,Mozilla.Firefox@winget
 winget,packages,Mozilla.Thunderbird@winget
+winget,packages,MSI.MSICenter@winget
 winget,packages,MusicBrainz.Picard@winget
 winget,packages,NickeManarin.ScreenToGif@winget
 winget,packages,Nushell.Nushell@winget

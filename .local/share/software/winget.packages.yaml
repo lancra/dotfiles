@@ -466,6 +466,10 @@
   DisplayName: Mozilla Thunderbird
   Category: Utility
   Tracking: Full
+- Id: MSI.MSICenter@winget
+  DisplayName: MSI Center
+  Category: Utility
+  Tracking: Full
 - Id: MusicBrainz.Picard@winget
   DisplayName: MusicBrainz Picard
   Category: Music
