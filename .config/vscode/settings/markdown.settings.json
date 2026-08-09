@@ -4,16 +4,5 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
   },
-  "markdownlint.config": {
-    "default": true,
-    "heading-style": {
-      "style": "atx",
-    },
-    "line-length": {
-      "line_length": 135,
-    },
-    "no-duplicate-heading": {
-      "siblings_only": true,
-    }
-  },
+  "markdownlint.configFile": "~/.config/vscode/.markdownlint.json",
 }
