@@ -43,6 +43,23 @@ function Get-VersionTag {
             return
         }
 
+        $skipImage = $false
+        $currentTag = $digestLookup[$_.Digest]
+        if ($null -eq $currentTag) {
+            $skipImage = $true
+            Write-Host "$($PSStyle.Foreground.Red)Unable to find the current '$($_.Digest)' tag for $($_.Id).$($PSStyle.Reset)"
+        }
+
+        $latestTag = $digestLookup[$latestDigest]
+        if ($null -eq $latestTag) {
+            $skipImage = $true
+            Write-Host "$($PSStyle.Foreground.Red)Unable to find the latest '$($latestDigest)' tag for $($_.Id).$($PSStyle.Reset)"
+        }
+
+        if ($skipImage) {
+            return
+        }
+
         $id = [InstallationId]::new($_.Id, $exportId)
         $current = Get-VersionTag -Tag ($digestLookup[$_.Digest])
         $available = Get-VersionTag -Tag ($digestLookup[$latestDigest])
