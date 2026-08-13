@@ -334,6 +334,10 @@
   DisplayName: WinUI 2.8
   Category: Programming
   Tracking: None
+- Id: Microsoft.UpdateHealthTools@winget
+  DisplayName: Microsoft Update Health Tools
+  Category: Utility
+  Tracking: None
 - Id: Microsoft.VCLibs.14@winget
   DisplayName: Microsoft Visual C++ 2015 UWP Runtime Package
   Category: Programming
