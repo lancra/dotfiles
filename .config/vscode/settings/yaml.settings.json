@@ -23,4 +23,5 @@
     "**/.forgejo/workflows/*.yml",
     "**/.forgejo/workflows/*.yaml",
   ],
+  "yaml.format.singleQuote": true,
 }
