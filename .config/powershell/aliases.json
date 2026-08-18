@@ -105,6 +105,11 @@
     "command": "Remove-Item -Path #{0} -Recurse -Force",
     "bash": true
   },
+  "53csv": {
+    "group": "Financial",
+    "command": "$env:BIN/convert-fifth-third-transactions-to-csv.ps1",
+    "bash": false
+  },
   "ga": {
     "group": "Git",
     "command": "$env:BIN/git/generate-aliases.ps1",
