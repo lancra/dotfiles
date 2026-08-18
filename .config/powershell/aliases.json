@@ -130,6 +130,11 @@
     "command": "$env:BIN/git/repeat-last-git-command.ps1",
     "bash": false
   },
+  "ghar": {
+    "group": "GitHub",
+    "command": "$env:BIN/github/get-action-references.ps1",
+    "bash": false
+  },
   "ghc": {
     "group": "GitHub",
     "command": "$env:BIN/github/open-commit.ps1",
