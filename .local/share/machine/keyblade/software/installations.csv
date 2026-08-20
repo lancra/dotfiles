@@ -326,7 +326,6 @@ winget,packages,Microsoft.Teams.Free@winget
 winget,packages,Microsoft.Teams@winget
 winget,packages,Microsoft.UI.Xaml.2.7@winget
 winget,packages,Microsoft.UI.Xaml.2.8@winget
-winget,packages,Microsoft.UpdateHealthTools@winget
 winget,packages,Microsoft.VCLibs.14@winget
 winget,packages,Microsoft.VCLibs.Desktop.14@winget
 winget,packages,Microsoft.VCRedist.2008.x64@winget
