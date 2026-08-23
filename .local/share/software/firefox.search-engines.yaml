@@ -58,6 +58,10 @@
   Name: NuGet Package Search
   Uri: https://www.nuget.org/packages?q={searchTerms}
   Guid: 95d2f3ad-4bde-4b85-86f2-42bed57f5421
+- Id: om
+  Name: Obelisk Miner Wiki
+  Uri: https://shminer.miraheze.org/w/index.php?search={searchTerms}
+  Guid: c8fb8fe7-07bd-4d2b-92e0-c3c52de88c97
 - Id: port
   Name: Port Details
   Uri: https://www.speedguide.net/port.php?port={searchTerms}
