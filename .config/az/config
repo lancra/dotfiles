@@ -9,6 +9,8 @@ cache_ttl = 10
 collect_telemetry = no
 first_run = yes
 output = jsonc
+survey_message = false
 
 [logging]
 enable_log_file = yes
+
