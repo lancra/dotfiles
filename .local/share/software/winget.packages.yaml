@@ -230,6 +230,10 @@
   DisplayName: Meld
   Category: Programming
   Tracking: Full
+- Id: Microsoft.365Copilot@winget
+  DisplayName: Microsoft 365 Copilot
+  Category: Utility
+  Tracking: Full
 - Id: Microsoft.AppInstaller@winget
   DisplayName: Microsoft App Installer
   Category: Programming

@@ -302,6 +302,7 @@ winget,packages,lsd-rs.lsd@winget
 winget,packages,lycheeverse.lychee@winget
 winget,packages,Malwarebytes.Malwarebytes@winget
 winget,packages,Meld.Meld@winget
+winget,packages,Microsoft.365Copilot@winget
 winget,packages,Microsoft.AppInstaller@winget
 winget,packages,Microsoft.Aspire@winget
 winget,packages,Microsoft.AzureCLI@winget
