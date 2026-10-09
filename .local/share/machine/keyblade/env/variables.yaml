@@ -1,5 +1,4 @@
 User:
-  NVM_HOME: '%LOCALAPPDATA%\nvm'
   NVM_SYMLINK: 'C:\nvm4w\nodejs'
   PATH:
     - '%LOCALAPPDATA%\Microsoft\WinGet\Links'
@@ -14,7 +13,7 @@ User:
     - '%USERPROFILE%\.aspire\bin'
     - '%DEVUSERPROFILE%\go\bin'
     - '%APPDATA%\npm'
-    - '%LOCALAPPDATA%\nvm'
+    - '%LOCALAPPDATA%\Author Software\nvm'
     - 'C:\nvm4w\nodejs'
     - '%LOCALAPPDATA%\Programs\Podman\'
     - '%LOCALAPPDATA%\Programs\MiKTeX\miktex\bin\x64\'
