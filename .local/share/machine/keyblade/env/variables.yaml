@@ -23,6 +23,7 @@ User:
     - '%LOCALAPPDATA%\Programs\ExifTool'
     - '%LOCALAPPDATA%\Programs\Espanso'
     - '%LOCALAPPDATA%\Programs\Meld'
+    - '%LOCALAPPDATA%\PowerToys\bin\'
 Machine:
   PATH:
     - '%SYSTEMROOT%'
