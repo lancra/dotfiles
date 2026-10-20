@@ -1,1 +1,5 @@
+allow-scripts[]=@github/keytar
+allow-scripts[]=@openapitools/openapi-generator-cli
+allow-scripts[]=@scarf/scarf
+allow-scripts[]=node-pty
 min-release-age=3
