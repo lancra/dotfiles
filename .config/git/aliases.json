@@ -2,6 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/git/aliases.schema.json",
   "variables": {
     "branch_format": "--format='%(color:blue)%(committerdate:format-local:%Y-%m-%d %H:%M:%S) %(color:green)%(refname:short) %(color:red)%(committeremail)'",
+    "branch_sync_format": "--format='%(align:50)%(refname:short)%(end) %(color:yellow)%(objectname:short=12)%(color:default) %(color:blue)%(committerdate:format-local:%Y-%m-%d %H:%M:%S)%(color:default) %(if)%(upstream)%(then)%(color:green)R%(color:default)%(else)%(color:red)L%(color:default)%(end) %(align:23)%(color:magenta)%(upstream:track)%(color:default)%(end)'",
     "branch_upstream_format": "--format='  %(color:red)%(refname:lstrip=2)%(color:reset)%(if)%(symref)%(then) -> %(symref:short)%(end)'",
     "log_author_format": "--format='%C(yellow)%h %C(blue bold)%cd %C(magenta)%<(30,trunc)%aE%C(auto)%(decorate) %s' --date='format-local:%Y-%m-%d %H:%M:%S'",
     "log_format": "--format='%C(yellow)%h %C(blue bold)%cd%C(auto)%(decorate) %s' --date='format-local:%Y-%m-%d %H:%M:%S'",
@@ -64,6 +65,10 @@
     "bro": {
       "title": "Branches Old",
       "body": "branch --sort=committerdate __branch_format__"
+    },
+    "brs": {
+      "title": "Branches Synchronization",
+      "body": "branch __branch_sync_format__"
     },
     "bru": {
       "title": "Branches Upstream",
