@@ -23,6 +23,19 @@ $aliases = Get-Content -Path $sourcePath |
 $variables = & "$env:BIN/powershell/convert-to-hashtable.ps1" -Object ($aliases |
     Select-Object -ExpandProperty 'variables')
 
+# NOTE: This handles two-level variable definitions. If additional levels are used (e.g. a uses b which uses c), a topological sort or
+#       stack must be implemented to process token replacements in the correct order.
+$variableNames = $variables.GetEnumerator() |
+    Select-Object -ExpandProperty Name
+$variableNames |
+    ForEach-Object {
+        $variableTokens = @(& "$env:BIN/get-tokens.ps1" -Text $variables[$_] |
+            Select-Object -ExpandProperty Key)
+        if ($variableTokens) {
+            $variables[$_] = & "$env:BIN/replace-tokens.ps1" -Text $variables[$_] -Token $variables
+        }
+    }
+
 $aliasCount = 0
 $aliases.definitions.PSObject.Properties |
     ForEach-Object {
