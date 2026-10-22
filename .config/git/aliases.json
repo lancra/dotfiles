@@ -13,7 +13,7 @@
     "color_symref": "red",
     "color_upstream": "magenta",
     "date_format": "%Y-%m-%d %H:%M:%S",
-    "length_branch_maximum": "50",
+    "length_branch_maximum": "80",
     "length_object": "12",
     "log_author_format": "--format='%C(__color_object__)%h %C(__color_date__)%cd %C(__color_author__)%<(30,trunc)%aE%C(auto)%(decorate) %s' --date='format-local:__date_format__'",
     "log_format": "--format='%C(__color_object__)%h %C(__color_date__)%cd%C(auto)%(decorate) %s' --date='format-local:__date_format__'",
