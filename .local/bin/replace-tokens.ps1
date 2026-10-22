@@ -31,31 +31,22 @@ param(
     [string] $Affix = '__'
 )
 
-$affixPattern = [Regex]::Escape($Affix)
-$keyGroupName = 'key'
-$variablePattern = "$affixPattern(?<$keyGroupName>[^\W_]\w*?)$affixPattern"
-
 $Text |
     ForEach-Object {
         $line = $_
         $totalIndexOffset = 0
-        Select-String -InputObject $line -Pattern $variablePattern -AllMatches |
-            Select-Object -ExpandProperty Matches |
-            ForEach-Object {
-                $tokenKey = $_ |
-                    Select-Object -ExpandProperty Groups |
-                    Where-Object -Property Name -EQ $keyGroupName |
-                    Select-Object -ExpandProperty Value
 
+        & "$PSScriptRoot/get-tokens.ps1" -Text $line -Affix $Affix |
+            ForEach-Object {
                 $startIndex = $_.Index + $totalIndexOffset
                 $endIndex = $_.Index + $_.Length + $totalIndexOffset
 
                 $prefix = $startIndex -ne 0 ? $line.Substring(0, $startIndex) : ''
-                $tokenValue = $Token[$tokenKey]
+                $tokenValue = $Token[$_.Key]
                 $suffix = $endIndex -ne $line.Length ? $line.Substring($endIndex, $line.Length - $endIndex) : ''
 
                 $line = $prefix + $tokenValue + $suffix
-                $totalIndexOffset += $tokenValue.Length - $_.Value.Length
+                $totalIndexOffset += $tokenValue.Length - ($_.Key.Length + ($Affix.Length * 2))
             }
 
         $line
