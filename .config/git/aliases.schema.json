@@ -4,13 +4,29 @@
   "title": "Git Aliases",
   "description": "Specification to generate Git aliases.",
   "type": "object",
+  "definitions": {
+    "variable": {
+      "description": "A variable used for token substitution in a Git alias or in another variable.",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/variable"
+          }
+        }
+      ]
+    }
+  },
   "properties": {
     "variables": {
       "description": "The variables used for token substitution in Git aliases.",
       "type": "object",
       "additionalProperties": {
         "description": "A variable used within a Git alias.",
-        "type": "string"
+        "$ref": "#/definitions/variable"
       }
     },
     "definitions": {

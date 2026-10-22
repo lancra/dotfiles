@@ -20,7 +20,7 @@ $builder = [System.Text.StringBuilder]::new()
 $aliases = Get-Content -Path $sourcePath |
     ConvertFrom-Json
 
-$variables = & "$env:BIN/powershell/convert-to-hashtable.ps1" -Object ($aliases |
+$variables = & "$env:BIN/powershell/convert-to-hashtable.ps1" -FlattenSeparator '_' -Object ($aliases |
     Select-Object -ExpandProperty 'variables')
 
 # NOTE: This handles two-level variable definitions. If additional levels are used (e.g. a uses b which uses c), a topological sort or

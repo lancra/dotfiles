@@ -1,24 +1,32 @@
 {
   "$schema": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/git/aliases.schema.json",
   "variables": {
-    "branch_format": "--format='%(color:__color_date__)%(committerdate:format-local:__date_format__) %(color:__color_branch__)%(refname:short) %(color:__color_author__)%(committeremail)'",
-    "branch_sync_format": "--format='%(align:__length_branch_maximum__)%(refname:short)%(end) %(color:__color_object__)%(objectname:short=__length_object__) %(color:__color_date__)%(committerdate:format-local:__date_format__) %(if)%(upstream)%(then)%(color:__color_location_remote__)R%(else)%(color:__color_location_local__)L%(end) %(align:23)%(color:__color_upstream__)%(upstream:track)%(end)'",
-    "branch_upstream_format": "--format='  %(refname:lstrip=2)%(if)%(symref)%(then) -> %(color:__color_symref__)%(symref:short)%(end)'",
-    "color_branch": "default",
-    "color_author": "red",
-    "color_date": "blue bold",
-    "color_location_local": "red",
-    "color_location_remote": "green",
-    "color_object": "yellow",
-    "color_symref": "red",
-    "color_upstream": "magenta",
+    "branch": {
+      "format": "--format='%(color:__color_date__)%(committerdate:format-local:__date_format__) %(color:__color_branch__)%(refname:short) %(color:__color_author__)%(committeremail)'",
+      "sync_format": "--format='%(align:__length_branch_maximum__)%(refname:short)%(end) %(color:__color_object__)%(objectname:short=__length_object__) %(color:__color_date__)%(committerdate:format-local:__date_format__) %(if)%(upstream)%(then)%(color:__color_location_remote__)R%(else)%(color:__color_location_local__)L%(end) %(align:23)%(color:__color_upstream__)%(upstream:track)%(end)'",
+      "upstream_format": "--format='  %(refname:lstrip=2)%(if)%(symref)%(then) -> %(color:__color_symref__)%(symref:short)%(end)'"
+    },
+    "color": {
+      "branch": "default",
+      "author": "red",
+      "date": "blue bold",
+      "location_local": "red",
+      "location_remote": "green",
+      "object": "yellow",
+      "symref": "red",
+      "upstream": "magenta"
+    },
     "date_format": "%Y-%m-%d %H:%M:%S",
-    "length_branch_maximum": "80",
-    "length_object": "12",
-    "log_author_format": "--format='%C(__color_object__)%h %C(__color_date__)%cd %C(__color_author__)%<(30,trunc)%aE%C(auto)%(decorate) %s' --date='format-local:__date_format__'",
-    "log_format": "--format='%C(__color_object__)%h %C(__color_date__)%cd%C(auto)%(decorate) %s' --date='format-local:__date_format__'",
-    "log_long_option": "-50",
-    "log_short_option": "-20"
+    "length": {
+      "branch_maximum": "80",
+      "object": "12"
+    },
+    "log": {
+      "author_format": "--format='%C(__color_object__)%h %C(__color_date__)%cd %C(__color_author__)%<(30,trunc)%aE%C(auto)%(decorate) %s' --date='format-local:__date_format__'",
+      "format": "--format='%C(__color_object__)%h %C(__color_date__)%cd%C(auto)%(decorate) %s' --date='format-local:__date_format__'",
+      "long_option": "-50",
+      "short_option": "-20"
+    }
   },
   "definitions": {
     "a": {
