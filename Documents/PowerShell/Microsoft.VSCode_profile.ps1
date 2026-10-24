@@ -1,1 +1,1 @@
-../../.config/powershell/core.profile.ps1
+../../.config/powershell/profile.core.vscode.ps1
