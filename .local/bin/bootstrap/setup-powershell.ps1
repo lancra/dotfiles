@@ -16,6 +16,7 @@ function Write-SetupOutput {
 
 $powerShellHostProfileFileName = 'Microsoft.PowerShell_profile.ps1'
 $vsCodeHostProfileFileName = 'Microsoft.VSCode_profile.ps1'
+$allHostsProfileFileName = 'profile.ps1'
 
 $documentsPath = "$env:HOME/Documents"
 $coreDocumentsDirectory = "$documentsPath/PowerShell"
@@ -26,14 +27,18 @@ New-Item -ItemType Directory -Path $windowsDocumentsDirectory -Force | Out-Null
 
 $corePowerShellHostProfileSourcePath = "$coreDocumentsDirectory/$powerShellHostProfileFileName"
 $coreVSCodeHostProfileSourcePath = "$coreDocumentsDirectory/$vsCodeHostProfileFileName"
+$coreAllHostsProfileSourcePath = "$coreDocumentsDirectory/$allHostsProfileFileName"
 $windowsPowerShellHostProfileSourcePath = "$windowsDocumentsDirectory/$powerShellHostProfileFileName"
 $windowsVSCodeHostProfileSourcePath = "$windowsDocumentsDirectory/$vsCodeHostProfileFileName"
+$windowsAllHostsProfileSourcePath = "$windowsDocumentsDirectory/$allHostsProfileFileName"
 
 $sourcePaths = @(
     $corePowerShellHostProfileSourcePath,
     $coreVSCodeHostProfileSourcePath,
+    $coreAllHostsProfileSourcePath,
     $windowsPowerShellHostProfileSourcePath,
-    $windowsVSCodeHostProfileSourcePath
+    $windowsVSCodeHostProfileSourcePath,
+    $windowsAllHostsProfileSourcePath
 )
 
 $linkChecks = @{}
@@ -55,13 +60,17 @@ if (-not $anyMissingLinks) {
 $configPath = "$env:XDG_CONFIG_HOME/powershell"
 $corePowerShellHostConfigProfilePath = "$configPath/profile.core.powershell.ps1"
 $coreVSCodeHostConfigProfilePath = "$configPath/profile.core.vscode.ps1"
+$coreAllHostsConfigProfilePath = "$configPath/profile.core.ps1"
 $windowsPowerShellHostConfigProfilePath = "$configPath/profile.windows.powershell.ps1"
 $windowsVSCodeHostConfigProfilePath = "$configPath/profile.windows.vscode.ps1"
+$windowsAllHostsConfigProfilePath = "$configPath/profile.windows.ps1"
 
 $corePowerShellHostSymlinkTarget = resolve-relative-path-target.ps1 -Source $coreDocumentsDirectory -Target $corePowerShellHostConfigProfilePath
 $coreVSCodeHostSymlinkTarget = resolve-relative-path-target.ps1 -Source $coreDocumentsDirectory -Target $coreVSCodeHostConfigProfilePath
+$coreAllHostsSymlinkTarget = resolve-relative-path-target.ps1 -Source $coreDocumentsDirectory -Target $coreAllHostsConfigProfilePath
 $windowsPowerShellHostSymlinkTarget = resolve-relative-path-target.ps1 -Source $windowsDocumentsDirectory -Target $windowsPowerShellHostConfigProfilePath
 $windowsVSCodeHostSymlinkTarget = resolve-relative-path-target.ps1 -Source $windowsDocumentsDirectory -Target $windowsVSCodeHostConfigProfilePath
+$windowsAllHostsSymlinkTarget = resolve-relative-path-target.ps1 -Source $windowsDocumentsDirectory -Target $windowsAllHostsConfigProfilePath
 
 if (-not $linkChecks[$corePowerShellHostProfileSourcePath]) {
     Remove-Item -Path $corePowerShellHostProfileSourcePath -ErrorAction SilentlyContinue | Out-Null
@@ -77,6 +86,13 @@ if (-not $linkChecks[$coreVSCodeHostProfileSourcePath]) {
     Write-SetupOutput 'The profile link for the VS Code host has been established for Core PowerShell.'
 }
 
+if (-not $linkChecks[$coreAllHostsProfileSourcePath]) {
+    Remove-Item -Path $coreAllHostsProfileSourcePath -ErrorAction SilentlyContinue | Out-Null
+    New-Item -ItemType SymbolicLink -Path $coreAllHostsProfileSourcePath -Target $coreAllHostsSymlinkTarget | Out-Null
+
+    Write-SetupOutput 'The profile link for all hosts has been established for Core PowerShell.'
+}
+
 if (-not $linkChecks[$windowsPowerShellHostProfileSourcePath]) {
     Remove-Item -Path $windowsPowerShellHostProfileSourcePath -ErrorAction SilentlyContinue | Out-Null
     New-Item -ItemType SymbolicLink -Path $windowsPowerShellHostProfileSourcePath -Target $windowsPowerShellHostSymlinkTarget | Out-Null
@@ -89,4 +105,11 @@ if (-not $linkChecks[$windowsVSCodeHostProfileSourcePath]) {
     New-Item -ItemType SymbolicLink -Path $windowsVSCodeHostProfileSourcePath -Target $windowsVSCodeHostSymlinkTarget | Out-Null
 
     Write-SetupOutput 'The profile link for the VS Code host has been established for Windows PowerShell.'
+}
+
+if (-not $linkChecks[$windowsAllHostsProfileSourcePath]) {
+    Remove-Item -Path $windowsAllHostsProfileSourcePath -ErrorAction SilentlyContinue | Out-Null
+    New-Item -ItemType SymbolicLink -Path $windowsAllHostsProfileSourcePath -Target $windowsAllHostsSymlinkTarget | Out-Null
+
+    Write-SetupOutput 'The profile link for all hosts has been established for Windows PowerShell.'
 }
