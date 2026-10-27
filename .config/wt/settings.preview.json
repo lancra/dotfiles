@@ -310,6 +310,7 @@
         "applicationTheme": "dark",
         "experimental.rainbowFrame": false,
         "frame": null,
+        "showWorkspacesButton": true,
         "unfocusedFrame": null,
         "useMica": false
       }
