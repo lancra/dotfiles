@@ -1,4 +1,5 @@
 User:
+  DOTNET_ROOT: '%LOCALAPPDATA%\dotnetup\dotnet'
   NVM_SYMLINK: 'C:\nvm4w\nodejs'
   PATH:
     - '%LOCALAPPDATA%\Microsoft\WinGet\Links'
@@ -9,6 +10,7 @@ User:
     - '%LOCALAPPDATA%\Programs\KDiff3\bin'
     - '%LOCALAPPDATA%\Programs\WinMerge\'
     - '%DEVUSERPROFILE%\.cargo\bin'
+    - '%USERPROFILE%\.dotnetup'
     - '%USERPROFILE%\.dotnet\tools'
     - '%USERPROFILE%\.aspire\bin'
     - '%DEVUSERPROFILE%\go\bin'
@@ -46,6 +48,7 @@ Machine:
     - '%PROGRAMFILES%\GitHub CLI\'
     - '%PROGRAMFILES%\PostgreSQL\16\bin\'
     - '%PROGRAMFILES%\Microsoft SDKs\Azure\CLI2\wbin'
+    - '%LOCALAPPDATA%\dotnetup\dotnet'
     - '%PROGRAMFILES%\dotnet\'
     - '%PROGRAMFILES(X86)%\dotnet-core-uninstall'
     - '%PROGRAMFILES%\SqlCmd'

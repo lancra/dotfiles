@@ -30,6 +30,11 @@
     "command": "dotnet",
     "bash": false
   },
+  "dnu": {
+    "group": "Application",
+    "command": "dotnetup",
+    "bash": false
+  },
   "g": {
     "group": "Application",
     "command": "git",

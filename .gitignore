@@ -81,6 +81,9 @@
 # Dotnet Tools Outdated
 /.config/dotnet-tools-outdated/appsettings-fulltemplate.json
 
+# Dotnetup
+/.dotnetup/
+
 # Gemini CLI
 /.gemini/
 
