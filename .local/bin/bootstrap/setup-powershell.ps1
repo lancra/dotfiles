@@ -1,7 +1,9 @@
 #Requires -RunAsAdministrator
 
 [CmdletBinding()]
-param ()
+param (
+    [switch] $Force
+)
 
 function Write-SetupOutput {
     [CmdletBinding()]
@@ -76,6 +78,10 @@ $profileLinks = @(
 
 $staleLinks = @($profileLinks |
     ForEach-Object {
+        if ($Force) {
+            return $_
+        }
+
         $pathExists = Test-Path -Path $_.Source
         if (-not $pathExists) {
             return $_
