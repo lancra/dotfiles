@@ -25,91 +25,88 @@ $windowsDocumentsDirectory = "$documentsPath/WindowsPowerShell"
 New-Item -ItemType Directory -Path $coreDocumentsDirectory -Force | Out-Null
 New-Item -ItemType Directory -Path $windowsDocumentsDirectory -Force | Out-Null
 
-$corePowerShellHostProfileSourcePath = "$coreDocumentsDirectory/$powerShellHostProfileFileName"
-$coreVSCodeHostProfileSourcePath = "$coreDocumentsDirectory/$vsCodeHostProfileFileName"
-$coreAllHostsProfileSourcePath = "$coreDocumentsDirectory/$allHostsProfileFileName"
-$windowsPowerShellHostProfileSourcePath = "$windowsDocumentsDirectory/$powerShellHostProfileFileName"
-$windowsVSCodeHostProfileSourcePath = "$windowsDocumentsDirectory/$vsCodeHostProfileFileName"
-$windowsAllHostsProfileSourcePath = "$windowsDocumentsDirectory/$allHostsProfileFileName"
+$configPath = "$env:XDG_CONFIG_HOME/powershell"
 
-$sourcePaths = @(
-    $corePowerShellHostProfileSourcePath,
-    $coreVSCodeHostProfileSourcePath,
-    $coreAllHostsProfileSourcePath,
-    $windowsPowerShellHostProfileSourcePath,
-    $windowsVSCodeHostProfileSourcePath,
-    $windowsAllHostsProfileSourcePath
+class ProfileLink {
+    [string] $ProductDisplay
+    [string] $HostDisplay
+    [string] $Source
+    [string] $Target
+
+    ProfileLink([string] $productDisplay, [string] $hostDisplay, [string] $source, [string] $target) {
+        $this.ProductDisplay = $productDisplay
+        $this.HostDisplay = $hostDisplay
+        $this.Source = $source
+        $this.Target = $target
+    }
+}
+
+$profileLinks = @(
+    [ProfileLink]::new(
+        'Core',
+        'PowerShell',
+        "$coreDocumentsDirectory/$powerShellHostProfileFileName",
+        (& resolve-relative-path-target.ps1 -Source $coreDocumentsDirectory -Target "$configPath/profile.core.powershell.ps1")),
+    [ProfileLink]::new(
+        'Core',
+        'VS Code',
+        "$coreDocumentsDirectory/$vsCodeHostProfileFileName",
+        (& resolve-relative-path-target.ps1 -Source $coreDocumentsDirectory -Target "$configPath/profile.core.vscode.ps1")),
+    [ProfileLink]::new(
+        'Core',
+        '',
+        "$coreDocumentsDirectory/$allHostsProfileFileName",
+        (& resolve-relative-path-target.ps1 -Source $coreDocumentsDirectory -Target "$configPath/profile.core.ps1")),
+    [ProfileLink]::new(
+        'Windows',
+        'PowerShell',
+        "$windowsDocumentsDirectory/$powerShellHostProfileFileName",
+        (& resolve-relative-path-target.ps1 -Source $windowsDocumentsDirectory -Target "$configPath/profile.windows.powershell.ps1")),
+    [ProfileLink]::new(
+        'Windows',
+        'VS Code',
+        "$windowsDocumentsDirectory/$vsCodeHostProfileFileName",
+        (& resolve-relative-path-target.ps1 -Source $windowsDocumentsDirectory -Target "$configPath/profile.windows.vscode.ps1")),
+    [ProfileLink]::new(
+        'Windows',
+        '',
+        "$windowsDocumentsDirectory/$allHostsProfileFileName",
+        (& resolve-relative-path-target.ps1 -Source $windowsDocumentsDirectory -Target "$configPath/profile.windows.ps1"))
 )
 
-$linkChecks = @{}
-$sourcePaths |
+$staleLinks = @($profileLinks |
     ForEach-Object {
-        $pathExists = Test-Path -Path $_
-        $isLink = $pathExists -and (& "$env:BIN/is-link.ps1" -Path $_)
-        $linkChecks[$_] = $isLink
-    }
+        $pathExists = Test-Path -Path $_.Source
+        if (-not $pathExists) {
+            return $_
+        }
 
-$anyMissingLinks = ($linkChecks.GetEnumerator() |
-    Where-Object { -not $_.Value }).Length -ne 0
+        $isLink = & "$env:BIN/is-link.ps1" -Path $_.Source
+        if (-not $isLink) {
+            return $_
+        }
 
-if (-not $anyMissingLinks) {
+        $linkTarget = (Get-Item -Path $_.Source |
+            Select-Object -ExpandProperty Target) -replace '\\', '/'
+        if ($linkTarget -ne $_.Target) {
+            return $_
+        }
+
+        return $null
+    } |
+    Where-Object { $null -ne $_ })
+
+if ($staleLinks.Length -eq 0) {
     Write-SetupOutput 'Links have already been established.'
     exit 0
 }
 
-$configPath = "$env:XDG_CONFIG_HOME/powershell"
-$corePowerShellHostConfigProfilePath = "$configPath/profile.core.powershell.ps1"
-$coreVSCodeHostConfigProfilePath = "$configPath/profile.core.vscode.ps1"
-$coreAllHostsConfigProfilePath = "$configPath/profile.core.ps1"
-$windowsPowerShellHostConfigProfilePath = "$configPath/profile.windows.powershell.ps1"
-$windowsVSCodeHostConfigProfilePath = "$configPath/profile.windows.vscode.ps1"
-$windowsAllHostsConfigProfilePath = "$configPath/profile.windows.ps1"
+$staleLinks |
+    ForEach-Object {
+        Remove-Item -Path $_.Source -ErrorAction SilentlyContinue | Out-Null
+        New-Item -ItemType SymbolicLink -Path $_.Source -Target $_.Target | Out-Null
 
-$corePowerShellHostSymlinkTarget = resolve-relative-path-target.ps1 -Source $coreDocumentsDirectory -Target $corePowerShellHostConfigProfilePath
-$coreVSCodeHostSymlinkTarget = resolve-relative-path-target.ps1 -Source $coreDocumentsDirectory -Target $coreVSCodeHostConfigProfilePath
-$coreAllHostsSymlinkTarget = resolve-relative-path-target.ps1 -Source $coreDocumentsDirectory -Target $coreAllHostsConfigProfilePath
-$windowsPowerShellHostSymlinkTarget = resolve-relative-path-target.ps1 -Source $windowsDocumentsDirectory -Target $windowsPowerShellHostConfigProfilePath
-$windowsVSCodeHostSymlinkTarget = resolve-relative-path-target.ps1 -Source $windowsDocumentsDirectory -Target $windowsVSCodeHostConfigProfilePath
-$windowsAllHostsSymlinkTarget = resolve-relative-path-target.ps1 -Source $windowsDocumentsDirectory -Target $windowsAllHostsConfigProfilePath
-
-if (-not $linkChecks[$corePowerShellHostProfileSourcePath]) {
-    Remove-Item -Path $corePowerShellHostProfileSourcePath -ErrorAction SilentlyContinue | Out-Null
-    New-Item -ItemType SymbolicLink -Path $corePowerShellHostProfileSourcePath -Target $corePowerShellHostSymlinkTarget | Out-Null
-
-    Write-SetupOutput 'The profile link for the PowerShell host has been established for Core PowerShell.'
-}
-
-if (-not $linkChecks[$coreVSCodeHostProfileSourcePath]) {
-    Remove-Item -Path $coreVSCodeHostProfileSourcePath -ErrorAction SilentlyContinue | Out-Null
-    New-Item -ItemType SymbolicLink -Path $coreVSCodeHostProfileSourcePath -Target $coreVSCodeHostSymlinkTarget | Out-Null
-
-    Write-SetupOutput 'The profile link for the VS Code host has been established for Core PowerShell.'
-}
-
-if (-not $linkChecks[$coreAllHostsProfileSourcePath]) {
-    Remove-Item -Path $coreAllHostsProfileSourcePath -ErrorAction SilentlyContinue | Out-Null
-    New-Item -ItemType SymbolicLink -Path $coreAllHostsProfileSourcePath -Target $coreAllHostsSymlinkTarget | Out-Null
-
-    Write-SetupOutput 'The profile link for all hosts has been established for Core PowerShell.'
-}
-
-if (-not $linkChecks[$windowsPowerShellHostProfileSourcePath]) {
-    Remove-Item -Path $windowsPowerShellHostProfileSourcePath -ErrorAction SilentlyContinue | Out-Null
-    New-Item -ItemType SymbolicLink -Path $windowsPowerShellHostProfileSourcePath -Target $windowsPowerShellHostSymlinkTarget | Out-Null
-
-    Write-SetupOutput 'The profile link for the PowerShell host has been established for Windows PowerShell.'
-}
-
-if (-not $linkChecks[$windowsVSCodeHostProfileSourcePath]) {
-    Remove-Item -Path $windowsVSCodeHostProfileSourcePath -ErrorAction SilentlyContinue | Out-Null
-    New-Item -ItemType SymbolicLink -Path $windowsVSCodeHostProfileSourcePath -Target $windowsVSCodeHostSymlinkTarget | Out-Null
-
-    Write-SetupOutput 'The profile link for the VS Code host has been established for Windows PowerShell.'
-}
-
-if (-not $linkChecks[$windowsAllHostsProfileSourcePath]) {
-    Remove-Item -Path $windowsAllHostsProfileSourcePath -ErrorAction SilentlyContinue | Out-Null
-    New-Item -ItemType SymbolicLink -Path $windowsAllHostsProfileSourcePath -Target $windowsAllHostsSymlinkTarget | Out-Null
-
-    Write-SetupOutput 'The profile link for all hosts has been established for Windows PowerShell.'
-}
+        $hostDisplay = $_.HostDisplay ? "the $($_.HostDisplay) host" : 'all hosts'
+        $productDisplay = $_.ProductDisplay
+        Write-SetupOutput "The profile link for $hostDisplay has been established for $productDisplay PowerShell."
+    }
