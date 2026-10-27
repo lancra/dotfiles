@@ -210,7 +210,7 @@
         "source": "Windows.Terminal.Wsl"
       },
       {
-        "guid": "{5e797163-9807-5e4b-9e55-fc51b55ada5d}",
+        "guid": "{e1816fd5-e51b-592f-9afc-fdbe205c0735}",
         "hidden": false,
         "icon": "%USERPROFILE%\\.config\\wt\\icons\\podman.ico",
         "name": "Podman",
