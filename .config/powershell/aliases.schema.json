@@ -4,37 +4,58 @@
   "title": "PowerShell Aliases",
   "description": "Collection of PowerShell aliases.",
   "type": "object",
-  "properties": {
-    "$schema": {
-      "description": "The schema to verify this document against.",
-      "type": "string",
-      "format": "uri"
-    }
-  },
-  "additionalProperties": {
-    "description": "A PowerShell alias.",
-    "type": "object",
-    "properties": {
-      "group": {
-        "description": "The collection of related aliases.",
-        "type": "string",
-        "default": ""
-      },
-      "command": {
-        "description": "The command that the alias represents.",
-        "type": "string",
-        "default": ""
-      },
-      "bash": {
-        "description": "The value that determines whether Bash-like argument injection is supported via the profile alias module.",
-        "type": "boolean",
-        "default": false
+  "definitions": {
+    "builtInCollection": {
+      "description": "The collection built-in aliases to remove.",
+      "type": "object",
+      "additionalProperties": {
+        "description": "A built-in PowerShell alias to remove.",
+        "type": "string"
       }
     },
-    "required": [
-      "group",
-      "command",
-      "bash"
-    ]
-  }
+    "customCollection": {
+      "description": "The collection of custom aliases to add.",
+      "type": "object",
+      "additionalProperties": {
+        "description": "A custom PowerShell alias to add.",
+        "type": "object",
+        "properties": {
+          "group": {
+            "description": "The collection of related aliases.",
+            "type": "string",
+            "default": ""
+          },
+          "command": {
+            "description": "The command that the alias represents.",
+            "type": "string",
+            "default": ""
+          },
+          "bash": {
+            "description": "The value that determines whether Bash-like argument injection is supported via the profile alias module.",
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "required": [
+          "group",
+          "command",
+          "bash"
+        ]
+      }
+    }
+  },
+  "properties": {
+    "add": {
+      "description": "The custom aliases to add.",
+      "$ref": "#/definitions/customCollection"
+    },
+    "remove": {
+      "description": "The built-in aliases to remove.",
+      "$ref": "#/definitions/builtInCollection"
+    }
+  },
+  "required": [
+    "add",
+    "remove"
+  ]
 }

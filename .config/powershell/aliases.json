@@ -1,263 +1,269 @@
 {
   "$schema": "https://raw.githubusercontent.com/lancra/dotfiles/main/.config/powershell/aliases.schema.json",
-  "dnew": {
-    "group": ".NET",
-    "command": "$env:BIN/dotnet/new-dotnet-project.ps1",
-    "bash": false
+  "add": {
+    "dnew": {
+      "group": ".NET",
+      "command": "$env:BIN/dotnet/new-dotnet-project.ps1",
+      "bash": false
+    },
+    "nugetp": {
+      "group": ".NET",
+      "command": "$env:BIN/dotnet/get-latest-nuget-package.ps1",
+      "bash": false
+    },
+    "ngi": {
+      "group": "Angular",
+      "command": "$env:BIN/angular/invoke-ng.ps1",
+      "bash": false
+    },
+    "ngs": {
+      "group": "Angular",
+      "command": "& $env:BIN/angular/invoke-ng.ps1 -Action serve",
+      "bash": true
+    },
+    "c": {
+      "group": "Application",
+      "command": "cargo",
+      "bash": false
+    },
+    "d": {
+      "group": "Application",
+      "command": "dotnet",
+      "bash": false
+    },
+    "dnu": {
+      "group": "Application",
+      "command": "dotnetup",
+      "bash": false
+    },
+    "g": {
+      "group": "Application",
+      "command": "git",
+      "bash": false
+    },
+    "pm": {
+      "group": "Application",
+      "command": "podman",
+      "bash": false
+    },
+    "ru": {
+      "group": "Application",
+      "command": "rustup",
+      "bash": false
+    },
+    "eev": {
+      "group": "Environment",
+      "command": "$env:BIN/env/export-variables.ps1",
+      "bash": false
+    },
+    "iev": {
+      "group": "Environment",
+      "command": "$env:BIN/env/import-variables.ps1",
+      "bash": false
+    },
+    "rev": {
+      "group": "Environment",
+      "command": "$env:BIN/env/remove-variable.ps1",
+      "bash": false
+    },
+    "riev": {
+      "group": "Environment",
+      "command": "git restore $env:XDG_DATA_HOME/machine/*/env/variables.yaml && iev -Force",
+      "bash": true
+    },
+    "cdr": {
+      "group": "FileSystem",
+      "command": "$env:BIN/change-directory-repository-root.ps1",
+      "bash": false
+    },
+    "cdu": {
+      "group": "FileSystem",
+      "command": "$env:BIN/change-directory-up.ps1",
+      "bash": false
+    },
+    "csd": {
+      "group": "FileSystem",
+      "command": "& $env:BIN/resolve-relative-path.ps1 -Path #{0} | Set-Clipboard",
+      "bash": true
+    },
+    "cwd": {
+      "group": "FileSystem",
+      "command": "$pwd.Path | Set-Clipboard",
+      "bash": true
+    },
+    "l": {
+      "group": "FileSystem",
+      "command": "lsd --long #{:*}",
+      "bash": true
+    },
+    "lt": {
+      "group": "FileSystem",
+      "command": "lsd --long --tree --depth #{0} #{:*}",
+      "bash": true
+    },
+    "psd": {
+      "group": "FileSystem",
+      "command": "$env:BIN/resolve-relative-path.ps1",
+      "bash": false
+    },
+    "rmr": {
+      "group": "FileSystem",
+      "command": "Remove-Item -Path #{0} -Recurse -Force",
+      "bash": true
+    },
+    "53csv": {
+      "group": "Financial",
+      "command": "$env:BIN/convert-fifth-third-transactions-to-csv.ps1",
+      "bash": false
+    },
+    "ga": {
+      "group": "Git",
+      "command": "$env:BIN/git/generate-aliases.ps1",
+      "bash": false
+    },
+    "gor": {
+      "group": "Git",
+      "command": "$env:BIN/git/open-remote.ps1",
+      "bash": false
+    },
+    "gpnf": {
+      "group": "Git",
+      "command": "$env:BIN/git/prune-orphan-notes.ps1",
+      "bash": false
+    },
+    "gpnn": {
+      "group": "Git",
+      "command": "& $env:BIN/git/prune-orphan-notes.ps1 -Check",
+      "bash": true
+    },
+    "gr": {
+      "group": "Git",
+      "command": "$env:BIN/git/repeat-last-git-command.ps1",
+      "bash": false
+    },
+    "ghar": {
+      "group": "GitHub",
+      "command": "$env:BIN/github/get-action-references.ps1",
+      "bash": false
+    },
+    "ghc": {
+      "group": "GitHub",
+      "command": "$env:BIN/github/open-commit.ps1",
+      "bash": false
+    },
+    "ghi": {
+      "group": "GitHub",
+      "command": "$env:BIN/github/open-issue.ps1",
+      "bash": false
+    },
+    "jqf": {
+      "group": "JSON",
+      "command": "Set-Content -Path \"$(#{0})\" -Value (jq '.' \"$(#{0})\")",
+      "bash": true
+    },
+    "pmmr": {
+      "group": "Podman",
+      "command": "podman machine stop && podman machine start",
+      "bash": true
+    },
+    "pmrmid": {
+      "group": "Podman",
+      "command": "& podman images --filter 'dangling=true' --quiet | ForEach-Object { podman rmi $_ }",
+      "bash": true
+    },
+    "gfa": {
+      "group": "PowerShell",
+      "command": "$env:BIN/powershell/get-full-alias.ps1",
+      "bash": false
+    },
+    "hp": {
+      "group": "PowerShell",
+      "command": "$env:BIN/get-extended-help.ps1",
+      "bash": false
+    },
+    "lp": {
+      "group": "PowerShell",
+      "command": ". $PROFILE",
+      "bash": true
+    },
+    "mano": {
+      "group": "PowerShell",
+      "command": "$env:BIN/open-online-help.ps1",
+      "bash": false
+    },
+    "ml": {
+      "group": "Programming",
+      "command": "podman run --platform 'linux/amd64' --rm --volume \"${PWD}:/tmp/lint:rw\" 'oxsecurity/megalinter-dotnet:latest'",
+      "bash": true
+    },
+    "mla": {
+      "group": "Programming",
+      "command": "podman run --platform 'linux/amd64' --rm --volume \"${PWD}:/tmp/lint:rw\" --env 'APPLY_FIXES=all' 'oxsecurity/megalinter-dotnet:latest'",
+      "bash": true
+    },
+    "ziz": {
+      "group": "Programming",
+      "command": "zizmor --gh-token (gh auth token) #{:*} #{0}",
+      "bash": true
+    },
+    "zizp": {
+      "group": "Programming",
+      "command": "zizmor --gh-token (gh auth token) --pedantic #{:*} #{0}",
+      "bash": true
+    },
+    "swc": {
+      "group": "Software",
+      "command": "$env:BIN/software/check-software.ps1",
+      "bash": false
+    },
+    "swe": {
+      "group": "Software",
+      "command": "$env:BIN/software/export-software.ps1",
+      "bash": false
+    },
+    "swi": {
+      "group": "Software",
+      "command": "$env:BIN/software/install-software.ps1",
+      "bash": false
+    },
+    "sync-themes": {
+      "group": "Theming",
+      "command": "$env:BIN/catppuccin/sync.ps1",
+      "bash": false
+    },
+    "sln": {
+      "group": "Visual Studio",
+      "command": "$env:BIN/vs/open-solution.ps1",
+      "bash": false
+    },
+    "codeg": {
+      "group": "Visual Studio Code",
+      "command": "Get-ChildItem -Path #{0} | ForEach-Object { code $_ }",
+      "bash": true
+    },
+    "vscs": {
+      "group": "Visual Studio Code",
+      "command": "$env:BIN/vscode/generate-settings.ps1",
+      "bash": false
+    },
+    "vscsc": {
+      "group": "Visual Studio Code",
+      "command": "$env:BIN/vscode/compare-settings.ps1",
+      "bash": false
+    },
+    "wu": {
+      "group": "WinGet",
+      "command": "winget upgrade #{:*}",
+      "bash": true
+    },
+    "wth": {
+      "group": "Windows Terminal",
+      "command": "& Start-Process -FilePath 'https://learn.microsoft.com/en-us/windows/terminal/command-line-arguments'",
+      "bash": true
+    }
   },
-  "nugetp": {
-    "group": ".NET",
-    "command": "$env:BIN/dotnet/get-latest-nuget-package.ps1",
-    "bash": false
-  },
-  "ngi": {
-    "group": "Angular",
-    "command": "$env:BIN/angular/invoke-ng.ps1",
-    "bash": false
-  },
-  "ngs": {
-    "group": "Angular",
-    "command": "& $env:BIN/angular/invoke-ng.ps1 -Action serve",
-    "bash": true
-  },
-  "c": {
-    "group": "Application",
-    "command": "cargo",
-    "bash": false
-  },
-  "d": {
-    "group": "Application",
-    "command": "dotnet",
-    "bash": false
-  },
-  "dnu": {
-    "group": "Application",
-    "command": "dotnetup",
-    "bash": false
-  },
-  "g": {
-    "group": "Application",
-    "command": "git",
-    "bash": false
-  },
-  "pm": {
-    "group": "Application",
-    "command": "podman",
-    "bash": false
-  },
-  "ru": {
-    "group": "Application",
-    "command": "rustup",
-    "bash": false
-  },
-  "eev": {
-    "group": "Environment",
-    "command": "$env:BIN/env/export-variables.ps1",
-    "bash": false
-  },
-  "iev": {
-    "group": "Environment",
-    "command": "$env:BIN/env/import-variables.ps1",
-    "bash": false
-  },
-  "rev": {
-    "group": "Environment",
-    "command": "$env:BIN/env/remove-variable.ps1",
-    "bash": false
-  },
-  "riev": {
-    "group": "Environment",
-    "command": "git restore $env:XDG_DATA_HOME/machine/*/env/variables.yaml && iev -Force",
-    "bash": true
-  },
-  "cdr": {
-    "group": "FileSystem",
-    "command": "$env:BIN/change-directory-repository-root.ps1",
-    "bash": false
-  },
-  "cdu": {
-    "group": "FileSystem",
-    "command": "$env:BIN/change-directory-up.ps1",
-    "bash": false
-  },
-  "csd": {
-    "group": "FileSystem",
-    "command": "& $env:BIN/resolve-relative-path.ps1 -Path #{0} | Set-Clipboard",
-    "bash": true
-  },
-  "cwd": {
-    "group": "FileSystem",
-    "command": "$pwd.Path | Set-Clipboard",
-    "bash": true
-  },
-  "l": {
-    "group": "FileSystem",
-    "command": "lsd --long #{:*}",
-    "bash": true
-  },
-  "lt": {
-    "group": "FileSystem",
-    "command": "lsd --long --tree --depth #{0} #{:*}",
-    "bash": true
-  },
-  "psd": {
-    "group": "FileSystem",
-    "command": "$env:BIN/resolve-relative-path.ps1",
-    "bash": false
-  },
-  "rmr": {
-    "group": "FileSystem",
-    "command": "Remove-Item -Path #{0} -Recurse -Force",
-    "bash": true
-  },
-  "53csv": {
-    "group": "Financial",
-    "command": "$env:BIN/convert-fifth-third-transactions-to-csv.ps1",
-    "bash": false
-  },
-  "ga": {
-    "group": "Git",
-    "command": "$env:BIN/git/generate-aliases.ps1",
-    "bash": false
-  },
-  "gor": {
-    "group": "Git",
-    "command": "$env:BIN/git/open-remote.ps1",
-    "bash": false
-  },
-  "gpnf": {
-    "group": "Git",
-    "command": "$env:BIN/git/prune-orphan-notes.ps1",
-    "bash": false
-  },
-  "gpnn": {
-    "group": "Git",
-    "command": "& $env:BIN/git/prune-orphan-notes.ps1 -Check",
-    "bash": true
-  },
-  "gr": {
-    "group": "Git",
-    "command": "$env:BIN/git/repeat-last-git-command.ps1",
-    "bash": false
-  },
-  "ghar": {
-    "group": "GitHub",
-    "command": "$env:BIN/github/get-action-references.ps1",
-    "bash": false
-  },
-  "ghc": {
-    "group": "GitHub",
-    "command": "$env:BIN/github/open-commit.ps1",
-    "bash": false
-  },
-  "ghi": {
-    "group": "GitHub",
-    "command": "$env:BIN/github/open-issue.ps1",
-    "bash": false
-  },
-  "jqf": {
-    "group": "JSON",
-    "command": "Set-Content -Path \"$(#{0})\" -Value (jq '.' \"$(#{0})\")",
-    "bash": true
-  },
-  "pmmr": {
-    "group": "Podman",
-    "command": "podman machine stop && podman machine start",
-    "bash": true
-  },
-  "pmrmid": {
-    "group": "Podman",
-    "command": "& podman images --filter 'dangling=true' --quiet | ForEach-Object { podman rmi $_ }",
-    "bash": true
-  },
-  "gfa": {
-    "group": "PowerShell",
-    "command": "$env:BIN/powershell/get-full-alias.ps1",
-    "bash": false
-  },
-  "hp": {
-    "group": "PowerShell",
-    "command": "$env:BIN/get-extended-help.ps1",
-    "bash": false
-  },
-  "lp": {
-    "group": "PowerShell",
-    "command": ". $PROFILE",
-    "bash": true
-  },
-  "mano": {
-    "group": "PowerShell",
-    "command": "$env:BIN/open-online-help.ps1",
-    "bash": false
-  },
-  "ml": {
-    "group": "Programming",
-    "command": "podman run --platform 'linux/amd64' --rm --volume \"${PWD}:/tmp/lint:rw\" 'oxsecurity/megalinter-dotnet:latest'",
-    "bash": true
-  },
-  "mla": {
-    "group": "Programming",
-    "command": "podman run --platform 'linux/amd64' --rm --volume \"${PWD}:/tmp/lint:rw\" --env 'APPLY_FIXES=all' 'oxsecurity/megalinter-dotnet:latest'",
-    "bash": true
-  },
-  "ziz": {
-    "group": "Programming",
-    "command": "zizmor --gh-token (gh auth token) #{:*} #{0}",
-    "bash": true
-  },
-  "zizp": {
-    "group": "Programming",
-    "command": "zizmor --gh-token (gh auth token) --pedantic #{:*} #{0}",
-    "bash": true
-  },
-  "swc": {
-    "group": "Software",
-    "command": "$env:BIN/software/check-software.ps1",
-    "bash": false
-  },
-  "swe": {
-    "group": "Software",
-    "command": "$env:BIN/software/export-software.ps1",
-    "bash": false
-  },
-  "swi": {
-    "group": "Software",
-    "command": "$env:BIN/software/install-software.ps1",
-    "bash": false
-  },
-  "sync-themes": {
-    "group": "Theming",
-    "command": "$env:BIN/catppuccin/sync.ps1",
-    "bash": false
-  },
-  "sln": {
-    "group": "Visual Studio",
-    "command": "$env:BIN/vs/open-solution.ps1",
-    "bash": false
-  },
-  "codeg": {
-    "group": "Visual Studio Code",
-    "command": "Get-ChildItem -Path #{0} | ForEach-Object { code $_ }",
-    "bash": true
-  },
-  "vscs": {
-    "group": "Visual Studio Code",
-    "command": "$env:BIN/vscode/generate-settings.ps1",
-    "bash": false
-  },
-  "vscsc": {
-    "group": "Visual Studio Code",
-    "command": "$env:BIN/vscode/compare-settings.ps1",
-    "bash": false
-  },
-  "wu": {
-    "group": "WinGet",
-    "command": "winget upgrade #{:*}",
-    "bash": true
-  },
-  "wth": {
-    "group": "Windows Terminal",
-    "command": "& Start-Process -FilePath 'https://learn.microsoft.com/en-us/windows/terminal/command-line-arguments'",
-    "bash": true
+  "remove": {
+    "sort": "Removed in favor of the built-in Windows tool.",
+    "sv": "Removed in favor of the Svelte CLI provided by NPM."
   }
 }
