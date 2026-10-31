@@ -260,6 +260,11 @@
       "group": "Windows Terminal",
       "command": "& Start-Process -FilePath 'https://learn.microsoft.com/en-us/windows/terminal/command-line-arguments'",
       "bash": true
+    },
+    "wtt": {
+      "group": "Windows Terminal",
+      "command": "$env:BIN/wt/open-tab.ps1",
+      "bash": false
     }
   },
   "remove": {
