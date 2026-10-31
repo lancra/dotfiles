@@ -264,6 +264,7 @@
   },
   "remove": {
     "sort": "Removed in favor of the built-in Windows tool.",
-    "sv": "Removed in favor of the Svelte CLI provided by NPM."
+    "sv": "Removed in favor of the Svelte CLI provided by NPM.",
+    "where": "Removed in favor of the built-in Windows tool."
   }
 }
