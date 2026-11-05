@@ -323,7 +323,7 @@
   Category: Programming
   Tracking: Full
 - Id: Microsoft.SQLServer.OLEDBDriver@winget
-  DisplayName: Microsoft SQL Server OLE DB Driver
+  DisplayName: SQL Server OLE DB Driver
   Category: Programming
   Tracking: Full
 - Id: Microsoft.SQLServerManagementStudio.22@winget
