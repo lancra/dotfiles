@@ -21,6 +21,7 @@ cargo,crates,https://crates.io/crates/xsv
 cargo,crates,https://crates.io/crates/zizmor
 cargo,crates,https://github.com/pamburus/hl.git
 dotnet,tools,dotnet-ef
+dotnet,tools,dotnet-inspect
 dotnet,tools,dotnet-repl
 dotnet,tools,dotnet-reportgenerator-globaltool
 dotnet,tools,dotnet-t4

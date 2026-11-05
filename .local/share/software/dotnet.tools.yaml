@@ -1,5 +1,7 @@
 - Id: dotnet-ef
   Url: https://nuget.org/packages/dotnet-ef
+- Id: dotnet-inspect
+  Url: https://nuget.org/packages/dotnet-inspect
 - Id: dotnet-repl
   Url: https://nuget.org/packages/dotnet-repl
 - Id: dotnet-reportgenerator-globaltool
