@@ -326,6 +326,10 @@
   DisplayName: Microsoft SQL Server OLE DB Driver
   Category: Programming
   Tracking: Full
+- Id: Microsoft.SQLServerManagementStudio.22@winget
+  DisplayName: SQL Server Management Studio
+  Category: Programming
+  Tracking: Full
 - Id: Microsoft.Teams.Free@winget
   DisplayName: Microsoft Teams Free
   Category: Social
